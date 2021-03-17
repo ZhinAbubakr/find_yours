@@ -142,7 +142,7 @@ const options = [
           </MenuItem>
         ))}
       </Menu>
-      <img style={{width: '125px'}} src={google} alt="google"/>
+      <img style={{width: '150px'}} src={google} alt="google"/>
     </div>
           
         </Toolbar>
@@ -208,7 +208,7 @@ const options = [
           </MenuItem>
         ))}
       </Menu>
-      <img style={{width: '125px'}} src={google} alt="google"/>
+      <img style={{width: '150px'}} src={google} alt="google"/>
     </div>
           
           
