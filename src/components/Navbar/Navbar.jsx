@@ -24,6 +24,7 @@ const options = [
   
   const ITEM_HEIGHT = 48;
 
+  // navbar route buttons
   const headersData = [
     {
       label: "Dashboard",
