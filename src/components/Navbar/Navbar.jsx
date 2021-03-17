@@ -13,7 +13,17 @@ import {
   import React, { useState, useEffect } from "react";
   import { Link as RouterLink } from "react-router-dom";
   import google from '../../Assets/Google.png'
+import Menu from '@material-ui/core/Menu';
+import LanguageIcon from '@material-ui/icons/Language';
+    
+const options = [
+    'Arabic',
+    'English',
+    'Kurdish',
+  ];
   
+  const ITEM_HEIGHT = 48;
+
   const headersData = [
     {
       label: "Dashboard",
@@ -37,7 +47,7 @@ import {
     header: {
       backgroundColor: "#3AAFA9",
     //   paddingRight: "79px",
-      paddingLeft: "118px",
+    //   paddingLeft: "118px",
       "@media (max-width: 900px)": {
         paddingLeft: 0
       }
@@ -64,6 +74,20 @@ import {
   }));
   
   export default function Header() {
+      // start language button code
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+  
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+  
+    const handleClose = (event) => {
+      setAnchorEl(null);
+      // get language text from here
+      console.log(event.currentTarget.innerText);
+    };
+     // end language button code 
     const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
   
     const [state, setState] = useState({
@@ -90,7 +114,37 @@ import {
         <Toolbar className={toolbar}>
           {femmecubatorLogo}
           <div>{getMenuButtons()}</div>
-          <img style={{width: '125px'}} src={google} alt="google"/>
+          <div style={{display: 'flex', alignItems: 'center'}}>
+      <IconButton
+        aria-label="more"
+        aria-controls="long-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
+        <LanguageIcon style={{color: 'white'}}/>
+      </IconButton>
+      <Menu
+        id="long-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          style: {
+            maxHeight: ITEM_HEIGHT * 4.5,
+            width: '20ch',
+          },
+        }}
+      >
+        {options.map((option) => (
+          <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+            {option}
+          </MenuItem>
+        ))}
+      </Menu>
+      <img style={{width: '125px'}} src={google} alt="google"/>
+    </div>
+          
         </Toolbar>
       );
     };
@@ -126,7 +180,38 @@ import {
           </Drawer>
           <div style={{display: 'flex', justifyContent: 'space-between', flexBasis: '100%', alignItems: 'center'}} 
           >{femmecubatorLogo} 
-          <img style={{width: '125px'}} src={google} alt="google"/>
+          <div style={{display: 'flex', alignItems: 'center'}}>
+      <IconButton
+        aria-label="more"
+        aria-controls="long-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+      >
+        <LanguageIcon style={{color: 'white'}} />
+      </IconButton>
+      <Menu
+        id="long-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          style: {
+            maxHeight: ITEM_HEIGHT * 4.5,
+            width: '20ch',
+          },
+        }}
+      >
+        {options.map((option) => (
+          <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+            {option}
+          </MenuItem>
+        ))}
+      </Menu>
+      <img style={{width: '125px'}} src={google} alt="google"/>
+    </div>
+          
+          
           </div>
         </Toolbar>
       );
