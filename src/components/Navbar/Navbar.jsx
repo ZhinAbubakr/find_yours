@@ -74,7 +74,7 @@ const options = [
   }));
   
   export default function Header() {
-      // start language button code
+      // start language button depend code
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
   
@@ -87,7 +87,7 @@ const options = [
       // get language text from here
       console.log(event.currentTarget.innerText);
     };
-     // end language button code 
+     // end language button depend code 
     const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
   
     const [state, setState] = useState({
