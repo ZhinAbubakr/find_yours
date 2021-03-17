@@ -53,13 +53,13 @@ const options = [
       }
     },
     logo: {
-      fontFamily: "Work Sans, sans-serif",
+      fontFamily: "Oswald, sans-serif",
       fontWeight: 600,
       color: "#FFFEFE",
       textAlign: "left"
     },
     menuButton: {
-      fontFamily: "Open Sans, sans-serif",
+      fontFamily: "Oswald, sans-serif",
       fontWeight: 700,
       size: "18px",
       marginLeft: "38px"
