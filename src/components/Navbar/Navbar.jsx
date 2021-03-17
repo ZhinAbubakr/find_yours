@@ -12,30 +12,31 @@ import {
   import MenuIcon from "@material-ui/icons/Menu";
   import React, { useState, useEffect } from "react";
   import { Link as RouterLink } from "react-router-dom";
+  import google from '../../Assets/Google.png'
   
   const headersData = [
     {
-      label: "Listings",
-      href: "/listings"
+      label: "Dashboard",
+      href: "/dashboard"
     },
     {
-      label: "Mentors",
-      href: "/mentors"
+      label: "Privacy Policy",
+      href: "/privacy"
     },
     {
-      label: "My Account",
-      href: "/account"
+      label: "About us",
+      href: "/about"
     },
     {
-      label: "Log Out",
-      href: "/logout"
+      label: "Contact us",
+      href: "/contact"
     }
   ];
   
   const useStyles = makeStyles(() => ({
     header: {
-      backgroundColor: "#400CCC",
-      paddingRight: "79px",
+      backgroundColor: "#3AAFA9",
+    //   paddingRight: "79px",
       paddingLeft: "118px",
       "@media (max-width: 900px)": {
         paddingLeft: 0
@@ -89,6 +90,7 @@ import {
         <Toolbar className={toolbar}>
           {femmecubatorLogo}
           <div>{getMenuButtons()}</div>
+          <img style={{width: '125px'}} src={google} alt="google"/>
         </Toolbar>
       );
     };
@@ -122,8 +124,10 @@ import {
           >
             <div className={drawerContainer}>{getDrawerChoices()}</div>
           </Drawer>
-  
-          <div>{femmecubatorLogo}</div>
+          <div style={{display: 'flex', justifyContent: 'space-between', flexBasis: '100%', alignItems: 'center'}} 
+          >{femmecubatorLogo} 
+          <img style={{width: '125px'}} src={google} alt="google"/>
+          </div>
         </Toolbar>
       );
     };
@@ -148,7 +152,7 @@ import {
   
     const femmecubatorLogo = (
       <Typography variant="h6" component="h1" className={logo}>
-        Hello
+        FindYours
       </Typography>
     );
   
@@ -168,6 +172,7 @@ import {
           </Button>
         );
       });
+      
     };
   
     return (
