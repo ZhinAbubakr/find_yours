@@ -9,11 +9,11 @@ import {
 import './footer.css'
 
 const SocialShare = [
-  { Social: <FaFacebookF />, link: "https://www.facebook.com/iothmanosx" },
-  { Social: <FaLinkedinIn />, link: "https://www.linkedin.com/in/othmanosx" },
-  { Social: <FaInstagram />, link: "https://www.instagram.com/othmanosx" },
-  { Social: <FaTwitter />, link: "https://twitter.com/othmanosx" },
-  { Social: <FaGithub />, link: "https://github.com/othmanosx" }
+  { Social: <FaFacebookF />, link: "https://www.facebook.com/" },
+  { Social: <FaLinkedinIn />, link: "https://www.linkedin.com/" },
+  { Social: <FaInstagram />, link: "https://www.instagram.com/" },
+  { Social: <FaTwitter />, link: "https://twitter.com/" },
+  { Social: <FaGithub />, link: "https://github.com/" }
 ];
 
 const Footer = () => {

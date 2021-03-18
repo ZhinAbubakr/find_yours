@@ -11,6 +11,9 @@ footer {
     justify-content: space-evenly;
     padding: 0;
 }
+.icons a {
+    color: black;
+}
 
 .links {
     list-style: none;
@@ -30,7 +33,6 @@ width: 60px
 }
 
 .iconsrow {
-    /* flex-grow: 2; */
     align-self: center;
     width: 344px
 }
