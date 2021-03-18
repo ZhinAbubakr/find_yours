@@ -1,0 +1,38 @@
+footer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-basis: 10000px;
+}
+
+.icons {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+}
+.icons a {
+    color: black;
+}
+
+.links {
+    list-style: none;
+    display: flex;
+    width: 344px;
+    padding: 0;
+    justify-content: center;
+}
+
+.links li {
+margin: 5px;
+width: 60px
+}
+
+.logo {
+    width: 344px
+}
+
+.iconsrow {
+    align-self: center;
+    width: 344px
+}
