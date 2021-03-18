@@ -16,7 +16,7 @@ const SocialShare = [
   { Social: <FaGithub />, link: "https://github.com/othmanosx" }
 ];
 
-const FooterTwo = () => {
+const Footer = () => {
   return (
     <footer>
       <h1 className='logo'>FindYours</h1>
@@ -43,4 +43,4 @@ const FooterTwo = () => {
     </footer>
   );
 };
-export default FooterTwo;
+export default Footer;
