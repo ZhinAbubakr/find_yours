@@ -47,6 +47,7 @@ const options = [
   const useStyles = makeStyles(() => ({
     header: {
       backgroundColor: "#3AAFA9",
+    // header padding can be changed from here
     //   paddingRight: "79px",
     //   paddingLeft: "118px",
       "@media (max-width: 900px)": {
