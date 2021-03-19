@@ -29,7 +29,7 @@ export default function HeroSection() {
 								FindYours reunites people 
 								
 								with Lost & Found property
-							</Typography>
+							</Typography> 
 						</Grid>
 						<Grid item>
 							<Box color="white">

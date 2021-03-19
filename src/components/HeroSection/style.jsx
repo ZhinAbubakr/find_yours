@@ -7,22 +7,21 @@ const useStyles = makeStyles({
 	fontTitleSize: {
 		fontSize: "2.5rem",
 		fontWeight: "bold",
-		marginTop:"160px",
-		marginRight:"20px",
-		textAlign:'center'
+		marginTop:"10rem",
+		marginRight:"1.25rem",
+		textAlign:"center"
 	},
 	txtFontSize: {
 		fontSize: "1.2rem",
-		marginTop:"50px",
-		marginRight:"60px",
-		marginLeft:"10px",
-		textAlign:'center'
+		marginTop:"3.1rem",
+		marginRight:"3.75rem",
+		marginLeft:"0.6rem"
 	},
-	img: {
+	img: { 
 		background: "white",
 		borderRadius: "10px",
-		marginTop:"150px",
-		marginBottom:"80px"
+		marginTop:"9.5rem",
+		marginBottom:"5rem",
 	},
 	btn: {
 		color: "white !important",
