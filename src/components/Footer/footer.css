@@ -15,7 +15,7 @@ footer {
     color: black;
 }
 
-.links {
+footer .links {
     list-style: none;
     display: flex;
     width: 344px;
@@ -23,16 +23,18 @@ footer {
     justify-content: center;
 }
 
-.links li {
+footer .links li {
 margin: 5px;
 width: 60px
 }
 
 .logo {
-    width: 344px
+    width: 344px;
+    text-align: center;
 }
 
 .iconsrow {
     align-self: center;
-    width: 344px
+    width: 344px;
+    text-align: center;
 }
