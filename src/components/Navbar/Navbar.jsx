@@ -2,13 +2,13 @@ import {
     AppBar,
     Toolbar,
     Typography,
-    makeStyles,
     Button,
     IconButton,
     Drawer,
     Link,
     MenuItem
   } from "@material-ui/core";
+  import {useStyles} from './styles.js'
   import MenuIcon from "@material-ui/icons/Menu";
   import React, { useState, useEffect } from "react";
   import { Link as RouterLink } from "react-router-dom";
@@ -24,7 +24,6 @@ const options = [
   
   const ITEM_HEIGHT = 48;
 
-  // navbar route buttons
   const headersData = [
     {
       label: "Dashboard",
@@ -43,40 +42,9 @@ const options = [
       href: "/contact"
     }
   ];
-  
-  const useStyles = makeStyles(() => ({
-    header: {
-      backgroundColor: "#3AAFA9",
-    // header padding can be changed from here
-    //   paddingRight: "79px",
-    //   paddingLeft: "118px",
-      "@media (max-width: 900px)": {
-        paddingLeft: 0
-      }
-    },
-    logo: {
-      fontFamily: "Oswald, sans-serif",
-      fontWeight: 600,
-      color: "#FFFEFE",
-      textAlign: "left"
-    },
-    menuButton: {
-      fontFamily: "Oswald, sans-serif",
-      fontWeight: 700,
-      size: "18px",
-      marginLeft: "38px"
-    },
-    toolbar: {
-      display: "flex",
-      justifyContent: "space-between"
-    },
-    drawerContainer: {
-      padding: "20px 30px"
-    }
-  }));
+
   
   export default function Header() {
-      // start language button depend code
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
   
@@ -86,11 +54,9 @@ const options = [
   
     const handleClose = (event) => {
       setAnchorEl(null);
-      // get language text from here
       console.log(event.currentTarget.innerText);
     };
-     // end language button depend code 
-    const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
+    const { header, logo, menuButton, toolbar, drawerContainer, toolbar2, languageicon, googleimg, toolbar3 , toolbar4} = useStyles();
   
     const [state, setState] = useState({
       mobileView: false,
@@ -116,14 +82,14 @@ const options = [
         <Toolbar className={toolbar}>
           {femmecubatorLogo}
           <div>{getMenuButtons()}</div>
-          <div style={{display: 'flex', alignItems: 'center'}}>
+          <div className={toolbar2}>
       <IconButton
         aria-label="more"
         aria-controls="long-menu"
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <LanguageIcon style={{color: 'white'}}/>
+        <LanguageIcon className={languageicon}/>
       </IconButton>
       <Menu
         id="long-menu"
@@ -144,7 +110,7 @@ const options = [
           </MenuItem>
         ))}
       </Menu>
-      <img style={{width: '150px'}} src={google} alt="google"/>
+      <img className={googleimg} src={google} alt="google"/>
     </div>
           
         </Toolbar>
@@ -180,16 +146,16 @@ const options = [
           >
             <div className={drawerContainer}>{getDrawerChoices()}</div>
           </Drawer>
-          <div style={{display: 'flex', justifyContent: 'space-between', flexBasis: '100%', alignItems: 'center'}} 
+          <div className={toolbar3} 
           >{femmecubatorLogo} 
-          <div style={{display: 'flex', alignItems: 'center'}}>
+          <div className={toolbar4}>
       <IconButton
         aria-label="more"
         aria-controls="long-menu"
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <LanguageIcon style={{color: 'white'}} />
+        <LanguageIcon className={languageicon} />
       </IconButton>
       <Menu
         id="long-menu"
@@ -210,7 +176,7 @@ const options = [
           </MenuItem>
         ))}
       </Menu>
-      <img style={{width: '150px'}} src={google} alt="google"/>
+      <img className={googleimg} src={google} alt="google"/>
     </div>
           
           
