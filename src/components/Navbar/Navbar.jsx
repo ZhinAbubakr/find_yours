@@ -42,8 +42,7 @@ const options = [
       href: "/contact"
     }
   ];
-  
-  
+
   
   export default function Header() {
     const [anchorEl, setAnchorEl] = useState(null);
