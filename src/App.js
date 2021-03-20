@@ -1,8 +1,8 @@
-import HeroSection from ''
+import HeroSection from "./components/HeroSection/HeroSection"
 function App() {
 	return (
 		<div>
-			
+			<HeroSection />
 		</div>
 	)
 }
