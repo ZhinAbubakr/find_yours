@@ -49,12 +49,14 @@ export default function Posts() {
             <main className={classes.heroContent}>
                 <div className={classes.heroContent}>
                     <Container maxWidth="lg">
-                        <Typography className={classes.heroTypography} component="h1" variant="h4" gutterBottom>
-                            Featured Lost Items
-                        </Typography>
+                        <ThemeProvider theme={theme}>
+                            <Typography className={classes.heroTypography} component="h1" variant="h4" gutterBottom>
+                                Featured Lost Items
+                            </Typography>
                             <Typography variant="h6" align="center" paragraph>
                             View our recently featured Lost and Found property entries
                             </Typography>
+                        </ThemeProvider>
                         <Container maxWidth="lg" align="center"> 
                             <Paper component="form" className={classes.root}>
                                 <InputBase
@@ -76,12 +78,14 @@ export default function Posts() {
                             <Grid item xs={12} sm={6} md={3} >
                                 <Card className={classes.card}>
                                     <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            {data.name}
-                                        </Typography>
-                                        <Typography component="p" variant="body2">
-                                            {data.location}
-                                        </Typography>
+                                        <ThemeProvider theme={theme}>
+                                            <Typography gutterBottom variant="h5" component="h2">
+                                                {data.name}
+                                            </Typography>
+                                            <Typography component="p" variant="body2">
+                                                {data.location}
+                                            </Typography>
+                                        </ThemeProvider>
                                     </CardContent>
                                     <CardActions>
                                         <Button className={classes.btn} size="small">
