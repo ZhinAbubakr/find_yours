@@ -5,19 +5,29 @@ const useStyles = makeStyles({
 		backgroundColor: "#3AAFA9"
 	},
 	fontTitleSize: {
-		fontSize: "1.3rem",
-		fontWeight: "bold"
+		fontSize: "2.5rem",
+		fontWeight: "bold",
+		marginTop:"10rem",
+		marginRight:"1.25rem",
+		textAlign:"center"
 	},
 	txtFontSize: {
-		fontSize: "1rem"
+		fontSize: "1.2rem",
+		marginTop:"3.1rem",
+		marginRight:"3.75rem",
+		marginLeft:"0.6rem"
 	},
-	img: {
+	img: { 
 		background: "white",
-		borderRadius: "10px"
+		borderRadius: "10px",
+		marginTop:"9.5rem",
+		marginBottom:"5rem",
 	},
 	btn: {
 		color: "white !important",
-		borderRadius: "25px !important"
+		borderRadius: "25px !important",
+		marginTop:"50px",
+		marginLeft:"20px"
 	},
 	lostBtn: {
 		background: "#2B7A78 !important"

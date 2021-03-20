@@ -18,15 +18,18 @@ export default function HeroSection() {
 					<Grid
 						container
 						direction="column"
-						spacing={8}
+						spacing={2}
 						item
 						xs={12}
 						sm={8}
-						md={6}>
+						md={6}
+						>
 						<Grid item>
 							<Typography className={classes.fontTitleSize}>
-								FindYours reunites people with Lost & Found property
-							</Typography>
+								FindYours reunites people 
+								
+								with Lost & Found property
+							</Typography> 
 						</Grid>
 						<Grid item>
 							<Box color="white">
@@ -41,21 +44,26 @@ export default function HeroSection() {
 							<Grid item xs={6}>
 								<Button
 									className={`${classes.btn} ${classes.foundBtn}`}
-									variant="contained">
+									variant="contained" 
+									size="large"
+									>
 									SUBMIT FOUND ITEMS
 								</Button>
 							</Grid>
 							<Grid item xs={6}>
 								<Button
 									className={`${classes.btn} ${classes.lostBtn}`}
-									variant="contained">
+									variant="contained"
+									size="large"
+
+									>
 									SUBMIT LOST ITEMS
 								</Button>
 							</Grid>
 						</Grid>
 					</Grid>
 					<Grid item xs={12} sm={8} md={6} className={classes.img}>
-						<object width="100%" data={image} type="image/svg+xml" />
+						<object width="100%" data={image} type="image/svg+xml"  />
 					</Grid>
 				</Grid>
 			</Container>
