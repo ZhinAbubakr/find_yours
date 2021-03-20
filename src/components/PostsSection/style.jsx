@@ -4,7 +4,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     heroContent: {
       backgroundColor: '#3aafa9',
-      padding: theme.spacing(6, 4, 4),
+      padding: theme.spacing(4, 4, 4),
     },
     btn: {
       marginLeft: theme.spacing(20),
@@ -13,13 +13,12 @@ const useStyles = makeStyles((theme) => ({
     },
     btn2: {
       marginTop: theme.spacing(8),
-      marginBottom: theme.spacing(6),
+      marginBottom: theme.spacing(4),
       marginLeft: theme.spacing(62),
-      
     },
     cardGrid: {
       backgroundColor: '#3aafa9',
-      paddingTop: theme.spacing(8),
+      paddingTop: theme.spacing(4),
       paddingBottom: theme.spacing(8),
     },
     card: {
@@ -29,6 +28,15 @@ const useStyles = makeStyles((theme) => ({
     },
     cardContent: {
       flexGrow: 1,
+    },
+    heroTypography: {
+      fontWeight: "bold",
+      textAlign:"center",
+      color:"textPrimary"
+    },
+    heroTypography2: {
+        textAlign:"center",
+        color:"textPrimary"
     },
   // ******search button*****
     root: {
@@ -44,11 +52,6 @@ const useStyles = makeStyles((theme) => ({
     iconButton: {
       padding: 10,
     },
-    heroTypography: {
-      fontWeight: "bold",
-      textAlign:"center",
-      color:"textPrimary"
-    }
   })); 
 
   export const theme = createMuiTheme({

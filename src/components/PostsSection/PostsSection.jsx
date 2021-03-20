@@ -53,11 +53,11 @@ export default function Posts() {
                             <Typography className={classes.heroTypography} component="h1" variant="h4" gutterBottom>
                                 Featured Lost Items
                             </Typography>
-                            <Typography variant="h6" align="center" paragraph>
+                            <Typography className={classes.heroTypography2} variant="h6" paragraph>
                             View our recently featured Lost and Found property entries
                             </Typography>
                         </ThemeProvider>
-                        <Container maxWidth="lg" align="center"> 
+                        <Container align="center" maxWidth="lg"> 
                             <Paper component="form" className={classes.root}>
                                 <InputBase
                                     className={classes.input}
@@ -72,7 +72,7 @@ export default function Posts() {
                     </Container>
                 </div>
 
-                <Container className={classes.cardGrid}  maxWidth="lg">
+                <Container className={classes.cardGrid} maxWidth="lg">
                     <Grid container spacing={3}>
                         {item.slice(0, 4).map((data)=>(
                             <Grid item xs={12} sm={6} md={3} >
