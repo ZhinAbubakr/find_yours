@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import { Avatar } from "@material-ui/core";
 import "./styles.css";
 import { makeStyles } from "@material-ui/core/styles";
+import Post from "./Post/Post";
 
 import React from "react";
 
@@ -28,7 +29,7 @@ export default function Dashboard() {
       <br />
       <Grid container spacing={3}>
         <Grid item sm={3} xs={12} lg={3}></Grid>
-        <Grid item sm={6} xs={12} lg={6}>
+        <Grid item sm={6} xs={12} lg={7}>
           <div>
             <div className="messageSender">
               <div className="messageSender_top">
@@ -42,7 +43,7 @@ export default function Dashboard() {
                     color="primary"
                     disableElevation
                   >
-                    Submit item
+                    Submit lost item
                   </Button>
                   <Button
                     {...{
@@ -51,14 +52,20 @@ export default function Dashboard() {
                     variant="contained"
                     disableElevation
                   >
-                    Primary
+                    Submit found item
                   </Button>
                 </div>
               </div>
             </div>
           </div>
+          <div className="posts">
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+          </div>
         </Grid>
-        <Grid item sm={3} xs={12} lg={3}></Grid>
+        <Grid item sm={3} xs={12} lg={2}></Grid>
       </Grid>
       <Footer />
     </div>
