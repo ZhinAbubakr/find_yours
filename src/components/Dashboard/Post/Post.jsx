@@ -13,6 +13,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
+import ghost from "../../../Assets/Ghost.jpg";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles(() => ({
   media: {
     height: 0,
     paddingTop: "56.25%", // 16:9
+    marginTop: "5px",
   },
   button: {
     marginLeft: "auto",
@@ -43,13 +45,13 @@ export default function RecipeReviewCard() {
   return (
     <Card className={classes.root}>
       <CardHeader
-        avatar={<Avatar className={classes.avatar} />}
+        avatar={<Avatar src={ghost} className={classes.avatar} />}
         action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
+        title="Othman"
         subheader="September 14, 2016"
       />
       <CardContent className={classes.content}>
