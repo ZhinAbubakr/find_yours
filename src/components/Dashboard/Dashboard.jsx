@@ -22,6 +22,7 @@ export default function Dashboard() {
     },
     widget: {
       margin: "10px",
+      marginTop: "20px",
       display: "flex",
       justifyContent: "center",
     },
