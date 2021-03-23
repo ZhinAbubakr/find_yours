@@ -14,10 +14,6 @@ const useStyles = makeStyles(() => ({
     borderRadius: "20px",
     width: "300px",
   },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-  },
   buttons: {
     display: "flex",
     flexWrap: "nowrap",
@@ -37,10 +33,6 @@ const useStyles = makeStyles(() => ({
     backgroundColor: grey[500],
     width: "30px",
     height: "30px",
-  },
-  content: {
-    paddingTop: 0,
-    paddingBottom: 0,
   },
   header: {
     backgroundColor: "#3AAFA9",
