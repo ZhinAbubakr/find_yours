@@ -16,9 +16,9 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(() => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 320,
     marginBottom: "15px",
-    borderRadius: "25px",
+    borderRadius: "20px",
   },
   media: {
     height: 0,
@@ -53,13 +53,29 @@ export default function RecipeReviewCard() {
         image="https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg"
         title="Paella dish"
       />
-      <CardContent>
+      <CardContent className={classes.content}>
         <Typography variant="body2" color="textSecondary" component="p">
           This impressive paella is a perfect party dish and a fun meal to cook
           together with your guests. Add 1 cup of frozen peas along with the
           mussels, if you like.
         </Typography>
+        <br />
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography variant="body2" color="textSecondary" component="p">
+            123 Likes
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            23 comments
+          </Typography>
+        </div>
       </CardContent>
+
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />

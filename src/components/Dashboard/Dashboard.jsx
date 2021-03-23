@@ -29,7 +29,7 @@ export default function Dashboard() {
       <br />
       <Grid container spacing={3}>
         <Grid item sm={3} xs={12} lg={3}></Grid>
-        <Grid item sm={6} xs={12} lg={7}>
+        <Grid item sm={6} xs={12} lg={6}>
           <div>
             <div className="messageSender">
               <div className="messageSender_top">
@@ -63,9 +63,13 @@ export default function Dashboard() {
             <Post />
             <Post />
             <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
           </div>
         </Grid>
-        <Grid item sm={3} xs={12} lg={2}></Grid>
+        <Grid item sm={3} xs={12} lg={3}></Grid>
       </Grid>
       <Footer />
     </div>
