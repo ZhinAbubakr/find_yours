@@ -1,9 +1,9 @@
-import HeroSection from "./components/HeroSection/HeroSection"
+import InfoSection from "./components/InfoSection/InfoSection"
 
 function App() {
 	return (
 		<div>
-			<HeroSection />
+			<InfoSection/>
 		</div>
 	)
 }
