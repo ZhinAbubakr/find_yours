@@ -29,6 +29,9 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#3AAFA9",
     color: "white",
     margin: "0 25px",
+    "&:hover": {
+      backgroundColor: "#27938d",
+    },
   },
   avatar: {
     backgroundColor: grey[500],

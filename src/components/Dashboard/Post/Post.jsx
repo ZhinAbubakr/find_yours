@@ -52,7 +52,7 @@ export default function RecipeReviewCard() {
           </IconButton>
         }
         title="Othman"
-        subheader="September 14, 2016"
+        subheader="Sep 14 2021 | Iraq, Erbil"
       />
       <CardContent className={classes.content}>
         <Typography variant="body2" color="textSecondary" component="p">
