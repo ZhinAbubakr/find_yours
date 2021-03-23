@@ -31,6 +31,10 @@ const useStyles = makeStyles(() => ({
   avatar: {
     backgroundColor: grey[500],
   },
+  content: {
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
 }));
 
 export default function RecipeReviewCard() {
@@ -48,23 +52,26 @@ export default function RecipeReviewCard() {
         title="Shrimp and Chorizo Paella"
         subheader="September 14, 2016"
       />
-      <CardMedia
-        className={classes.media}
-        image="https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg"
-        title="Paella dish"
-      />
       <CardContent className={classes.content}>
         <Typography variant="body2" color="textSecondary" component="p">
           This impressive paella is a perfect party dish and a fun meal to cook
           together with your guests. Add 1 cup of frozen peas along with the
           mussels, if you like.
         </Typography>
-        <br />
+      </CardContent>
+      <CardMedia
+        className={classes.media}
+        image="https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg"
+        title="Paella dish"
+      />
+      <CardContent className={classes.content}>
         <div
           style={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-between",
+            borderBottom: "1px solid #bdbdbd",
+            padding: "5px",
           }}
         >
           <Typography variant="body2" color="textSecondary" component="p">
