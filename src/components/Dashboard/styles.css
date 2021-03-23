@@ -1,0 +1,28 @@
+body {
+  background-color: aliceblue;
+}
+.messageSender {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+  width: 100%;
+}
+
+.messageSender_top {
+  display: flex;
+  border-bottom: 1px solid #eff2f5;
+  padding: 15px;
+}
+
+.button {
+  background-color: #3aafa9;
+  color: white;
+  margin: 0 10px;
+}
+
+.buttons {
+  margin-left: auto;
+}
