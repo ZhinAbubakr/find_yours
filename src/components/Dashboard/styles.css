@@ -33,3 +33,8 @@ body {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.widget {
+  margin: 10px;
+  justify-content: center;
+}

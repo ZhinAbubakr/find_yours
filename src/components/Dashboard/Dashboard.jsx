@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Post from "./Post/Post";
 
 import React from "react";
-import Card from "./Widget/Widget";
+import Widget from "./Widget/Widget";
 
 export default function Dashboard() {
   const useStyles = makeStyles(() => ({
@@ -20,17 +20,24 @@ export default function Dashboard() {
         backgroundColor: "#27938d",
       },
     },
+    widget: {
+      margin: "10px",
+      display: "flex",
+      justifyContent: "center",
+    },
   }));
-  const { button } = useStyles();
+  const { button, widget } = useStyles();
   return (
     <div>
       <Navbar />
       <br />
       <br />
       <br />
-      <Grid container spacing={3}>
-        <Grid item sm={3} xs={12} lg={3}>
-          <Card />
+      <Grid container>
+        <Grid item sm={3} xs={12} lg={3} className={widget}>
+          <div className="widget">
+            <Widget />
+          </div>
         </Grid>
         <Grid item sm={6} xs={12} lg={6}>
           <div>
