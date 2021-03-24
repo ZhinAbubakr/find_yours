@@ -1,9 +1,8 @@
-import InfoSection from "./components/InfoSection/InfoSection"
-
+import ContactUs from './components/ContactUs/contactUs'
 function App() {
 	return (
 		<div>
-			<InfoSection/>
+			<ContactUs/>
 		</div>
 	)
 }
