@@ -47,8 +47,8 @@ export default function Posts() {
         <React.Fragment>
             <CssBaseline />
             <main className={classes.heroContent}>
-                <div className={classes.heroContent}>
-                    <Container maxWidth="lg">
+                <div>
+                    <Container maxWidth="sm">
                         <ThemeProvider theme={theme}>
                             <Typography className={classes.heroTypography} component="h1" variant="h4" gutterBottom>
                                 Featured Lost Items
@@ -57,18 +57,23 @@ export default function Posts() {
                             View our recently featured Lost and Found property entries
                             </Typography>
                         </ThemeProvider>
-                        <Container align="center" maxWidth="lg"> 
-                            <Paper component="form" className={classes.root}>
-                                <InputBase
-                                    className={classes.input}
-                                    placeholder="Search Posted Items"
-                                    inputProps={{ 'aria-label': 'search google maps' }}
-                                />
-                                <IconButton type="submit" className={classes.iconButton} aria-label="search">
-                                    <AiOutlineSearch />
-                                </IconButton>
-                            </Paper>
-                        </Container>
+                        <div>
+                        <Grid>
+                            <Grid item xs={12} md={12}>
+                                <Container align="center" maxWidth="lg"> 
+                                    <Paper component="form" className={classes.root}>
+                                        <InputBase
+                                            className={classes.input}
+                                            placeholder="Search Posted Items"
+                                            inputProps={{ 'aria-label': 'search google maps' }}
+                                        />
+                                        <IconButton type="submit" className={classes.iconButton} aria-label="search">
+                                            <AiOutlineSearch />
+                                        </IconButton>
+                                    </Paper>
+                                </Container>
+                            </Grid>
+                        </Grid></div>
                     </Container>
                 </div>
 
@@ -95,13 +100,15 @@ export default function Posts() {
                                 </Card>
                             </Grid>
                         ))}
-                        <Container className={classes.btn2} maxWidth="lg" >
-                            <ThemeProvider theme={theme}>
-                                <Button variant="contained" color="primary">
-                                    View More Lost Items
-                                </Button>
-                            </ThemeProvider>
-                        </Container>
+                        <Grid item xs={12}>
+                            <Container align="center">
+                                <ThemeProvider theme={theme}>
+                                    <Button variant="contained" color="primary" className={classes.btn2}>
+                                        View More Lost Items
+                                    </Button>
+                                </ThemeProvider>
+                            </Container>
+                        </Grid>
                     </Grid>
                 </Container>
             </main>
