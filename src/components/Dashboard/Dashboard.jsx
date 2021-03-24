@@ -17,6 +17,32 @@ import SearchBar from "material-ui-search-bar";
 // import LinearProgress from "@material-ui/core/LinearProgress";
 
 export default function Dashboard() {
+  const [state, setState] = React.useState({
+    mobileView: false,
+    mediumView: false,
+  });
+
+  const { mobileView, mediumView } = state;
+
+  React.useEffect(() => {
+    const setResponsiveness = () => {
+      if (window.innerWidth < 812) {
+        setState((prevState) => ({ ...prevState, mobileView: true }));
+      }
+      if (window.innerWidth < 1210) {
+        setState((prevState) => ({ ...prevState, mediumView: true }));
+      }
+
+      // window.innerWidth < 900
+      //   ? setState((prevState) => ({ ...prevState, mobileView: true }))
+      //   : setState((prevState) => ({ ...prevState, mobileView: false }));
+    };
+
+    setResponsiveness();
+
+    window.addEventListener("resize", () => setResponsiveness());
+  }, []);
+
   const useStyles = makeStyles(() => ({
     button: {
       color: "white",
@@ -46,61 +72,122 @@ export default function Dashboard() {
   return (
     <div>
       <Navbar />
-      <Grid container justify="center" className={container}>
-        <Grid item sm={3} xs={12} lg={3} className={widget}>
-          <div className="widget">
-            <Widget />
-            <LastPosts />
-          </div>
-        </Grid>
-        <Grid item sm={6} xs={12} lg={6}>
-          <div style={{ margin: "0 20px" }}>
-            <div className="messageSender">
-              <div className="messageSender_top">
-                <Avatar src={ghost} />
-                <div className="searchbar">
-                  <SearchBar
-                    className={searchfield}
-                    // Resource: https://codesandbox.io/s/mz7nx9v02j?file=/src/appStore.js
-                    // onRequestSearch={fetch}
-                    placeholder="Search items ..."
-                    autoFocus
-                  />
-                  {/* {isLoading && <LinearProgress />} */}
-                </div>
-                <div className="buttons">
-                  <Button
-                    {...{
-                      className: button,
-                    }}
-                    variant="contained"
-                    color="primary"
-                    disableElevation
-                  >
-                    Submit item
-                  </Button>
+
+      {mediumView && (
+        <Grid container justify="center" className={container}>
+          <Grid item xs={12} sm={8} lg={8}>
+            <div style={{ margin: "0 20px" }}>
+              <div className="messageSender">
+                <div className="messageSender_top">
+                  <Avatar src={ghost} />
+                  <div className="searchbar">
+                    <SearchBar
+                      className={searchfield}
+                      // Resource: https://codesandbox.io/s/mz7nx9v02j?file=/src/appStore.js
+                      // onRequestSearch={fetch}
+                      placeholder="Search items ..."
+                      autoFocus
+                    />
+                    {/* {isLoading && <LinearProgress />} */}
+                  </div>
+                  <div className="buttons">
+                    <Button
+                      {...{
+                        className: button,
+                      }}
+                      variant="contained"
+                      color="primary"
+                      disableElevation
+                    >
+                      Submit item
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="posts">
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-          </div>
+            <div className="posts">
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+            </div>
+          </Grid>
+
+          {!mobileView && (
+            <Grid item sm={4} lg={4} className={widget}>
+              <div className="widget">
+                <Filters />
+                <Cities />
+              </div>
+            </Grid>
+          )}
         </Grid>
-        <Grid item sm={3} xs={12} lg={3} className={widget}>
-          <div className="widget">
-            <Filters />
-            <Cities />
-          </div>
+      )}
+
+      {!mediumView && (
+        <Grid container justify="center" className={container}>
+          <Grid item sm={3} lg={3} className={widget}>
+            <div className="widget">
+              <div>
+                <Widget />
+                <LastPosts />
+              </div>
+            </div>
+          </Grid>
+          <Grid item sm={6} lg={6}>
+            <div style={{ margin: "0 20px" }}>
+              <div className="messageSender">
+                <div className="messageSender_top">
+                  <Avatar src={ghost} />
+                  <div className="searchbar">
+                    <SearchBar
+                      className={searchfield}
+                      // Resource: https://codesandbox.io/s/mz7nx9v02j?file=/src/appStore.js
+                      // onRequestSearch={fetch}
+                      placeholder="Search items ..."
+                      autoFocus
+                    />
+                    {/* {isLoading && <LinearProgress />} */}
+                  </div>
+                  <div className="buttons">
+                    <Button
+                      {...{
+                        className: button,
+                      }}
+                      variant="contained"
+                      color="primary"
+                      disableElevation
+                    >
+                      Submit item
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="posts">
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+              <Post />
+            </div>
+          </Grid>
+          <Grid item sm={3} lg={3} className={widget}>
+            <div className="widget">
+              <Filters />
+              <Cities />
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
+      )}
+
       <Footer />
     </div>
   );
