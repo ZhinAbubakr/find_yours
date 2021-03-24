@@ -99,7 +99,7 @@ export default function Dashboard() {
                       color="primary"
                       disableElevation
                     >
-                      Submit item
+                      Post
                     </Button>
                   </div>
                 </div>
