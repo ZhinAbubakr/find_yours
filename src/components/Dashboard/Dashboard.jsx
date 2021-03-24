@@ -11,6 +11,7 @@ import React from "react";
 import Widget from "./Widgets/Widget";
 import ghost from "../../Assets/Ghost.jpg";
 import LastPosts from "./Widgets/LastPosts";
+import Cities from "./Widgets/Cities";
 
 export default function Dashboard() {
   const useStyles = makeStyles(() => ({
@@ -23,10 +24,10 @@ export default function Dashboard() {
       },
     },
     widget: {
-      margin: "10px",
       marginTop: "20px",
       display: "flex",
       justifyContent: "center",
+      height: "fit-content",
     },
   }));
   const { button, widget } = useStyles();
@@ -36,7 +37,7 @@ export default function Dashboard() {
       <br />
       <br />
       <br />
-      <Grid container>
+      <Grid container justify="center">
         <Grid item sm={3} xs={12} lg={3} className={widget}>
           <div className="widget">
             <Widget />
@@ -57,16 +58,7 @@ export default function Dashboard() {
                     color="primary"
                     disableElevation
                   >
-                    Submit lost item
-                  </Button>
-                  <Button
-                    {...{
-                      className: button,
-                    }}
-                    variant="contained"
-                    disableElevation
-                  >
-                    Submit found item
+                    Submit item
                   </Button>
                 </div>
               </div>
@@ -83,7 +75,9 @@ export default function Dashboard() {
             <Post />
           </div>
         </Grid>
-        <Grid item sm={3} xs={12} lg={3}></Grid>
+        <Grid item sm={3} xs={12} lg={3} className={widget}>
+          <Cities />
+        </Grid>
       </Grid>
       <Footer />
     </div>
