@@ -17,14 +17,13 @@ const useStyles = makeStyles(() => ({
   buttons: {
     display: "flex",
     flexWrap: "wrap",
-    flexDirection: "column",
-    justifyContent: "space-evenly",
-    height: "250px",
+    justifyContent: "center",
+    margin: "15px 0px",
   },
   button: {
     backgroundColor: "#3AAFA9",
     color: "white",
-    margin: "0 25px",
+    margin: "5px",
     "&:hover": {
       backgroundColor: "#27938d",
     },
@@ -65,7 +64,7 @@ export default function Widget() {
           Duhok
         </Button>
         <Button variant="contained" className={classes.button} disableElevation>
-          Anbar
+          anbar
         </Button>
       </div>
     </Card>

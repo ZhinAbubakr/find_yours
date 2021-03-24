@@ -12,6 +12,7 @@ import Widget from "./Widgets/Widget";
 import ghost from "../../Assets/Ghost.jpg";
 import LastPosts from "./Widgets/LastPosts";
 import Cities from "./Widgets/Cities";
+import Filters from "./Widgets/Filters";
 
 export default function Dashboard() {
   const useStyles = makeStyles(() => ({
@@ -45,7 +46,7 @@ export default function Dashboard() {
           </div>
         </Grid>
         <Grid item sm={6} xs={12} lg={6}>
-          <div>
+          <div style={{ margin: "0 20px" }}>
             <div className="messageSender">
               <div className="messageSender_top">
                 <Avatar src={ghost} />
@@ -76,7 +77,10 @@ export default function Dashboard() {
           </div>
         </Grid>
         <Grid item sm={3} xs={12} lg={3} className={widget}>
-          <Cities />
+          <div className="widget">
+            <Filters />
+            <Cities />
+          </div>
         </Grid>
       </Grid>
       <Footer />
