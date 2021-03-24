@@ -15,6 +15,7 @@ body {
   display: flex;
   border-bottom: 1px solid #eff2f5;
   padding: 15px;
+  align-items: center;
 }
 
 .button {

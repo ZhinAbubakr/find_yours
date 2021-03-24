@@ -32,15 +32,15 @@ export default function Dashboard() {
       justifyContent: "center",
       height: "fit-content",
     },
+    container: {
+      marginTop: "50px",
+    },
   }));
-  const { button, widget } = useStyles();
+  const { container, button, widget } = useStyles();
   return (
     <div>
       <Navbar />
-      <br />
-      <br />
-      <br />
-      <Grid container justify="center">
+      <Grid container justify="center" className={container}>
         <Grid item sm={3} xs={12} lg={3} className={widget}>
           <div className="widget">
             <Widget />
@@ -54,11 +54,12 @@ export default function Dashboard() {
                 <Avatar src={ghost} />
                 <div className="searchbar">
                   <SearchBar
-                    // onRequestSearch={appStore.fetchBeers}
+                    // Resource: https://codesandbox.io/s/mz7nx9v02j?file=/src/appStore.js
+                    // onRequestSearch={fetch}
                     placeholder="Search items ..."
                     autoFocus
                   />
-                  {/* {data.isLoading && <LinearProgress />} */}
+                  {/* {isLoading && <LinearProgress />} */}
                 </div>
                 <div className="buttons">
                   <Button
