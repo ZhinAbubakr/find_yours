@@ -1,10 +1,12 @@
-import InfoSection from "./components/InfoSection/InfoSection"
+import Form from './components/Form/Form.jsx'
+
 
 function App() {
 	return (
-		<div>
-			<InfoSection/>
-		</div>
+		<>			
+	
+			<Form/>
+		</>
 	)
 }
 
