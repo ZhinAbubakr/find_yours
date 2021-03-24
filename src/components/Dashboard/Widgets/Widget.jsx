@@ -41,7 +41,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function RecipeReviewCard() {
+export default function Widget() {
   const classes = useStyles();
 
   return (

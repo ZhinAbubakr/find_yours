@@ -8,7 +8,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Post from "./Post/Post";
 
 import React from "react";
-import Widget from "./Widget/Widget";
+import Widget from "./Widgets/Widget";
+import ghost from "../../Assets/Ghost.jpg";
+import LastPosts from "./Widgets/LastPosts";
 
 export default function Dashboard() {
   const useStyles = makeStyles(() => ({
@@ -38,13 +40,14 @@ export default function Dashboard() {
         <Grid item sm={3} xs={12} lg={3} className={widget}>
           <div className="widget">
             <Widget />
+            <LastPosts />
           </div>
         </Grid>
         <Grid item sm={6} xs={12} lg={6}>
           <div>
             <div className="messageSender">
               <div className="messageSender_top">
-                <Avatar />
+                <Avatar src={ghost} />
                 <div className="buttons">
                   <Button
                     {...{
