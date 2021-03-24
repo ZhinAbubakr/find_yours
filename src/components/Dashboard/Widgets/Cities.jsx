@@ -23,6 +23,7 @@ const useStyles = makeStyles(() => ({
   button: {
     backgroundColor: "#3AAFA9",
     color: "white",
+    width: "130px",
     margin: "5px",
     "&:hover": {
       backgroundColor: "#27938d",
@@ -65,6 +66,39 @@ export default function Widget() {
         </Button>
         <Button variant="contained" className={classes.button} disableElevation>
           anbar
+        </Button>
+        <Button variant="contained" className={classes.button} disableElevation>
+          Babil
+        </Button>
+        <Button variant="contained" className={classes.button} disableElevation>
+          Dhi Qar
+        </Button>
+        <Button variant="contained" className={classes.button} disableElevation>
+          Diyala
+        </Button>
+        <Button variant="contained" className={classes.button} disableElevation>
+          Kirkuk
+        </Button>
+        <Button variant="contained" className={classes.button} disableElevation>
+          Karbala
+        </Button>
+        <Button variant="contained" className={classes.button} disableElevation>
+          Maysan
+        </Button>
+        <Button variant="contained" className={classes.button} disableElevation>
+          Nineveh
+        </Button>
+        <Button variant="contained" className={classes.button} disableElevation>
+          Saladdin
+        </Button>
+        <Button variant="contained" className={classes.button} disableElevation>
+          Sulaymaniyah
+        </Button>
+        <Button variant="contained" className={classes.button} disableElevation>
+          Najaf
+        </Button>
+        <Button variant="contained" className={classes.button} disableElevation>
+          Wasit
         </Button>
       </div>
     </Card>

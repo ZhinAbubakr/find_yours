@@ -173,10 +173,6 @@ export default function Dashboard() {
               <Post />
               <Post />
               <Post />
-              <Post />
-              <Post />
-              <Post />
-              <Post />
             </div>
           </Grid>
           <Grid item sm={3} lg={3} className={widget}>
