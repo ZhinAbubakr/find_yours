@@ -35,8 +35,14 @@ export default function Dashboard() {
     container: {
       marginTop: "50px",
     },
+    searchfield: {
+      height: "40px",
+      backgroundColor: "#f7f7f7",
+      boxShadow: "none",
+      border: "1px solid rgb(231, 231, 231)",
+    },
   }));
-  const { container, button, widget } = useStyles();
+  const { container, searchfield, button, widget } = useStyles();
   return (
     <div>
       <Navbar />
@@ -54,6 +60,7 @@ export default function Dashboard() {
                 <Avatar src={ghost} />
                 <div className="searchbar">
                   <SearchBar
+                    className={searchfield}
                     // Resource: https://codesandbox.io/s/mz7nx9v02j?file=/src/appStore.js
                     // onRequestSearch={fetch}
                     placeholder="Search items ..."
