@@ -13,6 +13,8 @@ import ghost from "../../Assets/Ghost.jpg";
 import LastPosts from "./Widgets/LastPosts";
 import Cities from "./Widgets/Cities";
 import Filters from "./Widgets/Filters";
+import SearchBar from "material-ui-search-bar";
+// import LinearProgress from "@material-ui/core/LinearProgress";
 
 export default function Dashboard() {
   const useStyles = makeStyles(() => ({
@@ -50,6 +52,14 @@ export default function Dashboard() {
             <div className="messageSender">
               <div className="messageSender_top">
                 <Avatar src={ghost} />
+                <div className="searchbar">
+                  <SearchBar
+                    // onRequestSearch={appStore.fetchBeers}
+                    placeholder="Search items ..."
+                    autoFocus
+                  />
+                  {/* {data.isLoading && <LinearProgress />} */}
+                </div>
                 <div className="buttons">
                   <Button
                     {...{
