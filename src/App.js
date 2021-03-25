@@ -1,11 +1,5 @@
-import InfoSection from "./components/InfoSection/InfoSection"
-
 function App() {
-	return (
-		<div>
-			<InfoSection/>
-		</div>
-	)
+	return <div></div>
 }
 
 export default App
