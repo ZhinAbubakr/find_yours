@@ -15,6 +15,7 @@
     "firebase": "^8.3.1",
     "firestore": "^1.1.6",
     "jest": "^26.6.3",
+    "material-ui-search-bar": "^1.0.0",
     "prettier": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
