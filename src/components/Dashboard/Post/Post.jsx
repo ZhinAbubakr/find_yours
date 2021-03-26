@@ -18,6 +18,9 @@ import ghost from "../../../Assets/Ghost.jpg";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
+import Chip from "@material-ui/core/Chip";
+import ErrorIcon from "@material-ui/icons/Error";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,6 +66,17 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: "100% !important",
   },
+  foundTag: {
+    height: "auto",
+    backgroundColor: "#3fb59d",
+  },
+  lostTag: {
+    height: "auto",
+    backgroundColor: "#f72b74",
+  },
+  tagIcon: {
+    marginLeft: "0px",
+  },
 }));
 
 export default function RecipeReviewCard() {
@@ -81,6 +95,7 @@ export default function RecipeReviewCard() {
         "https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg",
     },
   ];
+  const isLost = true;
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -91,7 +106,28 @@ export default function RecipeReviewCard() {
           </IconButton>
         }
         title="Othman"
-        subheader="Sep 14 2021 | Iraq, Erbil"
+        subheader={
+          <>
+            <div>Sep 14 2021, Erbil</div>
+            {isLost ? (
+              <Chip
+                className={classes.lostTag}
+                color="secondary"
+                size="small"
+                icon={<ErrorIcon className={classes.tagIcon} />}
+                label="Lost"
+              />
+            ) : (
+              <Chip
+                className={classes.foundTag}
+                color="primary"
+                size="small"
+                icon={<CheckCircleIcon className={classes.tagIcon} />}
+                label="Found"
+              />
+            )}
+          </>
+        }
       />
       <CardContent className={classes.content}>
         <Typography variant="body2" color="textSecondary" component="p">

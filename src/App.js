@@ -1,9 +1,11 @@
-import InfoSection from "./components/InfoSection/InfoSection"
+// import InfoSection from "./components/InfoSection/InfoSection"
+import Dash from './components/Dashboard/Dashboard.jsx'
 
 function App() {
 	return (
 		<div>
-			<InfoSection/>
+			{/* <InfoSection/> */}
+		<Dash />
 		</div>
 	)
 }
