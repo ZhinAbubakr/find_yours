@@ -1,11 +1,15 @@
-import InfoSection from "./components/InfoSection/InfoSection"
-
-function App() {
+import React from 'react'
+import Navbar from './components/Navbar/Navbar'
+import PrivacyPolicy from './components/PrivacyPolicy/privacyPolicy'
+import Footer from './components/Footer/Footer'
+export default function App() {
 	return (
 		<div>
-			<InfoSection/>
+			<Navbar/>
+			<br></br>
+			< PrivacyPolicy />
+			<br></br>
+			<Footer/>
 		</div>
 	)
 }
-
-export default App
