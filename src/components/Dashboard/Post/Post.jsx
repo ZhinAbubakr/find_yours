@@ -1,5 +1,4 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 // import CardMedia from "@material-ui/core/CardMedia";
@@ -8,7 +7,6 @@ import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import { grey } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
@@ -21,63 +19,7 @@ import GridListTileBar from "@material-ui/core/GridListTileBar";
 import Chip from "@material-ui/core/Chip";
 import ErrorIcon from "@material-ui/icons/Error";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 320,
-    marginBottom: "15px",
-    borderRadius: "20px",
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-    marginTop: "5px",
-  },
-  button: {
-    marginLeft: "auto",
-    color: "grey",
-  },
-  avatar: {
-    backgroundColor: grey[500],
-  },
-  content: {
-    paddingTop: 0,
-    paddingBottom: 0,
-  },
-  root1: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    overflow: "hidden",
-    backgroundColor: theme.palette.background.paper,
-  },
-  gridList1: {
-    flexWrap: "nowrap",
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: "translateZ(0)",
-  },
-  title1: {
-    color: theme.palette.primary.light,
-  },
-  titleBar1: {
-    background:
-      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
-  },
-  image: {
-    width: "100% !important",
-  },
-  foundTag: {
-    height: "auto",
-    backgroundColor: "#3fb59d",
-  },
-  lostTag: {
-    height: "auto",
-    backgroundColor: "#f72b74",
-  },
-  tagIcon: {
-    marginLeft: "0px",
-  },
-}));
+import { useStyles } from "./Style";
 
 export default function RecipeReviewCard() {
   const classes = useStyles();
