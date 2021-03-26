@@ -1,9 +1,11 @@
-import InfoSection from "./components/InfoSection/InfoSection"
+import Profile from "./components/Profile/Profile"
+import Navbar from "./components/Navbar/Navbar"
 
 function App() {
 	return (
 		<div>
-			<InfoSection/>
+			<Navbar />
+			<Profile />
 		</div>
 	)
 }
