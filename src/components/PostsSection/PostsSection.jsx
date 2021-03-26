@@ -60,7 +60,7 @@ export default function Posts() {
                         </ThemeProvider>
                         <div>
                         <Grid>
-                            <Grid item xs={12} md={12}>
+                            <Grid item xs={12}>
                                 <Container align="center" maxWidth="lg"> 
                                     <Paper component="form" className={classes.root}>
                                         <InputBase
