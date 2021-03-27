@@ -6,9 +6,7 @@ export default function App() {
 	return (
 		<div>
 			<Navbar/>
-			<br></br>
 			< PrivacyPolicy />
-			<br></br>
 			<Footer/>
 		</div>
 	)
