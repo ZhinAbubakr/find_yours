@@ -140,6 +140,44 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 
+  const useStylesFilterFlat = makeStyles((theme) => ({
+    root: {
+      // maxWidth: 320,
+      marginBottom: "15px",
+      borderRadius: "20px",
+      // width: "300px",
+      margin: '0 20px',
+      marginTop: '10px'
+    },
+    fbuttons: {
+        display: "flex",
+        // flexWrap: "nowrap",
+        // flexDirection: "column",
+        // justifyContent: "space-evenly",
+        height: "fit-content",
+        margin: "10px",
+        overflow: 'scroll',
+      },
+      fheader: {
+        backgroundColor: "#3AAFA9",
+        color: "white",
+        height: "0px",
+      },
+      fformControl: {
+        margin: theme.spacing(1),
+        minWidth: 150,
+      },
+      fselectEmpty: {
+        marginTop: theme.spacing(2),
+      },
+      box: {
+        height: '40px',
+      },
+      label:{
+        transform: 'translate(14px, 13px) scale(1)'
+      }
+  }));
+
   const Accordion = withStyles({
     root: {
       border: "1px solid rgba(0, 0, 0, .125)",
@@ -256,4 +294,4 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export { useStyleDashboard, useStylesWidgets, useStyles, useStylesFilter ,Accordion, AccordionSummary, AccordionDetails, useStylesLastPosts };
+export { useStylesFilterFlat, useStyleDashboard, useStylesWidgets, useStyles, useStylesFilter ,Accordion, AccordionSummary, AccordionDetails, useStylesLastPosts };

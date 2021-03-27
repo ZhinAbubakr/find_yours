@@ -1,5 +1,4 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 // import CardMedia from "@material-ui/core/CardMedia";
@@ -8,62 +7,23 @@ import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
+
 import { grey } from "@material-ui/core/colors";
 import { BiHeart } from "react-icons/bi";
 import { BiShareAlt } from "react-icons/bi";
 import { MdMoreVert } from "react-icons/md";
+
+
 import Button from "@material-ui/core/Button";
 import ghost from "../../../Assets/Ghost.jpg";
 
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 320,
-    marginBottom: "15px",
-    borderRadius: "20px",
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-    marginTop: "5px",
-  },
-  button: {
-    marginLeft: "auto",
-    color: "grey",
-  },
-  avatar: {
-    backgroundColor: grey[500],
-  },
-  content: {
-    paddingTop: 0,
-    paddingBottom: 0,
-  },
-  root1: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    overflow: "hidden",
-    backgroundColor: theme.palette.background.paper,
-  },
-  gridList1: {
-    flexWrap: "nowrap",
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: "translateZ(0)",
-  },
-  title1: {
-    color: theme.palette.primary.light,
-  },
-  titleBar1: {
-    background:
-      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
-  },
-  image: {
-    width: "100% !important",
-  },
-}));
+import Chip from "@material-ui/core/Chip";
+import ErrorIcon from "@material-ui/icons/Error";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import { useStyles } from "./Style";
 
 export default function RecipeReviewCard() {
   const classes = useStyles();
@@ -81,6 +41,7 @@ export default function RecipeReviewCard() {
         "https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg",
     },
   ];
+  const isLost = true;
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -92,7 +53,28 @@ export default function RecipeReviewCard() {
           </IconButton>
         }
         title="Othman"
-        subheader="Sep 14 2021 | Iraq, Erbil"
+        subheader={
+          <>
+            <div>Sep 14 2021, Erbil</div>
+            {isLost ? (
+              <Chip
+                className={classes.lostTag}
+                color="secondary"
+                size="small"
+                icon={<ErrorIcon className={classes.tagIcon} />}
+                label="Lost"
+              />
+            ) : (
+              <Chip
+                className={classes.foundTag}
+                color="primary"
+                size="small"
+                icon={<CheckCircleIcon className={classes.tagIcon} />}
+                label="Found"
+              />
+            )}
+          </>
+        }
       />
       <CardContent className={classes.content}>
         <Typography variant="body2" color="textSecondary" component="p">

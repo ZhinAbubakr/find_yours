@@ -15,6 +15,7 @@ import Filters from "./Widgets/Filters";
 import SearchBar from "material-ui-search-bar";
 // import LinearProgress from "@material-ui/core/LinearProgress";
 import { useStyleDashboard } from "./Widgets/Style";
+import FiltersFlat from "./Widgets/FiltersFlat";
 
 export default function Dashboard() {
   const [state, setState] = React.useState({
@@ -80,11 +81,8 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
+            {mobileView && <FiltersFlat />}
             <div className="posts">
-              <Post />
-              <Post />
-              <Post />
-              <Post />
               <Post />
               <Post />
               <Post />
