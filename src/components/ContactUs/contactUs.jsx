@@ -1,27 +1,9 @@
 import React from 'react';
-import {Button,CssBaseline,TextField,Grid,Box,Typography,makeStyles,Container} from '@material-ui/core';
+import {Button,CssBaseline,TextField,Grid,Box,Typography,Container} from '@material-ui/core';
+import {useStyles} from './Style.js'
 
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-    backgroundColor:"#3AAFA9",
-    color:"white"
-  },
-}));
-
-export default function contactUs() {
+export default function ContactUs() {
   const classes = useStyles();
 
   return (
