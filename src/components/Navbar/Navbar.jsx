@@ -9,12 +9,12 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import { useStyles } from "./styles.js";
-import MenuIcon from "@material-ui/icons/Menu";
+import { FiMenu } from "react-icons/fi";
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import google from "../../Assets/Google.png";
 import Menu from "@material-ui/core/Menu";
-import LanguageIcon from "@material-ui/icons/Language";
+import { GrLanguage } from "react-icons/gr";
 
 const options = ["Arabic", "English", "Kurdish"];
 
@@ -95,7 +95,7 @@ export default function Header() {
             aria-haspopup="true"
             onClick={handleClick}
           >
-            <LanguageIcon className={languageicon} />
+            <GrLanguage className={languageicon} />
           </IconButton>
           <Menu
             id="long-menu"
@@ -143,7 +143,7 @@ export default function Header() {
             onClick: handleDrawerOpen,
           }}
         >
-          <MenuIcon />
+          <FiMenu />
         </IconButton>
 
         <Drawer
@@ -164,7 +164,7 @@ export default function Header() {
               aria-haspopup="true"
               onClick={handleClick}
             >
-              <LanguageIcon className={languageicon} />
+              <GrLanguage className={languageicon} />
             </IconButton>
             <Menu
               id="long-menu"
