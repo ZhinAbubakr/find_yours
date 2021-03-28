@@ -1,12 +1,23 @@
-import React, {useState}  from 'react';
-import { AiOutlineSearch } from "react-icons/ai";
-import useStyles from "./style";
-import { ThemeProvider } from '@material-ui/styles';
-import {theme} from "./style";
+import React, { useState } from "react"
+import { AiOutlineSearch } from "react-icons/ai"
+import useStyles from "./style"
+import { ThemeProvider } from "@material-ui/styles"
+import { theme } from "./style"
 import {
-  Typography, Button, Grid, CssBaseline, Card, CardActions, 
-  CardContent, Container, Paper, InputBase, IconButton,
-} from "@material-ui/core";
+	Typography,
+	Button,
+	Grid,
+	CssBaseline,
+	Card,
+	CardActions,
+	CardContent,
+	Container,
+	Paper,
+	InputBase,
+	IconButton,
+	Box
+} from "@material-ui/core"
+import Pagination from "@material-ui/lab/Pagination"
 
 export default function Posts() {
     const classes = useStyles();
@@ -116,3 +127,4 @@ export default function Posts() {
         </React.Fragment>
     );
 }
+
