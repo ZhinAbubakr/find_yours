@@ -7,12 +7,9 @@ import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-
-import { grey } from "@material-ui/core/colors";
 import { BiHeart } from "react-icons/bi";
 import { BiShareAlt } from "react-icons/bi";
 import { MdMoreVert } from "react-icons/md";
-
 
 import Button from "@material-ui/core/Button";
 import ghost from "../../../Assets/Ghost.jpg";
@@ -49,7 +46,7 @@ export default function RecipeReviewCard() {
         action={
           <IconButton aria-label="settings">
             {/* <MoreVertIcon /> */}
-            <MdMoreVert/>
+            <MdMoreVert />
           </IconButton>
         }
         title="Othman"
@@ -125,11 +122,11 @@ export default function RecipeReviewCard() {
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           {/* <FavoriteIcon /> */}
-          <BiHeart/>
+          <BiHeart />
         </IconButton>
         <IconButton aria-label="share">
           {/* <ShareIcon /> */}
-          <BiShareAlt/>
+          <BiShareAlt />
         </IconButton>
         <Button className={classes.button}>view post</Button>
       </CardActions>

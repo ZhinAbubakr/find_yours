@@ -1,5 +1,4 @@
 import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { Avatar } from "@material-ui/core";
@@ -156,8 +155,6 @@ export default function Dashboard() {
           </Grid>
         </Grid>
       )}
-
-      <Footer />
     </div>
   );
 }
