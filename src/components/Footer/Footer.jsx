@@ -47,10 +47,7 @@ const Footer = () => {
               <a href="#"></a>About
             </li>
             <li>
-              <a href="#"></a>Terms
-            </li>
-            <li>
-              <a href="#"></a>FAQ
+              <a href="#"></a>Privacy
             </li>
           </ul>
         </Grid>
