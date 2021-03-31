@@ -15,9 +15,9 @@ import {
 	Paper,
 	InputBase,
 	IconButton,
-	Box
+	// Box
 } from "@material-ui/core"
-import Pagination from "@material-ui/lab/Pagination"
+// import Pagination from "@material-ui/lab/Pagination"
 
 export default function Posts() {
     const classes = useStyles();

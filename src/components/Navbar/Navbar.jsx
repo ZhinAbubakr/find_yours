@@ -22,12 +22,16 @@ const ITEM_HEIGHT = 48;
 
 const headersData = [
   {
+    label: "Home",
+    href: "/",
+  },
+  {
     label: "Dashboard",
     href: "/dashboard",
   },
   {
     label: "Privacy Policy",
-    href: "/privacy",
+    href: "/PrivacyPolicy",
   },
   {
     label: "About us",
