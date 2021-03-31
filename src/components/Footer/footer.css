@@ -5,7 +5,12 @@
   padding: 0;
 }
 .icons a {
-  color: black;
+  color: white;
+}
+
+footer {
+  background-color: #3aafa9;
+  color: white;
 }
 
 footer .links {

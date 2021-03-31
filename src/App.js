@@ -1,12 +1,9 @@
+
 import React from 'react'
-
-
-function App() {
+export default function App() {
 	return (
 		<div>			
 			
-		</div>
+		<div>
 	)
 }
-
-export default App
