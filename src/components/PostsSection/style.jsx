@@ -14,12 +14,11 @@ const useStyles = makeStyles((theme) => ({
     btn2: {
       marginTop: theme.spacing(8),
       marginBottom: theme.spacing(4),
-      marginLeft: theme.spacing(62),
     },
     cardGrid: {
       backgroundColor: '#3aafa9',
       paddingTop: theme.spacing(4),
-      paddingBottom: theme.spacing(8),
+      paddingBottom: theme.spacing(4),
     },
     card: {
       height: '100%',
@@ -43,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
       padding: '2px 4px',
       display: 'flex',
       alignItems: 'center',
-      width: 400,
     },
     input: {
       marginLeft: theme.spacing(1),

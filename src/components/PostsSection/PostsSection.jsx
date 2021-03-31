@@ -1,15 +1,27 @@
-import React, {useState}  from 'react';
-import { AiOutlineSearch } from "react-icons/ai";
-import useStyles from "./style";
-import { ThemeProvider } from '@material-ui/styles';
-import {theme} from "./style";
+import React, { useState } from "react"
+import { AiOutlineSearch } from "react-icons/ai"
+import useStyles from "./style"
+import { ThemeProvider } from "@material-ui/styles"
+import { theme } from "./style"
 import {
-  Typography, Button, Grid, CssBaseline, Card, CardActions, 
-  CardContent, Container, Paper, InputBase, IconButton,
-} from "@material-ui/core";
+	Typography,
+	Button,
+	Grid,
+	CssBaseline,
+	Card,
+	CardActions,
+	CardContent,
+	Container,
+	Paper,
+	InputBase,
+	IconButton,
+	Box
+} from "@material-ui/core"
+import Pagination from "@material-ui/lab/Pagination"
 
 export default function Posts() {
     const classes = useStyles();
+    
     const [item]=useState([
         {
           id: 1,
@@ -47,8 +59,8 @@ export default function Posts() {
         <React.Fragment>
             <CssBaseline />
             <main className={classes.heroContent}>
-                <div className={classes.heroContent}>
-                    <Container maxWidth="lg">
+                <div>
+                    <Container maxWidth="sm">
                         <ThemeProvider theme={theme}>
                             <Typography className={classes.heroTypography} component="h1" variant="h4" gutterBottom>
                                 Featured Lost Items
@@ -57,18 +69,23 @@ export default function Posts() {
                             View our recently featured Lost and Found property entries
                             </Typography>
                         </ThemeProvider>
-                        <Container align="center" maxWidth="lg"> 
-                            <Paper component="form" className={classes.root}>
-                                <InputBase
-                                    className={classes.input}
-                                    placeholder="Search Posted Items"
-                                    inputProps={{ 'aria-label': 'search google maps' }}
-                                />
-                                <IconButton type="submit" className={classes.iconButton} aria-label="search">
-                                    <AiOutlineSearch />
-                                </IconButton>
-                            </Paper>
-                        </Container>
+                        <div>
+                        <Grid>
+                            <Grid item xs={12}>
+                                <Container align="center" maxWidth="lg"> 
+                                    <Paper component="form" className={classes.root}>
+                                        <InputBase
+                                            className={classes.input}
+                                            placeholder="Search Posted Items"
+                                            inputProps={{ 'aria-label': 'search google maps' }}
+                                        />
+                                        <IconButton type="submit" className={classes.iconButton} aria-label="search">
+                                            <AiOutlineSearch />
+                                        </IconButton>
+                                    </Paper>
+                                </Container>
+                            </Grid>
+                        </Grid></div>
                     </Container>
                 </div>
 
@@ -95,16 +112,19 @@ export default function Posts() {
                                 </Card>
                             </Grid>
                         ))}
-                        <Container className={classes.btn2} maxWidth="lg" >
-                            <ThemeProvider theme={theme}>
-                                <Button variant="contained" color="primary">
-                                    View More Lost Items
-                                </Button>
-                            </ThemeProvider>
-                        </Container>
+                        <Grid item xs={12}>
+                            <Container align="center">
+                                <ThemeProvider theme={theme}>
+                                    <Button variant="contained" color="primary" className={classes.btn2}>
+                                        View More Lost Items
+                                    </Button>
+                                </ThemeProvider>
+                            </Container>
+                        </Grid>
                     </Grid>
                 </Container>
             </main>
         </React.Fragment>
     );
 }
+
