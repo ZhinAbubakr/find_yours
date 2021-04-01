@@ -14,7 +14,7 @@ import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import google from "../../Assets/Google.png";
 import Menu from "@material-ui/core/Menu";
-import { GrLanguage } from "react-icons/gr";
+import LanguageIcon from "@material-ui/icons/Language";
 
 const options = ["Arabic", "English", "Kurdish"];
 
@@ -95,7 +95,7 @@ export default function Header() {
             aria-haspopup="true"
             onClick={handleClick}
           >
-            <GrLanguage className={languageicon} />
+            <LanguageIcon className={languageicon} />
           </IconButton>
           <Menu
             id="long-menu"
@@ -164,7 +164,7 @@ export default function Header() {
               aria-haspopup="true"
               onClick={handleClick}
             >
-              <GrLanguage className={languageicon} />
+              <LanguageIcon className={languageicon} />
             </IconButton>
             <Menu
               id="long-menu"

@@ -53,6 +53,23 @@ export default function Filters() {
           </Select>
         </FormControl>
         <FormControl variant="outlined" className={classes.fformControl}>
+          <InputLabel htmlFor="outlined-age-native-simple">Status</InputLabel>
+          <Select
+            native
+            value={state.catagory}
+            onChange={handleChange}
+            label="Status"
+            inputProps={{
+              name: "Status",
+              id: "outlined-age-native-simple",
+            }}
+          >
+            <option aria-label="None" value="" />
+            <option value={10}>Lost</option>
+            <option value={20}>Found</option>
+          </Select>
+        </FormControl>
+        <FormControl variant="outlined" className={classes.fformControl}>
           <InputLabel htmlFor="outlined-age-native-simple">City</InputLabel>
           <Select
             native

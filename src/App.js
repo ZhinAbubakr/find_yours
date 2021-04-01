@@ -1,12 +1,12 @@
-import React from 'react'
-import Posts from './components/PostsSection/PostsSection'
 
-function App() {
+
+import React from 'react'
+export default function App() {
 	return (
 		<div>			
-			<Posts/>
-		</div>
+			
+
+			
+		<div>
 	)
 }
-
-export default App
