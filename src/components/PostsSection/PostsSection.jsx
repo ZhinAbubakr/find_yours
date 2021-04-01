@@ -62,13 +62,15 @@ export default function Posts() {
                                             <Typography gutterBottom variant="h5" component="h2" maxLen={10} className={classes.headline} >
                                                 {data.body.substring(0,50)}
                                             </Typography>
-                                            <Typography component="p" variant="body2">
+                                            <Typography component="p" variant="body2" style={{
+                                                marginTop:"0.8rem"
+                                            }} >
                                                 {data.province}
                                             </Typography>
                                         </ThemeProvider>
                                     </CardContent>
                                     <CardActions>
-                                        <Button className={classes.btn} size="small">
+                                        <Button className={classes.btn} size="small" variant="outlined">
                                             Contact
                                         </Button>
                                     </CardActions>
