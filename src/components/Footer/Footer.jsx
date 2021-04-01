@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import Grid from "@material-ui/core/Grid";
 import "./footer.css";
+import { Link } from "react-router-dom";
 
 const SocialShare = [
   { Social: <FaFacebookF />, link: "https://www.facebook.com/" },
@@ -41,13 +42,16 @@ const Footer = () => {
         <Grid item sm={4} xs={12} lg={4}>
           <ul className="links">
             <li>
-              <a href="#"></a>Contact
+              <Link className="link"
+          to='/contact'>
+              Contact
+              </Link>
             </li>
             <li>
-              <a href="#"></a>About
+            <Link className="link" to='/about'>About</Link>
             </li>
             <li>
-              <a href="#"></a>Privacy
+            <Link className="link" to='/PrivacyPolicy'>Privacy</Link>
             </li>
           </ul>
         </Grid>
