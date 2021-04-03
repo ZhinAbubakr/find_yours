@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles({
 	txtFontSize: {
-		fontSize: "0.8rem !important"
+		fontSize: "0.8rem !important" // hi
 	},
 	fontTitleSize: {
 		fontSize: "1.5rem !important"
