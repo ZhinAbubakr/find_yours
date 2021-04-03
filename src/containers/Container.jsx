@@ -6,7 +6,7 @@ import Dashboard from "../components/Dashboard/Dashboard"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import PrivacyPolicy from "../components/PrivacyPolicy/privacyPolicy"
 import About from "../components/AboutUs/AboutUs"
-import ContactUs from "../components/ContactUs/contactUs"
+import ContactUs from "./CountactUs"
 
 export default function Container() {
 	return (
