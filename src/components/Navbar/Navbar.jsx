@@ -12,9 +12,10 @@ import { useStyles } from "./styles.js";
 import { FiMenu } from "react-icons/fi";
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import google from "../../Assets/Google.png";
 import Menu from "@material-ui/core/Menu";
 import LanguageIcon from "@material-ui/icons/Language";
+import Login from '../googleauth/Login'
+import Logout from '../googleauth/Logout'
 
 const options = ["Arabic", "English", "Kurdish"];
 
@@ -63,7 +64,6 @@ export default function Header() {
     drawerContainer,
     toolbar2,
     languageicon,
-    googleimg,
     toolbar3,
     toolbar4,
   } = useStyles();
@@ -124,7 +124,7 @@ export default function Header() {
               </MenuItem>
             ))}
           </Menu>
-          <img className={googleimg} src={google} alt="google" />
+          <Logout/><Login/>
         </div>
       </Toolbar>
     );
@@ -193,7 +193,7 @@ export default function Header() {
                 </MenuItem>
               ))}
             </Menu>
-            <img className={googleimg} src={google} alt="google" />
+            <Logout/><Login/>
           </div>
         </div>
       </Toolbar>
