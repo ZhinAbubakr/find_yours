@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useGoogleLogout } from 'react-google-login';
 import googleimg from '../../Assets/google.svg'
 import './style.css'
+import { ProfileContext } from '../../profileContext' 
 
 const clientId = '70561236797-7hgljouraeb3q8ivjh4rbekfps6m5o35.apps.googleusercontent.com'
 
 function Logout() {
-  const onLogoutSuccess = (res) => {
-    console.log('Logged out Success',res);
-    alert('Logged out Successfully ✌');
+  const [, setProfile] = useContext(ProfileContext)
+  const onLogoutSuccess = () => {
+    setProfile([])
+    // console.log('Logged out Success',res);
+    // alert('Logged out Successfully ✌');
   };
 
   const onFailure = () => {

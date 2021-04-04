@@ -10,17 +10,18 @@ import {
 } from "@material-ui/core";
 import { useStyles } from "./styles.js";
 import { FiMenu } from "react-icons/fi";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Menu from "@material-ui/core/Menu";
 import LanguageIcon from "@material-ui/icons/Language";
 import Login from '../googleauth/Login'
 import Logout from '../googleauth/Logout'
+import { ProfileContext } from '../../profileContext' 
+import Avatar from "@material-ui/core/Avatar";
+import CardHeader from "@material-ui/core/CardHeader";
 
 const options = ["Arabic", "English", "Kurdish"];
-
 const ITEM_HEIGHT = 48;
-
 const headersData = [
   {
     label: "Home",
@@ -48,6 +49,25 @@ export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
+  const [profile, ] = useContext(ProfileContext)
+
+  const profileHandler = (data) => {
+    if (data.length==0) {
+      console.log(data.length,'login');
+       return <Login/>
+     } else {
+      console.log(data.length,'logout');
+      return <div>
+      <CardHeader
+        avatar={<Avatar src={data.imageUrl} className={avatar} />}
+        title={<Logout/>}
+      />
+      </div>
+
+
+     }
+  }
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -66,6 +86,7 @@ export default function Header() {
     languageicon,
     toolbar3,
     toolbar4,
+    avatar,
   } = useStyles();
 
   const [state, setState] = useState({
@@ -124,7 +145,7 @@ export default function Header() {
               </MenuItem>
             ))}
           </Menu>
-          <Logout/><Login/>
+          {profileHandler(profile)}
         </div>
       </Toolbar>
     );
@@ -193,7 +214,7 @@ export default function Header() {
                 </MenuItem>
               ))}
             </Menu>
-            <Logout/><Login/>
+            {profileHandler(profile)}
           </div>
         </div>
       </Toolbar>

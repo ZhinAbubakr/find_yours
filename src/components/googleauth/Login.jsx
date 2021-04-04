@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useGoogleLogin } from 'react-google-login';
 import googleimg from '../../Assets/google.svg'
 import './style.css'
 
 // refresh token
 import { refreshTokenSetup } from './refreshToken';
+import { ProfileContext } from '../../profileContext' 
 
 const clientId = '70561236797-7hgljouraeb3q8ivjh4rbekfps6m5o35.apps.googleusercontent.com'
 
 function Login() {
+  const [, setProfile] = useContext(ProfileContext)
+
   const onSuccess = (res) => {
     console.log('Login Success: currentUser:', res.profileObj);
-    alert(
-      `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
-    );
+    setProfile(res.profileObj)
     refreshTokenSetup(res);
   };
 
