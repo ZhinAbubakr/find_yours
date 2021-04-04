@@ -7,7 +7,8 @@ import {
   FaGithub,
 } from "react-icons/fa";
 import Grid from "@material-ui/core/Grid";
-import "./footer.css";
+import { Link } from "react-router-dom";
+import useStyles from "./Style"
 
 const SocialShare = [
   { Social: <FaFacebookF />, link: "https://www.facebook.com/" },
@@ -18,39 +19,40 @@ const SocialShare = [
 ];
 
 const Footer = () => {
+  const classes = useStyles()
   return (
-    <footer>
+    <footer className={classes.footer}>
       <Grid container>
         <Grid item sm={4} xs={12} lg={4}>
-          <h1 className="logo">FindYours</h1>
+          <h1 className={classes.logo}>FindYours</h1>
         </Grid>
         <Grid item sm={4} xs={12} lg={4}>
-          <div className="iconsrow">
-            <ul className="icons">
+          <div className={classes.iconsrow}>
+            <ul className={classes.icons}>
               {SocialShare.map((val, i) => (
-                <li className="icon" key={i}>
-                  <a href={`${val.link}`}>{val.Social}</a>
+                <li className={classes.icon} key={i}>
+                  <a className={classes.icons_a} href={`${val.link}`}>{val.Social}</a>
                 </li>
               ))}
             </ul>
-            <div className="copyright">
+            <div>
               <p>Copyright © 2021 FindYours. All Rights Reserved.</p>
             </div>
           </div>
         </Grid>
         <Grid item sm={4} xs={12} lg={4}>
-          <ul className="links">
-            <li>
-              <a href="#"></a>Contact
+          <ul className={classes.footer__links}>
+            <li className={classes.footer__links_li}>
+              <Link className={classes.link}
+          to='/contact'>
+              Contact
+              </Link>
             </li>
-            <li>
-              <a href="#"></a>About
+            <li className={classes.footer__links_li}>
+            <Link className={classes.link} to='/about'>About</Link>
             </li>
-            <li>
-              <a href="#"></a>Terms
-            </li>
-            <li>
-              <a href="#"></a>FAQ
+            <li className={classes.footer__links_li}>
+            <Link className={classes.link} to='/PrivacyPolicy'>Privacy</Link>
             </li>
           </ul>
         </Grid>

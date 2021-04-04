@@ -1,5 +1,5 @@
 import React from "react"
-import useStyles from "./Style"
+import useStyles from "./AboutUsStyle.jsx"
 import { Grid, Container, Typography, Box, Avatar } from "@material-ui/core"
 
 import team from "../../images/team.svg"
