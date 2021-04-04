@@ -54,6 +54,9 @@ const useStyles = makeStyles(() => ({
     width: '34px',
     height: '34px',
   },
+  navheader: {
+    padding: '0px'
+  }
 }));
 
 export { useStyles };

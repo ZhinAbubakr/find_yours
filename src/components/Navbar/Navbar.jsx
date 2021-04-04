@@ -53,12 +53,11 @@ export default function Header() {
 
   const profileHandler = (data) => {
     if (data.length==0) {
-      console.log(data.length,'login');
        return <Login/>
      } else {
-      console.log(data.length,'logout');
       return <div>
       <CardHeader
+        className={navheader}
         avatar={<Avatar src={data.imageUrl} className={avatar} />}
         title={<Logout/>}
       />
@@ -87,6 +86,7 @@ export default function Header() {
     toolbar3,
     toolbar4,
     avatar,
+    navheader,
   } = useStyles();
 
   const [state, setState] = useState({
