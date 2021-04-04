@@ -48,7 +48,12 @@ const useStyles = makeStyles(() => ({
   toolbar4: {
     display: 'flex',
     alignItems: 'center'
-  }
+  },
+  avatar: {
+    backgroundColor: 'grey',
+    width: '34px',
+    height: '34px',
+  },
 }));
 
 export { useStyles };
