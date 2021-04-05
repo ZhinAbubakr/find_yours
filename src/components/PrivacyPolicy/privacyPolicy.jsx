@@ -1,6 +1,6 @@
 import React from 'react';
 import {Grid,Typography,Container}from '@material-ui/core';
-import {useStyles} from './Privacy.js'
+import {useStyles} from './Style.jsx'
 
 
 
@@ -10,20 +10,26 @@ import {useStyles} from './Privacy.js'
   return (
     <Container component="main" maxWidth="md" style={{height: '91vh'}}>
       <div className={classes.paper}>
-       
-        <Typography   className= { classes.head1} component="h1" variant="h5">
+       <Grid container >
+       <Typography   className= { classes.head1} component="h1" variant="h5">
              Privacy Policy 
         </Typography>
+      
+       </Grid>
+       
        
           <Grid  >
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={12} className={classes.headCont}>
+            <Typography className={classes.revision} component="p" >
+              Revised April 5,2021
+            </Typography>
               <p>Welcome to the Find Yours website or the Find Yours mobile application (“Site”). Your portal to
                 the best available seat in the house! The Site is owned and operated by Find Yours, INC          
                 (“Find Yours”). This Privacy Policy describes what information we gather from you, how we use
                 and disclose that information and what we do to protect it.                                                                
                 </p>
             </Grid>         
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={12} className={classes.headCont}>
               <p>
               When you use our Site, you trust us with your personal information. In this privacy
                notice, we seek to explain to you in the clearest way possible what information we 
@@ -33,7 +39,7 @@ import {useStyles} from './Privacy.js'
               </p>
             </Grid>
             
-            <Grid item xs={12}>
+            <Grid item xs={12} className={classes.headCont}>
               <p>
               This privacy policy applies to all information collected through our Site, Short
                Message Service (SMS), embedded in a partner’s website and mobile application,
