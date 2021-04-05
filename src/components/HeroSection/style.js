@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 
 export const Section = styled.section`
   height: 100vh;
+  margin-top:1rem;
   display: flex;
   justify-content: center;
   align-items: center;
