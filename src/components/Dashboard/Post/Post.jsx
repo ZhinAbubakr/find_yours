@@ -26,14 +26,17 @@ export default function RecipeReviewCard() {
   const classes = useStyles();
   const tileData = [
     {
+      id: 1,
       img:
         "https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg",
     },
     {
+      id: 2,
       img:
         "https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg",
     },
     {
+      id: 3,
       img:
         "https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg",
     },
@@ -88,7 +91,9 @@ export default function RecipeReviewCard() {
 
       <GridList className={classes.gridList1} cols={2.5}>
         {tileData.map((tile) => (
-          <GridListTile className={classes.image} key={tile.img}>
+          <GridListTile className={classes.image} 
+          key={tile.id}
+          >
             <img src={tile.img} alt={tile.img} />
             <GridListTileBar
               classes={{
