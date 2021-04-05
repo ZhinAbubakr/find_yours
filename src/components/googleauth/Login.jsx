@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { useGoogleLogin } from 'react-google-login';
 import googleimg from '../../Assets/google.svg'
-import './style.css'
 import { refreshTokenSetup } from './refreshToken';
 import { ProfileContext } from '../../profileContext' 
+import { useStyles } from "./styles.js";
 
 const clientId = '70561236797-7hgljouraeb3q8ivjh4rbekfps6m5o35.apps.googleusercontent.com'
 
 function Login() {
+  const classes = useStyles();
   const [, setProfile] = useContext(ProfileContext)
 
   const onSuccess = (res) => {
@@ -30,10 +31,10 @@ function Login() {
   });
 
   return (
-    <button onClick={signIn} className="gbutton">
-      <img src={googleimg} alt="google login" className="gicon"></img>
+    <button onClick={signIn} className={classes.gbutton}>
+      <img src={googleimg} alt="google login" className={classes.gicon}></img>
 
-      <span className="gbuttonText">Sign in with Google</span>
+      <span className={classes.gbuttonText}>Sign in with Google</span>
     </button>
   );
 }
