@@ -62,8 +62,6 @@ export default function Header() {
         title={<Logout/>}
       />
       </div>
-
-
      }
   }
 
