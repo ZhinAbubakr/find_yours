@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import { useGoogleLogin } from 'react-google-login';
 import googleimg from '../../Assets/google.svg'
 import './style.css'
-
-// refresh token
 import { refreshTokenSetup } from './refreshToken';
 import { ProfileContext } from '../../profileContext' 
 
@@ -13,13 +11,11 @@ function Login() {
   const [, setProfile] = useContext(ProfileContext)
 
   const onSuccess = (res) => {
-    console.log('Login Success: currentUser:', res.profileObj);
     setProfile(res.profileObj)
     refreshTokenSetup(res);
   };
 
-  const onFailure = (res) => {
-    console.log('Login failed: res:', res);
+  const onFailure = () => {
     alert(
       `Failed to login.`
     );
@@ -31,8 +27,6 @@ function Login() {
     clientId,
     isSignedIn: true,
     accessType: 'offline',
-    // responseType: 'code',
-    // prompt: 'consent',
   });
 
   return (

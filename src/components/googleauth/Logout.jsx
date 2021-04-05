@@ -10,12 +10,9 @@ function Logout() {
   const [, setProfile] = useContext(ProfileContext)
   const onLogoutSuccess = () => {
     setProfile([])
-    // console.log('Logged out Success',res);
-    // alert('Logged out Successfully ✌');
   };
 
   const onFailure = () => {
-    console.log('Handle failure cases');
   };
 
   const { signOut } = useGoogleLogout({
