@@ -54,8 +54,8 @@ export default function Posts() {
 
                 <Container className={classes.cardGrid} maxWidth="lg">
                     <Grid container spacing={3}>
-                        {posts.map((data)=>(
-                            <Grid item xs={12} sm={6} md={3} >
+                        {posts.map((data,index)=>(
+                            <Grid item xs={12} sm={6} md={3} key={index} >
                                 <Card className={classes.card}>
                                     <CardContent className={classes.cardContent}>
                                         <ThemeProvider theme={theme}>
