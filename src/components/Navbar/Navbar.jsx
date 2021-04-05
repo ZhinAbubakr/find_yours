@@ -23,27 +23,27 @@ import CardHeader from "@material-ui/core/CardHeader";
 const options = ["Arabic", "English", "Kurdish"];
 const ITEM_HEIGHT = 48;
 const headersData = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Dashboard",
-    href: "/dashboard",
-  },
-  {
-    label: "Privacy Policy",
-    href: "/PrivacyPolicy",
-  },
-  {
-    label: "About us",
-    href: "/about",
-  },
-  {
-    label: "Contact us",
-    href: "/contact",
-  },
-];
+	{
+		label: "Home",
+		href: "/"
+	},
+	{
+		label: "Dashboard",
+		href: "/dashboard"
+	},
+	{
+		label: "Privacy Policy",
+		href: "/PrivacyPolicy"
+	},
+	{
+		label: "About us",
+		href: "/about"
+	},
+	{
+		label: "Contact us",
+		href: "/contactUs"
+	}
+]
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
