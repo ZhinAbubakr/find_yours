@@ -98,7 +98,7 @@ export default function ContactUsForm(props) {
 					</Button>
 				</form>
 			</div>
-			<Box mb={12.35}></Box>
+			<Box mb={20.9}></Box>
 		</Container>
 	)
 }
