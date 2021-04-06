@@ -18,6 +18,8 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
       backgroundColor: grey[500],
+      width: '45px',
+      height: '45px',
     },
     content: {
       paddingTop: 0,
