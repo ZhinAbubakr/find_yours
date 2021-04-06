@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     },
     image: {
       width: "100% !important",
+      marginTop: '5px'
     },
     foundTag: {
       height: "auto",
