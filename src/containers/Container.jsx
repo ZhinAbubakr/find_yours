@@ -6,6 +6,7 @@ import Dashboard from '../components/Dashboard/Dashboard'
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import PrivacyPolicy from '../components/PrivacyPolicy/privacyPolicy'
 import About from '../components/AboutUs/AboutUs'
+import Form from '../components/Form/Form'
 import {ProfileProvider} from '../profileContext'
 
 
@@ -20,6 +21,7 @@ export default function Container() {
                     <Route path="/dashboard" component={Dashboard} />
                     <Route path="/PrivacyPolicy" component={PrivacyPolicy} />
                     <Route path="/about" component={About} />
+                    <Route path="/form" component={Form} />
                     <Route path="/:404" component={null} />
                     </Switch>
                 <Footer />

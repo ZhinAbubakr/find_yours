@@ -2,6 +2,7 @@ import React from "react"
 import useStyles from "./style"
 import { Grid, Typography, Container, Box, Button } from "@material-ui/core"
 import image from "../../images/undraw_celebration_0jvk.svg"
+import { Link } from 'react-router-dom'
 
 export default function HeroSection() {
 	const classes = useStyles()
@@ -42,23 +43,15 @@ export default function HeroSection() {
 						</Grid>
 						<Grid container direction="row" justify="space-between" item>
 							<Grid item xs={6}>
-								<Button
-									className={`${classes.btn} ${classes.foundBtn}`}
-									variant="contained" 
-									size="large"
-									>
-									SUBMIT FOUND ITEMS
-								</Button>
-							</Grid>
-							<Grid item xs={6}>
-								<Button
-									className={`${classes.btn} ${classes.lostBtn}`}
-									variant="contained"
-									size="large"
-
-									>
-									SUBMIT LOST ITEMS
-								</Button>
+								<Link to="/form" className={classes.link}>
+									<Button
+										className={`${classes.btn} ${classes.foundBtn}`}
+										variant="contained" 
+										size="large"
+										>
+										SUBMIT FOUND/LOST ITEMS
+									</Button>
+								</Link>
 							</Grid>
 						</Grid>
 					</Grid>

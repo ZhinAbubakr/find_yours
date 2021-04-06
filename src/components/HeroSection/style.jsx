@@ -35,6 +35,9 @@ const useStyles = makeStyles({
 		marginTop: "3rem",
 		textAlign: "center"
 	},
+	link: {
+		textDecoration: 'none'
+	},
 
 	"@media  (min-width: 960px)": {
 		img: {
