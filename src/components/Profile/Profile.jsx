@@ -26,7 +26,7 @@ export default function InsetDividers() {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <Container className={classes.container} maxWidth="lg">
         <ThemeProvider theme={theme}>
           <Typography variant="h4" className={classes.headerTypo}>
@@ -142,6 +142,6 @@ export default function InsetDividers() {
           </Grid>
         </ThemeProvider>
       </Container>
-    </>
+    </React.Fragment>
   );
 }

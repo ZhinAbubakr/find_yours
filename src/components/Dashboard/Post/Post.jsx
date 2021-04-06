@@ -12,7 +12,6 @@ import Typography from "@material-ui/core/Typography";
 import { MdMoreVert } from "react-icons/md";
 
 import Button from "@material-ui/core/Button";
-import ghost from "../../../Assets/Ghost.jpg";
 
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
@@ -22,41 +21,26 @@ import ErrorIcon from "@material-ui/icons/Error";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import { useStyles } from "./Style";
 
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard({ post }) {
   const classes = useStyles();
-  const tileData = [
-    {
-      id: 1,
-      img:
-        "https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg",
-    },
-    {
-      id: 2,
-      img:
-        "https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg",
-    },
-    {
-      id: 3,
-      img:
-        "https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg",
-    },
-  ];
-  const isLost = true;
   return (
     <Card className={classes.root}>
       <CardHeader
-        avatar={<Avatar src={ghost} className={classes.avatar} />}
+        avatar={<Avatar src={post.avatar} className={classes.avatar} />}
         action={
           <IconButton aria-label="settings">
             {/* <MoreVertIcon /> */}
             <MdMoreVert />
           </IconButton>
         }
-        title="Othman"
+        title={post.name}
         subheader={
-          <>
-            <div>Sep 14 2021, Erbil</div>
-            {isLost ? (
+          <React.Fragment>
+            {/* <div>Sep 14 2021, Erbil</div> */}
+            <div style={{ textTransform: "capitalize" }}>
+              {post.date.toDate().toDateString()}, {post.province}
+            </div>
+            {post.isLost ? (
               <Chip
                 className={classes.lostTag}
                 color="secondary"
@@ -73,14 +57,15 @@ export default function RecipeReviewCard() {
                 label="Found"
               />
             )}
-          </>
+          </React.Fragment>
         }
       />
       <CardContent className={classes.content}>
+        <Typography variant="h6" color="textSecondary" component="p">
+          {post.title}
+        </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+          {post.body}
         </Typography>
       </CardContent>
       {/* <CardMedia
@@ -90,11 +75,9 @@ export default function RecipeReviewCard() {
       /> */}
 
       <GridList className={classes.gridList1} cols={2.5}>
-        {tileData.map((tile) => (
-          <GridListTile className={classes.image} 
-          key={tile.id}
-          >
-            <img src={tile.img} alt={tile.img} />
+        {post.images.map((img, i) => (
+          <GridListTile className={classes.image} key={img[i]}>
+            <img src={img} alt="Post image" />
             <GridListTileBar
               classes={{
                 root: classes.titleBar1,
