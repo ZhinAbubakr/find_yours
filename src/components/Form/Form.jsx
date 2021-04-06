@@ -26,6 +26,8 @@ const Form = () => {
   const [email, setEmail] = useState("")
   const [lastName, setLastName] = useState("")
   const [category, setCategory] = React.useState("")
+  const [neighbor,setNeighbor]=useState("")
+  const [type,setType] =useState("")  
 
   const classes = useStyles()
 
@@ -36,6 +38,11 @@ const Form = () => {
   const handleChangeCat = (event) => {
     setCategory(event.target.value)
   }
+
+  const handleChangeType = (event) => {
+    setType(event.target.value)
+  }
+
   const handleChangeLoc = (event) => {
     setWhereLost(event.target.value)
   }
@@ -60,6 +67,8 @@ const Form = () => {
         more: more,
         email: email,
         lastName: lastName,
+        neighbor:neighbor,
+        type:type,
       })
 
       .then(() => {
@@ -81,6 +90,7 @@ const Form = () => {
     setEmail("")
     setLastName("")
     setCategory("")
+    setType("")
   }
 
   return (
@@ -89,14 +99,13 @@ const Form = () => {
         <Grid container spacing={3}>
           <Grid item xs={12} lg={6}>
             <Paper className={classes.paper}>
-              <h4 className={classes.title}>Item lost</h4>
+              <h4 className={classes.title}>Item</h4>
               <p className={classes.desc}>
-                (Dog, Jacket, Smartphone, Wallet, etc.) This field may
-                auto-populate
+                (Dog, Jacket, Smartphone, Wallet, etc.) 
               </p>
               <TextField
                 id="outlined-basic"
-                label="Item Lost"
+                label="Item"
                 variant="outlined"
                 size="large"
                 className={classes.input}
@@ -121,11 +130,16 @@ const Form = () => {
               >
                 <MenuItem value={10}>Wallets</MenuItem>
                 <MenuItem value={20}>Documents</MenuItem>
-                <MenuItem value={30}>Others</MenuItem>
+                <MenuItem value={30}>Animals/Pets</MenuItem>
+                <MenuItem value={40}>Clothing</MenuItem>
+                <MenuItem value={50}>Electronics</MenuItem>
+                <MenuItem value={60}>Personal Accessories</MenuItem>
+                
+                <MenuItem value={70}>Others</MenuItem>
               </Select>
               <h4 className={classes.title}>Color</h4>
               <p className={classes.desc}>
-                Please add the color that best represents the lost property
+                Please add the color that best represents the  property
                 (Black, Red, Blue, etc.)
               </p>
               <Select
@@ -151,8 +165,7 @@ const Form = () => {
               </Select>
               <h4 className={classes.title}>Where Lost</h4>
               <p className={classes.desc}>
-                Please provide an approximate location of the lost property
-                (Bar, Restaurant, Park, etc.)
+                Please provide an approximate location of city
               </p>
               <Select
                 className={classes.input}
@@ -183,6 +196,22 @@ const Form = () => {
                 <MenuItem value="Sulaymaniyah">Sulaymaniyah</MenuItem>
                 <MenuItem value="Wasit">Wasit</MenuItem>
               </Select>
+              <h4 className={classes.title}>Neighborhoods/Places</h4>
+              <p className={classes.desc}>
+              Please provide an approximate location 
+                (Bar, Restaurant, Park, etc.)/(Neighborhoods)
+              </p>
+              <TextField
+                id="outlined-basic"
+                label="Neighborhoods/Places"
+                variant="outlined"
+                size="large"
+                className={classes.input}
+                value={neighbor}
+                onChange={(e) => setNeighbor(e.target.value)}
+                required
+              />
+
               <h2 className={classes.contact}>Contact Information.</h2>
 
               <h4 className={classes.title}>First Name</h4>
@@ -219,9 +248,27 @@ const Form = () => {
           </Grid>
           <Grid item xs={12} lg={6}>
             <Paper className={classes.paper}>
-              <h4 className={classes.title}>Date lost</h4>
+            <h4 className={classes.title}>Lost Or Found</h4> 
+            <p className={classes.desc}>
+               Select type
+              </p>
+            <Select
+                className={classes.input}
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={type}
+                onChange={handleChangeType}
+                onInputChange={(e) => setCategory(e.target.value)}
+                required
+              >
+                <MenuItem value='Lost'>Lost</MenuItem>
+                <MenuItem value='Found'>Found</MenuItem>
+               
+                
+              </Select>
+              <h4 className={classes.title}>Date </h4>
               <p className={classes.desc}>
-                Please add the approximate date of when the item was lost.
+                Please add the approximate date of when the item was lost/found.
               </p>
 
               <TextField
@@ -238,9 +285,9 @@ const Form = () => {
                 required
               />
 
-              <h4 className={classes.title}>Time Lost</h4>
+              <h4 className={classes.title}>Time </h4>
               <p className={classes.desc}>
-                Please add the approximate time of day the item was lost.
+                Please add the approximate time of day the item was lost/found.
               </p>
 
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
