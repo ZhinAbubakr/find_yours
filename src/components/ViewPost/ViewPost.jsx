@@ -1,5 +1,7 @@
-import React from 'react';
+import React from 'react'; 
+import useStyles from "./style";
 import { ThemeProvider } from '@material-ui/styles';
+import {theme} from "./style";
 import {Container,
         Grid, 
         Typography, 
@@ -10,26 +12,28 @@ import {Container,
         } from '@material-ui/core';
 
 
-export default function InsetDividers() {
+function ViewPost() {
+  const classes = useStyles();
 
   return (
     <>
-        <Container >
-            <Paper  >
-                <ThemeProvider>
-                    <Typography variant="h4" >
+        <Container className={classes.container}>
+            <Paper className={classes.paper} >
+                <ThemeProvider theme={theme}>
+                    <Typography variant="h4" className={classes.headerTypo}>
                         Item Lost Information:
                     </Typography>
                     <Grid container>
                         <Grid xs={16} sm={8} md={3}>
                             <CardMedia
+                                className={classes.media}
                                 image="https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
                                 title=""
                             />
                         </Grid>
                         <Grid item xs={12} sm={6} md={8}>
                             <ListItem>
-                                <Container maxWidth="lg">
+                                <Container maxWidth="lg" className={classes.container2}>
                                     <Typography variant="body1" color="textSecondary">
                                         Item Name:
                                     </Typography>
@@ -38,7 +42,7 @@ export default function InsetDividers() {
                                     </Typography>
                                     <Divider/>
                                 </Container>
-                                <Container maxWidth="lg">
+                                <Container maxWidth="lg" className={classes.container2}>
                                     <Typography variant="body1" color="textSecondary">
                                         Date Lost:
                                     </Typography>
@@ -47,7 +51,7 @@ export default function InsetDividers() {
                                     </Typography>
                                     <Divider/>
                                 </Container>
-                                <Container maxWidth="lg">
+                                <Container maxWidth="lg" className={classes.container2}>
                                     <Typography variant="body1" color="textSecondary">
                                         Time Lost:
                                     </Typography>
@@ -102,14 +106,14 @@ export default function InsetDividers() {
                         </Grid>
                     </Grid>
 
-                    <Typography variant="h4">
+                    <Typography variant="h4" className={classes.typo1}>
                         Contact Information:
                     </Typography>
 
-                    <Grid container spacing={3}>
+                    <Grid container spacing={3} className={classes.container3}>
                         <Grid item xs={12} md={8} >
                             <ListItem>
-                                <Container>
+                                <Container className={classes.container2}>
                                     <Typography variant="body1" color="textSecondary">
                                         First Name:
                                     </Typography>
@@ -118,7 +122,7 @@ export default function InsetDividers() {
                                     </Typography>
                                     <Divider/>
                                 </Container>
-                                <Container>
+                                <Container className={classes.container2}>
                                     <Typography variant="body1" color="textSecondary">
                                         Second Name:
                                     </Typography>
@@ -157,3 +161,5 @@ export default function InsetDividers() {
     </>
   );
 }
+
+export default ViewPost
