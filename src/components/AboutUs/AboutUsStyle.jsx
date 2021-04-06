@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles({
 	txtFontSize: {
-		fontSize: "0.8rem !important"
+		fontSize: "0.8rem !important" // hi
 	},
 	fontTitleSize: {
 		fontSize: "1.5rem !important"
@@ -10,11 +10,15 @@ const useStyles = makeStyles({
 		padding: "2rem !important"
 	},
 	avatar: {
-		height: "250px !important",
-		width: "250px !important"
+		height: "200px !important",
+		width: "200px !important"
+	},
+	nameFont: {
+		fontSize: "2rem !important"
 	},
 	avatarFont: {
-		fontSize: "1rem !important"
+		fontSize: "1rem !important",
+		opacity: "80%"
 	},
 	"@media  (min-width: 700px)": {
 		fontTitleSize: {

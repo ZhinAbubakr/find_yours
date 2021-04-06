@@ -10,38 +10,60 @@ import {
 } from "@material-ui/core";
 import { useStyles } from "./styles.js";
 import { FiMenu } from "react-icons/fi";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import google from "../../Assets/Google.png";
 import Menu from "@material-ui/core/Menu";
-import { GrLanguage } from "react-icons/gr";
+import LanguageIcon from "@material-ui/icons/Language";
+import Login from '../googleauth/Login'
+import Logout from '../googleauth/Logout'
+import { ProfileContext } from '../../profileContext' 
+import Avatar from "@material-ui/core/Avatar";
+import CardHeader from "@material-ui/core/CardHeader";
 
 const options = ["Arabic", "English", "Kurdish"];
-
 const ITEM_HEIGHT = 48;
-
 const headersData = [
-  {
-    label: "Dashboard",
-    href: "/dashboard",
-  },
-  {
-    label: "Privacy Policy",
-    href: "/privacy",
-  },
-  {
-    label: "About us",
-    href: "/about",
-  },
-  {
-    label: "Contact us",
-    href: "/contact",
-  },
-];
+	{
+		label: "Home",
+		href: "/"
+	},
+	{
+		label: "Dashboard",
+		href: "/dashboard"
+	},
+	{
+		label: "Privacy Policy",
+		href: "/PrivacyPolicy"
+	},
+	{
+		label: "About us",
+		href: "/about"
+	},
+	{
+		label: "Contact us",
+		href: "/contactUs"
+	}
+]
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  const [profile, ] = useContext(ProfileContext)
+
+  const profileHandler = (data) => {
+    if (data.length==0) {
+       return <Login/>
+     } else {
+      return <div>
+      <CardHeader
+        className={navheader}
+        avatar={<Avatar src={data.imageUrl} className={avatar} />}
+        title={<Logout/>}
+      />
+      </div>
+     }
+  }
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -59,9 +81,10 @@ export default function Header() {
     drawerContainer,
     toolbar2,
     languageicon,
-    googleimg,
     toolbar3,
     toolbar4,
+    avatar,
+    navheader,
   } = useStyles();
 
   const [state, setState] = useState({
@@ -95,7 +118,7 @@ export default function Header() {
             aria-haspopup="true"
             onClick={handleClick}
           >
-            <GrLanguage className={languageicon} />
+            <LanguageIcon className={languageicon} />
           </IconButton>
           <Menu
             id="long-menu"
@@ -120,7 +143,7 @@ export default function Header() {
               </MenuItem>
             ))}
           </Menu>
-          <img className={googleimg} src={google} alt="google" />
+          {profileHandler(profile)}
         </div>
       </Toolbar>
     );
@@ -164,7 +187,7 @@ export default function Header() {
               aria-haspopup="true"
               onClick={handleClick}
             >
-              <GrLanguage className={languageicon} />
+              <LanguageIcon className={languageicon} />
             </IconButton>
             <Menu
               id="long-menu"
@@ -189,7 +212,7 @@ export default function Header() {
                 </MenuItem>
               ))}
             </Menu>
-            <img className={googleimg} src={google} alt="google" />
+            {profileHandler(profile)}
           </div>
         </div>
       </Toolbar>

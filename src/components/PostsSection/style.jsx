@@ -50,6 +50,10 @@ const useStyles = makeStyles((theme) => ({
     iconButton: {
       padding: 10,
     },
+    headline:{
+      fontSize:"0.6rem",
+      fontWeight:"bold"
+    }
   })); 
 
   export const theme = createMuiTheme({

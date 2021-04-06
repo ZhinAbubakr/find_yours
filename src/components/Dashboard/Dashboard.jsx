@@ -1,14 +1,12 @@
 import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { Avatar } from "@material-ui/core";
 import "./styles.css";
 import Post from "./Post/Post";
 
-import React from "react";
+import React, {useContext} from "react";
 import Widget from "./Widgets/Widget";
-import ghost from "../../Assets/Ghost.jpg";
 import LastPosts from "./Widgets/LastPosts";
 import Cities from "./Widgets/Cities";
 import Filters from "./Widgets/Filters";
@@ -16,8 +14,12 @@ import SearchBar from "material-ui-search-bar";
 // import LinearProgress from "@material-ui/core/LinearProgress";
 import { useStyleDashboard } from "./Widgets/Style";
 import FiltersFlat from "./Widgets/FiltersFlat";
+import { ProfileContext } from '../../profileContext' 
+
 
 export default function Dashboard() {
+  const [profile, ] = useContext(ProfileContext)
+
   const [state, setState] = React.useState({
     mobileView: false,
     mediumView: false,
@@ -55,7 +57,7 @@ export default function Dashboard() {
             <div style={{ margin: "0 20px" }}>
               <div className="messageSender">
                 <div className="messageSender_top">
-                  <Avatar src={ghost} />
+                  <Avatar src={profile.imageUrl} />
                   <div className="searchbar">
                     <SearchBar
                       className={searchfield}
@@ -115,7 +117,7 @@ export default function Dashboard() {
             <div style={{ margin: "0 20px" }}>
               <div className="messageSender">
                 <div className="messageSender_top">
-                  <Avatar src={ghost} />
+                  <Avatar src={profile.imageUrl} />
                   <div className="searchbar">
                     <SearchBar
                       className={searchfield}
@@ -156,8 +158,6 @@ export default function Dashboard() {
           </Grid>
         </Grid>
       )}
-
-      <Footer />
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { AiOutlineSearch } from "react-icons/ai"
+import React, { useEffect, useState } from "react"
+import {db} from '../../firebase'
 import useStyles from "./style"
 import { ThemeProvider } from "@material-ui/styles"
 import { theme } from "./style"
@@ -12,48 +12,19 @@ import {
 	CardActions,
 	CardContent,
 	Container,
-	Paper,
-	InputBase,
-	IconButton,
-	Box
 } from "@material-ui/core"
-import Pagination from "@material-ui/lab/Pagination"
 
 export default function Posts() {
     const classes = useStyles();
-    
-    const [item]=useState([
-        {
-          id: 1,
-          name: 'Dog',
-          location: ' G & J Tire Shop, Grand Street, Brooklyn, NY, USA',
-        },
-        {
-          id: 2,
-          name: 'Dog',
-          location: ' G & J Tire Shop, Grand Street, Brooklyn, NY, USA',
-        },
-        {
-          id: 3,
-          name: 'Dog',
-          location: ' G & J Tire Shop, Grand Street, Brooklyn, NY, USA',
-        },
-        {
-          id: 4,
-          name: 'Dog',
-          location: ' G & J Tire Shop, Grand Street, Brooklyn, NY, USA',
-        },
-        {
-          id: 5,
-          name: 'Dog',
-          location: ' G & J Tire Shop, Grand Street, Brooklyn, NY, USA',
-        },
-        {
-          id: 6,
-          name: 'Dog',
-          location: ' G & J Tire Shop, Grand Street, Brooklyn, NY, USA',
-        },
-    ])
+    const [posts,setPosts] =useState([])
+
+    useEffect(() => {
+        db.collection("posts").onSnapshot(snapshot => {
+            setPosts(snapshot.docs.map(doc => doc.data()))
+        })
+    }, [])
+
+
 
     return (
         <React.Fragment>
@@ -65,7 +36,8 @@ export default function Posts() {
                             <Typography className={classes.heroTypography} component="h1" variant="h4" gutterBottom>
                                 Featured Lost Items
                             </Typography>
-                            <Typography className={classes.heroTypography2} variant="h6" paragraph>
+                            <Typography className={classes.heroTypography2} variant="h6" paragraph
+                            >
                             View our recently featured Lost and Found property entries
                             </Typography>
                         </ThemeProvider>
@@ -73,16 +45,7 @@ export default function Posts() {
                         <Grid>
                             <Grid item xs={12}>
                                 <Container align="center" maxWidth="lg"> 
-                                    <Paper component="form" className={classes.root}>
-                                        <InputBase
-                                            className={classes.input}
-                                            placeholder="Search Posted Items"
-                                            inputProps={{ 'aria-label': 'search google maps' }}
-                                        />
-                                        <IconButton type="submit" className={classes.iconButton} aria-label="search">
-                                            <AiOutlineSearch />
-                                        </IconButton>
-                                    </Paper>
+                                 
                                 </Container>
                             </Grid>
                         </Grid></div>
@@ -91,22 +54,24 @@ export default function Posts() {
 
                 <Container className={classes.cardGrid} maxWidth="lg">
                     <Grid container spacing={3}>
-                        {item.slice(0, 4).map((data)=>(
-                            <Grid item xs={12} sm={6} md={3} >
+                        {posts.map((data,index)=>(
+                            <Grid item xs={12} sm={6} md={3} key={index} >
                                 <Card className={classes.card}>
                                     <CardContent className={classes.cardContent}>
                                         <ThemeProvider theme={theme}>
-                                            <Typography gutterBottom variant="h5" component="h2">
-                                                {data.name}
+                                            <Typography gutterBottom variant="h5" component="h2" maxLen={10} className={classes.headline} >
+                                                {data.body.substring(0,50)}
                                             </Typography>
-                                            <Typography component="p" variant="body2">
-                                                {data.location}
+                                            <Typography component="p" variant="body2" style={{
+                                                marginTop:"0.8rem"
+                                            }} >
+                                                {data.province}
                                             </Typography>
                                         </ThemeProvider>
                                     </CardContent>
                                     <CardActions>
-                                        <Button className={classes.btn} size="small">
-                                            View Post
+                                        <Button className={classes.btn} size="small" variant="outlined">
+                                            Contact
                                         </Button>
                                     </CardActions>
                                 </Card>

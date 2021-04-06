@@ -7,12 +7,9 @@ import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-
-import { grey } from "@material-ui/core/colors";
-import { BiHeart } from "react-icons/bi";
-import { BiShareAlt } from "react-icons/bi";
+// import { BiHeart } from "react-icons/bi";
+// import { BiShareAlt } from "react-icons/bi";
 import { MdMoreVert } from "react-icons/md";
-
 
 import Button from "@material-ui/core/Button";
 import ghost from "../../../Assets/Ghost.jpg";
@@ -29,14 +26,17 @@ export default function RecipeReviewCard() {
   const classes = useStyles();
   const tileData = [
     {
+      id: 1,
       img:
         "https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg",
     },
     {
+      id: 2,
       img:
         "https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg",
     },
     {
+      id: 3,
       img:
         "https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg",
     },
@@ -49,7 +49,7 @@ export default function RecipeReviewCard() {
         action={
           <IconButton aria-label="settings">
             {/* <MoreVertIcon /> */}
-            <MdMoreVert/>
+            <MdMoreVert />
           </IconButton>
         }
         title="Othman"
@@ -91,7 +91,9 @@ export default function RecipeReviewCard() {
 
       <GridList className={classes.gridList1} cols={2.5}>
         {tileData.map((tile) => (
-          <GridListTile className={classes.image} key={tile.img}>
+          <GridListTile className={classes.image} 
+          key={tile.id}
+          >
             <img src={tile.img} alt={tile.img} />
             <GridListTileBar
               classes={{
@@ -103,7 +105,7 @@ export default function RecipeReviewCard() {
         ))}
       </GridList>
 
-      <CardContent className={classes.content}>
+      {/* <CardContent className={classes.content}>
         <div
           style={{
             display: "flex",
@@ -120,18 +122,18 @@ export default function RecipeReviewCard() {
             23 comments
           </Typography>
         </div>
-      </CardContent>
+      </CardContent> */}
 
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          {/* <FavoriteIcon /> */}
-          <BiHeart/>
-        </IconButton>
-        <IconButton aria-label="share">
-          {/* <ShareIcon /> */}
-          <BiShareAlt/>
-        </IconButton>
-        <Button className={classes.button}>view post</Button>
+        {/* <IconButton aria-label="add to favorites">
+          
+          <BiHeart />
+        </IconButton> */}
+        {/* <IconButton aria-label="share">
+          
+          <BiShareAlt />
+        </IconButton> */}
+        <Button className={classes.button}>contact</Button>
       </CardActions>
     </Card>
   );
