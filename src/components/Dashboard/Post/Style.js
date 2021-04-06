@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     lostTag: {
       height: "auto",
       backgroundColor: "#f72b74",
+      color: 'white'
     },
     tagIcon: {
       marginLeft: "0px",
