@@ -13,11 +13,12 @@ import {
   ListItem,
 } from "@material-ui/core";
 import { db } from "../../firebase";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function InsetDividers() {
   const classes = useStyles();
 
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState();
 
   useEffect(() => {
     db.collection("posts").onSnapshot((snapshot) => {
@@ -94,11 +95,15 @@ export default function InsetDividers() {
             </Typography>
           </Grid>
           <Grid container spacing={2}>
-            {posts.map((post) => (
-              <Grid item xs={12} sm={6} md={4}>
-                <Post post={post} />
-              </Grid>
-            ))}
+            {posts ? (
+              posts.map((post) => (
+                <Grid item xs={12} sm={6} md={4}>
+                  <Post post={post} />
+                </Grid>
+              ))
+            ) : (
+              <CircularProgress style={{ marginLeft: "45%" }} />
+            )}
           </Grid>
           <Grid item xs={12} className={classes.btn2}>
             <Button
@@ -125,11 +130,15 @@ export default function InsetDividers() {
             </Typography>
           </Grid>
           <Grid container spacing={2}>
-            {posts.map((post) => (
-              <Grid item xs={12} sm={6} md={4}>
-                <Post post={post} />
-              </Grid>
-            ))}
+            {posts ? (
+              posts.map((post) => (
+                <Grid item xs={12} sm={6} md={4}>
+                  <Post post={post} />
+                </Grid>
+              ))
+            ) : (
+              <CircularProgress style={{ marginLeft: "45%" }} />
+            )}
           </Grid>
           <Grid item xs={12} className={classes.btn2}>
             <Button
