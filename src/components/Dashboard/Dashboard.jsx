@@ -5,7 +5,7 @@ import { Avatar } from "@material-ui/core";
 import "./styles.css";
 import Post from "./Post/Post";
 
-import React, {useContext} from "react";
+import React, { useContext, useState } from "react";
 import Widget from "./Widgets/Widget";
 import LastPosts from "./Widgets/LastPosts";
 import Cities from "./Widgets/Cities";
@@ -14,19 +14,24 @@ import SearchBar from "material-ui-search-bar";
 // import LinearProgress from "@material-ui/core/LinearProgress";
 import { useStyleDashboard } from "./Widgets/Style";
 import FiltersFlat from "./Widgets/FiltersFlat";
-import { ProfileContext } from '../../profileContext' 
-
+import { ProfileContext } from "../../profileContext";
+import { db } from "../../firebase";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function Dashboard() {
-  const [profile, ] = useContext(ProfileContext)
-
+  const [profile] = useContext(ProfileContext);
+  const [posts, setPosts] = useState();
   const [state, setState] = React.useState({
     mobileView: false,
     mediumView: false,
   });
 
   const { mobileView, mediumView } = state;
-
+  React.useEffect(() => {
+    db.collection("posts").onSnapshot((snapshot) => {
+      setPosts(snapshot.docs.map((doc) => doc.data()));
+    });
+  }, []);
   React.useEffect(() => {
     const setResponsiveness = () => {
       if (window.innerWidth < 812) {
@@ -85,10 +90,11 @@ export default function Dashboard() {
             </div>
             {mobileView && <FiltersFlat />}
             <div className="posts">
-              <Post />
-              <Post />
-              <Post />
-              <Post />
+              {posts ? (
+                posts.map((post) => <Post post={post} />)
+              ) : (
+                <CircularProgress />
+              )}
             </div>
           </Grid>
 
@@ -144,10 +150,11 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="posts">
-              <Post />
-              <Post />
-              <Post />
-              <Post />
+              {posts ? (
+                posts.map((post) => <Post post={post} />)
+              ) : (
+                <CircularProgress />
+              )}
             </div>
           </Grid>
           <Grid item sm={3} lg={3} className={widget}>
