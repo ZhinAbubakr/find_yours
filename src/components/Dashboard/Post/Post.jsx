@@ -25,70 +25,72 @@ export default function RecipeReviewCard({ post }) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
-      <CardHeader
-        avatar={<Avatar src={post.avatar} className={classes.avatar} />}
-        action={
-          <IconButton aria-label="settings">
-            {/* <MoreVertIcon /> */}
-            <MdMoreVert />
-          </IconButton>
-        }
-        title={post.name}
-        subheader={
-          <React.Fragment>
-            {/* <div>Sep 14 2021, Erbil</div> */}
-            <div style={{ textTransform: "capitalize" }}>
-              {post.date.toDate().toDateString()}, {post.province}
-            </div>
-            {post.isLost ? (
-              <Chip
-                className={classes.lostTag}
-                color="secondary"
-                size="small"
-                icon={<ErrorIcon className={classes.tagIcon} />}
-                label="Lost"
-              />
-            ) : (
-              <Chip
-                className={classes.foundTag}
-                color="primary"
-                size="small"
-                icon={<CheckCircleIcon className={classes.tagIcon} />}
-                label="Found"
-              />
-            )}
-          </React.Fragment>
-        }
-      />
-      <CardContent className={classes.content}>
-        <Typography variant="h6" color="textSecondary" component="p">
-          {post.title}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {post.body}
-        </Typography>
-      </CardContent>
-      {/* <CardMedia
+      <div>
+        <CardHeader
+          avatar={<Avatar src={post.avatar} className={classes.avatar} />}
+          action={
+            <IconButton aria-label="settings">
+              {/* <MoreVertIcon /> */}
+              <MdMoreVert />
+            </IconButton>
+          }
+          title={post.name}
+          subheader={
+            <React.Fragment>
+              {/* <div>Sep 14 2021, Erbil</div> */}
+              <div style={{ textTransform: "capitalize" }}>
+                {post.date.toDate().toDateString()}, {post.province}
+              </div>
+              {post.isLost ? (
+                <Chip
+                  className={classes.lostTag}
+                  color="secondary"
+                  size="small"
+                  icon={<ErrorIcon className={classes.tagIcon} />}
+                  label="Lost"
+                />
+              ) : (
+                <Chip
+                  className={classes.foundTag}
+                  color="primary"
+                  size="small"
+                  icon={<CheckCircleIcon className={classes.tagIcon} />}
+                  label="Found"
+                />
+              )}
+            </React.Fragment>
+          }
+        />
+        <CardContent className={classes.content}>
+          <Typography variant="h6" color="textSecondary" component="p">
+            {post.title}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {post.body}
+          </Typography>
+        </CardContent>
+        {/* <CardMedia
         className={classes.media}
         image="https://cosmosmagazine.com/wp-content/uploads/2020/02/190404-cat-full.jpg"
         title="Paella dish"
       /> */}
+      </div>
+      <div>
+        <GridList className={classes.gridList1} cols={2.5}>
+          {post.images.map((img, i) => (
+            <GridListTile className={classes.image} key={img[i]}>
+              <img src={img} alt="Post image" />
+              <GridListTileBar
+                classes={{
+                  root: classes.titleBar1,
+                  title: classes.title1,
+                }}
+              />
+            </GridListTile>
+          ))}
+        </GridList>
 
-      <GridList className={classes.gridList1} cols={2.5}>
-        {post.images.map((img, i) => (
-          <GridListTile className={classes.image} key={img[i]}>
-            <img src={img} alt="Post image" />
-            <GridListTileBar
-              classes={{
-                root: classes.titleBar1,
-                title: classes.title1,
-              }}
-            />
-          </GridListTile>
-        ))}
-      </GridList>
-
-      {/* <CardContent className={classes.content}>
+        {/* <CardContent className={classes.content}>
         <div
           style={{
             display: "flex",
@@ -107,17 +109,18 @@ export default function RecipeReviewCard({ post }) {
         </div>
       </CardContent> */}
 
-      <CardActions disableSpacing>
-        {/* <IconButton aria-label="add to favorites">
+        <CardActions disableSpacing>
+          {/* <IconButton aria-label="add to favorites">
           
           <BiHeart />
         </IconButton> */}
-        {/* <IconButton aria-label="share">
+          {/* <IconButton aria-label="share">
           
           <BiShareAlt />
         </IconButton> */}
-        <Button className={classes.button}>contact</Button>
-      </CardActions>
+          <Button className={classes.button}>contact</Button>
+        </CardActions>
+      </div>
     </Card>
   );
 }

@@ -6,6 +6,10 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: 335,
       marginBottom: "15px",
       borderRadius: "20px",
+      display: 'flex',
+      flexWrap: 'nowrap',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
     },
     media: {
       height: 0,
@@ -46,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     },
     image: {
       width: "100% !important",
-      marginTop: '5px'
+      marginTop: '0px',
     },
     foundTag: {
       height: "auto",
