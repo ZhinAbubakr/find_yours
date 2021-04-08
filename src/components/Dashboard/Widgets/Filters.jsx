@@ -4,21 +4,15 @@ import CardHeader from "@material-ui/core/CardHeader"
 // import Avatar from "@material-ui/core/Avatar";
 // import Button from "@material-ui/core/Button";
 // import ghost from "../../../Assets/Ghost.jpg";
-import { db } from "../../../firebase"
+// import { db } from "../../../firebase"
 import InputLabel from "@material-ui/core/InputLabel"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
 import { useStylesFilter } from "./Style.js"
-export default function Filters() {
+export default function Filters({ handlePosts }) {
 	const classes = useStylesFilter()
 
-	const [state, setState] = React.useState({
-		// Status: false,
-		// "category ": "",
-		// color: "",
-		// city: ""
-	})
-	const [, setPosts] = React.useState([])
+	const [state, setState] = React.useState({})
 
 	const handleChange = (event) => {
 		const name = event.target.name
@@ -29,35 +23,10 @@ export default function Filters() {
 	}
 
 	useEffect(() => {
-		// to prevent the first render.
-		if (Object.keys(state).length != 0) {
-			handlePosts()
-		}
+		handlePosts(state)
+		console.log(state)
 	}, [state])
 
-	const handlePosts = () => {
-		const res = []
-
-		const query = db.collection("posts")
-		const category = state.category
-			? query.where("category ", "==", state["category"])
-			: query
-		const color = state.color
-			? category.where("color", "==", state["color"])
-			: category
-		const province = state.province
-			? color.where("province", "==", state["province"])
-			: color
-		const check = state["Status"] === "true" ? true : false
-		const isLost = state.Status
-			? province.where("isLost", "==", check)
-			: province
-
-		isLost.get().then((snapshot) => {
-			snapshot.docs.map((doc) => res.push(doc.data()))
-			setPosts(res)
-		})
-	}
 	return (
 		<Card className={classes.root}>
 			<CardHeader

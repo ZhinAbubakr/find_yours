@@ -21,17 +21,49 @@ import CircularProgress from "@material-ui/core/CircularProgress"
 export default function Dashboard() {
 	const [profile] = useContext(ProfileContext)
 	const [posts, setPosts] = useState()
+	const [doubleFilter, setDubleFilter] = React.useState({})
 	const [state, setState] = React.useState({
 		mobileView: false,
 		mediumView: false
 	})
 
 	const { mobileView, mediumView } = state
+	const handlePosts = (filterState) => {
+		// to handle both the filters and cities queries.
+		if (filterState.city === true) {
+			const { province } = filterState
+			setDubleFilter({ ...doubleFilter, province })
+		} else if (filterState.province != undefined) {
+			const { color, category, Status, province } = filterState
+			setDubleFilter({ ...doubleFilter, color, category, Status, province })
+		} else {
+			const { color, category, Status } = filterState
+			setDubleFilter({ ...doubleFilter, color, category, Status })
+		}
+	}
 	React.useEffect(() => {
-		db.collection("posts").onSnapshot((snapshot) => {
-			setPosts(snapshot.docs.map((doc) => doc.data()))
+		const res = []
+		// console.log(doubleFilter)
+		const query = db.collection("posts")
+		const categoryQuery = doubleFilter.category
+			? query.where("category ", "==", doubleFilter["category"])
+			: query
+		const colorQuery = doubleFilter.color
+			? categoryQuery.where("color", "==", doubleFilter["color"])
+			: categoryQuery
+		const provinceQuery = doubleFilter.province
+			? colorQuery.where("province", "==", doubleFilter["province"])
+			: colorQuery
+		const check = doubleFilter["Status"] === "true" ? true : false
+		const isLostQuery = doubleFilter.Status
+			? provinceQuery.where("isLost", "==", check)
+			: provinceQuery
+
+		isLostQuery.get().then((snapshot) => {
+			snapshot.docs.map((doc) => res.push(doc.data()))
+			setPosts(res)
 		})
-	}, [])
+	}, [doubleFilter])
 	React.useEffect(() => {
 		const setResponsiveness = () => {
 			if (window.innerWidth < 812) {
@@ -100,8 +132,8 @@ export default function Dashboard() {
 					{!mobileView && (
 						<Grid item sm={4} lg={4} className={widget}>
 							<div className="widget">
-								<Filters />
-								<Cities />
+								<Filters handlePosts={handlePosts} />
+								<Cities handlePosts={handlePosts} />
 							</div>
 						</Grid>
 					)}
@@ -157,8 +189,8 @@ export default function Dashboard() {
 					</Grid>
 					<Grid item sm={3} lg={3} className={widget}>
 						<div className="widget">
-							<Filters />
-							<Cities />
+							<Filters handlePosts={handlePosts} />
+							<Cities handlePosts={handlePosts} />
 						</div>
 					</Grid>
 				</Grid>
