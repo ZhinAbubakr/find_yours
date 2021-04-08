@@ -4,7 +4,6 @@ import CardHeader from "@material-ui/core/CardHeader"
 // import Avatar from "@material-ui/core/Avatar";
 // import Button from "@material-ui/core/Button";
 // import ghost from "../../../Assets/Ghost.jpg";
-// import { db } from "../../../firebase"
 import InputLabel from "@material-ui/core/InputLabel"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
@@ -24,7 +23,6 @@ export default function Filters({ handlePosts }) {
 
 	useEffect(() => {
 		handlePosts(state)
-		console.log(state)
 	}, [state])
 
 	return (
