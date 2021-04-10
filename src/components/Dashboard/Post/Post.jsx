@@ -65,8 +65,8 @@ export default function RecipeReviewCard({ post }) {
       </div>
       <div>
         <GridList className={classes.gridList1} cols={2.5}>
-          {post.images.map((img, i) => (
-            <GridListTile className={classes.image} key={img[i]}>
+          {post.images.map((img) => (
+            <GridListTile className={classes.image} key={img.length}>
               <img src={img} alt="Post image" />
               <GridListTileBar
                 classes={{
