@@ -20,11 +20,10 @@ import { db } from "../../firebase";
 export default function Dashboard() {
   const [profile] = useContext(ProfileContext);
   const [posts, setPosts] = useState();
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     mobileView: false,
     mediumView: false,
   });
-
   const { mobileView, mediumView } = state;
   useEffect(() => {
     const unsubscribe = db.collection("posts").onSnapshot((snapshot) => {
@@ -52,54 +51,61 @@ export default function Dashboard() {
 
     window.addEventListener("resize", () => setResponsiveness());
   }, []);
-
   const { container, searchfield, button, widget } = useStyleDashboard();
+  const middleColomn = (text) => {
+    return (
+      <div style={{ margin: "0 20px" }}>
+        <div className="messageSender">
+          <div className="messageSender_top">
+            <Avatar src={profile.imageUrl} />
+            <div className="searchbar">
+              <SearchBar
+                className={searchfield}
+                // Resource: https://codesandbox.io/s/mz7nx9v02j?file=/src/appStore.js
+                // onRequestSearch={fetch}
+                placeholder="Search items ..."
+                autoFocus
+              />
+              {/* {isLoading && <LinearProgress />} */}
+            </div>
+            <div className="buttons">
+              <Button
+                {...{
+                  className: button,
+                }}
+                variant="contained"
+                color="primary"
+                disableElevation
+              >
+                {text}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+  const postItems = () => {
+    return (
+      <div className="posts">
+        {posts ? (
+          posts.map((post) => <Post post={post} />)
+        ) : (
+          <CircularProgress />
+        )}
+      </div>
+    );
+  };
   return (
     <div>
       <Navbar />
-
       {mediumView && (
         <Grid container justify="center" className={container}>
           <Grid item xs={12} sm={8} lg={8}>
-            <div style={{ margin: "0 20px" }}>
-              <div className="messageSender">
-                <div className="messageSender_top">
-                  <Avatar src={profile.imageUrl} />
-                  <div className="searchbar">
-                    <SearchBar
-                      className={searchfield}
-                      // Resource: https://codesandbox.io/s/mz7nx9v02j?file=/src/appStore.js
-                      // onRequestSearch={fetch}
-                      placeholder="Search items ..."
-                      autoFocus
-                    />
-                    {/* {isLoading && <LinearProgress />} */}
-                  </div>
-                  <div className="buttons">
-                    <Button
-                      {...{
-                        className: button,
-                      }}
-                      variant="contained"
-                      color="primary"
-                      disableElevation
-                    >
-                      Post
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {middleColomn("Post")}
             {mobileView && <FiltersFlat />}
-            <div className="posts">
-              {posts ? (
-                posts.map((post) => <Post post={post} />)
-              ) : (
-                <CircularProgress />
-              )}
-            </div>
+            {postItems()}
           </Grid>
-
           {!mobileView && (
             <Grid item sm={4} lg={4} className={widget}>
               <div className="widget">
@@ -110,7 +116,6 @@ export default function Dashboard() {
           )}
         </Grid>
       )}
-
       {!mediumView && (
         <Grid container justify="center" className={container}>
           <Grid item sm={3} lg={3} className={widget}>
@@ -122,42 +127,8 @@ export default function Dashboard() {
             </div>
           </Grid>
           <Grid item sm={6} lg={6}>
-            <div style={{ margin: "0 20px" }}>
-              <div className="messageSender">
-                <div className="messageSender_top">
-                  <Avatar src={profile.imageUrl} />
-                  <div className="searchbar">
-                    <SearchBar
-                      className={searchfield}
-                      // Resource: https://codesandbox.io/s/mz7nx9v02j?file=/src/appStore.js
-                      // onRequestSearch={fetch}
-                      placeholder="Search items ..."
-                      autoFocus
-                    />
-                    {/* {isLoading && <LinearProgress />} */}
-                  </div>
-                  <div className="buttons">
-                    <Button
-                      {...{
-                        className: button,
-                      }}
-                      variant="contained"
-                      color="primary"
-                      disableElevation
-                    >
-                      Submit item
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="posts">
-              {posts ? (
-                posts.map((post) => <Post post={post} />)
-              ) : (
-                <CircularProgress />
-              )}
-            </div>
+            {middleColomn("Submit item")}
+            {postItems()}
           </Grid>
           <Grid item sm={3} lg={3} className={widget}>
             <div className="widget">
