@@ -1,22 +1,21 @@
-import Navbar from "../Navbar/Navbar";
+import React, { useContext, useState, useEffect } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { Avatar } from "@material-ui/core";
+import SearchBar from "material-ui-search-bar";
+// import LinearProgress from "@material-ui/core/LinearProgress";
+import Navbar from "../Navbar/Navbar";
 import "./styles.css";
 import Post from "./Post/Post";
-
-import React, { useContext, useState } from "react";
 import Widget from "./Widgets/Widget";
 import LastPosts from "./Widgets/LastPosts";
 import Cities from "./Widgets/Cities";
 import Filters from "./Widgets/Filters";
-import SearchBar from "material-ui-search-bar";
-// import LinearProgress from "@material-ui/core/LinearProgress";
 import { useStyleDashboard } from "./Widgets/Style";
 import FiltersFlat from "./Widgets/FiltersFlat";
 import { ProfileContext } from "../../profileContext";
 import { db } from "../../firebase";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function Dashboard() {
   const [profile] = useContext(ProfileContext);
@@ -27,12 +26,15 @@ export default function Dashboard() {
   });
 
   const { mobileView, mediumView } = state;
-  React.useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) => {
+  useEffect(() => {
+    const unsubscribe = db.collection("posts").onSnapshot((snapshot) => {
       setPosts(snapshot.docs.map((doc) => doc.data()));
     });
+    return () => {
+      unsubscribe();
+    };
   }, []);
-  React.useEffect(() => {
+  useEffect(() => {
     const setResponsiveness = () => {
       if (window.innerWidth < 812) {
         setState((prevState) => ({ ...prevState, mobileView: true }));
