@@ -6,6 +6,10 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: 335,
       marginBottom: "15px",
       borderRadius: "20px",
+      display: 'flex',
+      flexWrap: 'nowrap',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
     },
     media: {
       height: 0,
@@ -18,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
       backgroundColor: grey[500],
+      width: '45px',
+      height: '45px',
     },
     content: {
       paddingTop: 0,
@@ -44,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     },
     image: {
       width: "100% !important",
+      marginTop: '0px',
     },
     foundTag: {
       height: "auto",
@@ -52,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
     lostTag: {
       height: "auto",
       backgroundColor: "#f72b74",
+      color: 'white'
     },
     tagIcon: {
       marginLeft: "0px",
