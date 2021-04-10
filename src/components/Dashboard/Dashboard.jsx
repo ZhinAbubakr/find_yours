@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { Avatar } from "@material-ui/core";
 import SearchBar from "material-ui-search-bar";
+import { useMediaQuery } from "react-responsive";
 // import LinearProgress from "@material-ui/core/LinearProgress";
 import Navbar from "../Navbar/Navbar";
 import "./styles.css";
@@ -20,11 +21,6 @@ import { db } from "../../firebase";
 export default function Dashboard() {
   const [profile] = useContext(ProfileContext);
   const [posts, setPosts] = useState();
-  const [state, setState] = useState({
-    mobileView: false,
-    mediumView: false,
-  });
-  const { mobileView, mediumView } = state;
   useEffect(() => {
     const unsubscribe = db.collection("posts").onSnapshot((snapshot) => {
       setPosts(snapshot.docs.map((doc) => doc.data()));
@@ -33,24 +29,8 @@ export default function Dashboard() {
       unsubscribe();
     };
   }, []);
-  useEffect(() => {
-    const setResponsiveness = () => {
-      if (window.innerWidth < 812) {
-        setState((prevState) => ({ ...prevState, mobileView: true }));
-      }
-      if (window.innerWidth < 1210) {
-        setState((prevState) => ({ ...prevState, mediumView: true }));
-      }
-
-      // window.innerWidth < 900
-      //   ? setState((prevState) => ({ ...prevState, mobileView: true }))
-      //   : setState((prevState) => ({ ...prevState, mobileView: false }));
-    };
-
-    setResponsiveness();
-
-    window.addEventListener("resize", () => setResponsiveness());
-  }, []);
+  const mobileView = useMediaQuery({ query: "(max-width: 812px)" });
+  const mediumView = useMediaQuery({ query: "(max-width: 1210px)" });
   const { container, searchfield, button, widget } = useStyleDashboard();
   const middleColomn = (text) => {
     return (
