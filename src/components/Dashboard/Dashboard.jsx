@@ -41,9 +41,8 @@ export default function Dashboard() {
 			setDubleFilter({ ...doubleFilter, color, category, Status })
 		}
 	}
+
 	React.useEffect(() => {
-		const res = []
-		// console.log(doubleFilter)
 		const query = db.collection("posts")
 		const categoryQuery = doubleFilter.category
 			? query.where("category ", "==", doubleFilter["category"])
@@ -58,12 +57,14 @@ export default function Dashboard() {
 		const isLostQuery = doubleFilter.Status
 			? provinceQuery.where("isLost", "==", check)
 			: provinceQuery
-
+		const res = []
 		isLostQuery.get().then((snapshot) => {
+			// docs = all posts
 			snapshot.docs.map((doc) => res.push(doc.data()))
 			setPosts(res)
 		})
 	}, [doubleFilter])
+
 	React.useEffect(() => {
 		const setResponsiveness = () => {
 			if (window.innerWidth < 812) {

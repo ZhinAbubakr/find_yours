@@ -9,6 +9,7 @@ import { useStyles } from "./Style.js"
 
 export default function Widget({ handlePosts }) {
 	const classes = useStyles()
+	// you could write a function here that has city=true in this only function instead of writing them there.
 	return (
 		<Card className={classes.root}>
 			<CardHeader
