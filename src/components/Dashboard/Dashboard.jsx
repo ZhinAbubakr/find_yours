@@ -7,7 +7,7 @@ import { Avatar, IconButton } from "@material-ui/core";
 import SearchBar from "material-ui-search-bar";
 // import LinearProgress from "@material-ui/core/LinearProgress";
 import Navbar from "../Navbar/Navbar";
-import "./styles.css";
+import { useStyles } from "./styles.js";
 import Post from "./Post/Post";
 import Widget from "./Widgets/Widget";
 import LastPosts from "./Widgets/LastPosts";
@@ -25,6 +25,7 @@ export default function Dashboard() {
   const [doubleFilter, setDubleFilter] = React.useState({});
   const mobileView = useMediaQuery("(max-width: 812px)");
   const mediumView = useMediaQuery("(max-width: 1210px)");
+  const classes = useStyles();
   const handlePosts = (filterState) => {
     // to handle both the filters and cities queries.
     if (filterState.city === true) {
@@ -65,10 +66,10 @@ export default function Dashboard() {
   const middleColomn = (text) => {
     return (
       <div style={{ margin: "0 20px" }}>
-        <div className="messageSender">
-          <div className="messageSender_top">
+        <div className={classes.messageSender}>
+          <div className={classes.messageSender_top}>
             <Avatar src={profile.imageUrl} />
-            <div className="searchbar">
+            <div className={classes.searchbar}>
               <SearchBar
                 className={searchfield}
                 // Resource: https://codesandbox.io/s/mz7nx9v02j?file=/src/appStore.js
@@ -88,9 +89,11 @@ export default function Dashboard() {
                 >
                   <FilterListIcon />
                 </IconButton>
+
                 <Popover
                   id={id}
                   open={open}
+                  className={classes.pop}
                   anchorEl={anchorEl}
                   onClose={handleClose}
                   anchorOrigin={{
@@ -106,7 +109,7 @@ export default function Dashboard() {
                 </Popover>
               </div>
             )}
-            <div className="buttons">
+            <div className={classes.buttons}>
               <Button
                 {...{
                   className: button,
@@ -125,7 +128,7 @@ export default function Dashboard() {
   };
   const postItems = () => {
     return (
-      <div className="posts">
+      <div className={classes.posts}>
         {posts ? (
           posts.map((post) => <Post post={post} />)
         ) : (
@@ -158,7 +161,7 @@ export default function Dashboard() {
           </Grid>
           {!mobileView && (
             <Grid item sm={4} lg={4} className={widget}>
-              <div className="widget">
+              <div className={classes.widget}>
                 <Filters handlePosts={handlePosts} />
                 <Cities handlePosts={handlePosts} />
               </div>
@@ -169,7 +172,7 @@ export default function Dashboard() {
       {!mediumView && (
         <Grid container justify="center" className={container}>
           <Grid item sm={3} lg={3} className={widget}>
-            <div className="widget">
+            <div className={classes.widget}>
               <div>
                 <Widget />
                 <LastPosts />
@@ -181,7 +184,7 @@ export default function Dashboard() {
             {postItems()}
           </Grid>
           <Grid item sm={3} lg={3} className={widget}>
-            <div className="widget">
+            <div className={classes.widget}>
               <Filters handlePosts={handlePosts} />
               <Cities handlePosts={handlePosts} />
             </div>
