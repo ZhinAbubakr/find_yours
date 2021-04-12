@@ -94,7 +94,6 @@ export default function Dashboard() {
                 <Popover
                   id={id}
                   open={open}
-                  className={classes.pop}
                   anchorEl={anchorEl}
                   onClose={handleClose}
                   anchorOrigin={{

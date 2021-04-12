@@ -41,9 +41,6 @@ const useStyles = makeStyles(() => (
         "searchbar": {
           "margin": "0 0 0 20px"
         },
-        "pop": {
-          "maxHeight": "388px"
-        },
         "MuiPaper_rounded": {
           "borderRadius": "20px !important"
         },

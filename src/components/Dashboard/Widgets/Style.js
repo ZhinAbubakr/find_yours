@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
       maxWidth: 320,
       marginBottom: "15px",
+      marginTop: "15px",
       borderRadius: "20px",
       width: "300px",
     },
@@ -101,7 +102,6 @@ const useStyles = makeStyles((theme) => ({
   const useStylesFilter = makeStyles((theme) => ({
     root: {
       maxWidth: 320,
-      marginBottom: "15px",
       borderRadius: "20px",
       width: "300px",
     },
