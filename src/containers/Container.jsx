@@ -1,8 +1,8 @@
-import React from 'react'
-import Navbar from '../components/Navbar/Navbar'
-import Footer from '../components/Footer/Footer'
-import LandingPage from './LandingPage'
-import Dashboard from '../components/Dashboard/Dashboard'
+import React from "react";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
+import LandingPage from "./LandingPage";
+import Dashboard from "../components/Dashboard/Dashboard";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import PrivacyPolicy from '../components/PrivacyPolicy/privacyPolicy'
 import About from '../components/AboutUs/AboutUs'

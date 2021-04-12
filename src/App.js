@@ -1,14 +1,10 @@
-
 import React from 'react'
-import Cintainer from './containers/Container'
+import Container from './containers/Container'
 
 export default function App() {
 	return (
 		<div>			
-			
-<Cintainer />
-			
+			<Container />
 		</div>
-		
 	)
 }
