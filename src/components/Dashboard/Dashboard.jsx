@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import { Avatar, IconButton } from "@material-ui/core";
 import SearchBar from "material-ui-search-bar";
-// import LinearProgress from "@material-ui/core/LinearProgress";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import Navbar from "../Navbar/Navbar";
 import { useStyles } from "./styles.js";
 import Post from "./Post/Post";
@@ -22,6 +22,7 @@ import FilterListIcon from "@material-ui/icons/FilterList";
 export default function Dashboard() {
   const [profile] = useContext(ProfileContext);
   const [posts, setPosts] = useState();
+  const [isLoading] = useState(false);
   const [doubleFilter, setDubleFilter] = React.useState({});
   const mobileView = useMediaQuery("(max-width: 812px)");
   const mediumView = useMediaQuery("(max-width: 1210px)");
@@ -77,7 +78,7 @@ export default function Dashboard() {
                 placeholder="Search items ..."
                 autoFocus
               />
-              {/* {isLoading && <LinearProgress />} */}
+              {isLoading && <LinearProgress />}
             </div>
             {mobileView && (
               <div>
@@ -137,7 +138,7 @@ export default function Dashboard() {
       </div>
     );
   };
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -148,7 +149,7 @@ export default function Dashboard() {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const id = open ? "simple-popover" : "simple-popover";
   return (
     <div>
       <Navbar />
