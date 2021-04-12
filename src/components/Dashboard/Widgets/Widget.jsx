@@ -1,18 +1,36 @@
-import React, {useContext} from "react";
-import { ProfileContext } from '../../../profileContext' 
+import React, { useContext } from "react";
+import { ProfileContext } from "../../../profileContext";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import { useStylesWidgets } from "./Style";
+import { MdMoreVert } from "react-icons/md";
+import IconButton from "@material-ui/core/IconButton";
 
 export default function Widget() {
-  const [profile, ] = useContext(ProfileContext)
+  const [profile] = useContext(ProfileContext);
   const classes = useStylesWidgets();
   return (
     <Card className={classes.root}>
       <CardHeader
-        avatar={<Avatar src={profile.imageUrl} className={classes.avatar} />}
+        avatar={
+          <div>
+            <Avatar src={profile.imageUrl} className={classes.avatar} />
+            <div
+              style={{
+                display: "inline",
+                position: "absolute",
+                left: "275px",
+                top: "80px",
+              }}
+            >
+              <IconButton>
+                <MdMoreVert />
+              </IconButton>
+            </div>
+          </div>
+        }
         title={profile.name}
         className={classes.header}
       />
