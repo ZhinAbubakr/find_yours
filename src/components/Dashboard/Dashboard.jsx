@@ -173,13 +173,22 @@ export default function Dashboard() {
       <Navbar />
       {mediumView && (
         <Grid container justify="center" className={container}>
-          <Grid item xs={12} sm={8} lg={8}>
+          <Grid
+            style={{ height: "100vh", overflowY: "auto" }}
+            item
+            xs={12}
+            sm={8}
+            lg={8}
+          >
             {middleColomn("Post")}
             {postItems()}
           </Grid>
           {!mobileView && (
             <Grid item sm={4} lg={4} className={widget}>
-              <div className={classes.widget}>
+              <div
+                style={{ height: "100vh", overflowY: "auto" }}
+                className={classes.widget}
+              >
                 <Filters handlePosts={handlePosts} />
                 <Cities handlePosts={handlePosts} />
               </div>
@@ -196,7 +205,12 @@ export default function Dashboard() {
               </div>
             </div>
           </Grid>
-          <Grid item sm={6} lg={6}>
+          <Grid
+            style={{ height: "100vh", overflowY: "auto" }}
+            item
+            sm={6}
+            lg={6}
+          >
             {middleColomn("Submit item")}
             {postItems()}
           </Grid>
