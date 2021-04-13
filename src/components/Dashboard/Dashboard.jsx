@@ -9,8 +9,6 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import Navbar from "../Navbar/Navbar";
 import { useStyles } from "./styles.js";
 import Post from "./Post/Post";
-import Widget from "./Widgets/Widget";
-import LastPosts from "./Widgets/LastPosts";
 import Cities from "./Widgets/Cities";
 import Filters from "./Widgets/Filters";
 import { useStyleDashboard } from "./Widgets/Style";
@@ -174,8 +172,7 @@ export default function Dashboard() {
           <Grid item sm={3} lg={3} className={widget}>
             <div className={classes.widget}>
               <div>
-                <Widget />
-                <LastPosts />
+                <Cities handlePosts={handlePosts} />
               </div>
             </div>
           </Grid>
@@ -186,7 +183,6 @@ export default function Dashboard() {
           <Grid item sm={3} lg={3} className={widget}>
             <div className={classes.widget}>
               <Filters handlePosts={handlePosts} />
-              <Cities handlePosts={handlePosts} />
             </div>
           </Grid>
         </Grid>
