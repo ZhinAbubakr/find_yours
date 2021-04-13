@@ -25,7 +25,7 @@ export default function Dashboard() {
   const [showMoreBtn, setShowMoreBtn] = useState(true);
   const [postsNum, setPostsNum] = useState(10);
   const [doubleFilter, setDubleFilter] = React.useState({});
-  const mobileView = useMediaQuery("(max-width: 812px)");
+  const mobileView = useMediaQuery("(max-width: 960px)");
   const mediumView = useMediaQuery("(max-width: 1210px)");
   const handlePosts = (filterState) => {
     // to handle both the filters and cities queries.
@@ -177,7 +177,7 @@ export default function Dashboard() {
             style={{ height: "100vh", overflowY: "auto" }}
             item
             xs={12}
-            sm={8}
+            sm={mobileView ? 12 : 8}
             lg={8}
           >
             {middleColomn("Post")}

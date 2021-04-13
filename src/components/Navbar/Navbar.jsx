@@ -14,56 +14,58 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Menu from "@material-ui/core/Menu";
 import LanguageIcon from "@material-ui/icons/Language";
-import Login from '../googleauth/Login'
-import Logout from '../googleauth/Logout'
-import { ProfileContext } from '../../profileContext' 
+import Login from "../googleauth/Login";
+import Logout from "../googleauth/Logout";
+import { ProfileContext } from "../../profileContext";
 import Avatar from "@material-ui/core/Avatar";
 import CardHeader from "@material-ui/core/CardHeader";
 
 const options = ["Arabic", "English", "Kurdish"];
 const ITEM_HEIGHT = 48;
 const headersData = [
-	{
-		label: "Home",
-		href: "/"
-	},
-	{
-		label: "Dashboard",
-		href: "/dashboard"
-	},
-	{
-		label: "Privacy Policy",
-		href: "/PrivacyPolicy"
-	},
-	{
-		label: "About us",
-		href: "/about"
-	},
-	{
-		label: "Contact us",
-		href: "/contactUs"
-	}
-]
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Dashboard",
+    href: "/dashboard",
+  },
+  {
+    label: "Privacy Policy",
+    href: "/PrivacyPolicy",
+  },
+  {
+    label: "About us",
+    href: "/about",
+  },
+  {
+    label: "Contact us",
+    href: "/contactUs",
+  },
+];
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const [profile, ] = useContext(ProfileContext)
+  const [profile] = useContext(ProfileContext);
 
   const profileHandler = (data) => {
-    if (data.length==0) {
-       return <Login/>
-     } else {
-      return <div>
-      <CardHeader
-        className={navheader}
-        avatar={<Avatar src={data.imageUrl} className={avatar} />}
-        title={<Logout/>}
-      />
-      </div>
-     }
-  }
+    if (data.length == 0) {
+      return <Login />;
+    } else {
+      return (
+        <div>
+          <CardHeader
+            className={navheader}
+            avatar={<Avatar src={data.imageUrl} className={avatar} />}
+            title={<Logout />}
+          />
+        </div>
+      );
+    }
+  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -96,7 +98,7 @@ export default function Header() {
 
   useEffect(() => {
     const setResponsiveness = () => {
-      return window.innerWidth < 900
+      return window.innerWidth < 1015
         ? setState((prevState) => ({ ...prevState, mobileView: true }))
         : setState((prevState) => ({ ...prevState, mobileView: false }));
     };
