@@ -47,6 +47,10 @@ const useStyles = makeStyles(() => (
         "MuiPopover_paper":{
             "overflow-x": "unset !important",
             "overflow-y": "unset !important",   
+        },
+        "showMoreBtn":{
+          "color": "white !important",
+          "background": "#3aafa9 !important",
         }
       }
 ));
