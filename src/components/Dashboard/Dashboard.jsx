@@ -21,6 +21,8 @@ import { db } from "../../firebase"
 export default function Dashboard() {
 	const [profile] = useContext(ProfileContext)
 	const [posts, setPosts] = useState()
+	const [showMoreBtn, setShowMoreBtn] = useState(true)
+	const [postsNum, setPostsNum] = useState(10)
 	const [doubleFilter, setDubleFilter] = React.useState({})
 	const mobileView = useMediaQuery("(max-width: 812px)")
 	const mediumView = useMediaQuery("(max-width: 1210px)")
@@ -54,12 +56,17 @@ export default function Dashboard() {
 			? provinceQuery.where("isLost", "==", check)
 			: provinceQuery
 		const res = []
-		isLostQuery.get().then((snapshot) => {
-			// docs = all posts
-			snapshot.docs.map((doc) => res.push(doc.data()))
-			setPosts(res)
-		})
-	}, [doubleFilter])
+		isLostQuery
+			.limit(postsNum)
+			.get()
+			.then((snapshot) => {
+				snapshot.docs.map((doc) => res.push(doc.data()))
+				setPosts(res)
+			})
+		// to handle whether to show the show more btn or not.
+		isLostQuery.get().then((snap) => setShowMoreBtn(snap.size > postsNum))
+	}, [doubleFilter, postsNum])
+
 	const { container, searchfield, button, widget } = useStyleDashboard()
 	const middleColomn = (text) => {
 		return (
@@ -97,7 +104,20 @@ export default function Dashboard() {
 		return (
 			<div className="posts">
 				{posts ? (
-					posts.map((post) => <Post post={post} />)
+					<>
+						{posts.map((post, i) => (
+							<Post key={i} post={post} />
+						))}
+						{showMoreBtn && (
+							<Grid container item justify="center">
+								<Button
+									onClick={() => setPostsNum(postsNum + 10)}
+									className="showMoreBtn">
+									show more
+								</Button>
+							</Grid>
+						)}
+					</>
 				) : (
 					<CircularProgress />
 				)}
