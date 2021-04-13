@@ -43,3 +43,7 @@ body {
 .searchbar {
   margin: 0 20px;
 }
+.showMoreBtn {
+  color: white !important;
+  background: #3aafa9 !important;
+}

@@ -16,7 +16,7 @@ export default function HeroSection() {
       <Container>
         <ColumnLeft>
           <motion.h1
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
