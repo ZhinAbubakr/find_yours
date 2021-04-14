@@ -186,7 +186,11 @@ export default function Dashboard() {
           {!mobileView && (
             <Grid item sm={4} lg={4} className={widget}>
               <div
-                style={{ height: "100vh", overflowY: "auto" }}
+                style={{
+                  height: "100vh",
+                  overflowY: "auto",
+                  width: "-webkit-fill-available",
+                }}
                 className={classes.widget}
               >
                 <Filters handlePosts={handlePosts} />

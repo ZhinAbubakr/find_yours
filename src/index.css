@@ -17,3 +17,10 @@ code {
 #simple-popover .MuiPaper-rounded {
   border-radius: 20px !important;
 }
+
+* {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
