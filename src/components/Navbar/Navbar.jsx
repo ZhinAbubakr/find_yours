@@ -1,72 +1,79 @@
 import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  IconButton,
-  Drawer,
-  Link,
-  MenuItem,
-} from "@material-ui/core";
-import { useStyles } from "./styles.js";
-import { FiMenu } from "react-icons/fi";
-import React, { useState, useEffect, useContext } from "react";
-import { Link as RouterLink } from "react-router-dom";
-import Menu from "@material-ui/core/Menu";
-import LanguageIcon from "@material-ui/icons/Language";
-import Login from "../googleauth/Login";
-import Logout from "../googleauth/Logout";
-import { ProfileContext } from "../../profileContext";
-import Avatar from "@material-ui/core/Avatar";
-import CardHeader from "@material-ui/core/CardHeader";
-
-const options = ["Arabic", "English", "Kurdish"];
-const ITEM_HEIGHT = 48;
+	AppBar,
+	Toolbar,
+	Typography,
+	Button,
+	IconButton,
+	Drawer,
+	Link,
+	MenuItem,
+	MenuList,
+	ListItemIcon,
+	Divider
+} from "@material-ui/core"
+import { useStyles } from "./styles.js"
+import { FiMenu } from "react-icons/fi"
+import React, { useState, useEffect, useContext } from "react"
+import { Link as RouterLink } from "react-router-dom"
+import Menu from "@material-ui/core/Menu"
+import LanguageIcon from "@material-ui/icons/Language"
+import { Dashboard, Home, Info, Message, Lock } from "@material-ui/icons"
+import Login from "../googleauth/Login"
+import Logout from "../googleauth/Logout"
+import { ProfileContext } from "../../profileContext"
+import Avatar from "@material-ui/core/Avatar"
+import CardHeader from "@material-ui/core/CardHeader"
+const options = ["Arabic", "English", "Kurdish"]
+const ITEM_HEIGHT = 48
 const headersData = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Dashboard",
-    href: "/dashboard",
-  },
-  {
-    label: "Privacy Policy",
-    href: "/PrivacyPolicy",
-  },
-  {
-    label: "About us",
-    href: "/about",
-  },
-  {
-    label: "Contact us",
-    href: "/contactUs",
-  },
-];
+	{
+		label: "Home",
+		href: "/",
+		icon: <Home style={{ color: "white" }} />
+	},
+	{
+		label: "Dashboard",
+		href: "/dashboard",
+		icon: <Dashboard style={{ color: "white" }} />
+	},
+	{
+		label: "Privacy Policy",
+		href: "/PrivacyPolicy",
+		icon: <Lock style={{ color: "white" }} />
+	},
+	{
+		label: "About us",
+		href: "/about",
+		icon: <Info style={{ color: "white" }} />
+	},
+	{
+		label: "Contact us",
+		href: "/contactUs",
+		icon: <Message style={{ color: "white" }} />
+	}
+]
 
 export default function Header() {
 	const [anchorEl, setAnchorEl] = useState(null)
 	const open = Boolean(anchorEl)
 
-  const [profile] = useContext(ProfileContext);
+	const [profile] = useContext(ProfileContext)
 
-  const profileHandler = (data) => {
-    if (data.length == 0) {
-      return <Login />;
-    } else {
-      return (
-        <div>
-          <CardHeader
-            className={navheader}
-            avatar={<Avatar src={data.imageUrl} className={avatar} />}
-            title={<Logout />}
-          />
-        </div>
-      );
-    }
-  };
-
+	const profileHandler = (data) => {
+		if (data.length == 0) {
+			return <Login />
+		} else {
+			return (
+				<div>
+					<CardHeader
+						className={navheader}
+						avatar={<Avatar src={data.imageUrl} className={avatar} />}
+						title={<Logout />}
+					/>
+				</div>
+			)
+		}
+	}
 
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget)
@@ -98,12 +105,12 @@ export default function Header() {
 
 	const { mobileView, drawerOpen } = state
 
-  useEffect(() => {
-    const setResponsiveness = () => {
-      return window.innerWidth < 1015
-        ? setState((prevState) => ({ ...prevState, mobileView: true }))
-        : setState((prevState) => ({ ...prevState, mobileView: false }));
-    };
+	useEffect(() => {
+		const setResponsiveness = () => {
+			return window.innerWidth < 900
+				? setState((prevState) => ({ ...prevState, mobileView: true }))
+				: setState((prevState) => ({ ...prevState, mobileView: false }))
+		}
 
 		setResponsiveness()
 
