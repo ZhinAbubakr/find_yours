@@ -66,6 +66,13 @@ export default function Dashboard() {
 		// to handle whether to show the show more btn or not.
 		isLostQuery.get().then((snap) => setShowMoreBtn(snap.size > postsNum))
 	}, [doubleFilter, postsNum])
+	// const h = db
+	// 	.collection("posts")
+	// 	.where("color", ">=", "r")
+	// 	.where("color", "<=", "ed" + "\uf8ff")
+	// h.get().then((snapshot) =>
+	// 	snapshot.docs.map((doc) => console.log(doc.data()))
+	// )
 
 	const { container, searchfield, button, widget } = useStyleDashboard()
 	const middleColomn = (text) => {
