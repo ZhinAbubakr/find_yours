@@ -3,7 +3,7 @@ import { grey } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      maxWidth: 335,
+      maxWidth: 310,
       marginBottom: "15px",
       borderRadius: "20px",
       display: 'flex',
