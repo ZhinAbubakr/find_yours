@@ -5,4 +5,3 @@ export const FORM_ROUTE = '/form';
 export const CONTACTUS_ROUTE = '/contactUs';
 export const DASHBOARD_ROUTE = '/dashboard';
 export const NOT_FOUND_ROUTE = '/:404';
-export const POST_ROUTE = '/post';
