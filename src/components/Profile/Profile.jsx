@@ -15,7 +15,8 @@ import {
 import { Link } from 'react-router-dom'
 import { db } from "../../firebase";
 import CircularProgress from "@material-ui/core/CircularProgress";
-// import { ProfileContext } from "../../profileContext"
+import { FORM_ROUTE } from '../../containers/routes';
+// import { ProfileContext } from "../../../profileContext"
 
 export default function Profile() {
   const classes = useStyles();
@@ -25,7 +26,7 @@ export default function Profile() {
 
   useEffect(() => {
     const res=[];
-    db.collection("posts").where("userID", "==", 1 )
+    db.collection("posts").where("userID", "==", 3 )
     .get()
     .then((snapshot) => {
       snapshot.docs.map((doc) => res.push(doc.data()))
@@ -114,11 +115,11 @@ export default function Profile() {
             )}
           </Grid>
           <Grid item xs={12} className={classes.btn2}>
-            <Link to={'/form'} className={classes.links}>
+            <Link to={FORM_ROUTE} className={classes.links}>
               <Button
+                className={classes.button}
                 variant="contained"
                 color="secondary"
-                style={{ fontWeight: "bold" }}
               >
                 Add Post
               </Button>
@@ -151,11 +152,11 @@ export default function Profile() {
             )}
           </Grid>
           <Grid item xs={12} className={classes.btn2}>
-            <Link to={"/form"} className={classes.links}>
+            <Link to={FORM_ROUTE} className={classes.links}>
               <Button
+                className={classes.button}
                 variant="contained"
                 color="secondary"
-                style={{ fontWeight: "bold" }}
               >
                 Add Post
               </Button>

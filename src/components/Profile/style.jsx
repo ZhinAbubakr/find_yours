@@ -54,6 +54,9 @@ const useStyles = makeStyles((theme) => ({
     },
     links: {
         textDecoration: 'none'
+    },
+    button: {
+        fontWeight: "bold"
     }
 }));
 
