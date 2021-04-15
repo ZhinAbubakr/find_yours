@@ -23,82 +23,80 @@ export default function ContactUsForm(props) {
 	return (
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
-			<div className={classes.paper}>
-				<Typography component="h1" variant="h5">
-					<h4>
+			<Box mb={20.9} mt={16}>
+				<div className={classes.paper}>
+					<Typography component="h1" variant="h5">
 						Thanks for taking time to reach out <br /> How can we help you today
 						?
-					</h4>
-				</Typography>
-				<form className={classes.form} onSubmit={handleSubmit}>
-					<Grid container spacing={2}>
-						<Grid item xs={12} sm={6}>
-							<TextField
-								value={firstName}
-								onChange={(e) => handleFirstName(e)}
-								autoComplete="fname"
-								name="firstName"
-								variant="outlined"
-								required
-								fullWidth
-								id="firstName"
-								label="First Name"
-								autoFocus
-							/>
+					</Typography>
+					<form className={classes.form} onSubmit={handleSubmit}>
+						<Grid container spacing={2}>
+							<Grid item xs={12} sm={6}>
+								<TextField
+									value={firstName}
+									onChange={(e) => handleFirstName(e)}
+									autoComplete="fname"
+									name="firstName"
+									variant="outlined"
+									required
+									fullWidth
+									id="firstName"
+									label="First Name"
+									autoFocus
+								/>
+							</Grid>
+							<Grid item xs={12} sm={6}>
+								<TextField
+									value={lastName}
+									onChange={(e) => handleLastName(e)}
+									variant="outlined"
+									required
+									fullWidth
+									id="lastName"
+									label="Last Name"
+									name="lastName"
+									autoComplete="lname"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									value={email}
+									onChange={(e) => handleEmail(e)}
+									variant="outlined"
+									required
+									fullWidth
+									id="email"
+									label="Email Address"
+									name="email"
+									autoComplete="email"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									value={text}
+									onChange={(e) => handleText(e)}
+									variant="outlined"
+									required
+									fullWidth
+									name="textarea"
+									label="Message"
+									type="TextareaAutosize"
+									id="textarea"
+								/>
+							</Grid>
+							<Grid item xs={12}></Grid>
 						</Grid>
-						<Grid item xs={12} sm={6}>
-							<TextField
-								value={lastName}
-								onChange={(e) => handleLastName(e)}
-								variant="outlined"
-								required
-								fullWidth
-								id="lastName"
-								label="Last Name"
-								name="lastName"
-								autoComplete="lname"
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								value={email}
-								onChange={(e) => handleEmail(e)}
-								variant="outlined"
-								required
-								fullWidth
-								id="email"
-								label="Email Address"
-								name="email"
-								autoComplete="email"
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								value={text}
-								onChange={(e) => handleText(e)}
-								variant="outlined"
-								required
-								fullWidth
-								name="textarea"
-								label="Message"
-								type="TextareaAutosize"
-								id="textarea"
-							/>
-						</Grid>
-						<Grid item xs={12}></Grid>
-					</Grid>
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						backgroundColor={classes.backgroundColor}
-						color={classes.Color}
-						className={classes.submit}>
-						Submit
-					</Button>
-				</form>
-			</div>
-			<Box mb={20.9}></Box>
+						<Button
+							type="submit"
+							fullWidth
+							variant="contained"
+							color={classes.Color}
+							className={`${classes.submit} ${classes.backgroundColor}`}>
+							Submit
+						</Button>
+					</form>
+				</div>
+			</Box>
 		</Container>
 	)
 }
