@@ -24,7 +24,8 @@ export default function Dashboard() {
 	const classes = useStyles()
 	const [showMoreBtn, setShowMoreBtn] = useState(true)
 	const [postsNum, setPostsNum] = useState(10)
-	const [doubleFilter, setDubleFilter] = React.useState({})
+	const [doubleFilter, setDubleFilter] = useState({})
+	const [search, setSearch] = useState([])
 	const mobileView = useMediaQuery("(max-width: 960px)")
 	const mediumView = useMediaQuery("(max-width: 1210px)")
 	const handlePosts = (filterState) => {
@@ -72,6 +73,54 @@ export default function Dashboard() {
 		return fetch()
 	}, [doubleFilter, postsNum])
 
+	const handleSearchInput = (e) => {
+		setSearch(e.split(" "))
+	}
+
+	const handlefetch = () => {
+		const h1 = []
+		const query = db.collection("posts")
+		query
+			.where("search", "array-contains-any", search)
+			.get()
+			.then((snapshot) => {
+				snapshot.docs.map((doc) => h1.push(doc.data()))
+			})
+		console.log(h1)
+
+		// query
+		// 	.where("category ", "==", search[0])
+		// 	.get()
+		// 	.then((snapshot) => {
+		// 		snapshot.docs.map((doc) => h1.push(doc.data()))
+		// 	})
+
+		// query
+		// 	.where("color", "==", search[0])
+		// 	.get()
+		// 	.then((snapshot) => {
+		// 		snapshot.docs.map((doc) => h1.push(doc.data()))
+		// 	})
+
+		// query
+		// 	.where("province", "==", search[0])
+		// 	.get()
+		// 	.then((snapshot) => {
+		// 		snapshot.docs.map((doc) => h1.push(doc.data()))
+		// 	})
+
+		// const check = search[0] === "found" ? false : true
+
+		// query
+		// 	.where("isLost", "==", check)
+		// 	.get()
+		// 	.then((snapshot) => {
+		// 		snapshot.docs.map((doc) => h1.push(doc.data()))
+		// 		setPosts(h1)
+		// 	})
+		// console.log(h1)
+	}
+
 	const { container, searchfield, button, widget } = useStyleDashboard()
 	const middleColomn = (text) => {
 		return (
@@ -83,7 +132,8 @@ export default function Dashboard() {
 							<SearchBar
 								className={searchfield}
 								// Resource: https://codesandbox.io/s/mz7nx9v02j?file=/src/appStore.js
-								// onRequestSearch={fetch}
+								onChange={(e) => handleSearchInput(e)}
+								onRequestSearch={handlefetch}
 								placeholder="Search items ..."
 								autoFocus
 							/>
