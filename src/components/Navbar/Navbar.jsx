@@ -25,6 +25,7 @@ import Avatar from "@material-ui/core/Avatar"
 import CardHeader from "@material-ui/core/CardHeader"
 const options = ["Arabic", "English", "Kurdish"]
 const ITEM_HEIGHT = 48
+
 const headersData = [
 	{
 		label: "Home",
@@ -59,6 +60,7 @@ export default function Header() {
 
 	const [profile] = useContext(ProfileContext)
 
+	// <<<<<<< HEAD
 	const profileHandler = (data) => {
 		if (data.length == 0) {
 			return <Login />
@@ -74,14 +76,12 @@ export default function Header() {
 			)
 		}
 	}
-
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget)
 	}
 
 	const handleClose = () => {
 		setAnchorEl(null)
-		// console.log(event.currentTarget.innerText);
 	}
 	const {
 		header,
