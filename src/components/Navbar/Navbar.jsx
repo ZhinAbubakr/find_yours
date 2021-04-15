@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import { useStyles } from "./styles.js";
 import { FiMenu } from "react-icons/fi";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Menu from "@material-ui/core/Menu";
 import LanguageIcon from "@material-ui/icons/Language";
@@ -23,6 +23,8 @@ import Logout from "../googleauth/Logout";
 import { ProfileContext } from "../../profileContext";
 import Avatar from "@material-ui/core/Avatar";
 import CardHeader from "@material-ui/core/CardHeader";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
 const options = ["Arabic", "English", "Kurdish"];
 const ITEM_HEIGHT = 48;
 
@@ -98,23 +100,12 @@ export default function Header() {
   } = useStyles();
 
   const [state, setState] = useState({
-    mobileView: false,
     drawerOpen: false,
   });
 
-  const { mobileView, drawerOpen } = state;
+  const { drawerOpen } = state;
 
-  useEffect(() => {
-    const setResponsiveness = () => {
-      return window.innerWidth < 1015
-        ? setState((prevState) => ({ ...prevState, mobileView: true }))
-        : setState((prevState) => ({ ...prevState, mobileView: false }));
-    };
-
-    setResponsiveness();
-
-    window.addEventListener("resize", () => setResponsiveness());
-  }, []);
+  const mobileView = useMediaQuery("(max-width: 1015px)");
 
   const displayDesktop = () => {
     return (
