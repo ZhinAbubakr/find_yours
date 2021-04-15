@@ -41,7 +41,6 @@ export default function Dashboard() {
 			setDubleFilter({ ...doubleFilter, color, category, Status })
 		}
 	}
-
 	useEffect(() => {
 		const fetch = () => {
 			const query = db.collection("posts")
@@ -81,44 +80,44 @@ export default function Dashboard() {
 		const h1 = []
 		const query = db.collection("posts")
 		query
-			.where("search", "array-contains-any", search)
+			.where("category ", "==", search[0])
 			.get()
 			.then((snapshot) => {
 				snapshot.docs.map((doc) => h1.push(doc.data()))
 			})
-		console.log(h1)
 
-		// query
-		// 	.where("category ", "==", search[0])
-		// 	.get()
-		// 	.then((snapshot) => {
-		// 		snapshot.docs.map((doc) => h1.push(doc.data()))
-		// 	})
+		query
+			.where("color", "==", search[0])
+			.get()
+			.then((snapshot) => {
+				snapshot.docs.map((doc) => h1.push(doc.data()))
+			})
+		query
+			.where("province", "==", search[0])
+			.get()
+			.then((snapshot) => {
+				snapshot.docs.map((doc) => h1.push(doc.data()))
+			})
+		query
+			.where("body", "array-contains-any", search)
+			.get()
+			.then((snapshot) => {
+				snapshot.docs.map((doc) => h1.push(doc.data()))
+				if (search[0] != "found" && search[0] != "lost") {
+					setPosts(h1)
+				}
+			})
 
-		// query
-		// 	.where("color", "==", search[0])
-		// 	.get()
-		// 	.then((snapshot) => {
-		// 		snapshot.docs.map((doc) => h1.push(doc.data()))
-		// 	})
-
-		// query
-		// 	.where("province", "==", search[0])
-		// 	.get()
-		// 	.then((snapshot) => {
-		// 		snapshot.docs.map((doc) => h1.push(doc.data()))
-		// 	})
-
-		// const check = search[0] === "found" ? false : true
-
-		// query
-		// 	.where("isLost", "==", check)
-		// 	.get()
-		// 	.then((snapshot) => {
-		// 		snapshot.docs.map((doc) => h1.push(doc.data()))
-		// 		setPosts(h1)
-		// 	})
-		// console.log(h1)
+		if (search[0] === "found" || search[0] === "lost") {
+			const check = search[0] === "found" ? false : true
+			query
+				.where("isLost", "==", check)
+				.get()
+				.then((snapshot) => {
+					snapshot.docs.map((doc) => h1.push(doc.data()))
+					setPosts(h1)
+				})
+		}
 	}
 
 	const { container, searchfield, button, widget } = useStyleDashboard()
