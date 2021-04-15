@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {/*useContext,*/ useEffect,useState} from "react";
 import Post from "../Dashboard/Post/Post";
 import useStyles from "./style";
 import { ThemeProvider } from "@material-ui/styles";
@@ -12,18 +12,26 @@ import {
   Divider,
   ListItem,
 } from "@material-ui/core";
+import { Link } from 'react-router-dom'
 import { db } from "../../firebase";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { FORM_ROUTE } from '../../containers/routes';
+// import { ProfileContext } from "../../../profileContext"
 
-export default function InsetDividers() {
+export default function Profile() {
   const classes = useStyles();
 
   const [posts, setPosts] = useState();
+  // const [profile] = useContext(ProfileContext)
 
   useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) => {
-      setPosts(snapshot.docs.map((doc) => doc.data()));
-    });
+    const res=[];
+    db.collection("posts").where("userID", "==", 3 )
+    .get()
+    .then((snapshot) => {
+      snapshot.docs.map((doc) => res.push(doc.data()))
+      setPosts(res)
+    })
   }, []);
 
   return (
@@ -39,6 +47,7 @@ export default function InsetDividers() {
                 <CardMedia
                   className={classes.media}
                   image="https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg"
+                  // image={props}
                   title="Contemplative Reptile"
                 />
               </Container>
@@ -106,19 +115,21 @@ export default function InsetDividers() {
             )}
           </Grid>
           <Grid item xs={12} className={classes.btn2}>
-            <Button
-              variant="contained"
-              color="secondary"
-              style={{ fontWeight: "bold" }}
-            >
-              Add Post
-            </Button>
+            <Link to={FORM_ROUTE} className={classes.links}>
+              <Button
+                className={classes.button}
+                variant="contained"
+                color="secondary"
+              >
+                Add Post
+              </Button>
+            </Link>
           </Grid>
         </ThemeProvider>
       </Container>
 
       <Divider variant="inset" className={classes.divider1} />
-
+      
       <Container maxWidth="lg" className={classes.container1}>
         <ThemeProvider theme={theme}>
           <Grid className={classes.btn3}>
@@ -141,13 +152,15 @@ export default function InsetDividers() {
             )}
           </Grid>
           <Grid item xs={12} className={classes.btn2}>
-            <Button
-              variant="contained"
-              color="secondary"
-              style={{ fontWeight: "bold" }}
-            >
-              Add Post
-            </Button>
+            <Link to={FORM_ROUTE} className={classes.links}>
+              <Button
+                className={classes.button}
+                variant="contained"
+                color="secondary"
+              >
+                Add Post
+              </Button>
+            </Link>
           </Grid>
         </ThemeProvider>
       </Container>

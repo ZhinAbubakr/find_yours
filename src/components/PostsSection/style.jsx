@@ -15,6 +15,10 @@ const useStyles = makeStyles({
 	heroTypography2: {
 		textAlign: "center",
 		color: "textPrimary"
+	},
+	showMoreBtn: {
+		color: "white !important",
+		background: "#3aafa9 !important"
 	}
 })
 
