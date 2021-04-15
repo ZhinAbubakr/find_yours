@@ -14,10 +14,11 @@ const useStyles = makeStyles((theme) => ({
         hieght: theme.spacing(5)
     },
     container: {
-        margin: theme.spacing(12)
+        marginTop: theme.spacing(12),
     },
     container1: {
-      marginLeft: theme.spacing(8)
+      marginLeft: theme.spacing(8),
+      marginBottom: theme.spacing(20)
     },
     container2: {
         marginTop: theme.spacing(2),
@@ -50,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
     headerTypo: {
         marginBottom: theme.spacing(8),
         marginLeft: theme.spacing(4),
+    },
+    links: {
+        textDecoration: 'none'
     }
 }));
 
