@@ -60,7 +60,6 @@ export default function Header() {
 
   const [profile] = useContext(ProfileContext);
 
-  // <<<<<<< HEAD
   const profileHandler = (data) => {
     if (data.length == 0) {
       return <Login />;
