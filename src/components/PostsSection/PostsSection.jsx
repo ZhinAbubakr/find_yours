@@ -9,7 +9,7 @@ import Post from "../Dashboard/Post/Post"
 export default function Posts() {
 	const classes = useStyles()
 	const [posts, setPosts] = useState([])
-	const [postsNum, setPostsNum] = useState(10)
+	const [postsNum, setPostsNum] = useState(3)
 	const [showMoreBtn, setShowMoreBtn] = useState(true)
 
 	useEffect(() => {
@@ -56,8 +56,8 @@ export default function Posts() {
 							<Grid container item justify="center">
 								<Box pb={2}>
 									<Button
-										onClick={() => setPostsNum(postsNum + 10)}
-										className="showMoreBtn">
+										onClick={() => setPostsNum(postsNum + 3)}
+										className={classes.showMoreBtn}>
 										show more
 									</Button>
 								</Box>
