@@ -5,10 +5,11 @@ import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useStylesFilter } from "./Style.js";
 export default function Filters({ handlePosts }) {
   const classes = useStylesFilter();
-
+  const mobileView = useMediaQuery("(max-width: 960px)");
   const [state, setState] = useState({
     category: "",
     Status: "",
@@ -77,39 +78,41 @@ export default function Filters({ handlePosts }) {
             <option value={false}>Found</option>
           </Select>
         </FormControl>
-        <FormControl variant="outlined" className={classes.fformControl}>
-          <InputLabel htmlFor="outlined-age-native-simple">City</InputLabel>
-          <Select
-            native
-            value={state.province}
-            onChange={handleChange}
-            label="City"
-            inputProps={{
-              name: "province",
-              id: "outlined-age-native-simple",
-            }}
-          >
-            <option aria-label="None" value="" />
-            <option value="baghdad">Baghdad</option>
-            <option value="erbil">Erbil</option>
-            <option value="basrah">Basrah</option>
-            <option value="wasit">Wasit</option>
-            <option value="najaf">Najaf</option>
-            <option value="sulaymaniyah">Sulaymaniyah</option>
-            <option value="saladdin">Saladdin</option>
-            <option value="nineveh">Nineveh</option>
-            <option value="maysan">Maysan</option>
-            <option value="karbala">Karbala</option>
-            <option value="kirkuk">Kirkuk</option>
-            <option value="diyala">Diyala</option>
-            <option value="dhi Qar">Dhi Qar</option>
-            <option value="babil">Babil</option>
-            <option value="anbar">Anbar</option>
-            <option value="duhok">Duhok</option>
-            <option value="diwaniya">Diwaniya</option>
-            <option value="muthana">Muthana</option>
-          </Select>
-        </FormControl>
+        {mobileView && (
+          <FormControl variant="outlined" className={classes.fformControl}>
+            <InputLabel htmlFor="outlined-age-native-simple">City</InputLabel>
+            <Select
+              native
+              value={state.province}
+              onChange={handleChange}
+              label="City"
+              inputProps={{
+                name: "province",
+                id: "outlined-age-native-simple",
+              }}
+            >
+              <option aria-label="None" value="" />
+              <option value="baghdad">Baghdad</option>
+              <option value="erbil">Erbil</option>
+              <option value="basrah">Basrah</option>
+              <option value="wasit">Wasit</option>
+              <option value="najaf">Najaf</option>
+              <option value="sulaymaniyah">Sulaymaniyah</option>
+              <option value="saladdin">Saladdin</option>
+              <option value="nineveh">Nineveh</option>
+              <option value="maysan">Maysan</option>
+              <option value="karbala">Karbala</option>
+              <option value="kirkuk">Kirkuk</option>
+              <option value="diyala">Diyala</option>
+              <option value="dhi Qar">Dhi Qar</option>
+              <option value="babil">Babil</option>
+              <option value="anbar">Anbar</option>
+              <option value="duhok">Duhok</option>
+              <option value="diwaniya">Diwaniya</option>
+              <option value="muthana">Muthana</option>
+            </Select>
+          </FormControl>
+        )}
         <FormControl variant="outlined" className={classes.fformControl}>
           <InputLabel htmlFor="outlined-age-native-simple">Color</InputLabel>
           <Select
