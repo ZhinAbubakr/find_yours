@@ -125,11 +125,7 @@ export default function Profile() {
           </Grid>
           <Grid item xs={12} className={classes.btn2}>
             <Link to={FORM_ROUTE} className={classes.links}>
-              <Button
-                className={classes.button}
-                variant="contained"
-                color="secondary"
-              >
+              <Button className={classes.button} variant="contained">
                 Add Post
               </Button>
             </Link>
