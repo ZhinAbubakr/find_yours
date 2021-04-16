@@ -1,14 +1,14 @@
-import React from "react"
+import React from "react";
 // import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card"
-import CardHeader from "@material-ui/core/CardHeader"
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
 // import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button"
+import Button from "@material-ui/core/Button";
 // import ghost from "../../../Assets/Ghost.jpg";
-import { useStyles } from "./Style.js"
+import { useStyles } from "./Style.js";
 
 export default function Widget({ handlePosts, doubleFilter }) {
-	const classes = useStyles()
+	const classes = useStyles();
 	// you could write a function here that has city=true in this only function instead of writing them there.
 	return (
 		<Card className={classes.root}>
@@ -19,7 +19,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 			/>
 			<div className={classes.buttons}>
 				<Button
-					onClick={() => handlePosts({ province: "baghdad", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "baghdad",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "baghdad" ? classes.activeCityBtn : ""
@@ -29,7 +34,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 				</Button>
 				<Button
 					variant="contained"
-					onClick={() => handlePosts({ province: "erbil", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "erbil",
+							city: true
+						})
+					}
 					className={`${classes.button} ${
 						doubleFilter.province === "erbil" ? classes.activeCityBtn : ""
 					}`}
@@ -38,7 +48,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 				</Button>
 
 				<Button
-					onClick={() => handlePosts({ province: "basrah", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "basrah",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "basrah" ? classes.activeCityBtn : ""
@@ -47,7 +62,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Basrah
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "duhok", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "duhok",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "duhok" ? classes.activeCityBtn : ""
@@ -56,7 +76,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Duhok
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "anbar", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "anbar",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "anbar" ? classes.activeCityBtn : ""
@@ -65,7 +90,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Anbar
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "babil", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "babil",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "babil" ? classes.activeCityBtn : ""
@@ -74,7 +104,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Babil
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "dhi Qar", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "dhi Qar",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "dhi Qar" ? classes.activeCityBtn : ""
@@ -83,7 +118,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Dhi Qar
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "diyala", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "diyala",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "diyala" ? classes.activeCityBtn : ""
@@ -92,7 +132,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Diyala
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "kirkuk", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "kirkuk",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "kirkuk" ? classes.activeCityBtn : ""
@@ -101,7 +146,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Kirkuk
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "karbala", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "karbala",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "karbala" ? classes.activeCityBtn : ""
@@ -110,7 +160,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Karbala
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "maysan", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "maysan",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "maysan" ? classes.activeCityBtn : ""
@@ -119,7 +174,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Maysan
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "nineveh", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "nineveh",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "nineveh" ? classes.activeCityBtn : ""
@@ -128,7 +188,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Nineveh
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "saladdin", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "saladdin",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "saladdin" ? classes.activeCityBtn : ""
@@ -137,7 +202,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Saladdin
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "sulaymaniyah", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "sulaymaniyah",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "sulaymaniyah"
@@ -148,7 +218,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Sulaymaniyah
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "najaf", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "najaf",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "najaf" ? classes.activeCityBtn : ""
@@ -157,7 +232,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Najaf
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "wasit", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "wasit",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "wasit" ? classes.activeCityBtn : ""
@@ -166,7 +246,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Wasit
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "iwaniya", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "diwaniya",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "diwaniya" ? classes.activeCityBtn : ""
@@ -175,7 +260,12 @@ export default function Widget({ handlePosts, doubleFilter }) {
 					Diwaniya
 				</Button>
 				<Button
-					onClick={() => handlePosts({ province: "muthana", city: true })}
+					onClick={() =>
+						handlePosts({
+							province: "muthana",
+							city: true
+						})
+					}
 					variant="contained"
 					className={`${classes.button} ${
 						doubleFilter.province === "muthana" ? classes.activeCityBtn : ""
@@ -185,5 +275,5 @@ export default function Widget({ handlePosts, doubleFilter }) {
 				</Button>
 			</div>
 		</Card>
-	)
+	);
 }
