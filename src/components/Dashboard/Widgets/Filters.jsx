@@ -78,9 +78,24 @@ export default function Filters({ handlePosts }) {
 							id: "outlined-age-native-simple"
 						}}>
 						<option aria-label="None" value="" />
-						<option value="erbil">Erbil</option>
 						<option value="baghdad">Baghdad</option>
+						<option value="erbil">Erbil</option>
 						<option value="basrah">Basrah</option>
+						<option value="wasit">Wasit</option>
+						<option value="najaf">Najaf</option>
+						<option value="sulaymaniyah">Sulaymaniyah</option>
+						<option value="saladdin">Saladdin</option>
+						<option value="nineveh">Nineveh</option>
+						<option value="maysan">Maysan</option>
+						<option value="karbala">Karbala</option>
+						<option value="kirkuk">Kirkuk</option>
+						<option value="diyala">Diyala</option>
+						<option value="dhi Qar">Dhi Qar</option>
+						<option value="babil">Babil</option>
+						<option value="anbar">Anbar</option>
+						<option value="duhok">Duhok</option>
+						<option value="diwaniya">Diwaniya</option>
+						<option value="muthana">Muthana</option>
 					</Select>
 				</FormControl>
 				<FormControl variant="outlined" className={classes.fformControl}>
