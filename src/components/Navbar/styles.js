@@ -20,7 +20,10 @@ const useStyles = makeStyles(() => ({
 		fontFamily: "Oswald, sans-serif",
 		fontWeight: 700,
 		size: "18px",
-		marginLeft: "38px"
+		marginLeft: "38px",
+		"&.active": {
+			background:'grey'
+		  }, // eslint-disable-line no-mixed-spaces-and-tabs
 	},
 	toolbar: {
 		display: "flex",
