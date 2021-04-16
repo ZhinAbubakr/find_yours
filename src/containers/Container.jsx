@@ -9,6 +9,7 @@ import About from "../components/AboutUs/AboutUs"
 import Form from "../components/Form/Form"
 import ContactUs from "./CountactUs"
 import { ProfileProvider } from "../profileContext"
+import Profile from '../components/Profile/Profile'
 import {
 	HOME_ROUTE,
 	DASHBOARD_ROUTE,
@@ -26,6 +27,7 @@ export default function Container() {
 				<ProfileProvider>
 					<Navbar />
 					<Switch>
+						<Route path={'/profile'} component={Profile} />	
 						<Route exact path={HOME_ROUTE} component={LandingPage} />
 						<Route path={DASHBOARD_ROUTE} component={Dashboard} />
 						<Route path={PRIVACYPOLICY_ROUTE} component={PrivacyPolicy} />
@@ -33,6 +35,7 @@ export default function Container() {
 						<Route path={CONTACTUS_ROUTE} component={ContactUs} />
 						<Route path={FORM_ROUTE} component={Form} />
 						<Route path={NOT_FOUND_ROUTE} component={null} />
+					
 					</Switch>
 					<Footer />
 				</ProfileProvider>

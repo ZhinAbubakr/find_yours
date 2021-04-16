@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import Post from "../Dashboard/Post/Post";
 import useStyles from "./style";
 import { ThemeProvider } from "@material-ui/styles";
@@ -12,20 +12,29 @@ import {
   Divider,
   ListItem,
 } from "@material-ui/core";
+import { ProfileContext } from "../../profileContext"
 import { db } from "../../firebase";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-export default function InsetDividers() {
+export default function Profile() {
   const classes = useStyles();
 
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
+  const [profile] = useContext(ProfileContext)
 
   useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) => {
-      setPosts(snapshot.docs.map((doc) => doc.data()));
-    });
-  }, []);
+  
+    if(profile){
+      db.collection("posts").where("userID", "==", `${profile?profile.googleId:null}`).onSnapshot((snapshot) => {
 
+        setPosts(snapshot.docs.map((doc) => doc.data()));
+      });
+    }
+   
+    
+  }, [profile]);
+
+console.log(posts)
   return (
     <React.Fragment>
       <Container className={classes.container} maxWidth="lg">
@@ -43,41 +52,47 @@ export default function InsetDividers() {
                 />
               </Container>
             </Grid>
-            <Grid item xs={12} md={8} className={classes.container3}>
-              <ListItem>
-                <Container maxWidth="lg" className={classes.container2}>
-                  <Typography variant="body1" color="textSecondary">
-                    Full name
-                  </Typography>
-                  <Typography variant="body1">zhin abubakr abdullah</Typography>
-                  <Divider />
-                </Container>
-                <Container maxWidth="lg" className={classes.container2}>
-                  <Typography variant="body1" color="textSecondary">
-                    Email
-                  </Typography>
-                  <Typography variant="body1">zhin@gmail.com</Typography>
-                  <Divider />
-                </Container>
-              </ListItem>
-              <br />
-              <ListItem>
-                <Container maxWidth="lg">
-                  <Typography variant="body1" color="textSecondary">
-                    Address
-                  </Typography>
-                  <Typography variant="body1">Iraq/Erbil city</Typography>
-                  <Divider />
-                </Container>
-                <Container maxWidth="lg">
-                  <Typography variant="body1" color="textSecondary">
-                    Phone No.
-                  </Typography>
-                  <Typography variant="body1">0750 00 00000</Typography>
-                  <Divider />
-                </Container>
-              </ListItem>
-            </Grid>
+
+            {posts.map((post)=>(
+
+                  <Grid item xs={12} md={8} className={classes.container3}>
+                  <ListItem>
+                    <Container maxWidth="lg" className={classes.container2}>
+                      <Typography variant="body1" color="textSecondary">
+                        Full name
+                      </Typography>
+                      <Typography variant="body1">{profile.name}</Typography>
+                      <Divider />
+                    </Container>
+                    <Container maxWidth="lg" className={classes.container2}>
+                      <Typography variant="body1" color="textSecondary">
+                        Email
+                      </Typography>
+                      <Typography variant="body1">{profile.email}</Typography>
+                      <Divider />
+                    </Container>
+                  </ListItem>
+                  <br />
+                  <ListItem>
+                    <Container maxWidth="lg">
+                      <Typography variant="body1" color="textSecondary">
+                        Address
+                      </Typography>
+                      <Typography variant="body1">{post.province}</Typography>
+                      <Divider />
+                    </Container>
+                    <Container maxWidth="lg">
+                      <Typography variant="body1" color="textSecondary">
+                        Phone No.
+                      </Typography>
+                      <Typography variant="body1">{post.phone}</Typography>
+                      <Divider />
+                    </Container>
+                  </ListItem>
+                  </Grid>
+
+            ))}
+            
           </Grid>
         </ThemeProvider>
       </Container>
