@@ -110,7 +110,7 @@ export default function Header() {
 
   const { drawerOpen } = state;
 
-  const mobileView = useMediaQuery("(max-width: 1015px)");
+  const mobileView = useMediaQuery("(max-width: 1028px)");
 
   const displayDesktop = () => {
     return (
