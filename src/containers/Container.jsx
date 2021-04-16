@@ -17,6 +17,7 @@ import {
   ABOUT_ROUTE,
   FORM_ROUTE,
   CONTACTUS_ROUTE,
+  POST_ROUTE,
 } from "./routes";
 import ViewPost from "../components/ViewPost/ViewPost";
 
@@ -27,7 +28,7 @@ export default function Container() {
         <ProfileProvider>
           <Navbar />
           <Switch>
-            <Route exact path="/post/:id" component={ViewPost} />
+            <Route exact path={POST_ROUTE} component={ViewPost} />
             <Route exact path={HOME_ROUTE} component={LandingPage} />
             <Route path={DASHBOARD_ROUTE} component={Dashboard} />
             <Route path={PRIVACYPOLICY_ROUTE} component={PrivacyPolicy} />
