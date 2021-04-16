@@ -102,43 +102,6 @@ export default function Profile() {
 
       <Divider variant="inset" className={classes.divider} />
 
-      <Container className={classes.container1} maxWidth="lg">
-        <ThemeProvider theme={theme}>
-          <Grid className={classes.btn3}>
-            <Button>see all</Button>
-          </Grid>
-          <Grid>
-            <Typography variant="h6" style={{ fontWeight: "bold" }}>
-              Found Items
-            </Typography>
-          </Grid>
-          <Grid container spacing={2}>
-            {posts ? (
-              posts.map((post, i) => (
-                <Grid key={i} item xs={12} sm={6} md={4}>
-                  <Post post={post} />
-                </Grid>
-              ))
-            ) : (
-              <CircularProgress style={{ marginLeft: "45%" }} />
-            )}
-          </Grid>
-          <Grid item xs={12} className={classes.btn2}>
-            <Link to={FORM_ROUTE} className={classes.links}>
-              <Button
-                className={classes.button}
-                variant="contained"
-                color="secondary"
-              >
-                Add Post
-              </Button>
-            </Link>
-          </Grid>
-        </ThemeProvider>
-      </Container>
-
-      <Divider variant="inset" className={classes.divider1} />
-
       <Container maxWidth="lg" className={classes.container1}>
         <ThemeProvider theme={theme}>
           <Grid className={classes.btn3}>
@@ -146,7 +109,7 @@ export default function Profile() {
           </Grid>
           <Grid>
             <Typography variant="h6" style={{ fontWeight: "bold" }}>
-              Lost Items
+              My Posts
             </Typography>
           </Grid>
           <Grid container spacing={2}>
