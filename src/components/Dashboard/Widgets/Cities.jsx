@@ -13,6 +13,7 @@ export default function Widget({ handlePosts, doubleFilter }) {
 
       <div className={classes.buttons}>
         <Button
+          onClick={() => handlePosts({ province: "", city: true })}
           variant="contained"
           className={classes.cbutton}
           disableElevation
