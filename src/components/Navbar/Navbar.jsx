@@ -182,6 +182,7 @@ export default function Header() {
             anchor: "left",
             open: drawerOpen,
             onClose: handleDrawerClose,
+            onClick: handleDrawerClose,
           }}
         >
           <div className={drawerContainer}>{getDrawerChoices()}</div>
