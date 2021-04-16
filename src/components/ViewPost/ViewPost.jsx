@@ -125,7 +125,11 @@ function ViewPost(props) {
                         Facebook account:
                       </Typography>
                       <Typography variant="body1">
-                        {post.facebook ? post.facebook : "No Account Provided."}
+                        {post.facebook ? (
+                          <a href={post.facebook}>{post.facebook}</a>
+                        ) : (
+                          "No Account Provided."
+                        )}
                       </Typography>
                       <Divider />
                     </Container>
@@ -137,7 +141,11 @@ function ViewPost(props) {
                         Email:
                       </Typography>
                       <Typography variant="body1">
-                        {post.email ? post.email : "No Email Provided."}
+                        {post.email ? (
+                          <a href={`mailto:${post.email}`}>{post.email}</a>
+                        ) : (
+                          "No Email Provided."
+                        )}
                       </Typography>
                       <Divider />
                     </Container>
