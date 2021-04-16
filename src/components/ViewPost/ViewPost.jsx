@@ -47,7 +47,9 @@ function ViewPost(props) {
                       <Typography variant="body1" color="textSecondary">
                         Item title:
                       </Typography>
-                      <Typography variant="body1">{post.title}</Typography>
+                      <Typography variant="body1">
+                        {post.title || "No Details Provided"}
+                      </Typography>
                       <Divider />
                     </Container>
                     <Container maxWidth="lg" className={classes.container2}>
@@ -55,7 +57,8 @@ function ViewPost(props) {
                         Date Lost:
                       </Typography>
                       <Typography variant="body1">
-                        {post.date.toDate().toDateString()}
+                        {post.date.toDate().toDateString() ||
+                          "No Details Provided"}
                       </Typography>
                       <Divider />
                     </Container>
@@ -64,7 +67,8 @@ function ViewPost(props) {
                         Time Posted:
                       </Typography>
                       <Typography variant="body1">
-                        {post.date.toDate().toLocaleTimeString()}
+                        {post.date.toDate().toLocaleTimeString() ||
+                          "No Details Provided"}
                       </Typography>
                       <Divider />
                     </Container>
@@ -75,21 +79,27 @@ function ViewPost(props) {
                       <Typography variant="body1" color="textSecondary">
                         Where Lost:
                       </Typography>
-                      <Typography variant="body1">{post.province}</Typography>
+                      <Typography variant="body1">
+                        {post.province || "No Details Provided"}
+                      </Typography>
                       <Divider />
                     </Container>
                     <Container maxWidth="lg">
                       <Typography variant="body1" color="textSecondary">
                         Color:
                       </Typography>
-                      <Typography variant="body1">{post.color}</Typography>
+                      <Typography variant="body1">
+                        {post.color || "No Color Provided"}
+                      </Typography>
                       <Divider />
                     </Container>
                     <Container maxWidth="lg">
                       <Typography variant="body1" color="textSecondary">
                         Category:
                       </Typography>
-                      <Typography variant="body1">{post.category}</Typography>
+                      <Typography variant="body1">
+                        {post.category || "No Catagory Provided"}
+                      </Typography>
                       <Divider />
                     </Container>
                   </ListItem>
@@ -99,7 +109,9 @@ function ViewPost(props) {
                       <Typography variant="body1" color="textSecondary">
                         Aditional Information:
                       </Typography>
-                      <Typography variant="body1">{post.body}</Typography>
+                      <Typography variant="body1">
+                        {post.body || "No Details Provided"}
+                      </Typography>
                       <Divider />
                     </Container>
                   </ListItem>
@@ -117,7 +129,9 @@ function ViewPost(props) {
                       <Typography variant="body1" color="textSecondary">
                         First Name:
                       </Typography>
-                      <Typography variant="body1">{post.name}</Typography>
+                      <Typography variant="body1">
+                        {post.name || "No Details Provided"}
+                      </Typography>
                       <Divider />
                     </Container>
                     <Container className={classes.container2}>
