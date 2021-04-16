@@ -16,7 +16,7 @@ import { ProfileContext } from "../../profileContext";
 import { db } from "../../firebase";
 import Popover from "@material-ui/core/Popover";
 import FilterListIcon from "@material-ui/icons/FilterList";
-import { FORM_ROUTE } from "../../containers/routes";
+import { FORM_ROUTE, PROFILE_ROUTE } from "../../containers/routes";
 import { Link } from "react-router-dom";
 
 export default function Dashboard() {
@@ -158,7 +158,9 @@ export default function Dashboard() {
 			<div style={{ margin: "0 20px" }}>
 				<div className={classes.messageSender}>
 					<div className={classes.messageSender_top}>
-						<Avatar src={profile.imageUrl} />
+						<Link to={PROFILE_ROUTE} className={classes.links}>
+							<Avatar src={profile.imageUrl} />
+						</Link>
 						<div className={classes.searchbar}>
 							<SearchBar
 								className={searchfield}
