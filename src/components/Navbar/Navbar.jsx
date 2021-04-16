@@ -102,6 +102,7 @@ export default function Header() {
     avatar,
     navheader,
     paper,
+    navlink,
   } = useStyles();
 
   const [state, setState] = useState({
@@ -259,17 +260,17 @@ export default function Header() {
   const getMenuButtons = () => {
     return headersData.map(({ label, href }) => {
       return (
-        <Button
-          {...{
-            key: label,
-            color: "inherit",
-            to: href,
-            component: RouterLink,
-            className: menuButton,
-          }}
-        >
-          {label}
-        </Button>
+        <RouterLink to={href} className={navlink} exact>
+          <Button
+            {...{
+              key: label,
+              color: "inherit",
+              className: menuButton,
+            }}
+          >
+            {label}
+          </Button>
+        </RouterLink>
       );
     });
   };
