@@ -9,6 +9,7 @@ import About from "../components/AboutUs/AboutUs";
 import Form from "../components/Form/Form";
 import ContactUs from "./CountactUs";
 import { ProfileProvider } from "../profileContext";
+import Profile from "../components/Profile/Profile";
 import {
   HOME_ROUTE,
   DASHBOARD_ROUTE,
@@ -29,6 +30,7 @@ export default function Container() {
           <Navbar />
           <Switch>
             <Route exact path={POST_ROUTE} component={ViewPost} />
+            <Route path={"/profile"} component={Profile} />
             <Route exact path={HOME_ROUTE} component={LandingPage} />
             <Route path={DASHBOARD_ROUTE} component={Dashboard} />
             <Route path={PRIVACYPOLICY_ROUTE} component={PrivacyPolicy} />
