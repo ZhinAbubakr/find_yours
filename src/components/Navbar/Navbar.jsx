@@ -5,7 +5,6 @@ import {
   Button,
   IconButton,
   Drawer,
-  Link,
   MenuItem,
   MenuList,
   ListItemIcon,
@@ -103,6 +102,7 @@ export default function Header() {
     navheader,
     paper,
     navlink,
+    sidelink,
   } = useStyles();
 
   const [state, setState] = useState({
@@ -230,12 +230,12 @@ export default function Header() {
   const getDrawerChoices = () => {
     return headersData.map(({ label, href, icon }) => {
       return (
-        <Link
+        <RouterLink
+          exact
           {...{
-            component: RouterLink,
+            className: sidelink,
             to: href,
             color: "inherit",
-            style: { textDecoration: "none" },
             key: label,
           }}
         >
@@ -246,7 +246,7 @@ export default function Header() {
             </MenuItem>
             <Divider />
           </MenuList>
-        </Link>
+        </RouterLink>
       );
     });
   };
