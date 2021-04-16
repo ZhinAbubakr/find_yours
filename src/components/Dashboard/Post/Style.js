@@ -64,6 +64,9 @@ const useStyles = makeStyles((theme) => ({
     tagIcon: {
       marginLeft: "0px",
     },
+    links: {
+      textDecoration: 'none'
+    },
   }));
 
   export {useStyles}
