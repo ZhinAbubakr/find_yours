@@ -31,6 +31,15 @@ const useStyles = makeStyles((theme) => ({
 			backgroundColor: "#27938d"
 		}
 	},
+	cbutton: {
+		backgroundColor: "#3AAFA9",
+		color: "white",
+		width: "90%",
+		margin: "5px",
+		"&:hover": {
+			backgroundColor: "#27938d"
+		}
+	},
 	avatar: {
 		backgroundColor: grey[500],
 		width: "30px",
