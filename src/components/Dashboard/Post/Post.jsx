@@ -79,7 +79,7 @@ export default function RecipeReviewCard({ post }) {
           ))}
         </GridList>
         <CardActions disableSpacing>
-          <Link to="/post/:id" className={classes.links}>
+          <Link to={`/post/${post.id}`} className={classes.links}>
             <Button className={classes.button}>contact</Button>
           </Link>
         </CardActions>
