@@ -58,14 +58,18 @@ export default function Profile() {
                     <Typography variant="body1" color="textSecondary">
                       Full name
                     </Typography>
-                    <Typography variant="body1">{profile.name}</Typography>
+                    <Typography variant="body1">
+                      {profile.name || "Phone Number Not Provided"}
+                    </Typography>
                     <Divider />
                   </Container>
                   <Container maxWidth="lg" className={classes.container2}>
                     <Typography variant="body1" color="textSecondary">
                       Email
                     </Typography>
-                    <Typography variant="body1">{profile.email}</Typography>
+                    <Typography variant="body1">
+                      {profile.email || "Phone Number Not Provided"}
+                    </Typography>
                     <Divider />
                   </Container>
                 </ListItem>
@@ -75,14 +79,18 @@ export default function Profile() {
                     <Typography variant="body1" color="textSecondary">
                       Address
                     </Typography>
-                    <Typography variant="body1">{post.province}</Typography>
+                    <Typography variant="body1">
+                      {post.province || "Phone Number Not Provided"}
+                    </Typography>
                     <Divider />
                   </Container>
                   <Container maxWidth="lg">
                     <Typography variant="body1" color="textSecondary">
                       Phone No.
                     </Typography>
-                    <Typography variant="body1">{post.phone}</Typography>
+                    <Typography variant="body1">
+                      {post.phone || "Phone Number Not Provided"}
+                    </Typography>
                     <Divider />
                   </Container>
                 </ListItem>

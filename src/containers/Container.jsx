@@ -19,6 +19,7 @@ import {
   FORM_ROUTE,
   CONTACTUS_ROUTE,
   POST_ROUTE,
+  PROFILE_ROUTE,
 } from "./routes";
 import ViewPost from "../components/ViewPost/ViewPost";
 
@@ -30,7 +31,7 @@ export default function Container() {
           <Navbar />
           <Switch>
             <Route exact path={POST_ROUTE} component={ViewPost} />
-            <Route path={"/profile"} component={Profile} />
+            <Route path={PROFILE_ROUTE} component={Profile} />
             <Route exact path={HOME_ROUTE} component={LandingPage} />
             <Route path={DASHBOARD_ROUTE} component={Dashboard} />
             <Route path={PRIVACYPOLICY_ROUTE} component={PrivacyPolicy} />
