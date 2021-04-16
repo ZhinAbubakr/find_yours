@@ -14,7 +14,7 @@ import {
 import { useStyles } from "./styles.js";
 import { FiMenu } from "react-icons/fi";
 import React, { useState, useContext } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { NavLink as RouterLink } from "react-router-dom";
 import Menu from "@material-ui/core/Menu";
 import LanguageIcon from "@material-ui/icons/Language";
 import { Dashboard, Home, Info, Message, Lock } from "@material-ui/icons";
