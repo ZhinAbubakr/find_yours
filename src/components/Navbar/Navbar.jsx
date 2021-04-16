@@ -24,6 +24,7 @@ import { ProfileContext } from "../../profileContext";
 import Avatar from "@material-ui/core/Avatar";
 import CardHeader from "@material-ui/core/CardHeader";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { PROFILE_ROUTE } from "../../containers/routes";
 
 const options = ["Arabic", "English", "Kurdish"];
 const ITEM_HEIGHT = 48;
@@ -70,7 +71,11 @@ export default function Header() {
         <div>
           <CardHeader
             className={navheader}
-            avatar={<Avatar src={data.imageUrl} className={avatar} />}
+            avatar={
+              <RouterLink to={PROFILE_ROUTE}>
+                <Avatar src={data.imageUrl} className={avatar} />
+              </RouterLink>
+            }
             title={<Logout />}
           />
         </div>
