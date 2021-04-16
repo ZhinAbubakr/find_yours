@@ -18,7 +18,12 @@ export default function Posts() {
 			.limit(postsNum)
 			.get()
 			.then((snapshot) => {
-				snapshot.docs.map((doc) => res.push(doc.data()))
+				snapshot.docs.map((doc) =>
+					res.push({
+						id: doc.id,
+						...doc.data()
+					})
+				)
 				setPosts(res)
 			})
 		db.collection("posts")

@@ -82,34 +82,46 @@ export default function Dashboard() {
   };
 
   const handlefetch = () => {
-    const h1 = [];
+    const res = [];
     const query = db.collection("posts");
     query
       .where("category ", "==", search[0])
       .get()
       .then((snapshot) => {
-        snapshot.docs.map((doc) => h1.push(doc.data()));
+        snapshot.docs.map((doc) => res.push({
+          id: doc.id,
+          ...doc.data(),
+        }));
       });
 
     query
       .where("color", "==", search[0])
       .get()
       .then((snapshot) => {
-        snapshot.docs.map((doc) => h1.push(doc.data()));
+        snapshot.docs.map((doc) => res.push({
+          id: doc.id,
+          ...doc.data(),
+        }));
       });
     query
       .where("province", "==", search[0])
       .get()
       .then((snapshot) => {
-        snapshot.docs.map((doc) => h1.push(doc.data()));
+        snapshot.docs.map((doc) => res.push({
+          id: doc.id,
+          ...doc.data(),
+        }));
       });
     query
       .where("body", "array-contains-any", search)
       .get()
       .then((snapshot) => {
-        snapshot.docs.map((doc) => h1.push(doc.data()));
+        snapshot.docs.map((doc) => res.push({
+          id: doc.id,
+          ...doc.data(),
+        }));
         if (search[0] != "found" && search[0] != "lost") {
-          setPosts(h1);
+          setPosts(res);
         }
       });
 
@@ -119,8 +131,11 @@ export default function Dashboard() {
         .where("isLost", "==", check)
         .get()
         .then((snapshot) => {
-          snapshot.docs.map((doc) => h1.push(doc.data()));
-          setPosts(h1);
+          snapshot.docs.map((doc) => res.push({
+            id: doc.id,
+            ...doc.data(),
+          }));
+          setPosts(res);
         });
     }
   };
