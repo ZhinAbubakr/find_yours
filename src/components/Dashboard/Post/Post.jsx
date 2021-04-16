@@ -18,7 +18,6 @@ import { useStyles } from "./Style"
 import { Link } from "react-router-dom"
 
 export default function RecipeReviewCard({ post }) {
-	console.log(post.id)
 	const classes = useStyles()
 	return (
 		<Card className={classes.root}>
