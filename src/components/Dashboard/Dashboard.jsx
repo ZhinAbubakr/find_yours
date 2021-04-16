@@ -1,63 +1,65 @@
-import React, { useContext, useState, useEffect } from "react"
-import CircularProgress from "@material-ui/core/CircularProgress"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
-import Grid from "@material-ui/core/Grid"
-import Button from "@material-ui/core/Button"
-import { Avatar, IconButton } from "@material-ui/core"
-import SearchBar from "material-ui-search-bar"
-import LinearProgress from "@material-ui/core/LinearProgress"
-import Navbar from "../Navbar/Navbar"
-import { useStyles } from "./styles.js"
-import Post from "./Post/Post"
-import Cities from "./Widgets/Cities"
-import Filters from "./Widgets/Filters"
-import { useStyleDashboard } from "./Widgets/Style"
-import { ProfileContext } from "../../profileContext"
-import { db } from "../../firebase"
-import Popover from "@material-ui/core/Popover"
-import FilterListIcon from "@material-ui/icons/FilterList"
+import React, { useContext, useState, useEffect } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import { Avatar, IconButton } from "@material-ui/core";
+import SearchBar from "material-ui-search-bar";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import Navbar from "../Navbar/Navbar";
+import { useStyles } from "./styles.js";
+import Post from "./Post/Post";
+import Cities from "./Widgets/Cities";
+import Filters from "./Widgets/Filters";
+import { useStyleDashboard } from "./Widgets/Style";
+import { ProfileContext } from "../../profileContext";
+import { db } from "../../firebase";
+import Popover from "@material-ui/core/Popover";
+import FilterListIcon from "@material-ui/icons/FilterList";
+import { FORM_ROUTE } from "../../containers/routes";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
-	const [profile] = useContext(ProfileContext)
-	const [posts, setPosts] = useState()
-	const [isLoading] = useState(false)
-	const classes = useStyles()
-	const [showMoreBtn, setShowMoreBtn] = useState(true)
-	const [postsNum, setPostsNum] = useState(10)
-	const [doubleFilter, setDubleFilter] = useState({})
-	const [search, setSearch] = useState([])
-	const mobileView = useMediaQuery("(max-width: 960px)")
-	const mediumView = useMediaQuery("(max-width: 1210px)")
+	const [profile] = useContext(ProfileContext);
+	const [posts, setPosts] = useState();
+	const [isLoading] = useState(false);
+	const classes = useStyles();
+	const [showMoreBtn, setShowMoreBtn] = useState(true);
+	const [postsNum, setPostsNum] = useState(10);
+	const [doubleFilter, setDubleFilter] = useState({});
+	const [search, setSearch] = useState([]);
+	const mobileView = useMediaQuery("(max-width: 960px)");
+	const mediumView = useMediaQuery("(max-width: 1210px)");
 	const handlePosts = (filterState) => {
 		// to handle both the filters and cities queries.
 		if (filterState.city === true) {
-			const { province } = filterState
-			setDubleFilter({ ...doubleFilter, province })
+			const { province } = filterState;
+			setDubleFilter({ ...doubleFilter, province });
 		} else if (filterState.province != undefined) {
-			const { color, category, Status, province } = filterState
-			setDubleFilter({ ...doubleFilter, color, category, Status, province })
+			const { color, category, Status, province } = filterState;
+			setDubleFilter({ ...doubleFilter, color, category, Status, province });
 		} else {
-			const { color, category, Status } = filterState
-			setDubleFilter({ ...doubleFilter, color, category, Status })
+			const { color, category, Status } = filterState;
+			setDubleFilter({ ...doubleFilter, color, category, Status });
 		}
-	}
+	};
 	useEffect(() => {
 		const fetch = () => {
-			const query = db.collection("posts")
+			const query = db.collection("posts");
 			const categoryQuery = doubleFilter.category
 				? query.where("category ", "==", doubleFilter["category"])
-				: query
+				: query;
 			const colorQuery = doubleFilter.color
 				? categoryQuery.where("color", "==", doubleFilter["color"])
-				: categoryQuery
+				: categoryQuery;
 			const provinceQuery = doubleFilter.province
 				? colorQuery.where("province", "==", doubleFilter["province"])
-				: colorQuery
-			const check = doubleFilter["Status"] === "true" ? true : false
+				: colorQuery;
+			const check = doubleFilter["Status"] === "true" ? true : false;
 			const isLostQuery = doubleFilter.Status
 				? provinceQuery.where("isLost", "==", check)
-				: provinceQuery
-			const res = []
+				: provinceQuery;
+			const res = [];
 			isLostQuery
 				.limit(postsNum)
 				.get()
@@ -67,23 +69,23 @@ export default function Dashboard() {
 							id: doc.id,
 							...doc.data()
 						})
-					)
-					setPosts(res)
-				})
+					);
+					setPosts(res);
+				});
 			// to handle whether to show the show more btn or not.
-			isLostQuery.get().then((snap) => setShowMoreBtn(snap.size > postsNum))
-		}
-		fetch()
-		return fetch()
-	}, [doubleFilter, postsNum])
+			isLostQuery.get().then((snap) => setShowMoreBtn(snap.size > postsNum));
+		};
+		fetch();
+		return fetch();
+	}, [doubleFilter, postsNum]);
 
 	const handleSearchInput = (e) => {
-		setSearch(e.split(" "))
-	}
+		setSearch(e.split(" "));
+	};
 
 	const handlefetch = () => {
-		const res = []
-		const query = db.collection("posts")
+		const res = [];
+		const query = db.collection("posts");
 		query
 			.where("category ", "==", search[0])
 			.get()
@@ -93,8 +95,8 @@ export default function Dashboard() {
 						id: doc.id,
 						...doc.data()
 					})
-				)
-			})
+				);
+			});
 
 		query
 			.where("color", "==", search[0])
@@ -105,8 +107,8 @@ export default function Dashboard() {
 						id: doc.id,
 						...doc.data()
 					})
-				)
-			})
+				);
+			});
 		query
 			.where("province", "==", search[0])
 			.get()
@@ -116,8 +118,8 @@ export default function Dashboard() {
 						id: doc.id,
 						...doc.data()
 					})
-				)
-			})
+				);
+			});
 		query
 			.where("body", "array-contains-any", search)
 			.get()
@@ -127,14 +129,14 @@ export default function Dashboard() {
 						id: doc.id,
 						...doc.data()
 					})
-				)
+				);
 				if (search[0] != "found" && search[0] != "lost") {
-					setPosts(res)
+					setPosts(res);
 				}
-			})
+			});
 
 		if (search[0] === "found" || search[0] === "lost") {
-			const check = search[0] === "found" ? false : true
+			const check = search[0] === "found" ? false : true;
 			query
 				.where("isLost", "==", check)
 				.get()
@@ -144,13 +146,13 @@ export default function Dashboard() {
 							id: doc.id,
 							...doc.data()
 						})
-					)
-					setPosts(res)
-				})
+					);
+					setPosts(res);
+				});
 		}
-	}
+	};
 
-	const { container, searchfield, button, widget } = useStyleDashboard()
+	const { container, searchfield, button, widget } = useStyleDashboard();
 	const middleColomn = (text) => {
 		return (
 			<div style={{ margin: "0 20px" }}>
@@ -196,21 +198,23 @@ export default function Dashboard() {
 							</div>
 						)}
 						<div className={classes.buttons}>
-							<Button
-								{...{
-									className: button
-								}}
-								variant="contained"
-								color="primary"
-								disableElevation>
-								{text}
-							</Button>
+							<Link to={FORM_ROUTE} className={classes.submitLink}>
+								<Button
+									{...{
+										className: button
+									}}
+									variant="contained"
+									color="primary"
+									disableElevation>
+									{text}
+								</Button>
+							</Link>
 						</div>
 					</div>
 				</div>
 			</div>
-		)
-	}
+		);
+	};
 	const postItems = () => {
 		return (
 			<div className={classes.posts}>
@@ -233,20 +237,20 @@ export default function Dashboard() {
 					<CircularProgress />
 				)}
 			</div>
-		)
-	}
-	const [anchorEl, setAnchorEl] = useState(null)
+		);
+	};
+	const [anchorEl, setAnchorEl] = useState(null);
 
 	const handleClick = (event) => {
-		setAnchorEl(event.currentTarget)
-	}
+		setAnchorEl(event.currentTarget);
+	};
 
 	const handleClose = () => {
-		setAnchorEl(null)
-	}
+		setAnchorEl(null);
+	};
 
-	const open = Boolean(anchorEl)
-	const id = open ? "simple-popover" : "simple-popover"
+	const open = Boolean(anchorEl);
+	const id = open ? "simple-popover" : "simple-popover";
 	return (
 		<div>
 			<Navbar />
@@ -302,5 +306,5 @@ export default function Dashboard() {
 				</Grid>
 			)}
 		</div>
-	)
+	);
 }
