@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-// import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-// import ghost from "../../../Assets/Ghost.jpg";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
@@ -32,11 +30,7 @@ export default function Filters({ handlePosts }) {
 
   return (
     <Card className={classes.root}>
-      <CardHeader
-        // avatar={<Avatar src={ghost} className={classes.avatar} />}
-        title="Filters"
-        className={classes.fheader}
-      />
+      <CardHeader title="Filters" className={classes.fheader} />
       <div className={classes.fbuttons}>
         <Button
           onClick={() =>
