@@ -127,7 +127,7 @@ function ViewPost(props) {
                   <ListItem>
                     <Container className={classes.container2}>
                       <Typography variant="body1" color="textSecondary">
-                        First Name:
+                        Full Name:
                       </Typography>
                       <Typography variant="body1">
                         {post.name || "No Details Provided"}
@@ -165,7 +165,7 @@ function ViewPost(props) {
                     </Container>
                     <Container maxWidth="lg">
                       <Typography variant="body1" color="textSecondary">
-                        Phon No.
+                        Phone No.
                       </Typography>
                       <Typography variant="body1">
                         {post.phone ? post.phone : "No Phone Number Provided."}
