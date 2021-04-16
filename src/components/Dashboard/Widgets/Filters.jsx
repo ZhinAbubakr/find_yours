@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import Button from "@material-ui/core/Button";
@@ -9,7 +9,7 @@ import { useStylesFilter } from "./Style.js";
 export default function Filters({ handlePosts }) {
   const classes = useStylesFilter();
 
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     category: "",
     Status: "",
     province: "",
