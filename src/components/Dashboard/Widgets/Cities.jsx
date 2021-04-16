@@ -10,7 +10,15 @@ export default function Widget({ handlePosts, doubleFilter }) {
   return (
     <Card className={classes.root}>
       <CardHeader title="Cities" className={classes.header} />
+
       <div className={classes.buttons}>
+        <Button
+          variant="contained"
+          className={classes.cbutton}
+          disableElevation
+        >
+          Clear
+        </Button>
         <Button
           onClick={() => handlePosts({ province: "baghdad", city: true })}
           variant="contained"
