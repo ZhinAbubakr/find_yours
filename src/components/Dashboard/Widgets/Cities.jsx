@@ -10,7 +10,6 @@ export default function Widget({ handlePosts, doubleFilter }) {
   return (
     <Card className={classes.root}>
       <CardHeader title="Cities" className={classes.header} />
-
       <div className={classes.buttons}>
         <Button
           onClick={() => handlePosts({ province: "", city: true })}
