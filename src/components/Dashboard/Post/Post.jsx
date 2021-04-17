@@ -1,24 +1,24 @@
-import React from "react"
-import Card from "@material-ui/core/Card"
-import CardHeader from "@material-ui/core/CardHeader"
-import CardContent from "@material-ui/core/CardContent"
-import CardActions from "@material-ui/core/CardActions"
-import Avatar from "@material-ui/core/Avatar"
-import IconButton from "@material-ui/core/IconButton"
-import Typography from "@material-ui/core/Typography"
-import { MdMoreVert } from "react-icons/md"
-import Button from "@material-ui/core/Button"
-import GridList from "@material-ui/core/GridList"
-import GridListTile from "@material-ui/core/GridListTile"
-import GridListTileBar from "@material-ui/core/GridListTileBar"
-import Chip from "@material-ui/core/Chip"
-import ErrorIcon from "@material-ui/icons/Error"
-import CheckCircleIcon from "@material-ui/icons/CheckCircle"
-import { useStyles } from "./Style"
-import { Link } from "react-router-dom"
+import React from "react";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import { MdMoreVert } from "react-icons/md";
+import Button from "@material-ui/core/Button";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import GridListTileBar from "@material-ui/core/GridListTileBar";
+import Chip from "@material-ui/core/Chip";
+import ErrorIcon from "@material-ui/icons/Error";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import { useStyles } from "./Style";
+import { Link } from "react-router-dom";
 
 export default function RecipeReviewCard({ post }) {
-	const classes = useStyles()
+	const classes = useStyles();
 	return (
 		<Card className={classes.root}>
 			<div>
@@ -85,5 +85,5 @@ export default function RecipeReviewCard({ post }) {
 				</CardActions>
 			</div>
 		</Card>
-	)
+	);
 }
