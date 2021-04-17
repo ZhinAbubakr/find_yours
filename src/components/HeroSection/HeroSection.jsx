@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import PlanetOne from "../../images/1.png";
 import PlanetTwo from "../../images/2.png";
@@ -13,8 +13,10 @@ import {
 } from "./style.js";
 import { FORM_ROUTE } from "../../containers/routes";
 import { Link } from "react-router-dom";
+import { ProfileContext } from "../../profileContext";
 
 export default function HeroSection() {
+	const [profile] = useContext(ProfileContext);
 	const fadeLeft = {
 		hidden: { opacity: 0, x: -100 },
 		visible: { opacity: 1, x: 0 }
@@ -37,8 +39,24 @@ export default function HeroSection() {
 						transition={{ duration: 1 }}>
 						Lost & Found
 					</motion.p>
-					<Link to={FORM_ROUTE}>
+					{profile.length != 0 ? (
+						<Link to={FORM_ROUTE}>
+							<Button
+								whileHover={{ scale: 1.05 }}
+								whileTap={{
+									scale: 0.95,
+									backgroundColor: "#67F6E7",
+									border: "none",
+									color: "#000"
+								}}
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1, transition: { duration: 1.5 } }}>
+								Submit
+							</Button>
+						</Link>
+					) : (
 						<Button
+							onClick={() => alert("you need to log in to post!")}
 							whileHover={{ scale: 1.05 }}
 							whileTap={{
 								scale: 0.95,
@@ -50,7 +68,7 @@ export default function HeroSection() {
 							animate={{ opacity: 1, transition: { duration: 1.5 } }}>
 							Submit
 						</Button>
-					</Link>
+					)}
 				</ColumnLeft>
 				<ColumnRight>
 					<Image
