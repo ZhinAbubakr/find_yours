@@ -44,6 +44,9 @@ export default function Dashboard() {
 			setDubleFilter({ ...doubleFilter, color, category, Status });
 		}
 	};
+	const handleClearFilter = () => {
+		setDubleFilter({});
+	};
 	useEffect(() => {
 		const fetch = () => {
 			const query = db.collection("posts");
@@ -201,7 +204,10 @@ export default function Dashboard() {
 										vertical: "top",
 										horizontal: "center"
 									}}>
-									<Filters handlePosts={handlePosts} />
+									<Filters
+										handleClearFilter={handleClearFilter}
+										handlePosts={handlePosts}
+									/>
 								</Popover>
 							</div>
 						)}

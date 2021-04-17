@@ -7,7 +7,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useStylesFilter } from "./Style.js";
-export default function Filters({ handlePosts }) {
+export default function Filters({ handlePosts, handleClearFilter }) {
 	const classes = useStylesFilter();
 	const mobileView = useMediaQuery("(max-width: 960px)");
 	const [state, setState] = useState({
@@ -29,14 +29,19 @@ export default function Filters({ handlePosts }) {
 		handlePosts(state);
 	}, [state]);
 
+	const clearFilter = () => {
+		setState({ category: "", Status: "", province: "", color: "" });
+		// when in mobile view call this function to clear the cities too.
+		if (mobileView) {
+			handleClearFilter();
+		}
+	};
 	return (
 		<Card className={classes.root}>
 			<CardHeader title="Filters" className={classes.fheader} />
 			<div className={classes.fbuttons}>
 				<Button
-					onClick={() =>
-						setState({ category: "", Status: "", province: "", color: "" })
-					}
+					onClick={clearFilter}
 					variant="contained"
 					className={classes.cbutton}
 					disableElevation>
