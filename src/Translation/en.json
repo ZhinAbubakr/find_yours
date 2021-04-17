@@ -45,6 +45,9 @@
     "post":{
         "view": "View Post"
     },
+    "footer":{
+        "copyright": "Copyright © 2021 FindYours. All Rights Reserved."
+    },
     "navbar":{
         "home": "Home",
         "dash": "Dashboard",
