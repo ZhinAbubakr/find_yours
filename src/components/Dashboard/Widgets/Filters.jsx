@@ -54,7 +54,7 @@ export default function Filters({ handlePosts }) {
 							id: "outlined-age-native-simple"
 						}}>
 						<option aria-label="None" value="" />
-						<option value="wallet">Wallet</option>
+						<option value="animals/pets">Animals/Pets</option>
 						<option value="documents">Documents</option>
 						<option value="clothing">Clothing</option>
 						<option value="electronics">Electronics</option>

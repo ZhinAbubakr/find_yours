@@ -50,14 +50,14 @@ export default function RecipeReviewCard({ post }) {
 						{post.title}
 					</Typography>
 					<Typography variant="body2" color="textSecondary" component="p">
-						{post.body.map((word) => (
-							<span key={word}>{word} </span>
+						{post.body.map((word, i) => (
+							<span key={i}>{word} </span>
 						))}
 					</Typography>
 				</CardContent>
 			</div>
 			<div>
-				<img src={post.image} height="220" alt="Post image" />
+				<img src={post.image} height="240" width="350" alt="Post image" />
 				<CardActions disableSpacing>
 					<Link to={`/post/${post.id}`} className={classes.links}>
 						<Button className={classes.button}>View Post</Button>

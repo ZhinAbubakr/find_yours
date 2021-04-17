@@ -26,13 +26,17 @@ export default function Profile() {
 	const [profile] = useContext(ProfileContext);
 
 	useEffect(() => {
-		if (profile) {
-			db.collection("posts")
-				.where("userId", "==", `${profile ? profile.googleId : null}`)
-				.onSnapshot((snapshot) => {
-					setPosts(snapshot.docs.map((doc) => doc.data()));
-				});
-		}
+		const fetch = () => {
+			if (profile) {
+				db.collection("posts")
+					.where("userId", "==", `${profile ? profile.googleId : null}`)
+					.onSnapshot((snapshot) => {
+						setPosts(snapshot.docs.map((doc) => doc.data()));
+					});
+			}
+		};
+		fetch();
+		return fetch();
 	}, [profile]);
 	const profileInfo = (
 		<ListItem>

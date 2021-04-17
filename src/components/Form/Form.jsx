@@ -98,13 +98,13 @@ const Form = () => {
 				<Grid container spacing={3}>
 					<Grid item xs={12} lg={6}>
 						<Paper className={classes.paper}>
-							<h4 className={classes.title}>Item</h4>
+							<h4 className={classes.title}>Property</h4>
 							<p className={classes.desc}>
 								(Dog, Jacket, Smartphone, Wallet, etc.)
 							</p>
 							<TextField
 								id="outlined-basic"
-								label="Item"
+								label="property"
 								variant="outlined"
 								className={classes.input}
 								value={item}
@@ -124,7 +124,6 @@ const Form = () => {
 								value={category}
 								onChange={handleChangeCat}
 								required>
-								<MenuItem value="Wallet">Wallet</MenuItem>
 								<MenuItem value="documents">Documents</MenuItem>
 								<MenuItem value="animals/pets">Animals/Pets</MenuItem>
 								<MenuItem value="clothing">Clothing</MenuItem>

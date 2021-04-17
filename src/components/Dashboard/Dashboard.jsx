@@ -35,7 +35,7 @@ export default function Dashboard() {
 		if (filterState.city === true) {
 			const { province } = filterState;
 			setDubleFilter({ ...doubleFilter, province });
-		} else if (filterState.province != undefined) {
+		} else if (filterState.province != "") {
 			const { color, category, Status, province } = filterState;
 			setDubleFilter({ ...doubleFilter, color, category, Status, province });
 		} else {
@@ -47,7 +47,7 @@ export default function Dashboard() {
 		const fetch = () => {
 			const query = db.collection("posts");
 			const categoryQuery = doubleFilter.category
-				? query.where("category ", "==", doubleFilter["category"])
+				? query.where("category", "==", doubleFilter["category"])
 				: query;
 			const colorQuery = doubleFilter.color
 				? categoryQuery.where("color", "==", doubleFilter["color"])
