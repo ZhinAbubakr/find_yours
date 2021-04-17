@@ -7,35 +7,53 @@ import {
   Drawer,
   Link,
   MenuItem,
+  MenuList,
+  ListItemIcon,
+  Divider,
 } from "@material-ui/core";
 import { useStyles } from "./styles.js";
 import { FiMenu } from "react-icons/fi";
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import google from "../../Assets/Google.png";
 import Menu from "@material-ui/core/Menu";
-import { GrLanguage } from "react-icons/gr";
+import LanguageIcon from "@material-ui/icons/Language";
+import { Dashboard, Home, Info, Message, Lock } from "@material-ui/icons";
+import Login from "../googleauth/Login";
+import Logout from "../googleauth/Logout";
+import { ProfileContext } from "../../profileContext";
+import Avatar from "@material-ui/core/Avatar";
+import CardHeader from "@material-ui/core/CardHeader";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { PROFILE_ROUTE } from "../../containers/routes";
 
 const options = ["Arabic", "English", "Kurdish"];
-
 const ITEM_HEIGHT = 48;
 
 const headersData = [
   {
+    label: "Home",
+    href: "/",
+    icon: <Home style={{ color: "white" }} />,
+  },
+  {
     label: "Dashboard",
     href: "/dashboard",
+    icon: <Dashboard style={{ color: "white" }} />,
   },
   {
     label: "Privacy Policy",
-    href: "/privacy",
+    href: "/PrivacyPolicy",
+    icon: <Lock style={{ color: "white" }} />,
   },
   {
     label: "About us",
     href: "/about",
+    icon: <Info style={{ color: "white" }} />,
   },
   {
     label: "Contact us",
-    href: "/contact",
+    href: "/contactUs",
+    icon: <Message style={{ color: "white" }} />,
   },
 ];
 
@@ -43,13 +61,33 @@ export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
+  const [profile] = useContext(ProfileContext);
+
+  const profileHandler = (data) => {
+    if (data.length == 0) {
+      return <Login />;
+    } else {
+      return (
+        <div>
+          <CardHeader
+            className={navheader}
+            avatar={
+              <RouterLink to={PROFILE_ROUTE}>
+                <Avatar src={data.imageUrl} className={avatar} />
+              </RouterLink>
+            }
+            title={<Logout />}
+          />
+        </div>
+      );
+    }
+  };
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
-    // console.log(event.currentTarget.innerText);
   };
   const {
     header,
@@ -59,29 +97,20 @@ export default function Header() {
     drawerContainer,
     toolbar2,
     languageicon,
-    googleimg,
     toolbar3,
     toolbar4,
+    avatar,
+    navheader,
+    paper,
   } = useStyles();
 
   const [state, setState] = useState({
-    mobileView: false,
     drawerOpen: false,
   });
 
-  const { mobileView, drawerOpen } = state;
+  const { drawerOpen } = state;
 
-  useEffect(() => {
-    const setResponsiveness = () => {
-      return window.innerWidth < 900
-        ? setState((prevState) => ({ ...prevState, mobileView: true }))
-        : setState((prevState) => ({ ...prevState, mobileView: false }));
-    };
-
-    setResponsiveness();
-
-    window.addEventListener("resize", () => setResponsiveness());
-  }, []);
+  const mobileView = useMediaQuery("(max-width: 1028px)");
 
   const displayDesktop = () => {
     return (
@@ -95,7 +124,7 @@ export default function Header() {
             aria-haspopup="true"
             onClick={handleClick}
           >
-            <GrLanguage className={languageicon} />
+            <LanguageIcon className={languageicon} />
           </IconButton>
           <Menu
             id="long-menu"
@@ -120,7 +149,7 @@ export default function Header() {
               </MenuItem>
             ))}
           </Menu>
-          <img className={googleimg} src={google} alt="google" />
+          {profileHandler(profile)}
         </div>
       </Toolbar>
     );
@@ -147,6 +176,7 @@ export default function Header() {
         </IconButton>
 
         <Drawer
+          classes={{ paper: paper }}
           {...{
             anchor: "left",
             open: drawerOpen,
@@ -164,7 +194,7 @@ export default function Header() {
               aria-haspopup="true"
               onClick={handleClick}
             >
-              <GrLanguage className={languageicon} />
+              <LanguageIcon className={languageicon} />
             </IconButton>
             <Menu
               id="long-menu"
@@ -189,7 +219,7 @@ export default function Header() {
                 </MenuItem>
               ))}
             </Menu>
-            <img className={googleimg} src={google} alt="google" />
+            {profileHandler(profile)}
           </div>
         </div>
       </Toolbar>
@@ -197,7 +227,7 @@ export default function Header() {
   };
 
   const getDrawerChoices = () => {
-    return headersData.map(({ label, href }) => {
+    return headersData.map(({ label, href, icon }) => {
       return (
         <Link
           {...{
@@ -208,7 +238,13 @@ export default function Header() {
             key: label,
           }}
         >
-          <MenuItem>{label}</MenuItem>
+          <MenuList>
+            <MenuItem>
+              <ListItemIcon>{icon}</ListItemIcon>
+              {label}
+            </MenuItem>
+            <Divider />
+          </MenuList>
         </Link>
       );
     });

@@ -1,5 +1,5 @@
 import React from "react"
-import useStyles from "./Style"
+import useStyles from "./AboutUsStyle.jsx"
 import { Grid, Container, Typography, Box, Avatar } from "@material-ui/core"
 
 import team from "../../images/team.svg"
@@ -9,10 +9,10 @@ import search from "../../images/undraw_Web_search_re_efla.svg"
 const names = [
 	"Maher Al-Aqil",
 	"Murtaja Adnan",
-	"Jalal Arif",
 	"Zhin Abubakr",
 	"Othman",
-	"Ravyar"
+	"Ravyar",
+	"Jalal Arif"
 ]
 export default function AboutUs() {
 	const classes = useStyles()
@@ -88,7 +88,7 @@ export default function AboutUs() {
 							<Grid align="center" item>
 								<Avatar src={team} className={classes.avatar} />
 							</Grid>
-							<Grid align="center" item className={classes.fontTitleSize}>
+							<Grid align="center" item className={classes.nameFont}>
 								{name}
 							</Grid>
 

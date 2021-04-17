@@ -1,12 +1,9 @@
-import React from 'react'
-import Form from './components/Form/Form'
-
-function App() {
-	return (
-		<div>			
-			<Form/>
-		</div>
-	)
+import React from "react";
+import Container from "./containers/Container";
+export default function App() {
+  return (
+    <div>
+      <Container />
+    </div>
+  );
 }
-
-export default App
