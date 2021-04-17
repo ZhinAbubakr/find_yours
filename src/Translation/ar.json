@@ -46,6 +46,9 @@
     "post":{
         "view": "فتح"
     },
+    "footer":{
+        "copyright": "جميع الحقوق المحفوظة © 2021 FindYours"
+    },
     "navbar":{
         "home": "الرئيسية",
         "dash": "شاشة التحكم",
