@@ -28,13 +28,12 @@ export default function Profile() {
 	useEffect(() => {
 		if (profile) {
 			db.collection("posts")
-				.where("userID", "==", `${profile ? profile.googleId : null}`)
+				.where("userId", "==", `${profile ? profile.googleId : null}`)
 				.onSnapshot((snapshot) => {
 					setPosts(snapshot.docs.map((doc) => doc.data()));
 				});
 		}
 	}, [profile]);
-
 	const profileInfo = (
 		<ListItem>
 			<Grid container justify="space-around">
@@ -134,8 +133,17 @@ export default function Profile() {
 
 					{posts ? (
 						posts.map((post, i) => (
-							<Grid align="center" key={i} item xs={12} sm={6} md={4}>
-								<Post post={post} />
+							<Grid
+								container
+								justify="center"
+								key={i}
+								item
+								xs={12}
+								sm={6}
+								md={4}>
+								<Grid item align="left">
+									<Post post={post} />
+								</Grid>
 							</Grid>
 						))
 					) : (
