@@ -30,6 +30,7 @@ export default function Dashboard() {
 	const [search, setSearch] = useState([]);
 	const mobileView = useMediaQuery("(max-width: 960px)");
 	const mediumView = useMediaQuery("(max-width: 1210px)");
+
 	const handlePosts = (filterState) => {
 		// to handle both the filters and cities queries.
 		if (filterState.city === true) {
@@ -42,6 +43,9 @@ export default function Dashboard() {
 			const { color, category, Status } = filterState;
 			setDubleFilter({ ...doubleFilter, color, category, Status });
 		}
+	};
+	const handleClearFilter = () => {
+		setDubleFilter({});
 	};
 	useEffect(() => {
 		const fetch = () => {
@@ -159,9 +163,13 @@ export default function Dashboard() {
 			<div style={{ margin: "0 20px" }}>
 				<div className={classes.messageSender}>
 					<div className={classes.messageSender_top}>
-						<Link to={PROFILE_ROUTE} className={classes.links}>
+						{profile.length != 0 ? (
+							<Link to={PROFILE_ROUTE} className={classes.links}>
+								<Avatar src={profile.imageUrl} />
+							</Link>
+						) : (
 							<Avatar src={profile.imageUrl} />
-						</Link>
+						)}
 						<div className={classes.searchbar}>
 							<SearchBar
 								className={searchfield}
@@ -196,22 +204,38 @@ export default function Dashboard() {
 										vertical: "top",
 										horizontal: "center"
 									}}>
-									<Filters handlePosts={handlePosts} />
+									<Filters
+										handleClearFilter={handleClearFilter}
+										handlePosts={handlePosts}
+									/>
 								</Popover>
 							</div>
 						)}
 						<div className={classes.buttons}>
-							<Link to={FORM_ROUTE} className={classes.submitLink}>
+							{profile.length != 0 ? (
+								<Link to={FORM_ROUTE} className={classes.submitLink}>
+									<Button
+										{...{
+											className: button
+										}}
+										variant="contained"
+										color="primary"
+										disableElevation>
+										{text}
+									</Button>
+								</Link>
+							) : (
 								<Button
 									{...{
 										className: button
 									}}
+									onClick={() => alert("you need to log in to post!")}
 									variant="contained"
 									color="primary"
 									disableElevation>
 									{text}
 								</Button>
-							</Link>
+							)}
 						</div>
 					</div>
 				</div>

@@ -21,23 +21,28 @@ import { FORM_ROUTE } from "../../containers/routes";
 
 export default function Profile() {
 	const classes = useStyles();
-
+	const [postsNum, setPostsNum] = useState(3);
 	const [posts, setPosts] = useState([]);
 	const [profile] = useContext(ProfileContext);
+	const [showMoreBtn, setShowMoreBtn] = useState(true);
 
 	useEffect(() => {
 		const fetch = () => {
 			if (profile) {
-				db.collection("posts")
+				const query = db.collection("posts");
+				query
+					.limit(postsNum)
 					.where("userId", "==", `${profile ? profile.googleId : null}`)
 					.onSnapshot((snapshot) => {
 						setPosts(snapshot.docs.map((doc) => doc.data()));
 					});
+
+				query.get().then((snap) => setShowMoreBtn(snap.size > postsNum));
 			}
 		};
 		fetch();
 		return fetch();
-	}, [profile]);
+	}, [profile, postsNum]);
 	const profileInfo = (
 		<ListItem>
 			<Grid container justify="space-around">
@@ -82,9 +87,10 @@ export default function Profile() {
 								/>
 							</Container>
 						</Grid>
-						{posts.length === 0 && profileInfo}
-						{posts.map((post, i) => (
-							<Grid key={i} item xs={12} md={8} className={classes.container3}>
+						{posts.length === 0 ? (
+							profileInfo
+						) : (
+							<Grid item xs={12} md={8} className={classes.container3}>
 								{profileInfo}
 								<br />
 								<ListItem>
@@ -95,7 +101,7 @@ export default function Profile() {
 													Address
 												</Typography>
 												<Typography variant="body1">
-													{post.province || "Address Not provided"}
+													{posts[0].province || "Address Not provided"}
 												</Typography>
 												<Divider />
 											</Box>
@@ -105,14 +111,14 @@ export default function Profile() {
 												Phone No.
 											</Typography>
 											<Typography variant="body1">
-												{post.phone || "Phone No. Not provided"}
+												{posts[0].phone || "Phone No. Not provided"}
 											</Typography>
 											<Divider />
 										</Grid>
 									</Grid>
 								</ListItem>
 							</Grid>
-						))}
+						)}
 					</Grid>
 				</ThemeProvider>
 			</Container>
@@ -158,6 +164,17 @@ export default function Profile() {
 
 					<Grid align="right" item xs={12}>
 						<Box px={2} py={2}>
+							{showMoreBtn && (
+								<Box pr={2} component="span">
+									<Button
+										onClick={() => setPostsNum(postsNum + 3)}
+										className={classes.button}
+										variant="contained">
+										Show More Posts
+									</Button>
+								</Box>
+							)}
+
 							<Link to={FORM_ROUTE} className={classes.links}>
 								<Button className={classes.button} variant="contained">
 									Add Post

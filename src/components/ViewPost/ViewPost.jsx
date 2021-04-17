@@ -93,8 +93,8 @@ function ViewPost(props) {
 												Aditional Information:
 											</Typography>
 											<Typography variant="body1">
-												{post.body.map((word) => (
-													<span key={word}>{word} </span>
+												{post.body.map((word, i) => (
+													<span key={i}>{word} </span>
 												))}
 											</Typography>
 											<Divider />
