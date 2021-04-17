@@ -31,6 +31,15 @@ const useStyles = makeStyles((theme) => ({
 			backgroundColor: "#27938d"
 		}
 	},
+	cbutton: {
+		backgroundColor: "#3AAFA9",
+		color: "white",
+		width: "90%",
+		margin: "5px",
+		"&:hover": {
+			backgroundColor: "#27938d"
+		}
+	},
 	avatar: {
 		backgroundColor: grey[500],
 		width: "30px",
@@ -140,7 +149,17 @@ const useStylesFilter = makeStyles((theme) => ({
 	},
 	fselectEmpty: {
 		marginTop: theme.spacing(2)
-	}
+	},
+	cbutton: {
+		backgroundColor: "#3AAFA9",
+		color: "white",
+		width: "95%",
+		margin: "5px auto",
+		"&:hover": {
+			backgroundColor: "#27938d"
+		},
+
+	},
 }))
 
 const Accordion = withStyles({
