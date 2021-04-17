@@ -20,7 +20,23 @@ const useStyles = makeStyles(() => ({
 		fontFamily: "Oswald, sans-serif",
 		fontWeight: 700,
 		size: "18px",
-		marginLeft: "38px"
+	},
+	navlink:{
+		textDecoration: 'none',
+		color: 'white',
+		marginLeft: "38px",
+		padding: '7px 0px 11px 0px',
+		"&.active": {
+			borderRadius: '6px',
+			border: '1.5px solid rgba(255,255,255,0.5)',
+		  }, // eslint-disable-line no-mixed-spaces-and-tabs
+	},
+	sidelink:{
+		textDecoration: 'none',
+		color: 'white',
+		"&.active": {
+			color: '#3c3c3c',
+		  }, // eslint-disable-line no-mixed-spaces-and-tabs
 	},
 	toolbar: {
 		display: "flex",

@@ -35,6 +35,10 @@ const useStyle = makeStyles((theme) => ({
       width: "15rem",
       margin: "0",
     },
+    [theme.breakpoints.down("md")]: {
+      width: "15rem",
+      marginLeft: "5rem",
+    },
     marginLeft: "5rem",
   },
 

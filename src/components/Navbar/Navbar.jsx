@@ -5,7 +5,6 @@ import {
   Button,
   IconButton,
   Drawer,
-  Link,
   MenuItem,
   MenuList,
   ListItemIcon,
@@ -14,7 +13,7 @@ import {
 import { useStyles } from "./styles.js";
 import { FiMenu } from "react-icons/fi";
 import React, { useState, useContext } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { NavLink as RouterLink } from "react-router-dom";
 import Menu from "@material-ui/core/Menu";
 import LanguageIcon from "@material-ui/icons/Language";
 import { Dashboard, Home, Info, Message, Lock } from "@material-ui/icons";
@@ -102,6 +101,8 @@ export default function Header() {
     avatar,
     navheader,
     paper,
+    navlink,
+    sidelink,
   } = useStyles();
 
   const [state, setState] = useState({
@@ -181,6 +182,7 @@ export default function Header() {
             anchor: "left",
             open: drawerOpen,
             onClose: handleDrawerClose,
+            onClick: handleDrawerClose,
           }}
         >
           <div className={drawerContainer}>{getDrawerChoices()}</div>
@@ -229,12 +231,12 @@ export default function Header() {
   const getDrawerChoices = () => {
     return headersData.map(({ label, href, icon }) => {
       return (
-        <Link
+        <RouterLink
+          exact
           {...{
-            component: RouterLink,
+            className: sidelink,
             to: href,
             color: "inherit",
-            style: { textDecoration: "none" },
             key: label,
           }}
         >
@@ -245,7 +247,7 @@ export default function Header() {
             </MenuItem>
             <Divider />
           </MenuList>
-        </Link>
+        </RouterLink>
       );
     });
   };
@@ -259,17 +261,17 @@ export default function Header() {
   const getMenuButtons = () => {
     return headersData.map(({ label, href }) => {
       return (
-        <Button
-          {...{
-            key: label,
-            color: "inherit",
-            to: href,
-            component: RouterLink,
-            className: menuButton,
-          }}
-        >
-          {label}
-        </Button>
+        <RouterLink to={href} className={navlink} exact>
+          <Button
+            {...{
+              key: label,
+              color: "inherit",
+              className: menuButton,
+            }}
+          >
+            {label}
+          </Button>
+        </RouterLink>
       );
     });
   };
