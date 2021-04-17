@@ -120,6 +120,7 @@ export default function Dashboard() {
 					})
 				);
 			});
+
 		query
 			.where("body", "array-contains-any", search)
 			.get()

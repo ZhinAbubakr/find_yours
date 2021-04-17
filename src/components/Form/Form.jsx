@@ -7,6 +7,8 @@ import { db } from "../../firebase";
 import { storage } from "../../firebase";
 import "date-fns";
 import { ProfileContext } from "../../profileContext";
+// import IconButton from '@material-ui/core/IconButton';
+// import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 const Form = () => {
 	const [selectedDate, setSelectedDate] = React.useState("");
@@ -259,8 +261,14 @@ const Form = () => {
 							<input
 								type="file"
 								onChange={(e) => handleImageUpload(e)}
+								id="contained-button-file"
 								className={classes.input}
 							/>
+							<label htmlFor="contained-button-file">
+								<Button variant="contained" color="primary" component="span">
+									Upload
+								</Button>
+							</label>
 							<h4 className={classes.title}>Additional Information</h4>
 							<p className={classes.desc}>
 								Please provide any additional details/description of your lost
