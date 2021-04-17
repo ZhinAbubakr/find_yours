@@ -252,7 +252,7 @@ export default function Dashboard() {
             {showMoreBtn && (
               <Grid container item justify='center'>
                 <Button onClick={() => setPostsNum(postsNum + 10)} className={classes.showMoreBtn}>
-                  show more
+                  {t('dash.show')}
                 </Button>
               </Grid>
             )}
@@ -286,7 +286,7 @@ export default function Dashboard() {
             xs={12}
             sm={mobileView ? 12 : 8}
             lg={8}>
-            {middleColomn('Post')}
+            {middleColomn(`${t('dash.submit')}`)}
             {postItems()}
           </Grid>
           {!mobileView && (
