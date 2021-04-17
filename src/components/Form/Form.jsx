@@ -262,10 +262,15 @@ const Form = () => {
 								type="file"
 								onChange={(e) => handleImageUpload(e)}
 								id="contained-button-file"
-								className={classes.input}
+								className={classes.fileInput}
 							/>
 							<label htmlFor="contained-button-file">
-								<Button variant="contained" color="primary" component="span">
+								<Button
+									className={classes.input}
+									variant="contained"
+									style={{ background: "#3AAFA9" }}
+									color="primary"
+									component="span">
 									Upload
 								</Button>
 							</label>
