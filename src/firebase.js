@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/analytics"
+import 'firebase/storage'
 
  var firebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyDaQIgxU_BSwBeokkFcN4tIVrKkkz57YWY",
@@ -12,7 +13,10 @@ import "firebase/analytics"
   measurementId: "G-T019N9EWTW"
  });
 
+
 var db = firebaseApp.firestore();
 
-export {db}
+const storage= firebase.storage();
+
+export {db,storage}
 

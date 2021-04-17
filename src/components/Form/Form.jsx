@@ -4,12 +4,15 @@ import useStyles from "./Style"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import { db } from "../../firebase"
+import {storage} from '../../firebase'
 import DateFnsUtils from "@date-io/date-fns"
 import "date-fns"
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
 } from "@material-ui/pickers"
+
+
 
 const Form = () => {
   const [selectedDate, setSelectedDate] = React.useState(
@@ -28,8 +31,10 @@ const Form = () => {
   const [category, setCategory] = React.useState("")
   const [neighbor,setNeighbor]=useState("")
   const [type,setType] =useState("")  
+  const [url,setUrl] =useState("")
 
   const classes = useStyles()
+
 
   const handleDateChange = (date) => {
     setSelectedDate(date)
@@ -51,6 +56,30 @@ const Form = () => {
     setColor(event.target.value)
   }
 
+  const fileSelectedHandler = e => {
+    if(e.target.files[0]){
+        setImage(e.target.files[0])
+    }
+  }
+
+  const handleUpload = () =>{
+    const imageU = image.files[0];
+    const path = storage.ref("imagefolder/" + imageU.name);
+  
+    path.put(image).then(function() {
+      path.getDownloadURL().then(function(url) {
+        alert(url);
+        setUrl(url)
+      }
+      )
+    }
+      )
+  }
+
+
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -63,7 +92,7 @@ const Form = () => {
         firstName: firstName,
         phone: phone,
         selectedDate: selectedDate,
-        image: image,
+        url:url,
         more: more,
         email: email,
         lastName: lastName,
@@ -85,7 +114,7 @@ const Form = () => {
     setFirstName("")
     setPhone("")
     setSelectedDate("")
-    setImage(null)
+    setImage("")
     setMore("")
     setEmail("")
     setLastName("")
@@ -309,33 +338,7 @@ const Form = () => {
               <p className={classes.desc}>
                 (This image will display on the website.)
               </p>
-              <input
-                accept="image/*"
-                className={classes.inputImg}
-                id="contained-button-file"
-                multiple
-                type="file"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-              />
-              <label htmlFor="contained-button-file">
-                <Button
-                  variant="contained"
-                  component="span"
-                  className={classes.upload}
-                >
-                  Upload
-                </Button>
-              </label>
-              <input
-                accept="image/*"
-                className={classes.inputImg}
-                id="icon-button-file"
-                type="file"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-              />
-
+              <input type="file" onChange={fileSelectedHandler} className={classes.input}/>
               <h4 className={classes.title}>Additional Information</h4>
               <p className={classes.desc}>
                 Please provide any additional details/description of your lost
@@ -403,6 +406,7 @@ const Form = () => {
                 className={classes.button}
                 color="primary"
                 type="submit"
+                onClick={handleUpload}
               >
                 Submit
               </Button>
