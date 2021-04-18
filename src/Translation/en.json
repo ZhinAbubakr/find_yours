@@ -22,7 +22,7 @@
     },
     "filter":{
         "status": "Status",
-        "catagory": "catagory",
+        "catagory": "category",
         "color": "Color",
         "AnimalsPets": "Animals/Pets",
         "Documents": "Documents",

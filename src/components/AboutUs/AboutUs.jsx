@@ -12,6 +12,15 @@ import jalal from '../../images/jalal.jpg'
 
 const teamImg = [team, murtaja, zhin, othman, team, jalal]
 const names = ['maher', 'murtaja', 'zhin', 'othman', 'ravyar', 'jalal']
+const bios = [
+  'Lead engineer',
+  'Junior web developer',
+  'Junior web developer',
+  'Junior web developer',
+  'Junior web developer',
+  'Junior web developer',
+]
+
 export default function AboutUs() {
   const { t } = useTranslation()
   const classes = useStyles()
@@ -67,13 +76,18 @@ export default function AboutUs() {
       <Box mb={4} mt={4}>
         <Grid container direction='row' justify='space-around' alignItems='center'>
           {names.map((name, i) => (
-            <Grid key={i} container item lg={3} md={4} sm={6} xs={12} direction='column'>
+            <Grid key={i} container item lg={4} sm={6} xs={12} direction='column'>
               <Grid align='center' item>
                 <Avatar src={teamImg[i]} className={classes.avatar} />
               </Grid>
               <Grid align='center' item className={classes.nameFont}>
                 <Box px={2} py={2}>
                   {t(`aboutUs.${name}`)}
+                </Box>
+              </Grid>
+              <Grid align='center' item>
+                <Box pb={5} pt={2} pr={1}>
+                  <Typography className={classes.avatarFont}>{bios[i]}</Typography>
                 </Box>
               </Grid>
             </Grid>
