@@ -31,6 +31,7 @@ export default function Profile() {
   useEffect(() => {
     const fetch = () => {
       if (profile) {
+        const res = []
         const query = db
           .collection('posts')
           .where('userId', '==', `${profile ? profile.googleId : null}`)
@@ -38,7 +39,8 @@ export default function Profile() {
           .limit(postsNum)
 
           .onSnapshot((snapshot) => {
-            setPosts(snapshot.docs.map((doc) => doc.data()))
+            snapshot.docs.map((doc) => res.push({ id: doc.id, ...doc.data() }))
+            setPosts(res)
           })
 
         query.get().then((snap) => setShowMoreBtn(snap.size > postsNum))
