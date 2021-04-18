@@ -1,59 +1,58 @@
 {
-
-    "city":{
-        "clear": "مسح",
-        "baghdad": "بغداد",
-        "erbil": "اربيل",
-        "basrah": "بصرة",
-        "duhok": "دهوك",
-        "anbar": "انبار",
-        "babil": "بابل",
-        "dhiqar": "ذي قار",
-        "diyala": "ديالة",
-        "kirkuk": "كركوك",
-        "karbala": "كربلاء",
-        "maysan": "ميسان",
-        "nineveh": "نينوى",
-        "saladdin": "صلاح الدين",
-        "sulaymaniyah": "سليمانية",
-        "najaf": "نجف",
-        "wasit": "واسط",
-        "diwaniya": "ديوانية",
-        "muthana": "مثنى"
-    },
-    "filter":{
-        "status": "الحالة",
-        "catagory": "الفئة",
-        "color": "اللون",
-        "AnimalsPets": "حيوانات اليفة",
-        "Documents": "مستندات",
-        "Clothing": "البسة",
-        "Electronics": "اجهزة",
-        "personalAccessories": "اكسسوارات",
-        "Other": "اخرى",
-        "Lost": "ضائعة",
-        "Found": "عُثر عليها",
-        "City": "المدينة",
-        "red": "احمر",
-        "white": "ابيض",
-        "blue": "ازرق"
-    },
-    "dash":{
-        "search": "بحث",
-        "show": "اظهار المزيد",
-        "submit": "نشر"
-    },
-    "post":{
-        "view": "فتح"
-    },
-    "footer":{
-        "copyright": "جميع الحقوق المحفوظة © 2021 FindYours"
-    },
-    "navbar":{
-        "home": "الرئيسية",
-        "dash": "شاشة التحكم",
-        "privacypolicy": "الخصوصية",
-        "about": "عنا",
-        "contact": "اتصل بنا"
-    }
+  "city": {
+    "clear": "مسح",
+    "baghdad": "بغداد",
+    "erbil": "اربيل",
+    "basrah": "بصرة",
+    "duhok": "دهوك",
+    "anbar": "انبار",
+    "babil": "بابل",
+    "dhiqar": "ذي قار",
+    "diyala": "ديالة",
+    "kirkuk": "كركوك",
+    "karbala": "كربلاء",
+    "maysan": "ميسان",
+    "nineveh": "نينوى",
+    "saladdin": "صلاح الدين",
+    "sulaymaniyah": "سليمانية",
+    "najaf": "نجف",
+    "wasit": "واسط",
+    "diwaniya": "ديوانية",
+    "muthana": "مثنى"
+  },
+  "filter": {
+    "status": "الحالة",
+    "catagory": "الفئة",
+    "color": "اللون",
+    "AnimalsPets": "حيوانات اليفة",
+    "Documents": "مستندات",
+    "Clothing": "البسة",
+    "Electronics": "اجهزة",
+    "personalAccessories": "اكسسوارات",
+    "Other": "اخرى",
+    "Lost": "ضائعة",
+    "Found": "عُثر عليها",
+    "City": "المدينة",
+    "red": "احمر",
+    "white": "ابيض",
+    "blue": "ازرق"
+  },
+  "dash": {
+    "search": "بحث",
+    "show": "اظهار المزيد",
+    "submit": "نشر"
+  },
+  "post": {
+    "view": "فتح"
+  },
+  "footer": {
+    "copyright": "جميع الحقوق المحفوظة © 2021 FindYours"
+  },
+  "navbar": {
+    "home": "الرئيسية",
+    "dash": "لوحة التحكم",
+    "privacypolicy": "الخصوصية",
+    "about": "عنا",
+    "contact": "اتصل بنا"
+  }
 }

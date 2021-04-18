@@ -211,8 +211,12 @@ export default function Header() {
                   width: '20ch',
                 },
               }}>
-              {options.map((option) => (
-                <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+              {options.map((option, i) => (
+                <MenuItem
+                  key={option}
+                  value={i}
+                  selected={option === 'Pyxis'}
+                  onClick={handleClose}>
                   {option}
                 </MenuItem>
               ))}
