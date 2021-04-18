@@ -135,6 +135,7 @@ export default function Filters({ handlePosts, handleClearFilter }) {
             <option value='red'>{t('filter.red')}</option>
             <option value='white'>{t('filter.white')}</option>
             <option value='blue'>{t('filter.blue')}</option>
+            <option value='other'>{t('filter.Other')}</option>
           </Select>
         </FormControl>
       </div>
