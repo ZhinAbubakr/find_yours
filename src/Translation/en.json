@@ -1,5 +1,6 @@
 {
   "city": {
+    "cities": "Cities",
     "clear": "Clear",
     "baghdad": "Baghdad",
     "erbil": "Erbil",
@@ -21,6 +22,7 @@
     "muthana": "Muthana"
   },
   "filter": {
+    "filters": "Filters",
     "status": "Status",
     "catagory": "category",
     "color": "Color",

@@ -1,5 +1,6 @@
 {
   "city": {
+    "cities": "المدن",
     "clear": "مسح",
     "baghdad": "بغداد",
     "erbil": "اربيل",
@@ -21,6 +22,7 @@
     "muthana": "مثنى"
   },
   "filter": {
+    "filters": "الفلاتر",
     "status": "الحالة",
     "catagory": "الفئة",
     "color": "اللون",
