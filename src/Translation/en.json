@@ -1,58 +1,62 @@
 {
-    "city":{
-        "clear": "Clear",
-        "baghdad": "baghdad",
-        "erbil": "erbil",
-        "basrah": "basrah",
-        "duhok": "duhok",
-        "anbar": "anbar",
-        "babil": "babil",
-        "dhiqar": "dhiqar",
-        "diyala": "diyala",
-        "kirkuk": "kirkuk",
-        "karbala": "karbala",
-        "maysan": "maysan",
-        "nineveh": "nineveh",
-        "saladdin": "saladdin",
-        "sulaymaniyah": "sulaymaniyah",
-        "najaf": "najaf",
-        "wasit": "wasit",
-        "diwaniya": "diwaniya",
-        "muthana": "muthana"
-    },
-    "filter":{
-        "status": "Status",
-        "catagory": "catagory",
-        "color": "color",
-        "AnimalsPets": "Animals/Pets",
-        "Documents": "Documents",
-        "Clothing": "Clothing",
-        "Electronics": "Electronics",
-        "personalAccessories": "Personal Accessories",
-        "Other": "Other",
-        "Lost": "Lost",
-        "Found": "Found",
-        "City": "City",
-        "red": "red",
-        "white": "white",
-        "blue": "blue"
-    },
-    "dash":{
-        "search": "Search",
-        "show": "Show More",
-        "submit": "Submit"
-    },
-    "post":{
-        "view": "View Post"
-    },
-    "footer":{
-        "copyright": "Copyright © 2021 FindYours. All Rights Reserved."
-    },
-    "navbar":{
-        "home": "Home",
-        "dash": "Dashboard",
-        "privacypolicy": "Privacy Policy",
-        "about": "About us",
-        "contact": "Contact us"
-    }
+  "city": {
+    "clear": "Clear",
+    "baghdad": "baghdad",
+    "erbil": "erbil",
+    "basrah": "basrah",
+    "duhok": "duhok",
+    "anbar": "anbar",
+    "babil": "babil",
+    "dhiqar": "dhiqar",
+    "diyala": "diyala",
+    "kirkuk": "kirkuk",
+    "karbala": "karbala",
+    "maysan": "maysan",
+    "nineveh": "nineveh",
+    "saladdin": "saladdin",
+    "sulaymaniyah": "sulaymaniyah",
+    "najaf": "najaf",
+    "wasit": "wasit",
+    "diwaniya": "diwaniya",
+    "muthana": "muthana"
+  },
+  "filter": {
+    "status": "Status",
+    "catagory": "catagory",
+    "color": "color",
+    "AnimalsPets": "Animals/Pets",
+    "Documents": "Documents",
+    "Clothing": "Clothing",
+    "Electronics": "Electronics",
+    "personalAccessories": "Personal Accessories",
+    "Other": "Other",
+    "Lost": "Lost",
+    "Found": "Found",
+    "City": "City",
+    "red": "red",
+    "white": "white",
+    "blue": "blue"
+  },
+  "dash": {
+    "search": "Search",
+    "show": "Show More",
+    "submit": "Submit"
+  },
+  "post": {
+    "view": "View Post"
+  },
+  "footer": {
+    "copyright": "Copyright © 2021 FindYours. All Rights Reserved."
+  },
+  "navbar": {
+    "home": "Home",
+    "dash": "Dashboard",
+    "privacypolicy": "Privacy Policy",
+    "about": "About us",
+    "contact": "Contact us"
+  },
+  "notFound": {
+    "text1": "Look Like You Are Lost",
+    "text2": "The Page You Are Looking For Not Available!"
+  }
 }
