@@ -11,7 +11,7 @@ export default function Widget({ handlePosts, doubleFilter }) {
   // you could write a function here that has city=true in this only function instead of writing them there.
   return (
     <Card className={classes.root}>
-      <CardHeader title='Cities' className={classes.header} />
+      <CardHeader title={t('city.cities')} className={classes.header} />
       <div className={classes.buttons}>
         <Button
           onClick={() => handlePosts({ province: '', city: true })}

@@ -1,95 +1,107 @@
 {
-    "city":{
-        "clear": "Clear",
-        "baghdad": "Baghdad",
-        "erbil": "Erbil",
-        "basrah": "Basrah",
-        "duhok": "Duhok",
-        "anbar": "Anbar",
-        "babil": "Babil",
-        "dhiqar": "Dhi Qar",
-        "diyala": "Diyala",
-        "kirkuk": "Kirkuk",
-        "karbala": "Karbala",
-        "maysan": "Maysan",
-        "nineveh": "Nineveh",
-        "saladdin": "Saladdin",
-        "sulaymaniyah": "Sulaymaniyah",
-        "najaf": "Najaf",
-        "wasit": "Wasit",
-        "diwaniya": "Diwaniya",
-        "muthana": "Muthana"
-    },
-    "filter":{
-        "status": "Status",
-        "catagory": "category",
-        "color": "Color",
-        "AnimalsPets": "Animals/Pets",
-        "Documents": "Documents",
-        "Clothing": "Clothing",
-        "Electronics": "Electronics",
-        "personalAccessories": "Personal Accessories",
-        "Other": "Other",
-        "Lost": "Lost",
-        "Found": "Found",
-        "City": "City",
-        "red": "red",
-        "white": "white",
-        "blue": "blue"
-    },
-    "dash":{
-        "search": "Search",
-        "show": "Show More",
-        "submit": "Submit"
-    },
-    "post":{
-        "view": "View Post"
-    },
-    "footer":{
-        "copyright": "Copyright © 2021 FindYours. All Rights Reserved."
-    },
-    "navbar":{
-        "home": "Home",
-        "dash": "Dashboard",
-        "privacypolicy": "Privacy Policy",
-        "about": "About us",
-        "contact": "Contact us"
-    },
-    "aboutUs": {
-      "about": "ABOUT US",
-      "offer": "What we Give you",
-      "lost": " we can help you to find your lost things",
-      "found": " If you found something and you want to get it back to the right owner",
-      "meet": "Meet US",
-      "maher": "Maher Al-Aqil",
-      "murtaja": "Murtaja Adnan",
-      "zhin": "Zhin Abubakr",
-      "othman": "Othman",
-      "ravyar": "Ravyar",
-      "jalal": "Jalal Arif"
-    },
-    "form": {
-      "title": "Title",
-      "titleEx": "(Dog, Jacket, Smartphone, Wallet, etc.)",
-      "categoryEx": "(Animals/Pets, Clothing, Electronics, Personal Accessories etc.) This field is required.",
-      "colorEx": "Please add the color that best represents the property (Blue, Red, White, etc.)",
-      "where": "Where Lost or found",
-      "whereEx": "Please provide an approximate location of city",
-      "contact": "Contact Information.",
-      "phone": "Phone Number",
-      "contactEx": " Please enter the phone number to display on your submission",
-      "facebook": "Facebook Acount",
-      "facebookEx": "Please enter the facebook link to display on your post.",
-      "lostor": "Lost Or Found",
-      "type": "Select type",
-      "date": "Date",
-      "dateEx":"Please add the approximate date of when the item was lost/found."
-,      "image": "Image",
-      "imageEx": "(This image will display on the website.)",
-      "upload": "upload",
-      "addInfo" :"Additional Information",
-      "addInfoEx": "Please provide any additional details/description of your lost property.",
-      "email": "Email",
-      "emailEx": "Please enter the email to display on your submission"
-    }
+  "city": {
+    "cities": "Cities",
+    "clear": "Clear",
+    "baghdad": "Baghdad",
+    "erbil": "Erbil",
+    "basrah": "Basrah",
+    "duhok": "Duhok",
+    "anbar": "Anbar",
+    "babil": "Babil",
+    "dhiqar": "Dhi Qar",
+    "diyala": "Diyala",
+    "kirkuk": "Kirkuk",
+    "karbala": "Karbala",
+    "maysan": "Maysan",
+    "nineveh": "Nineveh",
+    "saladdin": "Saladdin",
+    "sulaymaniyah": "Sulaymaniyah",
+    "najaf": "Najaf",
+    "wasit": "Wasit",
+    "diwaniya": "Diwaniya",
+    "muthana": "Muthana"
+  },
+  "filter": {
+    "filters": "Filters",
+    "status": "Status",
+    "catagory": "category",
+    "color": "Color",
+    "AnimalsPets": "Animals/Pets",
+    "Documents": "Documents",
+    "Clothing": "Clothing",
+    "Electronics": "Electronics",
+    "personalAccessories": "Personal Accessories",
+    "Other": "Other",
+    "Lost": "Lost",
+    "Found": "Found",
+    "City": "City",
+    "red": "red",
+    "white": "white",
+    "blue": "blue"
+  },
+  "dash": {
+    "search": "Search",
+    "show": "Show More",
+    "submit": "Submit"
+  },
+  "post": {
+    "view": "View Post"
+  },
+  "footer": {
+    "copyright": "Copyright © 2021 FindYours. All Rights Reserved."
+  },
+  "navbar": {
+    "home": "Home",
+    "dash": "Dashboard",
+    "privacypolicy": "Privacy Policy",
+    "about": "About us",
+    "contact": "Contact us"
+  },
+  "aboutUs": {
+    "about": "ABOUT US",
+    "offer": "What we Give you",
+    "lost": " we can help you to find your lost things",
+    "found": " If you found something and you want to get it back to the right owner",
+    "meet": "Meet US",
+    "maher": "Maher Al-Aqil",
+    "murtaja": "Murtaja Adnan",
+    "zhin": "Zhin Abubakr",
+    "othman": "Othman",
+    "ravyar": "Ravyar",
+    "jalal": "Jalal Arif"
+  },
+  "form": {
+    "title": "Title",
+    "titleEx": "(Dog, Jacket, Smartphone, Wallet, etc.)",
+    "categoryEx": "(Animals/Pets, Clothing, Electronics, Personal Accessories etc.) This field is required.",
+    "colorEx": "Please add the color that best represents the property (Blue, Red, White, etc.)",
+    "where": "Where Lost or found",
+    "whereEx": "Please provide an approximate location of city",
+    "contact": "Contact Information.",
+    "phone": "Phone Number",
+    "contactEx": " Please enter the phone number to display on your submission",
+    "facebook": "Facebook Acount",
+    "facebookEx": "Please enter the facebook link to display on your post.",
+    "lostor": "Lost Or Found",
+    "type": "Select type",
+    "date": "Date",
+    "dateEx": "Please add the approximate date of when the item was lost/found.",
+    "image": "Image",
+    "imageEx": "(This image will display on the website.)",
+    "upload": "upload",
+    "addInfo": "Additional Information",
+    "addInfoEx": "Please provide any additional details/description of your lost property.",
+    "email": "Email",
+    "emailEx": "Please enter the email to display on your submission"
+  },
+  "profile": {
+    "name": "Full Name",
+    "email": "Email",
+    "address": "Address",
+    "phone": "Phone Nunmber",
+    "myposts": "My Posts",
+    "showposts": "You do not have any posts to show!",
+    "showmore": "Show More Posts",
+    "addpost": "Add Post"
+  }
 }
