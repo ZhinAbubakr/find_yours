@@ -29,3 +29,14 @@ code {
 ::-webkit-scrollbar {
   display: none;
 }
+@media (max-width: 798px) {
+  .ForwardRef-searchContainer-54 {
+    width: calc(100% - 48px) !important;
+    margin: auto 10px !important;
+  }
+  .ForwardRef-searchIconButton-51 {
+    margin-right: -53px !important;
+    padding-left: 0px !important;
+    padding-right: 12px !important;
+  }
+}
