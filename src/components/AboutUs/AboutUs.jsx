@@ -9,16 +9,18 @@ import murtaja from '../../images/murtaja.jpg'
 import othman from '../../images/othman.jpg'
 import zhin from '../../images/zhin.jpg'
 import jalal from '../../images/jalal.jpg'
+import ravyar from '../../images/ravyar.png'
+import maher from '../../images/maher.png'
 
-const teamImg = [team, murtaja, zhin, othman, team, jalal]
+const teamImg = [maher, murtaja, zhin, othman, ravyar, jalal]
 const names = ['maher', 'murtaja', 'zhin', 'othman', 'ravyar', 'jalal']
 const bios = [
-  'Lead engineer',
-  'Junior web developer',
-  'Junior web developer',
-  'Junior web developer',
-  'Junior web developer',
-  'Junior web developer',
+  'Lead Engineer',
+  'Web Developer',
+  'Web Developer',
+  'Web Developer',
+  'Web Developer',
+  'Web Developer',
 ]
 
 export default function AboutUs() {
@@ -86,7 +88,7 @@ export default function AboutUs() {
                 </Box>
               </Grid>
               <Grid align='center' item>
-                <Box pb={5} pt={2} pr={1}>
+                <Box pb={5} pr={1}>
                   <Typography className={classes.avatarFont}>{bios[i]}</Typography>
                 </Box>
               </Grid>
