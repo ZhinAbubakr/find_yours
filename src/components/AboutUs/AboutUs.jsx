@@ -23,7 +23,22 @@ const bios = [
   'Web Developer',
   'Web Developer',
 ]
-
+const github = [
+  'https://github.com/maqalaqil',
+  'https://github.com/murtaja1',
+  'https://github.com/ZhinAbubakr',
+  'https://github.com/Othmanosx',
+  'https://github.com/Ravyar19',
+  'https://github.com/JalalArif',
+]
+const linkedin = [
+  'https://www.linkedin.com/in/maher-al-aqil-56895894/',
+  'https://www.linkedin.com/in/murtaja-adnan-2a02b9206/',
+  'https://www.linkedin.com/in/zhin-abubakr-473910181/',
+  'https://www.linkedin.com/in/othmanosx/',
+  'https://www.linkedin.com/in/ravyar-aram-b767661aa/',
+  'https://www.linkedin.com/in/jalarif/',
+]
 export default function AboutUs() {
   const { t } = useTranslation()
   const classes = useStyles()
@@ -91,8 +106,12 @@ export default function AboutUs() {
               <Grid align='center' item>
                 <Box pb={5} pr={1}>
                   <Typography className={classes.avatarFont}>{bios[i]}</Typography>
-                  <LinkedIn style={{ color: '#0077b5', height: '20px', width: '20px' }} />
-                  <GitHub style={{ color: '#6e5494', height: '20px', width: '20px' }} />
+                  <a href={linkedin[i]}>
+                    <LinkedIn className={classes.linkedIn} />
+                  </a>
+                  <a href={github[i]}>
+                    <GitHub className={classes.github} />
+                  </a>
                 </Box>
               </Grid>
             </Grid>

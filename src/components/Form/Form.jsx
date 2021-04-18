@@ -280,7 +280,12 @@ const Form = () => {
             justify='center'
             style={{ minHeight: '1vh' }}>
             <Grid item xs={3}>
-              <Button variant='contained' className={classes.button} color='primary' type='submit'>
+              <Button
+                variant='contained'
+                style={{ background: '#3AAFA9' }}
+                className={classes.button}
+                color='primary'
+                type='submit'>
                 {t('dash.submit')}
               </Button>
             </Grid>
