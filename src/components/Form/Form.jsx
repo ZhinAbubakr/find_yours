@@ -7,10 +7,10 @@ import { db } from '../../firebase'
 import { storage } from '../../firebase'
 import 'date-fns'
 import { ProfileContext } from '../../profileContext'
-// import IconButton from '@material-ui/core/IconButton';
-// import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import { useTranslation } from 'react-i18next'
 
 const Form = () => {
+  const { t } = useTranslation()
   const [selectedDate, setSelectedDate] = React.useState('')
   const [profile] = useContext(ProfileContext)
   const [item, setItem] = useState('')
@@ -101,22 +101,19 @@ const Form = () => {
         <Grid container spacing={3}>
           <Grid item xs={12} lg={6}>
             <Paper className={classes.paper}>
-              <h4 className={classes.title}>Property</h4>
-              <p className={classes.desc}>(Dog, Jacket, Smartphone, Wallet, etc.)</p>
+              <h4 className={classes.title}>{t('form.title')}</h4>
+              <p className={classes.desc}>{t('form.titleEx')}</p>
               <TextField
                 id='outlined-basic'
-                label='property'
+                label={t('form.title')}
                 variant='outlined'
                 className={classes.input}
                 value={item}
                 onChange={(e) => setItem(e.target.value)}
                 required
               />
-              <h4 className={classes.title}>Category</h4>
-              <p className={classes.desc}>
-                (Animals/Pets, Clothing, Electronics, Personal Accessories etc.) This field is
-                required.
-              </p>
+              <h4 className={classes.title}>{t('filter.catagory')}</h4>
+              <p className={classes.desc}>{t('form.categoryEx')}</p>
 
               <Select
                 className={classes.input}
@@ -125,17 +122,15 @@ const Form = () => {
                 value={category}
                 onChange={handleChangeCat}
                 required>
-                <MenuItem value='documents'>Documents</MenuItem>
-                <MenuItem value='animals/pets'>Animals/Pets</MenuItem>
-                <MenuItem value='clothing'>Clothing</MenuItem>
-                <MenuItem value='electronics'>Electronics</MenuItem>
-                <MenuItem value='personal accessories'>Personal Accessories</MenuItem>
-                <MenuItem value='other'>Other</MenuItem>
+                <MenuItem value='documents'>{t('filter.Documents')}</MenuItem>
+                <MenuItem value='animals/pets'>{t('filter.AnimalsPets')}</MenuItem>
+                <MenuItem value='clothing'>{t('filter.Clothing')}</MenuItem>
+                <MenuItem value='electronics'>{t('filter.Electronics')}</MenuItem>
+                <MenuItem value='personal accessories'>{t('filter.personalAccessories')}</MenuItem>
+                <MenuItem value='other'>{t('filter.Other')}</MenuItem>
               </Select>
-              <h4 className={classes.title}>Color</h4>
-              <p className={classes.desc}>
-                Please add the color that best represents the property (Black, Red, Blue, etc.)
-              </p>
+              <h4 className={classes.title}>{t('filter.color')}</h4>
+              <p className={classes.desc}>{t('form.colorEx')} </p>
               <Select
                 className={classes.input}
                 labelId='color'
@@ -143,20 +138,13 @@ const Form = () => {
                 value={color}
                 onChange={handleChangeCol}
                 required>
-                <MenuItem value='black'>Black</MenuItem>
-                <MenuItem value='white'>White</MenuItem>
-                <MenuItem value='red'>Red</MenuItem>
-                <MenuItem value='green'>Green</MenuItem>
-                <MenuItem value='yellow'>Yellow</MenuItem>
-                <MenuItem value='blue'>Blue</MenuItem>
-                <MenuItem value='pink'>Pink</MenuItem>
-                <MenuItem value='gray'>Gray</MenuItem>
-                <MenuItem value='brown'>Brown</MenuItem>
-                <MenuItem value='orange'>Orange</MenuItem>
-                <MenuItem value='purple'>Purple</MenuItem>
+                <MenuItem value='blue'>{t('filter.blue')}</MenuItem>
+                <MenuItem value='white'>{t('filter.white')}</MenuItem>
+                <MenuItem value='red'>{t('filter.red')}</MenuItem>
+                <MenuItem value='other'>{t('filter.Other')}</MenuItem>
               </Select>
-              <h4 className={classes.title}>Where Lost</h4>
-              <p className={classes.desc}>Please provide an approximate location of city</p>
+              <h4 className={classes.title}>{t('form.where')}</h4>
+              <p className={classes.desc}>{t('form.whereEx')}</p>
               <Select
                 className={classes.input}
                 labelId='Provinces'
@@ -164,34 +152,32 @@ const Form = () => {
                 value={whereLost}
                 onChange={handleChangeLoc}
                 required>
-                <MenuItem value='baghdad'>Baghdad</MenuItem>
-                <MenuItem value='babil'>Erbil</MenuItem>
-                <MenuItem value='basra'>Basrah</MenuItem>
-                <MenuItem value='saladdin'>Saladdin</MenuItem>
-                <MenuItem value='nineveh'>Nineveh</MenuItem>
-                <MenuItem value='maysan'>Maysan</MenuItem>
-                <MenuItem value='karbala'>Karbala</MenuItem>
-                <MenuItem value='karbala'>Kirkuk</MenuItem>
-                <MenuItem value='diyala'>Diyala</MenuItem>
-                <MenuItem value='dhi Qar'>Dhi Qar</MenuItem>
-                <MenuItem value='babil'>Babil</MenuItem>
-                <MenuItem value='anbar'>Anbar</MenuItem>
-                <MenuItem value='duhok'>Duhok</MenuItem>
-                <MenuItem value='nineveh'>Nineveh</MenuItem>
-                <MenuItem value='diwaniya'>Diwaniya</MenuItem>
-                <MenuItem value='wuthana'>Muthana</MenuItem>
-                <MenuItem value='wasit'>Wasit</MenuItem>
-                <MenuItem value='sulaymaniyah'>Sulaymaniyah</MenuItem>
+                <MenuItem value='baghdad'>{t('city.baghdad')}</MenuItem>
+                <MenuItem value='erbil'>{t('city.erbil')}</MenuItem>
+                <MenuItem value='basrah'>{t('city.basrah')}</MenuItem>
+                <MenuItem value='wasit'>{t('city.wasit')}</MenuItem>
+                <MenuItem value='sulaymaniyah'>{t('city.sulaymaniyah')}</MenuItem>
+                <MenuItem value='nineveh'>{t('city.nineveh')}</MenuItem>
+                <MenuItem value='maysan'>{t('city.maysan')}</MenuItem>
+                <MenuItem value='karbala'>{t('city.karbala')}</MenuItem>
+                <MenuItem value='kirkuk'>{t('city.kirkuk')}</MenuItem>
+                <MenuItem value='diyala'>{t('city.diyala')}</MenuItem>
+                <MenuItem value='dhi Qar'>{t('city.dhiqar')}</MenuItem>
+                <MenuItem value='babil'>{t('city.babil')}</MenuItem>
+                <MenuItem value='duhok'>{t('city.duhok')}</MenuItem>
+                <MenuItem value='anbar'>{t('city.anbar')}</MenuItem>
+                <MenuItem value='diwaniya'>{t('city.diwaniya')}</MenuItem>
+                <MenuItem value='muthana'>{t('city.muthana')}</MenuItem>
+                <MenuItem value='wasit'>{t('city.wasit')}</MenuItem>
+                <MenuItem value='saladdin'>{t('city.saladdin')}</MenuItem>
               </Select>
 
-              <h2 className={classes.contact}>Contact Information.</h2>
-              <h4 className={classes.title}>Phone Number</h4>
-              <p className={classes.desc}>
-                Please enter the phone number to display on your submission
-              </p>
+              <h2 className={classes.contact}>{t('form.contact')}</h2>
+              <h4 className={classes.title}>{t('form.phone')}</h4>
+              <p className={classes.desc}>{t('form.contactEx')}</p>
               <TextField
                 id='outlined-basic'
-                label='Phone Number'
+                label={t('form.phone')}
                 variant='outlined'
                 className={classes.input}
                 value={phone}
@@ -200,13 +186,11 @@ const Form = () => {
                 type='number'
               />
 
-              <h4 className={classes.title}>Facebook Acount</h4>
-              <p className={classes.desc}>
-                Please enter the facebook link to display on your post.
-              </p>
+              <h4 className={classes.title}>{t('form.facebook')}</h4>
+              <p className={classes.desc}>{t('form.facebookEx')}</p>
               <TextField
                 id='outlined-basic'
-                label='facebook link'
+                label={t('form.facebook')}
                 variant='outlined'
                 className={classes.input}
                 value={facebook}
@@ -218,8 +202,8 @@ const Form = () => {
           </Grid>
           <Grid item xs={12} lg={6}>
             <Paper className={classes.paper}>
-              <h4 className={classes.title}>Lost Or Found</h4>
-              <p className={classes.desc}>Select type</p>
+              <h4 className={classes.title}>{t('form.lostor')}</h4>
+              <p className={classes.desc}>{t('form.type')}</p>
               <Select
                 className={classes.input}
                 labelId='demo-simple-select-label'
@@ -227,17 +211,15 @@ const Form = () => {
                 value={isLost}
                 onChange={(e) => setIsLost(e.target.value)}
                 required>
-                <MenuItem value={true}>Lost</MenuItem>
-                <MenuItem value={false}>Found</MenuItem>
+                <MenuItem value={true}>{t('filter.Lost')}</MenuItem>
+                <MenuItem value={false}>{t('filter.Found')}</MenuItem>
               </Select>
-              <h4 className={classes.title}>Date </h4>
-              <p className={classes.desc}>
-                Please add the approximate date of when the item was lost/found.
-              </p>
+              <h4 className={classes.title}>{t('form.date')} </h4>
+              <p className={classes.desc}>{t('form.dateEx')} </p>
 
               <TextField
                 id='date'
-                label='Date'
+                label={t('form.date')}
                 type='date'
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
@@ -248,8 +230,8 @@ const Form = () => {
                 required
               />
 
-              <h4 className={classes.title}>Image</h4>
-              <p className={classes.desc}>(This image will display on the website.)</p>
+              <h4 className={classes.title}>{t('form.image')}</h4>
+              <p className={classes.desc}>{t('form.imageEx')}</p>
               <input
                 type='file'
                 onChange={(e) => handleImageUpload(e)}
@@ -263,26 +245,24 @@ const Form = () => {
                   style={{ background: '#3AAFA9' }}
                   color='primary'
                   component='span'>
-                  Upload
+                  {t('form.upload')}
                 </Button>
               </label>
-              <h4 className={classes.title}>Additional Information</h4>
-              <p className={classes.desc}>
-                Please provide any additional details/description of your lost property.
-              </p>
+              <h4 className={classes.title}>{t('form.addInfo')}</h4>
+              <p className={classes.desc}>{t('form.addInfoEx')}</p>
               <TextField
                 id='outlined-basic'
-                label='Additional Information'
+                label={t('form.addInfo')}
                 variant='outlined'
                 className={classes.input}
                 value={more}
                 onChange={(e) => setMore(e.target.value)}
               />
-              <h4 className={classes.title}>Email</h4>
-              <p className={classes.desc}>Please enter the email to display on your submission</p>
+              <h4 className={classes.title}>{t('form.email')}</h4>
+              <p className={classes.desc}>{t('form.emailEx')}</p>
               <TextField
                 id='outlined-basic'
-                label='Email'
+                label={t('form.email')}
                 variant='outlined'
                 className={classes.input}
                 type='email'
@@ -301,7 +281,7 @@ const Form = () => {
             style={{ minHeight: '1vh' }}>
             <Grid item xs={3}>
               <Button variant='contained' className={classes.button} color='primary' type='submit'>
-                Submit
+                {t('dash.submit')}
               </Button>
             </Grid>
           </Grid>
