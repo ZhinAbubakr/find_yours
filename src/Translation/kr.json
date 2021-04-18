@@ -1,31 +1,34 @@
 {
-
-    "city":{
-        "clear": "بوش بكه",
-        "baghdad": "بغداد",
-        "erbil": "اربيل",
-        "basrah": "بصرة",
-        "duhok": "دهوك",
-        "anbar": "انبار",
-        "babil": "بابل",
-        "dhiqar": "ذي قار",
-        "diyala": "ديالة",
-        "kirkuk": "كركوك",
-        "karbala": "كربلاء",
-        "maysan": "ميسان",
-        "nineveh": "نينوى",
-        "saladdin": "صلاح الدين",
-        "sulaymaniyah": "سليمانية",
-        "najaf": "نجف",
-        "wasit": "واسط",
-        "diwaniya": "ديوانية",
-        "muthana": "مثنى"
-    },
-    "navbar":{
-        "home": "Home",
-        "dash": "Dashboard",
-        "privacypolicy": "Privacy Policy",
-        "about": "About us",
-        "contact": "Contact us"
-    }
+  "city": {
+    "clear": "بوش بكه",
+    "baghdad": "بغداد",
+    "erbil": "اربيل",
+    "basrah": "بصرة",
+    "duhok": "دهوك",
+    "anbar": "انبار",
+    "babil": "بابل",
+    "dhiqar": "ذي قار",
+    "diyala": "ديالة",
+    "kirkuk": "كركوك",
+    "karbala": "كربلاء",
+    "maysan": "ميسان",
+    "nineveh": "نينوى",
+    "saladdin": "صلاح الدين",
+    "sulaymaniyah": "سليمانية",
+    "najaf": "نجف",
+    "wasit": "واسط",
+    "diwaniya": "ديوانية",
+    "muthana": "مثنى"
+  },
+  "navbar": {
+    "home": "Home",
+    "dash": "Dashboard",
+    "privacypolicy": "Privacy Policy",
+    "about": "About us",
+    "contact": "Contact us"
+  },
+  "notFound": {
+    "text1": "وادیارە تۆ ون بوویت",
+    "text2": "ئەو لاپەڕەیەی بەدوایدا دەگەڕێیت بەردەست نیە!"
+  }
 }
