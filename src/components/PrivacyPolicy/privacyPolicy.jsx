@@ -3,22 +3,16 @@ import {Grid,Typography,Container}from '@material-ui/core';
 import {useStyles} from './Style.jsx'
 
 
-
  function privacyPolicy() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="md" style={{height: '91vh'}}>
-      <div className={classes.paper}>
-       <Grid container >
+    <Container component="main" maxWidth="md" style={{height: '91vh', marginTop:'150px'}} >
        <Typography   className= { classes.head1} component="h1" variant="h5">
              Privacy Policy 
         </Typography>
       
-       </Grid>
-       
-       
-          <Grid  >
+          <Grid  mb={8}>
             <Grid item xs={12} sm={12} className={classes.headCont}>
             <Typography className={classes.revision} component="p" >
               Revised April 5,2021
@@ -54,12 +48,8 @@ import {useStyles} from './Style.jsx'
             </Grid>
             
           </Grid>
-        
-         
-       
-      </div>
-     
     </Container>
+    
   );
 }
 
