@@ -51,7 +51,7 @@ export default function Dashboard() {
   }
   useEffect(() => {
     const fetch = () => {
-      const query = db.collection('posts')
+      const query = db.collection('posts').orderBy('createdAt', 'desc')
       const categoryQuery = doubleFilter.category
         ? query.where('category', '==', doubleFilter['category'])
         : query
@@ -91,7 +91,7 @@ export default function Dashboard() {
 
   const handlefetch = () => {
     const res = []
-    const query = db.collection('posts')
+    const query = db.collection('posts').orderBy('createdAt', 'desc')
     query
       .where('category ', '==', search[0])
       .get()
