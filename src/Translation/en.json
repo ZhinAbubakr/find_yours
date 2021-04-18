@@ -54,5 +54,18 @@
         "privacypolicy": "Privacy Policy",
         "about": "About us",
         "contact": "Contact us"
+    },
+    "aboutUs": {
+      "about": "ABOUT US",
+      "offer": "What we Give you",
+      "lost": " we can help you to find your lost things",
+      "found": " If you found something and you want to get it back to the right owner",
+      "meet": "Meet US",
+      "maher": "Maher Al-Aqil",
+      "murtaja": "Murtaja Adnan",
+      "zhin": "Zhin Abubakr",
+      "othman": "Othman",
+      "ravyar": "Ravyar",
+      "jalal": "Jalal Arif"
     }
 }
