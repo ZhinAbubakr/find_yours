@@ -92,60 +92,9 @@ export default function Dashboard() {
   const handlefetch = () => {
     const res = []
     const query = db.collection('posts')
-    query
-      .where('category ', '==', search[0])
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.map((doc) =>
-          res.push({
-            id: doc.id,
-            ...doc.data(),
-          })
-        )
-      })
-
-    query
-      .where('color', '==', search[0])
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.map((doc) =>
-          res.push({
-            id: doc.id,
-            ...doc.data(),
-          })
-        )
-      })
-    query
-      .where('province', '==', search[0])
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.map((doc) =>
-          res.push({
-            id: doc.id,
-            ...doc.data(),
-          })
-        )
-      })
-
-    query
-      .where('body', 'array-contains-any', search)
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.map((doc) =>
-          res.push({
-            id: doc.id,
-            ...doc.data(),
-          })
-        )
-        if (search[0] != 'found' && search[0] != 'lost') {
-          setPosts(res)
-        }
-      })
-
-    if (search[0] === 'found' || search[0] === 'lost') {
-      const check = search[0] === 'found' ? false : true
+    if (search.length != 0) {
       query
-        .where('isLost', '==', check)
+        .where('category ', '==', search[0])
         .get()
         .then((snapshot) => {
           snapshot.docs.map((doc) =>
@@ -154,8 +103,71 @@ export default function Dashboard() {
               ...doc.data(),
             })
           )
-          setPosts(res)
         })
+
+      query
+        .where('color', '==', search[0])
+        .get()
+        .then((snapshot) => {
+          snapshot.docs.map((doc) =>
+            res.push({
+              id: doc.id,
+              ...doc.data(),
+            })
+          )
+        })
+      query
+        .where('province', '==', search[0])
+        .get()
+        .then((snapshot) => {
+          snapshot.docs.map((doc) =>
+            res.push({
+              id: doc.id,
+              ...doc.data(),
+            })
+          )
+        })
+
+      query
+        .where('body', 'array-contains-any', search)
+        .get()
+        .then((snapshot) => {
+          snapshot.docs.map((doc) =>
+            res.push({
+              id: doc.id,
+              ...doc.data(),
+            })
+          )
+          if (search[0] != 'found' && search[0] != 'lost') {
+            setPosts(res)
+          }
+        })
+
+      if (search[0] === 'found' || search[0] === 'lost') {
+        const check = search[0] === 'found' ? false : true
+        query
+          .where('isLost', '==', check)
+          .get()
+          .then((snapshot) => {
+            snapshot.docs.map((doc) =>
+              res.push({
+                id: doc.id,
+                ...doc.data(),
+              })
+            )
+            setPosts(res)
+          })
+      }
+    } else {
+      query.get().then((snapshot) => {
+        snapshot.docs.map((doc) =>
+          res.push({
+            id: doc.id,
+            ...doc.data(),
+          })
+        )
+        setPosts(res)
+      })
     }
   }
 
@@ -268,7 +280,6 @@ export default function Dashboard() {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
   }
-
   const handleClose = () => {
     setAnchorEl(null)
   }

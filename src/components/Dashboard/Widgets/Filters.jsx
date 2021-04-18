@@ -41,7 +41,7 @@ export default function Filters({ handlePosts, handleClearFilter }) {
   }
   return (
     <Card className={classes.root}>
-      <CardHeader title='Filters' className={classes.fheader} />
+      <CardHeader title={t('filter.filters')} className={classes.fheader} />
       <div className={classes.fbuttons}>
         <Button
           onClick={clearFilter}
@@ -135,6 +135,7 @@ export default function Filters({ handlePosts, handleClearFilter }) {
             <option value='red'>{t('filter.red')}</option>
             <option value='white'>{t('filter.white')}</option>
             <option value='blue'>{t('filter.blue')}</option>
+            <option value='other'>{t('filter.Other')}</option>
           </Select>
         </FormControl>
       </div>
