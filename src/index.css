@@ -5,7 +5,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-span {
+span,
+p,
+h6,
+a {
   font-family: 'Cairo', sans-serif;
 }
 
