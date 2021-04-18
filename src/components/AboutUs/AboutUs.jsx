@@ -11,6 +11,7 @@ import zhin from '../../images/zhin.jpg'
 import jalal from '../../images/jalal.jpg'
 import ravyar from '../../images/ravyar.png'
 import maher from '../../images/maher.png'
+import { LinkedIn, GitHub } from '@material-ui/icons'
 
 const teamImg = [maher, murtaja, zhin, othman, ravyar, jalal]
 const names = ['maher', 'murtaja', 'zhin', 'othman', 'ravyar', 'jalal']
@@ -90,6 +91,8 @@ export default function AboutUs() {
               <Grid align='center' item>
                 <Box pb={5} pr={1}>
                   <Typography className={classes.avatarFont}>{bios[i]}</Typography>
+                  <LinkedIn style={{ color: '#0077b5', height: '20px', width: '20px' }} />
+                  <GitHub style={{ color: '#6e5494', height: '20px', width: '20px' }} />
                 </Box>
               </Grid>
             </Grid>

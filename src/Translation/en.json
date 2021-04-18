@@ -22,7 +22,7 @@
     },
     "filter":{
         "status": "Status",
-        "catagory": "category",
+        "catagory": "Category",
         "color": "Color",
         "AnimalsPets": "Animals/Pets",
         "Documents": "Documents",
@@ -91,5 +91,10 @@
       "addInfoEx": "Please provide any additional details/description of your lost property.",
       "email": "Email",
       "emailEx": "Please enter the email to display on your submission"
+    },
+    "viewPost": {
+      "info": "Item Information",
+      "place": "Place",
+      "name": "Name"
     }
 }
