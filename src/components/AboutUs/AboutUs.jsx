@@ -5,7 +5,12 @@ import { useTranslation } from 'react-i18next'
 import team from '../../images/team.svg'
 import feedback from '../../images/undraw_design_feedback_dexe.svg'
 import search from '../../images/undraw_Web_search_re_efla.svg'
+import murtaja from '../../images/murtaja.jpg'
+import othman from '../../images/othman.jpg'
+import zhin from '../../images/zhin.jpg'
+import jalal from '../../images/jalal.jpg'
 
+const teamImg = [team, murtaja, zhin, othman, team, jalal]
 const names = ['maher', 'murtaja', 'zhin', 'othman', 'ravyar', 'jalal']
 export default function AboutUs() {
   const { t } = useTranslation()
@@ -64,7 +69,7 @@ export default function AboutUs() {
           {names.map((name, i) => (
             <Grid key={i} container item lg={3} md={4} sm={6} xs={12} direction='column'>
               <Grid align='center' item>
-                <Avatar src={team} className={classes.avatar} />
+                <Avatar src={teamImg[i]} className={classes.avatar} />
               </Grid>
               <Grid align='center' item className={classes.nameFont}>
                 <Box px={2} py={2}>
