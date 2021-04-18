@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import Post from '../Dashboard/Post/Post'
 import useStyles from './style'
 import { ThemeProvider } from '@material-ui/styles'
@@ -17,7 +18,6 @@ import { useTranslation } from 'react-i18next'
 import { ProfileContext } from '../../profileContext'
 import { Link } from 'react-router-dom'
 import { db } from '../../firebase'
-import CircularProgress from '@material-ui/core/CircularProgress'
 import { FORM_ROUTE } from '../../containers/routes'
 
 export default function Profile() {
