@@ -17,9 +17,11 @@ import { db } from '../../firebase'
 import Popover from '@material-ui/core/Popover'
 import FilterListIcon from '@material-ui/icons/FilterList'
 import { FORM_ROUTE, PROFILE_ROUTE } from '../../containers/routes'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 export default function Dashboard() {
+  const { t } = useTranslation()
   const [profile] = useContext(ProfileContext)
   const [posts, setPosts] = useState()
   const [isLoading] = useState(false)
@@ -176,7 +178,7 @@ export default function Dashboard() {
                 // Resource: https://codesandbox.io/s/mz7nx9v02j?file=/src/appStore.js
                 onChange={(e) => handleSearchInput(e)}
                 onRequestSearch={handlefetch}
-                placeholder='Search items ...'
+                placeholder={t('dash.search')}
                 autoFocus
               />
               {isLoading && <LinearProgress />}
@@ -250,7 +252,7 @@ export default function Dashboard() {
             {showMoreBtn && (
               <Grid container item justify='center'>
                 <Button onClick={() => setPostsNum(postsNum + 10)} className={classes.showMoreBtn}>
-                  show more
+                  {t('dash.show')}
                 </Button>
               </Grid>
             )}
@@ -284,7 +286,7 @@ export default function Dashboard() {
             xs={12}
             sm={mobileView ? 12 : 8}
             lg={8}>
-            {middleColomn('Post')}
+            {middleColomn(`${t('dash.submit')}`)}
             {postItems()}
           </Grid>
           {!mobileView && (
@@ -313,7 +315,7 @@ export default function Dashboard() {
             </div>
           </Grid>
           <Grid style={{ height: '100vh', overflowY: 'auto' }} item sm={6} lg={6}>
-            {middleColomn('Submit item')}
+            {middleColomn(`${t('dash.submit')}`)}
             {postItems()}
           </Grid>
           <Grid item sm={3} lg={3} className={widget}>
