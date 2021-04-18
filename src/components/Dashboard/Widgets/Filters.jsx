@@ -41,7 +41,7 @@ export default function Filters({ handlePosts, handleClearFilter }) {
   }
   return (
     <Card className={classes.root}>
-      <CardHeader title='Filters' className={classes.fheader} />
+      <CardHeader title={t('filter.filters')} className={classes.fheader} />
       <div className={classes.fbuttons}>
         <Button
           onClick={clearFilter}

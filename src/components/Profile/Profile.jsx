@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import Post from '../Dashboard/Post/Post'
 import useStyles from './style'
 import { ThemeProvider } from '@material-ui/styles'
@@ -13,10 +14,10 @@ import {
   Box,
   ListItem,
 } from '@material-ui/core'
+import { useTranslation } from 'react-i18next'
 import { ProfileContext } from '../../profileContext'
 import { Link } from 'react-router-dom'
 import { db } from '../../firebase'
-import CircularProgress from '@material-ui/core/CircularProgress'
 import { FORM_ROUTE } from '../../containers/routes'
 
 export default function Profile() {
@@ -25,6 +26,7 @@ export default function Profile() {
   const [posts, setPosts] = useState([])
   const [profile] = useContext(ProfileContext)
   const [showMoreBtn, setShowMoreBtn] = useState(true)
+  const { t } = useTranslation()
 
   useEffect(() => {
     const fetch = () => {
@@ -51,7 +53,7 @@ export default function Profile() {
         <Grid item xs={12} sm={5}>
           <Box pb={2}>
             <Typography variant='body1' color='textSecondary'>
-              Full name
+              {t('profile.name')}
             </Typography>
             <Typography variant='body1'>{profile.name || 'Name Not provided'}</Typography>
             <Divider />
@@ -59,7 +61,7 @@ export default function Profile() {
         </Grid>
         <Grid item xs={12} sm={5}>
           <Typography variant='body1' color='textSecondary'>
-            Email
+            {t('profile.email')}
           </Typography>
           <Typography variant='body1'>{profile.email || 'Email Not provided'}</Typography>
           <Divider />
@@ -96,7 +98,7 @@ export default function Profile() {
                     <Grid item xs={12} sm={5}>
                       <Box pb={2}>
                         <Typography variant='body1' color='textSecondary'>
-                          Address
+                          {t('profile.address')}
                         </Typography>
                         <Typography variant='body1'>
                           {posts[0].province || 'Address Not provided'}
@@ -106,7 +108,7 @@ export default function Profile() {
                     </Grid>
                     <Grid item xs={12} sm={5}>
                       <Typography variant='body1' color='textSecondary'>
-                        Phone No.
+                        {t('profile.phone')}
                       </Typography>
                       <Typography variant='body1'>
                         {posts[0].phone || 'Phone No. Not provided'}
@@ -127,14 +129,14 @@ export default function Profile() {
         <Grid container justify='space-around' spacing={2}>
           <Grid>
             <Typography variant='h6' style={{ fontWeight: 'bold' }}>
-              My Posts
+              {t('profile.myposts')}
             </Typography>
           </Grid>
 
           <Grid xs={12} item>
             {posts.length === 0 && (
               <Typography variant='h6' className={classes.noPosts}>
-                you do not have any posts to show!
+                {t('profile.showposts')}
               </Typography>
             )}
           </Grid>
@@ -161,14 +163,14 @@ export default function Profile() {
                     onClick={() => setPostsNum(postsNum + 3)}
                     className={classes.button}
                     variant='contained'>
-                    Show More Posts
+                    {t('profile.showmore')}
                   </Button>
                 </Box>
               )}
 
               <Link to={FORM_ROUTE} className={classes.links}>
                 <Button className={classes.button} variant='contained'>
-                  Add Post
+                  {t('profile.addpost')}
                 </Button>
               </Link>
             </Box>

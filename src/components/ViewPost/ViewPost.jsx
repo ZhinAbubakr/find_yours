@@ -29,7 +29,7 @@ function ViewPost(props) {
           <Paper className={classes.paper}>
             <ThemeProvider theme={theme}>
               <Typography variant='h4' className={classes.headerTypo}>
-                {t('viewPost.info')}:
+                {t('viewPost.info')}
               </Typography>
               <Grid container>
                 <Grid item xs={12} sm={8} md={3}>
@@ -39,14 +39,14 @@ function ViewPost(props) {
                   <ListItem>
                     <Container maxWidth='lg' className={classes.container2}>
                       <Typography variant='body1' color='textSecondary'>
-                        {t('form.title')}:
+                        {t('form.title')}
                       </Typography>
                       <Typography variant='body1'>{post.title}</Typography>
                       <Divider />
                     </Container>
                     <Container maxWidth='lg' className={classes.container2}>
                       <Typography variant='body1' color='textSecondary'>
-                        {t('form.date')}:
+                        {t('form.date')}
                       </Typography>
                       <Typography variant='body1'>{post.date}</Typography>
                       <Divider />
@@ -56,21 +56,21 @@ function ViewPost(props) {
                   <ListItem>
                     <Container maxWidth='lg'>
                       <Typography variant='body1' color='textSecondary'>
-                        {t('viewPost.place')}:
+                        {t('viewPost.place')}
                       </Typography>
                       <Typography variant='body1'>{post.province}</Typography>
                       <Divider />
                     </Container>
                     <Container maxWidth='lg'>
                       <Typography variant='body1' color='textSecondary'>
-                        {t('filter.color')}:
+                        {t('filter.color')}
                       </Typography>
                       <Typography variant='body1'>{post.color}</Typography>
                       <Divider />
                     </Container>
                     <Container maxWidth='lg'>
                       <Typography variant='body1' color='textSecondary'>
-                        {t('filter.catagory')}:
+                        {t('filter.catagory')}
                       </Typography>
                       <Typography variant='body1'>{post.category}</Typography>
                       <Divider />
@@ -80,7 +80,7 @@ function ViewPost(props) {
                   <ListItem>
                     <Container maxWidth='lg'>
                       <Typography variant='body1' color='textSecondary'>
-                        {t('form.addInfo')}:
+                        {t('form.addInfo')}
                       </Typography>
                       <Typography variant='body1'>
                         {post.body.map((word, i) => (
@@ -94,7 +94,7 @@ function ViewPost(props) {
               </Grid>
 
               <Typography variant='h4' className={classes.typo1}>
-                {t('form.contact')}:
+                {t('form.contact')}
               </Typography>
 
               <Grid container spacing={3} className={classes.container3}>
@@ -102,14 +102,14 @@ function ViewPost(props) {
                   <ListItem>
                     <Container className={classes.container2}>
                       <Typography variant='body1' color='textSecondary'>
-                        {t('viewPost.name')}:
+                        {t('viewPost.name')}
                       </Typography>
                       <Typography variant='body1'>{post.name}</Typography>
                       <Divider />
                     </Container>
                     <Container className={classes.container2}>
                       <Typography variant='body1' color='textSecondary'>
-                        {t('form.facebook')}:
+                        {t('form.facebook')}
                       </Typography>
                       <Typography variant='body1'>
                         {post.facebook ? (
@@ -125,7 +125,7 @@ function ViewPost(props) {
                   <ListItem>
                     <Container maxWidth='lg'>
                       <Typography variant='body1' color='textSecondary'>
-                        {t('form.email')}:
+                        {t('form.email')}
                       </Typography>
                       <Typography variant='body1'>
                         {post.email ? (
@@ -138,7 +138,7 @@ function ViewPost(props) {
                     </Container>
                     <Container maxWidth='lg'>
                       <Typography variant='body1' color='textSecondary'>
-                        {t('form.phone')}:
+                        {t('form.phone')}
                       </Typography>
                       <Typography variant='body1'>
                         {post.phone ? post.phone : 'No Phone Number Provided.'}
