@@ -11,18 +11,56 @@ import zhin from '../../images/zhin.jpg'
 import jalal from '../../images/jalal.jpg'
 import ravyar from '../../images/ravyar.png'
 import maher from '../../images/maher.png'
+import { LinkedIn, GitHub } from '@material-ui/icons'
 
-const teamImg = [maher, murtaja, zhin, othman, ravyar, jalal]
-const names = ['maher', 'murtaja', 'zhin', 'othman', 'ravyar', 'jalal']
-const bios = [
-  'Lead Engineer',
-  'Web Developer',
-  'Web Developer',
-  'Web Developer',
-  'Web Developer',
-  'Web Developer',
+const developers = [
+  {
+    name: 'maher',
+    bio: 'Lead Engineer',
+    img: maher,
+    github: 'https://github.com/maqalaqil',
+    linkedin: 'https://www.linkedin.com/in/maher-al-aqil-56895894/',
+  },
+  {
+    name: 'murtaja',
+    img: murtaja,
+    bio: 'Web Developer',
+    github: 'https://github.com/murtaja1',
+    linkedin: 'https://www.linkedin.com/in/murtaja-adnan-2a02b9206/',
+  },
+  {
+    name: 'zhin',
+    bio: 'Web Developer',
+
+    img: zhin,
+    github: 'https://github.com/ZhinAbubakr',
+    linkedin: 'https://www.linkedin.com/in/zhin-abubakr-473910181/',
+  },
+  {
+    name: 'othman',
+    bio: 'Web Developer',
+
+    img: othman,
+    github: 'https://github.com/Othmanosx',
+    linkedin: 'https://www.linkedin.com/in/othmanosx/',
+  },
+  {
+    name: 'ravyar',
+    bio: 'Web Developer',
+
+    img: ravyar,
+    github: 'https://github.com/Ravyar19',
+    linkedin: 'https://www.linkedin.com/in/ravyar-aram-b767661aa/',
+  },
+  {
+    name: 'jalal',
+    bio: 'Web Developer',
+
+    img: jalal,
+    github: 'https://github.com/JalalArif',
+    linkedin: 'https://www.linkedin.com/in/jalarif/',
+  },
 ]
-
 export default function AboutUs() {
   const { t } = useTranslation()
   const classes = useStyles()
@@ -77,19 +115,25 @@ export default function AboutUs() {
 
       <Box mb={4} mt={4}>
         <Grid container direction='row' justify='space-around' alignItems='center'>
-          {names.map((name, i) => (
+          {developers.map((name, i) => (
             <Grid key={i} container item lg={4} sm={6} xs={12} direction='column'>
               <Grid align='center' item>
-                <Avatar src={teamImg[i]} className={classes.avatar} />
+                <Avatar src={name.img} className={classes.avatar} />
               </Grid>
               <Grid align='center' item className={classes.nameFont}>
                 <Box px={2} py={2}>
-                  {t(`aboutUs.${name}`)}
+                  {t(`aboutUs.${name.name}`)}
                 </Box>
               </Grid>
               <Grid align='center' item>
                 <Box pb={5} pr={1}>
-                  <Typography className={classes.avatarFont}>{bios[i]}</Typography>
+                  <Typography className={classes.avatarFont}>{name.bio}</Typography>
+                  <a href={name.linkedin}>
+                    <LinkedIn className={classes.linkedIn} />
+                  </a>
+                  <a href={name.github}>
+                    <GitHub className={classes.github} />
+                  </a>
                 </Box>
               </Grid>
             </Grid>

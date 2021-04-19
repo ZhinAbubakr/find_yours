@@ -51,7 +51,9 @@ export default function Posts() {
         {posts ? (
           <>
             {posts.map((post, i) => (
-              <Post key={i} post={post} />
+              <Grid container justify='center' item key={i} xs={12} md={4} lg={3}>
+                <Post post={post} />
+              </Grid>
             ))}
             {showMoreBtn && (
               <Grid container item justify='center'>

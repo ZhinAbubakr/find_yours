@@ -107,5 +107,10 @@
     "showposts": "You do not have any posts to show!",
     "showmore": "Show More Posts",
     "addpost": "Add Post"
+  },
+  "viewPost": {
+    "info": "Item Information",
+    "place": "Place",
+    "name": "Name"
   }
 }
