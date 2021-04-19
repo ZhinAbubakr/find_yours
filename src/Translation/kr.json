@@ -32,8 +32,8 @@
     "text2": "ئەو لاپەڕەیەی بەدوایدا دەگەڕێیت بەردەست نیە!"
   },
   "heroSection": {
-    "direction": "ltl",
-    "greeting": "FindYours به‌خێربێن بۆ  ",
+    "direction": "rtl",
+    "greeting": " به‌خێربێن بۆ FindYours ",
     "lost&found": " دۆزراوه‌کان & ونبوه‌کان    ",
     "button": "ناردن"
   }
