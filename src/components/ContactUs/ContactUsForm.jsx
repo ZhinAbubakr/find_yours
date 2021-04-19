@@ -9,8 +9,12 @@ import {
 	Container
 } from "@material-ui/core"
 import { useStyles } from "./Style.js"
+import { useTranslation } from 'react-i18next'
+
+
 
 export default function ContactUsForm(props) {
+	const { t } = useTranslation()
 	const classes = useStyles()
 	const { firstName, lastName, email, text } = props.value
 	const {
@@ -21,13 +25,12 @@ export default function ContactUsForm(props) {
 		handleSubmit
 	} = props
 	return (
-		<Container component="main" maxWidth="xs">
+		<Container component="main" maxWidth="xs" dir={t('contactUs.direction')}>
 			<CssBaseline />
 			<Box mb={20.9} mt={16}>
 				<div className={classes.paper}>
 					<Typography component="h1" variant="h5">
-						Thanks for taking time to reach out <br /> How can we help you today
-						?
+					{t('contactUs.greeting')}
 					</Typography>
 					<form className={classes.form} onSubmit={handleSubmit}>
 						<Grid container spacing={2}>
@@ -41,7 +44,7 @@ export default function ContactUsForm(props) {
 									required
 									fullWidth
 									id="firstName"
-									label="First Name"
+									label={t('contactUs.first')}
 									autoFocus
 								/>
 							</Grid>
@@ -53,7 +56,7 @@ export default function ContactUsForm(props) {
 									required
 									fullWidth
 									id="lastName"
-									label="Last Name"
+									label={t('contactUs.last')}
 									name="lastName"
 									autoComplete="lname"
 								/>
@@ -66,7 +69,7 @@ export default function ContactUsForm(props) {
 									required
 									fullWidth
 									id="email"
-									label="Email Address"
+									label={t('contactUs.email')}
 									name="email"
 									autoComplete="email"
 								/>
@@ -79,7 +82,7 @@ export default function ContactUsForm(props) {
 									required
 									fullWidth
 									name="textarea"
-									label="Message"
+									label={t('contactUs.message')}
 									type="TextareaAutosize"
 									id="textarea"
 								/>
@@ -92,7 +95,7 @@ export default function ContactUsForm(props) {
 							variant="contained"
 							color={classes.Color}
 							className={`${classes.submit} ${classes.backgroundColor}`}>
-							Submit
+							{t('contactUs.submit')}
 						</Button>
 					</form>
 				</div>
