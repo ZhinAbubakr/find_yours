@@ -9,7 +9,7 @@ function privacyPolicy() {
 
   return (
     <Container component='main' maxWidth='md' dir={t('privacyPolicy.direction')}>
-      <Box mb={14.6}>
+      <Box mb={11.6} mt={3}>
         <Grid container>
           <Typography className={classes.head1} component='h1' variant='h5'>
             {t('privacyPolicy.privacyPolicy')}
