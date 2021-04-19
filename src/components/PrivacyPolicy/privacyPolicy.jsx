@@ -8,11 +8,7 @@ function privacyPolicy() {
   const { t } = useTranslation()
 
   return (
-    <Container
-      component='main'
-      maxWidth='md'
-      style={{ height: '91vh' }}
-      dir={t('privacyPolicy.direction')}>
+    <Container component='main' maxWidth='md' dir={t('privacyPolicy.direction')}>
       <div className={classes.paper}>
         <Grid container>
           <Typography className={classes.head1} component='h1' variant='h5'>
