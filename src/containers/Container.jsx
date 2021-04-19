@@ -10,6 +10,7 @@ import Form from "../components/Form/Form";
 import ContactUs from "./CountactUs";
 import { ProfileProvider } from "../profileContext";
 import Profile from "../components/Profile/Profile";
+import NotFound from "../components/NotFound/NotFound";
 import {
   HOME_ROUTE,
   DASHBOARD_ROUTE,
@@ -38,7 +39,7 @@ export default function Container() {
             <Route path={ABOUT_ROUTE} component={About} />
             <Route path={CONTACTUS_ROUTE} component={ContactUs} />
             <Route path={FORM_ROUTE} component={Form} />
-            <Route path={NOT_FOUND_ROUTE} component={null} />
+            <Route path={NOT_FOUND_ROUTE} component={NotFound} />
           </Switch>
           <Footer />
         </ProfileProvider>

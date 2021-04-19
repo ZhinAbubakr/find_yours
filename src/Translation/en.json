@@ -57,6 +57,10 @@
     "about": "About us",
     "contact": "Contact us"
   },
+  "notFound": {
+    "text1": "Look Like You Are Lost",
+    "text2": "The Page You Are Looking For Not Available!"
+   },
   "aboutUs": {
     "about": "ABOUT US",
     "offer": "What we Give you",

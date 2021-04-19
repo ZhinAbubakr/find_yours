@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   media: {
     width: 250,
     height: 250,
@@ -13,17 +13,17 @@ const useStyles = makeStyles((theme) => ({
     padding: 14,
   },
   headerTypo: {
-    marginBottom: theme.spacing(4),
-    marginLeft: theme.spacing(2),
+    marginBottom: 4,
+    marginLeft: 2,
   },
   typo1: {
     marginTop: 45,
     paddingLeft: 15,
   },
   container3: {
-    marginTop: 10,
+    marginTop: 5,
   },
-}))
+})
 
 export const theme = createMuiTheme({
   typography: {
