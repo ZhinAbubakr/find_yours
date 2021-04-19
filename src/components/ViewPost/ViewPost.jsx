@@ -26,7 +26,7 @@ function ViewPost(props) {
   return (
     <>
       <Container>
-        <Box mt={12} mb={2}>
+        <Box mt={11} mb={2}>
           {post ? (
             <Paper className={classes.paper}>
               <ThemeProvider theme={theme}>
