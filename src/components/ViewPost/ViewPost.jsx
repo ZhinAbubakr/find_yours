@@ -22,6 +22,7 @@ function ViewPost(props) {
         alert(error)
       })
   }, [props.match.params.id])
+
   return (
     <>
       <Container>
