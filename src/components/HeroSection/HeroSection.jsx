@@ -87,7 +87,7 @@ export default function HeroSection() {
               />
             </Zoom>
 
-            <Slide style={{ transitionDelay: '500ms' }} timeout={2500} direction='down' in={true}>
+            <Slide timeout={2500} direction='down' in={true}>
               <Fade in={true} timeout={1500}>
                 <img
                   style={{
