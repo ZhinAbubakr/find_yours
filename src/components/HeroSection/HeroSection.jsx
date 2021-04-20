@@ -14,8 +14,11 @@ import {
 import { FORM_ROUTE } from "../../containers/routes";
 import { Link } from "react-router-dom";
 import { ProfileContext } from "../../profileContext";
+import { useTranslation } from 'react-i18next'
+
 
 export default function HeroSection() {
+	const { t } = useTranslation()
 	const [profile] = useContext(ProfileContext);
 	const fadeLeft = {
 		hidden: { opacity: 0, x: -100 },
@@ -24,20 +27,20 @@ export default function HeroSection() {
 
 	return (
 		<Section>
-			<Container>
+			<Container dir={t('heroSection.direction')}>
 				<ColumnLeft>
 					<motion.h1
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						transition={{ duration: 1 }}>
-						Welcome to FindYours
+						{t('heroSection.greeting')}
 					</motion.h1>
 					<motion.p
 						variants={fadeLeft}
 						initial="hidden"
 						animate="visible"
 						transition={{ duration: 1 }}>
-						Lost & Found
+						{t('heroSection.lost&found')}
 					</motion.p>
 					{profile.length != 0 ? (
 						<Link to={FORM_ROUTE}>
@@ -51,7 +54,7 @@ export default function HeroSection() {
 								}}
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1, transition: { duration: 1.5 } }}>
-								Submit
+								{t('heroSection.button')}
 							</Button>
 						</Link>
 					) : (

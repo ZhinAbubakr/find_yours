@@ -30,5 +30,11 @@
   "notFound": {
     "text1": "وادیارە تۆ ون بوویت",
     "text2": "ئەو لاپەڕەیەی بەدوایدا دەگەڕێیت بەردەست نیە!"
+  },
+  "heroSection": {
+    "direction": "rtl",
+    "greeting": " به‌خێربێن بۆ FindYours ",
+    "lost&found": " دۆزراوه‌کان & ونبوه‌کان    ",
+    "button": "ناردن"
   }
 }
