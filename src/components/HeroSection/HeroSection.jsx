@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { motion } from 'framer-motion'
+import { Button, Fade } from '@material-ui/core'
 import PlanetOne from '../../images/1.png'
 import PlanetTwo from '../../images/2.png'
 import PlanetThree from '../../images/3.png'
-import { Section, Container, ColumnLeft, ColumnRight, Image, Button } from './style.js'
+import { Section, Container, ColumnLeft, ColumnRight, Image } from './style.js'
 import { FORM_ROUTE } from '../../containers/routes'
 import { Link } from 'react-router-dom'
 import { ProfileContext } from '../../profileContext'
@@ -33,7 +34,19 @@ export default function HeroSection() {
           </motion.p>
           {profile.length != 0 ? (
             <Link to={FORM_ROUTE}>
+              <Fade in={true} timeout={1500}>
+                <Button variant='contained' disableElevation>
+                  {t('heroSection.button')}
+                </Button>
+              </Fade>
+            </Link>
+          ) : (
+            <Fade in={true} timeout={2000}>
               <Button
+                size='large'
+                disableElevation
+                variant='contained'
+                onClick={() => alert('you need to log in to post!')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{
                   scale: 0.95,
@@ -45,21 +58,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, transition: { duration: 1.5 } }}>
                 {t('heroSection.button')}
               </Button>
-            </Link>
-          ) : (
-            <Button
-              onClick={() => alert('you need to log in to post!')}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{
-                scale: 0.95,
-                backgroundColor: '#67F6E7',
-                border: 'none',
-                color: '#000',
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { duration: 1.5 } }}>
-              Submit
-            </Button>
+            </Fade>
           )}
         </ColumnLeft>
         <ColumnRight>
