@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import { motion } from 'framer-motion'
-import { Button, Fade } from '@material-ui/core'
-import PlanetOne from '../../images/1.png'
-import PlanetTwo from '../../images/2.png'
-import PlanetThree from '../../images/3.png'
-import { Section, Container, ColumnLeft, ColumnRight, Image } from './style.js'
+import { Grid, Typography, Container } from '@material-ui/core'
+import { Button, Fade, Slide, Zoom } from '@material-ui/core'
+import Men from '../../images/men.svg'
+import Laptop from '../../images/laptop.svg'
+import Tag from '../../images/tag.svg'
+import { Section } from './style.js'
 import { FORM_ROUTE } from '../../containers/routes'
 import { Link } from 'react-router-dom'
 import { ProfileContext } from '../../profileContext'
@@ -13,33 +13,35 @@ import { useTranslation } from 'react-i18next'
 export default function HeroSection() {
   const { t } = useTranslation()
   const [profile] = useContext(ProfileContext)
-  const fadeLeft = {
-    hidden: { opacity: 0, x: -100 },
-    visible: { opacity: 1, x: 0 },
-  }
 
   return (
     <Section>
-      <Container dir={t('heroSection.direction')}>
-        <ColumnLeft>
-          <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-            {t('heroSection.greeting')}
-          </motion.h1>
-          <motion.p
-            variants={fadeLeft}
-            initial='hidden'
-            animate='visible'
-            transition={{ duration: 1 }}>
-            {t('heroSection.lost&found')}
-          </motion.p>
+      <Grid justify='space-around' alignItems='center' container dir={t('heroSection.direction')}>
+        <Grid sm={12} md={5} lg={5} style={{ paddingLeft: '10em' }} justify='center'>
+          <Slide timeout={1500} direction='right' in={true}>
+            <Container>
+              <Typography
+                style={{ color: 'white', fontWeight: 'bold' }}
+                variant='h2'
+                component='h2'>
+                {t('heroSection.greeting')}
+              </Typography>
+              <Typography style={{ color: 'white' }} variant='h4' component='h2'>
+                {t('heroSection.lost&found')}
+              </Typography>
+            </Container>
+          </Slide>
+          <br />
           {profile.length != 0 ? (
-            <Link to={FORM_ROUTE}>
-              <Fade in={true} timeout={1500}>
-                <Button variant='contained' disableElevation>
-                  {t('heroSection.button')}
-                </Button>
-              </Fade>
-            </Link>
+            <Container>
+              <Link style={{ textDecoration: 'none' }} to={FORM_ROUTE}>
+                <Fade in={true} timeout={1500}>
+                  <Button size='large' variant='contained' disableElevation>
+                    {t('heroSection.button')}
+                  </Button>
+                </Fade>
+              </Link>
+            </Container>
           ) : (
             <Fade in={true} timeout={2000}>
               <Button
@@ -60,37 +62,53 @@ export default function HeroSection() {
               </Button>
             </Fade>
           )}
-        </ColumnLeft>
-        <ColumnRight>
-          <Image
-            src={PlanetOne}
-            alt='planet'
-            whileTap={{ scale: 0.9 }}
-            drag={true}
-            dragConstraints={{ left: 0, right: 250, top: 0, bottom: 50 }}
-            initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 1, y: 0, transition: { duration: 1 } }}
-          />
-          <Image
-            src={PlanetTwo}
-            alt='planet'
-            whileTap={{ scale: 0.6 }}
-            drag={true}
-            dragConstraints={{ left: 50, right: 0, top: 0, bottom: 50 }}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0, transition: { duration: 1 } }}
-          />
-          <Image
-            src={PlanetThree}
-            alt='planet'
-            whileTap={{ scale: 0.8 }}
-            drag={true}
-            dragConstraints={{ left: 0, right: 250, top: 0, bottom: 50 }}
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0, transition: { duration: 1 } }}
-          />
-        </ColumnRight>
-      </Container>
+        </Grid>
+
+        <Grid
+          className='herotext'
+          sm={12}
+          md={7}
+          lg={7}
+          style={{ width: '-webkit-fill-available', paddingRight: '4em' }}
+          justify='center'>
+          <div
+            style={{
+              position: 'relative',
+              maxWidth: '856px',
+              minHeight: '395px',
+            }}>
+            <Zoom in={true} timeout={1500}>
+              <img
+                style={{ width: '-webkit-fill-available', position: 'absolute', display: 'inline' }}
+                src={Laptop}
+                alt=''
+              />
+            </Zoom>
+
+            <Slide style={{ transitionDelay: '500ms' }} timeout={2500} direction='down' in={true}>
+              <Fade in={true} timeout={1500}>
+                <img
+                  style={{
+                    width: '-webkit-fill-available',
+                    position: 'absolute',
+                    display: 'inline',
+                  }}
+                  src={Tag}
+                  alt=''
+                />
+              </Fade>
+            </Slide>
+
+            <Slide timeout={1500} direction='left' in={true}>
+              <img
+                style={{ width: '-webkit-fill-available', position: 'absolute', display: 'inline' }}
+                src={Men}
+                alt=''
+              />
+            </Slide>
+          </div>
+        </Grid>
+      </Grid>
     </Section>
   )
 }
