@@ -44,22 +44,24 @@ export default function HeroSection() {
             </Container>
           ) : (
             <Fade in={true} timeout={2000}>
-              <Button
-                size='large'
-                disableElevation
-                variant='contained'
-                onClick={() => alert('you need to log in to post!')}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{
-                  scale: 0.95,
-                  backgroundColor: '#67F6E7',
-                  border: 'none',
-                  color: '#000',
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 1.5 } }}>
-                {t('heroSection.button')}
-              </Button>
+              <Container>
+                <Button
+                  size='large'
+                  disableElevation
+                  variant='contained'
+                  onClick={() => alert('you need to log in to post!')}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{
+                    scale: 0.95,
+                    backgroundColor: '#67F6E7',
+                    border: 'none',
+                    color: '#000',
+                  }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { duration: 1.5 } }}>
+                  {t('heroSection.button')}
+                </Button>
+              </Container>
             </Fade>
           )}
         </Grid>
