@@ -235,9 +235,6 @@ function DeletePost({ postId, userId }) {
               Delete
             </Button>
           </Box>
-          <Button variant='contained' color='primary' size='small'>
-            Edit
-          </Button>
         </Grid>
       )}
     </>
