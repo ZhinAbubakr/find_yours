@@ -1,26 +1,42 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import useStyles from './style'
 import { ThemeProvider } from '@material-ui/styles'
 import { theme } from './style'
-import { Container, Grid, Typography, CardMedia, Divider, Paper, Box } from '@material-ui/core'
+import {
+  Container,
+  Grid,
+  Typography,
+  CardMedia,
+  Divider,
+  Paper,
+  Box,
+  Button,
+  Dialog,
+} from '@material-ui/core'
 import { db } from '../../firebase'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { useTranslation } from 'react-i18next'
+import { ProfileContext } from '../../profileContext'
 
 function ViewPost(props) {
   const { t } = useTranslation()
   const classes = useStyles()
   const [post, setPosts] = useState()
   useEffect(() => {
-    db.collection('posts')
-      .doc(props.match.params.id)
-      .get()
-      .then((docRef) => {
-        setPosts(docRef.data())
-      })
-      .catch((error) => {
-        alert(error)
-      })
+    const fetch = () => {
+      db.collection('posts')
+        .doc(props.match.params.id)
+        .get()
+        .then((docRef) => {
+          setPosts(docRef.data())
+        })
+        .catch((error) => {
+          alert(error)
+        })
+    }
+    fetch()
+    return fetch()
   }, [props.match.params.id])
 
   return (
@@ -142,13 +158,14 @@ function ViewPost(props) {
 
                   <Grid item xs={12} sm={6}>
                     <Typography variant='body1' color='textSecondary'>
-                      {t('form.phone')}:
+                      {t('form.phone')}
                     </Typography>
                     <Typography variant='body1'>
                       {post.phone ? post.phone : 'No Phone Number Provided.'}
                     </Typography>
                     <Divider />
                   </Grid>
+                  <DeletePost userId={post.userId} postId={props.match.params.id} />
                 </Grid>
               </ThemeProvider>
             </Paper>
@@ -164,3 +181,66 @@ function ViewPost(props) {
 }
 
 export default ViewPost
+
+function DeletePost({ postId, userId }) {
+  const [openDialog, setOpenDialog] = useState(false)
+  const classes = useStyles()
+  const [profile] = useContext(ProfileContext)
+  const { t } = useTranslation()
+  const history = useHistory()
+  const handleDelete = () => {
+    db.collection('posts')
+      .doc(postId)
+      .delete()
+      .then(() => {
+        console.log('Document successfully deleted!')
+        setOpenDialog(!openDialog)
+        history.push('/dashboard')
+      })
+      .catch((error) => {
+        console.error('Error removing document: ', error)
+      })
+  }
+  const handleDeleteDialog = () => {
+    setOpenDialog(!openDialog)
+  }
+  return (
+    <>
+      <Dialog aria-labelledby='simple-dialog-title' open={openDialog}>
+        <Box py={2} px={2}>
+          <Typography variant='h5' className={classes.headerTypo}>
+            {t('post.confirm')}
+          </Typography>
+          <Grid container justify='center'>
+            <Box pr={1} pt={2} component='span'>
+              <Button variant='contained' color='primary' size='small' onClick={handleDelete}>
+                {t('post.yes')}
+              </Button>
+            </Box>
+            <Box pt={2} component='span'>
+              <Button
+                variant='contained'
+                color='secondary'
+                size='small'
+                onClick={handleDeleteDialog}>
+                {t('post.cancel')}
+              </Button>
+            </Box>
+          </Grid>
+        </Box>
+      </Dialog>
+      {profile.googleId === userId && (
+        <Grid item xs={12} sm={6}>
+          <Box pr={1} component='span'>
+            <Button onClick={handleDeleteDialog} variant='contained' color='secondary' size='small'>
+              {t('post.delete')}
+            </Button>
+          </Box>
+          <Button variant='contained' color='primary' size='small'>
+            {t('post.edit')}
+          </Button>
+        </Grid>
+      )}
+    </>
+  )
+}

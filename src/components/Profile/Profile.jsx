@@ -31,17 +31,15 @@ export default function Profile() {
   useEffect(() => {
     const fetch = () => {
       if (profile) {
-        const res = []
         const query = db
           .collection('posts')
           .where('userId', '==', `${profile ? profile.googleId : null}`)
-        query
-          .limit(postsNum)
-
-          .onSnapshot((snapshot) => {
-            snapshot.docs.map((doc) => res.push({ id: doc.id, ...doc.data() }))
-            setPosts(res)
-          })
+        query.limit(postsNum).onSnapshot((snapshot) => {
+          const res = []
+          setPosts([])
+          snapshot.docs.map((doc) => res.push({ id: doc.id, ...doc.data() }))
+          setPosts(res)
+        })
 
         query.get().then((snap) => setShowMoreBtn(snap.size > postsNum))
       }
