@@ -126,12 +126,11 @@
     "email": "البريد الإلكتروني",
     "message": "رسالة",
     "submit": "إرسال"  
-  }
-
+  },
   "heroSection": {
     "direction": "rtl",
     "greeting": "مرحبا بكم في FindYours",
-    "lost&found": "وجد & المفقود    ",
+    "lost&found": "وجد & المفقود ",
     "button": "إرسال"
-
+  }
 }
