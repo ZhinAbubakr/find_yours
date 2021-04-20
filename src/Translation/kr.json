@@ -39,5 +39,11 @@
     "email": " ئیمه‌ل",
     "message": "نامه‌ ",
     "submit": "ناردن"
-  }
+ }
+
+  "heroSection": {
+    "direction": "rtl",
+    "greeting": " به‌خێربێن بۆ FindYours ",
+    "lost&found": " دۆزراوه‌کان & ونبوه‌کان    ",
+    "button": "ناردن"
 }

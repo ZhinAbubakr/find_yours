@@ -129,5 +129,11 @@
     "email": "Email",
     "message": "Message",
     "submit": "Submit"
-  }
+ }
+  "heroSection": {
+    "direction": "ltl",
+    "greeting": "Welcome to FindYours",
+    "lost&found": "Lost & Found   ",
+    "button": "Submit"
+
 }
