@@ -1,26 +1,42 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import useStyles from './style'
 import { ThemeProvider } from '@material-ui/styles'
 import { theme } from './style'
-import { Container, Grid, Typography, CardMedia, Divider, Paper, Box } from '@material-ui/core'
+import {
+  Container,
+  Grid,
+  Typography,
+  CardMedia,
+  Divider,
+  Paper,
+  Box,
+  Button,
+  Dialog,
+} from '@material-ui/core'
 import { db } from '../../firebase'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { useTranslation } from 'react-i18next'
+import { ProfileContext } from '../../profileContext'
 
 function ViewPost(props) {
   const { t } = useTranslation()
   const classes = useStyles()
   const [post, setPosts] = useState()
   useEffect(() => {
-    db.collection('posts')
-      .doc(props.match.params.id)
-      .get()
-      .then((docRef) => {
-        setPosts(docRef.data())
-      })
-      .catch((error) => {
-        alert(error)
-      })
+    const fetch = () => {
+      db.collection('posts')
+        .doc(props.match.params.id)
+        .get()
+        .then((docRef) => {
+          setPosts(docRef.data())
+        })
+        .catch((error) => {
+          alert(error)
+        })
+    }
+    fetch()
+    return fetch()
   }, [props.match.params.id])
 
   return (
@@ -149,6 +165,7 @@ function ViewPost(props) {
                     </Typography>
                     <Divider />
                   </Grid>
+                  <DeletePost userId={post.userId} postId={props.match.params.id} />
                 </Grid>
               </ThemeProvider>
             </Paper>
@@ -164,3 +181,65 @@ function ViewPost(props) {
 }
 
 export default ViewPost
+
+function DeletePost({ postId, userId }) {
+  const [openDialog, setOpenDialog] = useState(false)
+  const classes = useStyles()
+  const [profile] = useContext(ProfileContext)
+  const history = useHistory()
+  const handleDelete = () => {
+    db.collection('posts')
+      .doc(postId)
+      .delete()
+      .then(() => {
+        console.log('Document successfully deleted!')
+        setOpenDialog(!openDialog)
+        history.push('/dashboard')
+      })
+      .catch((error) => {
+        console.error('Error removing document: ', error)
+      })
+  }
+  const handleDeleteDialog = () => {
+    setOpenDialog(!openDialog)
+  }
+  return (
+    <>
+      <Dialog aria-labelledby='simple-dialog-title' open={openDialog}>
+        <Box py={2} px={2}>
+          <Typography variant='h5' className={classes.headerTypo}>
+            Are you sure you want to delete the item?
+          </Typography>
+          <Grid container justify='center'>
+            <Box pr={1} pt={2} component='span'>
+              <Button variant='contained' color='primary' size='small' onClick={handleDelete}>
+                Yes
+              </Button>
+            </Box>
+            <Box pt={2} component='span'>
+              <Button
+                variant='contained'
+                color='secondary'
+                size='small'
+                onClick={handleDeleteDialog}>
+                Cancel
+              </Button>
+            </Box>
+          </Grid>
+        </Box>
+      </Dialog>
+      {profile.googleId === userId && (
+        <Grid item xs={12} sm={6}>
+          <Box pr={1} component='span'>
+            <Button onClick={handleDeleteDialog} variant='contained' color='secondary' size='small'>
+              Delete
+            </Button>
+          </Box>
+          <Button variant='contained' color='primary' size='small'>
+            Edit
+          </Button>
+        </Grid>
+      )}
+    </>
+  )
+}
