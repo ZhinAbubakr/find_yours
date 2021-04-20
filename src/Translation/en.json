@@ -122,9 +122,19 @@
     "paragraph3": "This privacy policy applies to all information collected through our Site, Short Message Service (SMS), embedded in a partner’s website and mobile application, various social media platforms and any sales and marketing related services (together, “Site”). By using any of these services, you expressly consent to the information handling practices described in this policy. Links from our Site or service to third party sites are provided for your convenience. Personal information you provide to such third parties will be governed by that party’s privacy policy and not by Find Yours. Find Yours is not responsible for the privacy practices of these other websites."
   },
   "heroSection": {
-    "direction": "ltl",
+    "direction": "ltr",
     "greeting": "Welcome to FindYours",
     "lost&found": "Lost & Found   ",
     "button": "Submit"
+  },
+  "infoSection": {
+    "direction": "ltr",
+    "easyHead": "Ease of Use",
+    "easyDesc": "Submitting lost or found items is simple and hassle free.",
+    "intelligenceHead": "Intelligence",
+    "intelligenceDesc": "we intelligently help find and locate the misplaced goods and who has them",
+    "OutReachHead": "Out Reach",
+    "OutReachDesc": "With our multi-level platform, your lost or found submission will automatically be sent to local businesses and individuals."
+
   }
 }
