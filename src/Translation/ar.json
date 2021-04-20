@@ -45,7 +45,12 @@
     "submit": "نشر"
   },
   "post": {
-    "view": "فتح"
+    "view": "فتح",
+    "confirm": "هل انت متأكد من حذف هذ العنصر؟",
+    "yes": "نعم",
+    "cancel": "الغاء",
+    "delete": "خذف",
+    "edit": "تعديل"
   },
   "footer": {
     "copyright": "جميع الحقوق المحفوظة © 2021 FindYours"

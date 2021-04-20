@@ -158,7 +158,7 @@ function ViewPost(props) {
 
                   <Grid item xs={12} sm={6}>
                     <Typography variant='body1' color='textSecondary'>
-                      {t('form.phone')}:
+                      {t('form.phone')}
                     </Typography>
                     <Typography variant='body1'>
                       {post.phone ? post.phone : 'No Phone Number Provided.'}
@@ -186,6 +186,7 @@ function DeletePost({ postId, userId }) {
   const [openDialog, setOpenDialog] = useState(false)
   const classes = useStyles()
   const [profile] = useContext(ProfileContext)
+  const { t } = useTranslation()
   const history = useHistory()
   const handleDelete = () => {
     db.collection('posts')
@@ -208,12 +209,12 @@ function DeletePost({ postId, userId }) {
       <Dialog aria-labelledby='simple-dialog-title' open={openDialog}>
         <Box py={2} px={2}>
           <Typography variant='h5' className={classes.headerTypo}>
-            Are you sure you want to delete the item?
+            {t('post.confirm')}
           </Typography>
           <Grid container justify='center'>
             <Box pr={1} pt={2} component='span'>
               <Button variant='contained' color='primary' size='small' onClick={handleDelete}>
-                Yes
+                {t('post.yes')}
               </Button>
             </Box>
             <Box pt={2} component='span'>
@@ -222,7 +223,7 @@ function DeletePost({ postId, userId }) {
                 color='secondary'
                 size='small'
                 onClick={handleDeleteDialog}>
-                Cancel
+                {t('post.cancel')}
               </Button>
             </Box>
           </Grid>
@@ -232,9 +233,12 @@ function DeletePost({ postId, userId }) {
         <Grid item xs={12} sm={6}>
           <Box pr={1} component='span'>
             <Button onClick={handleDeleteDialog} variant='contained' color='secondary' size='small'>
-              Delete
+              {t('post.delete')}
             </Button>
           </Box>
+          <Button variant='contained' color='primary' size='small'>
+            {t('post.edit')}
+          </Button>
         </Grid>
       )}
     </>

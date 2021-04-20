@@ -45,7 +45,12 @@
     "submit": "Submit"
   },
   "post": {
-    "view": "View Post"
+    "view": "View Post",
+    "confirm": "Are you sure you want to delete the item?",
+    "yes": "Yes",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit"
   },
   "footer": {
     "copyright": "Copyright © 2021 FindYours. All Rights Reserved."
