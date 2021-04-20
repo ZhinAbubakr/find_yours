@@ -44,5 +44,15 @@
     "direction": "rtl",
     "greeting": " به‌خێربێن بۆ FindYours ",
     "lost&found": " دۆزراوه‌کان & ونبوه‌کان",
-    "button": "ناردن"}
+    "button": "ناردن"},
+    "infoSection": {
+      "direction": "rtl",
+      "easyHead": "ئاسانی له‌به‌کارهینان ",
+      "easyDesc": "ناردنی ونبوه‌کانتات ئاسان و بی هیلاکیه",
+      "intelligenceHead": "زیره‌کی",
+      "intelligenceDesc": "ئێمه‌ به‌زیره‌کانه‌ یارمه‌تیتان ده‌ده‌ین له‌ دوزینه‌وه‌ی کالاکانتان"    ,
+      "OutReachHead": "زورترین بینین ",
+      "OutReachDesc": "کالاکانتان زورترین بینه‌ری ده‌بیت"
+  
+    }
   }
