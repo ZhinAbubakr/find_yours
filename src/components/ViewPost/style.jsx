@@ -1,7 +1,14 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
+import { TextField } from '@material-ui/core'
 
 const useStyles = makeStyles({
+  drawer: {
+    minWidth: '60%',
+  },
+  divider: {
+    padding: '0px 25% 0px 25%',
+  },
   file: {
     display: 'none',
   },
@@ -27,11 +34,40 @@ const useStyles = makeStyles({
     marginTop: 5,
   },
 })
+export default useStyles
 
 export const theme = createMuiTheme({
   typography: {
     fontFamily: ['Poppins', 'sans-serif'].join(','),
   },
+  overrides: {
+    MuiOutlinedInput: {
+      root: {
+        '& fieldset': {
+          borderRadius: '30px',
+        },
+      },
+    },
+  },
 })
 
-export default useStyles
+export const CssTextField = withStyles({
+  root: {
+    '& label.Mui-focused': {
+      color: 'green',
+    },
+    '& .MuiOutlinedInput-root': {
+      borderRadius: '30px',
+      '& fieldset': {
+        borderColor: 'red',
+        borderRadius: '30px',
+      },
+      '&:hover fieldset': {
+        borderColor: 'yellow',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'green',
+      },
+    },
+  },
+})(TextField)
