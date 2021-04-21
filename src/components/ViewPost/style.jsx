@@ -2,6 +2,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import { createMuiTheme } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
+  file: {
+    display: 'none',
+  },
   media: {
     width: 250,
     height: 250,

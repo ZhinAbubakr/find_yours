@@ -18,6 +18,7 @@ import { db } from '../../firebase'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { useTranslation } from 'react-i18next'
 import { ProfileContext } from '../../profileContext'
+import EditForm from './EditForm'
 
 function ViewPost(props) {
   const { t } = useTranslation()
@@ -236,9 +237,10 @@ function DeletePost({ postId, userId }) {
               {t('post.delete')}
             </Button>
           </Box>
-          <Button variant='contained' color='primary' size='small'>
+          {/* <Button variant='contained' color='primary' size='small'>
             {t('post.edit')}
-          </Button>
+          </Button> */}
+          <EditForm />
         </Grid>
       )}
     </>
