@@ -22,7 +22,10 @@ export default function HeroSection() {
         sm={12}
         md={5}
         lg={5}
-        style={{ paddingLeft: mobileView ? paddingLeft : '10em' }}
+        style={{
+          paddingLeft: mobileView ? paddingLeft : '10em',
+          paddingBottom: mobileView ? '13em' : 0,
+        }}
         justify='center'>
         <Slide timeout={1500} direction='right' in={true}>
           <Container>
