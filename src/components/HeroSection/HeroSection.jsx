@@ -4,7 +4,7 @@ import { Button, Fade, Slide, Zoom } from '@material-ui/core'
 import Men from '../../images/men.svg'
 import Laptop from '../../images/laptop.svg'
 import Tag from '../../images/tag.svg'
-import { Section } from './style.js'
+import LaptopB from '../../images/laptopB.svg'
 import { FORM_ROUTE } from '../../containers/routes'
 import { Link } from 'react-router-dom'
 import { ProfileContext } from '../../profileContext'
@@ -18,10 +18,11 @@ export default function HeroSection() {
   const LeftSection = ({ paddingLeft }) => {
     return (
       <Grid
+        xs={12}
         sm={12}
         md={5}
         lg={5}
-        style={{ paddingLeft: mobileView ? paddingLeft : '10em' }}
+        style={{ paddingLeft: mobileView ? paddingLeft : '4em' }}
         justify='center'>
         <Slide timeout={1500} direction='right' in={true}>
           <Container>
@@ -73,6 +74,7 @@ export default function HeroSection() {
     return (
       <Grid
         className='herotext'
+        xs={12}
         sm={12}
         md={7}
         lg={7}
@@ -113,25 +115,35 @@ export default function HeroSection() {
               alt=''
             />
           </Slide>
+          <Slide timeout={1500} direction='left' in={true}>
+            <img
+              style={{ width: '-webkit-fill-available', display: 'block' }}
+              src={LaptopB}
+              alt=''
+            />
+          </Slide>
         </div>
       </Grid>
     )
   }
   return (
-    <Section>
-      <Grid container justify='space-around' alignItems='center' dir={t('heroSection.direction')}>
-        {mobileView ? (
-          <>
-            <RightSection />
-            <LeftSection />
-          </>
-        ) : (
-          <>
-            <LeftSection paddingLeft='0' />
-            <RightSection minHeight='0' paddingRight='0' />
-          </>
-        )}
-      </Grid>
-    </Section>
+    <Grid
+      container
+      style={{ height: '100vh', marginTop: '4em', background: '#3aafa9', alignContent: 'center' }}
+      alignItems='center'
+      justify='space-around'
+      dir={t('heroSection.direction')}>
+      {mobileView ? (
+        <>
+          <RightSection />
+          <LeftSection />
+        </>
+      ) : (
+        <>
+          <LeftSection paddingLeft='1em' />
+          <RightSection minHeight='0' paddingRight='0' />
+        </>
+      )}
+    </Grid>
   )
 }
