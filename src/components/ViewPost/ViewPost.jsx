@@ -23,6 +23,7 @@ import EditForm from './EditForm'
 function ViewPost(props) {
   const { t } = useTranslation()
   const classes = useStyles()
+  const [updated, setUpdated] = useState(false)
   const [post, setPosts] = useState()
   useEffect(() => {
     const fetch = () => {
@@ -38,7 +39,11 @@ function ViewPost(props) {
     }
     fetch()
     return fetch()
-  }, [props.match.params.id])
+  }, [props.match.params.id, updated])
+
+  const handleUpdated = () => {
+    setUpdated(!updated)
+  }
 
   return (
     <>
@@ -166,7 +171,12 @@ function ViewPost(props) {
                     </Typography>
                     <Divider />
                   </Grid>
-                  <DeletePost userId={post.userId} postId={props.match.params.id} />
+                  {/* the delete post component */}
+                  <DeletePost
+                    postId={props.match.params.id}
+                    handleUpdated={handleUpdated}
+                    post={post}
+                  />
                 </Grid>
               </ThemeProvider>
             </Paper>
@@ -183,7 +193,7 @@ function ViewPost(props) {
 
 export default ViewPost
 
-function DeletePost({ postId, userId }) {
+function DeletePost({ postId, post, handleUpdated }) {
   const [openDialog, setOpenDialog] = useState(false)
   const classes = useStyles()
   const [profile] = useContext(ProfileContext)
@@ -230,17 +240,15 @@ function DeletePost({ postId, userId }) {
           </Grid>
         </Box>
       </Dialog>
-      {profile.googleId === userId && (
+      {profile.googleId === post.userId && (
         <Grid item xs={12} sm={6}>
           <Box pr={1} component='span'>
             <Button onClick={handleDeleteDialog} variant='contained' color='secondary' size='small'>
               {t('post.delete')}
             </Button>
           </Box>
-          {/* <Button variant='contained' color='primary' size='small'>
-            {t('post.edit')}
-          </Button> */}
-          <EditForm />
+          {/* the edit component */}
+          <EditForm post={post} postId={postId} handleUpdated={handleUpdated} />
         </Grid>
       )}
     </>
