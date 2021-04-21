@@ -15,9 +15,14 @@ export default function HeroSection() {
   const { t } = useTranslation()
   const [profile] = useContext(ProfileContext)
   const mobileView = useMediaQuery('(max-width: 960px)')
-  const LeftSection = () => {
+  const LeftSection = ({ paddingLeft }) => {
     return (
-      <Grid sm={12} md={5} lg={5} style={{ paddingLeft: '10em' }} justify='center'>
+      <Grid
+        sm={12}
+        md={5}
+        lg={5}
+        style={{ paddingLeft: mobileView ? paddingLeft : '10em' }}
+        justify='center'>
         <Slide timeout={1500} direction='right' in={true}>
           <Container>
             <Typography style={{ color: 'white', fontWeight: 'bold' }} variant='h2' component='h2'>
@@ -64,20 +69,20 @@ export default function HeroSection() {
       </Grid>
     )
   }
-  const RightSection = () => {
+  const RightSection = ({ minHeight, paddingRight }) => {
     return (
       <Grid
         className='herotext'
         sm={12}
         md={7}
         lg={7}
-        style={{ width: '-webkit-fill-available', paddingRight: '4em' }}
+        style={{ width: '-webkit-fill-available', paddingRight: mobileView ? paddingRight : '4em' }}
         justify='center'>
         <div
           style={{
             position: 'relative',
             maxWidth: '856px',
-            minHeight: '395px',
+            minHeight: mobileView ? minHeight : '395px',
           }}>
           <Zoom in={true} timeout={1500}>
             <img
@@ -122,8 +127,8 @@ export default function HeroSection() {
           </>
         ) : (
           <>
-            <LeftSection />
-            <RightSection />
+            <LeftSection paddingLeft='0' />
+            <RightSection minHeight='0' paddingRight='0' />
           </>
         )}
       </Grid>
