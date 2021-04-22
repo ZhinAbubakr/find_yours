@@ -8,11 +8,14 @@ import {
   Grid,
   Divider,
   FormControl,
+  Typography,
 } from '@material-ui/core'
 import React, { useState } from 'react'
 import { db } from '../../firebase'
 import { useTranslation } from 'react-i18next'
 import useStyles from './style'
+import { storage } from '../../firebase'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 
 function EditForm({ post, postId, handleUpdated }) {
   const classes = useStyles()
@@ -55,6 +58,7 @@ function EditForm({ post, postId, handleUpdated }) {
         color: state.color,
         category: state.category,
         isLost: state.isLost,
+        image: state.image,
       })
       .then(() => {
         setOpenDialog(!openDialog)
@@ -63,6 +67,20 @@ function EditForm({ post, postId, handleUpdated }) {
       .catch((error) => {
         alert('Error removing document: ', error)
       })
+  }
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0]
+    const storageRef = storage.ref()
+    const fileRef = storageRef.child(`images/${file.name}`)
+
+    fileRef.put(file).then(() =>
+      storage
+        .ref('images')
+        .child(file.name)
+        .getDownloadURL()
+        .then((url) => setState({ ...state, image: url }))
+    )
   }
   const handleDeleteDialog = () => {
     setOpenDialog(!openDialog)
@@ -199,6 +217,33 @@ function EditForm({ post, postId, handleUpdated }) {
                     <MenuItem value={false}>{t('filter.Found')}</MenuItem>
                   </Select>
                 </FormControl>
+              </Grid>
+            </Grid>
+            <h4 className={classes.title}>{t('form.image')}</h4>
+            <Grid container justify='space-around'>
+              <Grid item sm={4}>
+                <input
+                  type='file'
+                  onChange={(e) => handleImageUpload(e)}
+                  id='contained-button-file'
+                  className={classes.fileInput}
+                />
+                <label htmlFor='contained-button-file'>
+                  <Grid container justify='center' className={classes.uploadFile}>
+                    <Grid item xs={12} align='center'>
+                      <Typography variant='h6'>{t('editForm.editImage')}</Typography>
+                    </Grid>
+
+                    <Grid item xs={12} align='center'>
+                      <CloudUploadIcon className={classes.cloudIcon} />
+                    </Grid>
+                  </Grid>
+                </label>
+              </Grid>
+              <Grid item sm={6} xs={10}>
+                <Box py={1}>
+                  <img src={state.image} alt='dd' width='100%' />
+                </Box>
               </Grid>
             </Grid>
             <Box className={classes.divider}>

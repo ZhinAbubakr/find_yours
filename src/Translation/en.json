@@ -152,6 +152,7 @@
 },
 "editForm": {
   "where":"Where",
-  "editItem": "Edit your post"
+  "editItem": "Edit your post",
+  "editImage": "Click to chane the image"
 }
 }

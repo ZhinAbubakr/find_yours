@@ -3,6 +3,19 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import { TextField } from '@material-ui/core'
 
 const useStyles = makeStyles({
+  fileInput: {
+    display: 'none',
+  },
+  cloudIcon: {
+    fontSize: '150px',
+    color: '#3AAFA9',
+  },
+  uploadFile: {
+    border: '2px dotted #3AAFA9',
+    height: '100%',
+    width: '100%',
+    cursor: 'pointer',
+  },
   selectW: {
     width: '90%',
   },
