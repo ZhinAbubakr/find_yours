@@ -18,6 +18,7 @@ export default function HeroSection() {
   const LeftSection = ({ paddingLeft }) => {
     return (
       <Grid
+        item
         xs={12}
         sm={12}
         md={5}
@@ -25,8 +26,7 @@ export default function HeroSection() {
         style={{
           paddingLeft: mobileView ? paddingLeft : '10em',
           paddingBottom: mobileView ? '13em' : 0,
-        }}
-        justify='center'>
+        }}>
         <Slide timeout={1500} direction='right' in={true}>
           <Container>
             <Typography style={{ color: 'white', fontWeight: 'bold' }} variant='h2' component='h2'>
@@ -55,16 +55,7 @@ export default function HeroSection() {
                 size='large'
                 disableElevation
                 variant='contained'
-                onClick={() => alert('you need to log in to post!')}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{
-                  scale: 0.95,
-                  backgroundColor: '#67F6E7',
-                  border: 'none',
-                  color: '#000',
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 1.5 } }}>
+                onClick={() => alert('you need to log in to post!')}>
                 {t('heroSection.button')}
               </Button>
             </Container>
@@ -76,19 +67,22 @@ export default function HeroSection() {
   const RightSection = ({ minHeight, paddingRight }) => {
     return (
       <Grid
+        item
         className='herotext'
         xs={12}
         sm={12}
         md={7}
         lg={7}
-        style={{ width: '-webkit-fill-available', paddingRight: mobileView ? paddingRight : '4em' }}
-        justify='center'>
+        style={{
+          width: '-webkit-fill-available',
+          paddingRight: mobileView ? paddingRight : '4em',
+        }}>
         <div
           style={{
             position: 'relative',
             maxWidth: '856px',
             minHeight: mobileView ? minHeight : '395px',
-            paddingTop: '9em',
+            paddingTop: mobileView ? '9em' : null,
           }}>
           <Zoom in={true} timeout={1500}>
             <img
