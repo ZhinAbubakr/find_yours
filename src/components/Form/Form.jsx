@@ -8,6 +8,7 @@ import {
   FormHelperText,
   Typography,
   Paper,
+  Divider,
 } from '@material-ui/core'
 import React, { useContext, useState } from 'react'
 import useStyles from './Style'
@@ -115,6 +116,9 @@ const Form = () => {
           <Typography variant='h4' align='center'>
             {t('form.submitPost')}
           </Typography>
+          <Box className={classes.divider}>
+            <Divider />
+          </Box>
           <ThemeProvider theme={theme}>
             <Grid container direction='row' justify='center'>
               <Grid item xs={12}>
@@ -273,7 +277,6 @@ const Form = () => {
                 <TextField
                   id='date'
                   helperText={t('form.dateEx')}
-                  label={t('form.date')}
                   name='date'
                   type='date'
                   value={state.selectedDate}

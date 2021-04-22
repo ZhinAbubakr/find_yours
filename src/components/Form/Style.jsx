@@ -1,6 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyle = makeStyles((theme) => ({
+  divider: {
+    padding: '0px 20% 0px 20%',
+    [theme.breakpoints.down('xs')]: {
+      padding: '0px 7% 0px 7%',
+    },
+  },
   cloudIcon: {
     fontSize: '150px',
     color: '#3AAFA9',
