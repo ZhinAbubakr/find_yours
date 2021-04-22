@@ -204,12 +204,11 @@ function DeletePost({ postId, post, handleUpdated }) {
       .doc(postId)
       .delete()
       .then(() => {
-        console.log('Document successfully deleted!')
         setOpenDialog(!openDialog)
         history.push('/dashboard')
       })
       .catch((error) => {
-        console.error('Error removing document: ', error)
+        alert('Error removing document: ', error)
       })
   }
   const handleDeleteDialog = () => {
@@ -217,7 +216,14 @@ function DeletePost({ postId, post, handleUpdated }) {
   }
   return (
     <>
-      <Dialog aria-labelledby='simple-dialog-title' open={openDialog}>
+      <Dialog
+        aria-labelledby='simple-dialog-title'
+        open={openDialog}
+        BackdropProps={{
+          classes: {
+            root: classes.backDrop,
+          },
+        }}>
         <Box py={2} px={2}>
           <Typography variant='h5' className={classes.headerTypo}>
             {t('post.confirm')}
