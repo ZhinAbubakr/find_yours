@@ -3,7 +3,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
-import { Avatar, IconButton } from '@material-ui/core'
+import { Avatar, IconButton, Typography, Container } from '@material-ui/core'
 import SearchBar from 'material-ui-search-bar'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { useTranslation } from 'react-i18next'
@@ -273,7 +273,22 @@ export default function Dashboard() {
                 </Button>
               </Grid>
             )}
-            {posts.length < 1 ? <img src={NotFound} /> : null}
+            {posts.length < 1 ? (
+              <Container style={{ paddingTop: '6em' }}>
+                <Typography style={{ textAlign: 'center' }} variant='h4'>
+                  No Posts Found
+                </Typography>
+                <img
+                  style={{
+                    maxHeight: '19em',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    margin: 'auto',
+                  }}
+                  src={NotFound}
+                />
+              </Container>
+            ) : null}
           </>
         ) : (
           <CircularProgress />
