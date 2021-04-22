@@ -113,7 +113,7 @@ const Form = () => {
       <Paper elevation={8}>
         <Box mt={9} mb={4} pb={1} px={2}>
           <Typography variant='h4' align='center'>
-            Submit New Post
+            {t('form.submitPost')}
           </Typography>
           <ThemeProvider theme={theme}>
             <Grid container direction='row' justify='center'>
@@ -130,7 +130,7 @@ const Form = () => {
                   required
                 />
               </Grid>
-              <h2>Select</h2>
+              <h2>{t('form.select')}</h2>
               <Grid item xs={12} container>
                 <Grid item xs={12} sm={6} md={3}>
                   <h4 className={classes.title}>{t('filter.catagory')}</h4>

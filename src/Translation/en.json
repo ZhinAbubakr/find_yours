@@ -80,6 +80,8 @@
     "jalal": "Jalal Arif"
   },
   "form": {
+    "submitPost": "Submit New Post",
+    "select":"Select",
     "title": "Title",
     "titleEx": "(Dog, Jacket etc.)",
     "categoryEx": "(Clothing, Electronics etc.)",
