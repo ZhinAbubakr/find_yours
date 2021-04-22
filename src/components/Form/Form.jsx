@@ -123,6 +123,8 @@ const Form = () => {
               <Grid item xs={12}>
                 <h4 className={classes.title}>{t('form.title')}</h4>
                 <TextField
+                  inputProps={{ maxLength: 20 }}
+                  type='text'
                   className={classes.titleTextW}
                   label={t('form.title')}
                   variant='outlined'
@@ -230,6 +232,7 @@ const Form = () => {
                 <Grid item xs={12} sm={6} md={3}>
                   <h4 className={classes.title}>{t('form.phone')}</h4>
                   <TextField
+                    inputProps={{ maxLength: 30 }}
                     label={t('form.phone')}
                     variant='outlined'
                     className={classes.contactW}
@@ -246,6 +249,7 @@ const Form = () => {
                   <h4 className={classes.title}>{t('form.facebook')}</h4>
                   <TextField
                     label={t('form.facebook')}
+                    inputProps={{ maxLength: 100 }}
                     variant='outlined'
                     value={state.facebook}
                     className={classes.contactW}
@@ -259,6 +263,7 @@ const Form = () => {
                 <Grid item xs={12} sm={6} md={3}>
                   <h4 className={classes.title}>{t('form.email')}</h4>
                   <TextField
+                    inputProps={{ maxLength: 50 }}
                     label={t('form.email')}
                     className={classes.contactW}
                     name='email'
@@ -274,6 +279,7 @@ const Form = () => {
               <Grid item xs={12}>
                 <h4 className={classes.title}>{t('form.date')} </h4>
                 <TextField
+                  inputProps={{ maxLength: 20 }}
                   id='date'
                   helperText={t('form.dateEx')}
                   name='date'
@@ -321,6 +327,7 @@ const Form = () => {
               <Grid item xs={12}>
                 <h4 className={classes.title}>{t('form.addInfo')}</h4>
                 <TextField
+                  inputProps={{ maxLength: 250 }}
                   name='more'
                   label={t('form.addInfo')}
                   variant='outlined'

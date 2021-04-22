@@ -129,7 +129,7 @@ function EditForm({ post, postId, handleUpdated }) {
               label={t('form.title')}
               variant='outlined'
               value={state.item}
-              inputProps={{ name: 'item' }}
+              inputProps={{ name: 'item', maxLength: 20 }}
               onChange={handleChange}
               required
             />
@@ -260,7 +260,7 @@ function EditForm({ post, postId, handleUpdated }) {
                   label={t('form.phone')}
                   variant='outlined'
                   value={state.phone}
-                  inputProps={{ name: 'phone' }}
+                  inputProps={{ name: 'phone', maxLength: 20 }}
                   onChange={handleChange}
                   required
                   type='number'
@@ -272,7 +272,7 @@ function EditForm({ post, postId, handleUpdated }) {
                   id='outlined-basic'
                   label={t('form.facebook')}
                   variant='outlined'
-                  inputProps={{ name: 'facebook' }}
+                  inputProps={{ name: 'facebook', maxLength: 100 }}
                   value={state.facebook}
                   onChange={handleChange}
                   required
@@ -286,7 +286,7 @@ function EditForm({ post, postId, handleUpdated }) {
                   label={t('form.email')}
                   variant='outlined'
                   type='email'
-                  inputProps={{ name: 'email' }}
+                  inputProps={{ name: 'email', maxLength: 50 }}
                   value={state.email}
                   onChange={handleChange}
                   required
@@ -301,7 +301,7 @@ function EditForm({ post, postId, handleUpdated }) {
               type='date'
               value={state.date}
               onChange={handleChange}
-              inputProps={{ name: 'date' }}
+              inputProps={{ name: 'date', maxLength: 20 }}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -313,7 +313,7 @@ function EditForm({ post, postId, handleUpdated }) {
               label={t('form.addInfo')}
               variant='outlined'
               style={{ width: '100%' }}
-              inputProps={{ name: 'more' }}
+              inputProps={{ name: 'more', maxLength: 250 }}
               value={state.more}
               onChange={handleChange}
             />
