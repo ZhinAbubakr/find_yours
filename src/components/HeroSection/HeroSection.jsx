@@ -88,6 +88,7 @@ export default function HeroSection() {
             position: 'relative',
             maxWidth: '856px',
             minHeight: mobileView ? minHeight : '395px',
+            paddingTop: '9em',
           }}>
           <Zoom in={true} timeout={1500}>
             <img
