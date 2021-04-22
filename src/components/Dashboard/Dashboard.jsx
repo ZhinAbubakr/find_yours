@@ -3,9 +3,13 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
-import { Avatar, IconButton } from '@material-ui/core'
+import { Avatar, IconButton, Typography, Container } from '@material-ui/core'
 import SearchBar from 'material-ui-search-bar'
 import LinearProgress from '@material-ui/core/LinearProgress'
+import FilterListIcon from '@material-ui/icons/FilterList'
+import Popover from '@material-ui/core/Popover'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
 import { useStyles } from './styles.js'
 import Post from './Post/Post'
@@ -14,17 +18,14 @@ import Filters from './Widgets/Filters'
 import { useStyleDashboard } from './Widgets/Style'
 import { ProfileContext } from '../../profileContext'
 import { db } from '../../firebase'
-import Popover from '@material-ui/core/Popover'
-import FilterListIcon from '@material-ui/icons/FilterList'
 import { FORM_ROUTE, PROFILE_ROUTE } from '../../containers/routes'
-import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import NotFound from '../../images/notFound.svg'
 
 export default function Dashboard() {
   const { t } = useTranslation()
   const [profile] = useContext(ProfileContext)
   const [posts, setPosts] = useState()
-  const [isLoading] = useState(false)
+  const [isLoading, setLoading] = useState(false)
   const classes = useStyles()
   const [showMoreBtn, setShowMoreBtn] = useState(true)
   const [postsNum, setPostsNum] = useState(10)
@@ -93,6 +94,7 @@ export default function Dashboard() {
     const res = []
     const query = db.collection('posts')
     if (search.length != 0) {
+      setLoading(true)
       query
         .where('category ', '==', search[0])
         .get()
@@ -140,6 +142,7 @@ export default function Dashboard() {
           )
           if (search[0] != 'found' && search[0] != 'lost') {
             setPosts(res)
+            setLoading(false)
           }
         })
 
@@ -156,6 +159,7 @@ export default function Dashboard() {
               })
             )
             setPosts(res)
+            setLoading(false)
           })
       }
     } else {
@@ -167,6 +171,7 @@ export default function Dashboard() {
           })
         )
         setPosts(res)
+        setLoading(false)
       })
     }
   }
@@ -268,6 +273,14 @@ export default function Dashboard() {
                 </Button>
               </Grid>
             )}
+            {posts.length < 1 ? (
+              <Container>
+                <Typography className={classes.notFoundText} variant='h4'>
+                  No Posts Found
+                </Typography>
+                <img className={classes.notFoundImg} src={NotFound} />
+              </Container>
+            ) : null}
           </>
         ) : (
           <CircularProgress />
