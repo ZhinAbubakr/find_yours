@@ -11,19 +11,29 @@ import { useTranslation } from 'react-i18next'
 
 const Form = () => {
   const { t } = useTranslation()
-  const [selectedDate, setSelectedDate] = React.useState('')
+  const [state, setState] = useState({
+    date: '',
+    item: '',
+    email: '',
+    more: '',
+    facebook: '',
+    phone: '',
+    whereLost: '',
+    color: '',
+    category: '',
+    isLost: '',
+    image: '',
+  })
   const [profile] = useContext(ProfileContext)
-  const [item, setItem] = useState('')
-  const [isLost, setIsLost] = useState('')
-  const [color, setColor] = useState('')
-  const [whereLost, setWhereLost] = useState('')
-  const [phone, setPhone] = useState('')
-  const [image, setImage] = useState(null)
-  const [more, setMore] = useState('')
-  const [email, setEmail] = useState('')
-  const [category, setCategory] = React.useState('')
-  const [facebook, setFacebook] = React.useState('')
   const classes = useStyles()
+
+  const handleChange = (event) => {
+    const name = event.target.name
+    setState({
+      ...state,
+      [name]: event.target.value,
+    })
+  }
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0]
@@ -35,41 +45,30 @@ const Form = () => {
         .ref('images')
         .child(file.name)
         .getDownloadURL()
-        .then((url) => setImage(url))
+        .then((url) => setState({ ...state, image: url }))
     )
-  }
-
-  const handleChangeCat = (event) => {
-    setCategory(event.target.value)
-  }
-
-  const handleChangeLoc = (event) => {
-    setWhereLost(event.target.value)
-  }
-
-  const handleChangeCol = (event) => {
-    setColor(event.target.value)
   }
   const handleSubmit = (e) => {
     e.preventDefault()
 
     db.collection('posts')
       .add({
+        // space for improvement with avatar and username.
         avatar: profile.imageUrl,
-        title: item,
-        isLost: isLost,
-        category: category,
-        color: color,
-        province: whereLost,
+        title: state.item,
+        isLost: state.isLost,
+        category: state.category,
+        color: state.color,
+        province: state.whereLost,
         name: profile.name,
-        phone: phone,
-        date: selectedDate,
+        phone: state.phone,
+        date: state.date,
         country: 'Iraq',
-        body: more.split(' '),
-        email: email,
-        facebook: facebook,
+        body: state.more.split(' '),
+        email: state.email,
+        facebook: state.facebook,
         userId: profile.googleId,
-        image: image,
+        image: state.image,
         createdAt: new Date(),
       })
 
@@ -81,18 +80,19 @@ const Form = () => {
         alert(error.message)
       })
 
-    setIsLost('')
-    setItem('')
-    setImage('')
-    setFacebook('')
-    setColor('')
-    setWhereLost('')
-    setPhone('')
-    setSelectedDate('')
-    setImage('')
-    setMore('')
-    setEmail('')
-    setCategory('')
+    setState({
+      date: '',
+      item: '',
+      email: '',
+      more: '',
+      facebook: '',
+      phone: '',
+      whereLost: '',
+      color: '',
+      category: '',
+      isLost: '',
+      image: '',
+    })
   }
 
   return (
@@ -108,8 +108,9 @@ const Form = () => {
                 label={t('form.title')}
                 variant='outlined'
                 className={classes.input}
-                value={item}
-                onChange={(e) => setItem(e.target.value)}
+                value={state.item}
+                name='item'
+                onChange={handleChange}
                 required
               />
               <h4 className={classes.title}>{t('filter.catagory')}</h4>
@@ -119,8 +120,9 @@ const Form = () => {
                 className={classes.input}
                 labelId='demo-simple-select-label'
                 id='demo-simple-select'
-                value={category}
-                onChange={handleChangeCat}
+                value={state.category}
+                onChange={handleChange}
+                name='category'
                 required>
                 <MenuItem value='documents'>{t('filter.Documents')}</MenuItem>
                 <MenuItem value='animals/pets'>{t('filter.AnimalsPets')}</MenuItem>
@@ -135,8 +137,9 @@ const Form = () => {
                 className={classes.input}
                 labelId='color'
                 id='demo-simple-select'
-                value={color}
-                onChange={handleChangeCol}
+                value={state.color}
+                onChange={handleChange}
+                name='color'
                 required>
                 <MenuItem value='blue'>{t('filter.blue')}</MenuItem>
                 <MenuItem value='white'>{t('filter.white')}</MenuItem>
@@ -149,8 +152,9 @@ const Form = () => {
                 className={classes.input}
                 labelId='Provinces'
                 id='demo-simple-select'
-                value={whereLost}
-                onChange={handleChangeLoc}
+                value={state.whereLost}
+                name='whereLost'
+                onChange={handleChange}
                 required>
                 <MenuItem value='baghdad'>{t('city.baghdad')}</MenuItem>
                 <MenuItem value='erbil'>{t('city.erbil')}</MenuItem>
@@ -180,8 +184,9 @@ const Form = () => {
                 label={t('form.phone')}
                 variant='outlined'
                 className={classes.input}
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={state.phone}
+                onChange={handleChange}
+                name='phone'
                 required
                 type='number'
               />
@@ -193,8 +198,9 @@ const Form = () => {
                 label={t('form.facebook')}
                 variant='outlined'
                 className={classes.input}
-                value={facebook}
-                onChange={(e) => setFacebook(e.target.value)}
+                value={state.facebook}
+                name='facebook'
+                onChange={handleChange}
                 required
                 type='text'
               />
@@ -208,8 +214,9 @@ const Form = () => {
                 className={classes.input}
                 labelId='demo-simple-select-label'
                 id='demo-simple-select'
-                value={isLost}
-                onChange={(e) => setIsLost(e.target.value)}
+                value={state.isLost}
+                onChange={handleChange}
+                name='isLost'
                 required>
                 <MenuItem value={true}>{t('filter.Lost')}</MenuItem>
                 <MenuItem value={false}>{t('filter.Found')}</MenuItem>
@@ -220,9 +227,10 @@ const Form = () => {
               <TextField
                 id='date'
                 label={t('form.date')}
+                name='date'
                 type='date'
-                value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
+                value={state.selectedDate}
+                onChange={handleChange}
                 className={classes.input}
                 InputLabelProps={{
                   shrink: true,
@@ -237,6 +245,7 @@ const Form = () => {
                 onChange={(e) => handleImageUpload(e)}
                 id='contained-button-file'
                 className={classes.fileInput}
+                name='image'
               />
               <label htmlFor='contained-button-file'>
                 <Button
@@ -251,23 +260,25 @@ const Form = () => {
               <h4 className={classes.title}>{t('form.addInfo')}</h4>
               <p className={classes.desc}>{t('form.addInfoEx')}</p>
               <TextField
+                name='more'
                 id='outlined-basic'
                 label={t('form.addInfo')}
                 variant='outlined'
                 className={classes.input}
-                value={more}
-                onChange={(e) => setMore(e.target.value)}
+                value={state.more}
+                onChange={handleChange}
               />
               <h4 className={classes.title}>{t('form.email')}</h4>
               <p className={classes.desc}>{t('form.emailEx')}</p>
               <TextField
                 id='outlined-basic'
                 label={t('form.email')}
+                name='email'
                 variant='outlined'
                 className={classes.input}
                 type='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={state.email}
+                onChange={handleChange}
                 required
               />
             </Paper>
