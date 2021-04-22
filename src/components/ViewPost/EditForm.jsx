@@ -241,8 +241,8 @@ function EditForm({ post, postId, handleUpdated }) {
                 </label>
               </Grid>
               <Grid item sm={6} xs={10}>
-                <Box py={1}>
-                  <img src={state.image} alt='dd' width='100%' />
+                <Box py={1} align='center'>
+                  <img src={state.image} alt='dd' width='70%' height='200px' />
                 </Box>
               </Grid>
             </Grid>
