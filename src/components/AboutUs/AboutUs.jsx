@@ -68,10 +68,10 @@ export default function AboutUs() {
     <Container>
       <Box mt={12} mb={6}>
         <Grid container direction='row' justify='center' alignItems='center'>
-          <Grid item xs={6}>
+          <Grid item xs={5}>
             <Typography className={classes.fontTitleSize}>{t('aboutUs.about')}</Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={7}>
             <object width='100%' data={team} type='image/svg+xml' />
           </Grid>
         </Grid>
