@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'nowrap',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    margin: '10px',
   },
   media: {
     height: 0,
