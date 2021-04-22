@@ -24,7 +24,7 @@ export default function Dashboard() {
   const { t } = useTranslation()
   const [profile] = useContext(ProfileContext)
   const [posts, setPosts] = useState()
-  const [isLoading] = useState(false)
+  const [isLoading, setLoading] = useState(false)
   const classes = useStyles()
   const [showMoreBtn, setShowMoreBtn] = useState(true)
   const [postsNum, setPostsNum] = useState(10)
@@ -93,6 +93,7 @@ export default function Dashboard() {
     const res = []
     const query = db.collection('posts')
     if (search.length != 0) {
+      setLoading(true)
       query
         .where('category ', '==', search[0])
         .get()
@@ -140,6 +141,7 @@ export default function Dashboard() {
           )
           if (search[0] != 'found' && search[0] != 'lost') {
             setPosts(res)
+            setLoading(false)
           }
         })
 
@@ -156,6 +158,7 @@ export default function Dashboard() {
               })
             )
             setPosts(res)
+            setLoading(false)
           })
       }
     } else {
@@ -167,6 +170,7 @@ export default function Dashboard() {
           })
         )
         setPosts(res)
+        setLoading(false)
       })
     }
   }
