@@ -274,19 +274,11 @@ export default function Dashboard() {
               </Grid>
             )}
             {posts.length < 1 ? (
-              <Container style={{ paddingTop: '6em' }}>
-                <Typography style={{ textAlign: 'center' }} variant='h4'>
+              <Container>
+                <Typography className={classes.notFoundText} variant='h4'>
                   No Posts Found
                 </Typography>
-                <img
-                  style={{
-                    maxHeight: '19em',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    margin: 'auto',
-                  }}
-                  src={NotFound}
-                />
+                <img className={classes.notFoundImg} src={NotFound} />
               </Container>
             ) : null}
           </>
