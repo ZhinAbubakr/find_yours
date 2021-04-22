@@ -3,11 +3,21 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import { TextField } from '@material-ui/core'
 
 const useStyles = makeStyles({
+  selectW: {
+    width: '90%',
+  },
   drawer: {
     minWidth: '60%',
   },
+  backDrop: {
+    backdropFilter: 'blur(3px)',
+    background: 'rgba(0,0,30,0.4)',
+  },
   divider: {
     padding: '0px 25% 0px 25%',
+  },
+  contactP: {
+    paddingTop: '10px',
   },
   file: {
     display: 'none',
