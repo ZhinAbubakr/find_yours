@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button'
 import { Avatar, IconButton } from '@material-ui/core'
 import SearchBar from 'material-ui-search-bar'
 import LinearProgress from '@material-ui/core/LinearProgress'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
 import { useStyles } from './styles.js'
 import Post from './Post/Post'
@@ -17,8 +19,7 @@ import { db } from '../../firebase'
 import Popover from '@material-ui/core/Popover'
 import FilterListIcon from '@material-ui/icons/FilterList'
 import { FORM_ROUTE, PROFILE_ROUTE } from '../../containers/routes'
-import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import NotFound from '../../images/notFound.svg'
 
 export default function Dashboard() {
   const { t } = useTranslation()
@@ -272,6 +273,7 @@ export default function Dashboard() {
                 </Button>
               </Grid>
             )}
+            {posts.length < 1 ? <img src={NotFound} /> : null}
           </>
         ) : (
           <CircularProgress />
