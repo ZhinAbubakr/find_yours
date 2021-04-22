@@ -111,7 +111,7 @@ const Form = () => {
   return (
     <Container>
       <Paper elevation={8}>
-        <Box mt={9} mb={4} pb={1} px={2}>
+        <Box mt={12} mb={4} pb={1} px={2}>
           <Typography variant='h4' align='center'>
             {t('form.submitPost')}
           </Typography>
