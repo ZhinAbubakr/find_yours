@@ -7,6 +7,21 @@ const useStyle = makeStyles((theme) => ({
       padding: '0px 7% 0px 7%',
     },
   },
+  doneIcon: {
+    fontSize: '100px',
+    color: '#3bb78f',
+  },
+  dialog: {
+    background: '#f1f1f1',
+    height: '27vh',
+    overflow: 'hidden',
+  },
+  goBtn: {
+    backgroundImage: 'linear-gradient(to right, #0bab64, #3bb78f)',
+  },
+  loading: {
+    color: '#3bb78f',
+  },
   cloudIcon: {
     fontSize: '150px',
     color: '#3AAFA9',
