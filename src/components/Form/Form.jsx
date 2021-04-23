@@ -338,7 +338,7 @@ const Form = () => {
                   <TextField
                     id='filled-multiline-flexible'
                     multiline
-                    maxRows={4}
+                    maxrows={4}
                     inputProps={{ maxLength: 250 }}
                     name='more'
                     label={t('form.addInfo')}
@@ -371,6 +371,7 @@ const Form = () => {
 export default Form
 
 function FormSubmitted({ openDialog, loading }) {
+  const { t } = useTranslation()
   const classes = useStyles()
   const history = useHistory()
   const handlePush = () => {
@@ -394,7 +395,7 @@ function FormSubmitted({ openDialog, loading }) {
               <Box align='center' pt={2}>
                 <Loader type='Circles' color='#3AAFA9' height={80} width={80} />
                 <Typography variant='h5' className={classes.loading}>
-                  submitting...
+                  {t('formPopup.submitting')}
                 </Typography>
               </Box>
             ) : (
@@ -402,14 +403,14 @@ function FormSubmitted({ openDialog, loading }) {
                 <div align='center'>
                   <DoneAllIcon className={classes.doneIcon} />
                   <Typography variant='body1' className={classes.loading}>
-                    submitted
+                    {t('formPopup.submitted')}
                   </Typography>
                   <Button
                     onClick={handlePush}
                     variant='contained'
                     className={classes.goBtn}
                     size='small'>
-                    go to dashboard
+                    {t('formPopup.go')}
                   </Button>
                 </div>
               </Zoom>
