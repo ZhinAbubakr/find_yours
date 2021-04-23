@@ -6,8 +6,9 @@ import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router-dom'
 import Loader from 'react-loader-spinner'
 import DoneAllIcon from '@material-ui/icons/DoneAll'
+import CloseIcon from '@material-ui/icons/Close'
 
-function FormSubmitted({ openDialog, loading }) {
+function FormSubmitted({ openDialog, loading, setOpenDialog }) {
   const { t } = useTranslation()
   const classes = useStyles()
   const history = useHistory()
@@ -27,6 +28,11 @@ function FormSubmitted({ openDialog, loading }) {
           },
         }}>
         <Box py={1}>
+          {!loading && (
+            <Button className={classes.close} onClick={() => setOpenDialog(false)}>
+              <CloseIcon />
+            </Button>
+          )}
           <Grid container direction='column' justify='center' alignItems='center'>
             {loading ? (
               <Box align='center' pt={2}>

@@ -1,6 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyle = makeStyles((theme) => ({
+  close: {
+    position: 'fixed',
+    color: '#3bb78f',
+    '&:hover': {
+      color: 'red',
+    },
+  },
   divider: {
     padding: '0px 20% 0px 20%',
     [theme.breakpoints.down('xs')]: {
@@ -18,6 +25,7 @@ const useStyle = makeStyles((theme) => ({
   },
   goBtn: {
     backgroundImage: 'linear-gradient(to right, #0bab64, #3bb78f)',
+    color: 'white',
   },
   loading: {
     color: '#3bb78f',
