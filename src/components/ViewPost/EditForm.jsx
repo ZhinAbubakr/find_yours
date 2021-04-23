@@ -309,7 +309,9 @@ function EditForm({ post, postId, handleUpdated }) {
             />
             <h4>{t('form.addInfo')}</h4>
             <TextField
-              id='outlined-basic'
+              id='filled-multiline-flexible'
+              multiline
+              maxRows={4}
               label={t('form.addInfo')}
               variant='outlined'
               style={{ width: '100%' }}
