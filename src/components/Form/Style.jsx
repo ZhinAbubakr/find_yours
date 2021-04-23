@@ -1,11 +1,34 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyle = makeStyles((theme) => ({
+  close: {
+    position: 'fixed',
+    color: '#3bb78f',
+    '&:hover': {
+      color: 'red',
+    },
+  },
   divider: {
     padding: '0px 20% 0px 20%',
     [theme.breakpoints.down('xs')]: {
       padding: '0px 7% 0px 7%',
     },
+  },
+  doneIcon: {
+    fontSize: '100px',
+    color: '#3bb78f',
+  },
+  dialog: {
+    background: '#f1f1f1',
+    height: '27vh',
+    overflow: 'hidden',
+  },
+  goBtn: {
+    backgroundImage: 'linear-gradient(to right, #0bab64, #3bb78f)',
+    color: 'white',
+  },
+  loading: {
+    color: '#3bb78f',
   },
   cloudIcon: {
     fontSize: '150px',
@@ -19,8 +42,8 @@ const useStyle = makeStyles((theme) => ({
   },
   moreW: {
     width: '100%',
-    [theme.breakpoints.up('lg')]: {
-      width: '80%',
+    [theme.breakpoints.up('md')]: {
+      width: '50%',
     },
   },
   title: {

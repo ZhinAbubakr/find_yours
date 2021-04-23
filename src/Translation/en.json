@@ -105,6 +105,11 @@
     "email": "Email",
     "emailEx": "Enter your email address."
   },
+  "formPopup": {
+    "submitting": "Submitting...",
+    "submitted": "Submitted",
+    "go": "go to dashboard"
+  },
   "profile": {
     "name": "Full Name",
     "email": "Email",
