@@ -34,8 +34,8 @@ const useStyle = makeStyles((theme) => ({
   },
   moreW: {
     width: '100%',
-    [theme.breakpoints.up('lg')]: {
-      width: '80%',
+    [theme.breakpoints.up('md')]: {
+      width: '50%',
     },
   },
   title: {

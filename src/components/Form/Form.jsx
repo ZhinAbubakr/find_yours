@@ -336,6 +336,9 @@ const Form = () => {
                 <Grid item xs={12}>
                   <h4 className={classes.title}>{t('form.addInfo')}</h4>
                   <TextField
+                    id='filled-multiline-flexible'
+                    multiline
+                    maxRows={4}
                     inputProps={{ maxLength: 250 }}
                     name='more'
                     label={t('form.addInfo')}
