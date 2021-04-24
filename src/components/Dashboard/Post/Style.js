@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     margin: '10px',
+    '@media (max-width: 679px)': {
+      width: '100%',
+    },
   },
   media: {
     height: 0,
