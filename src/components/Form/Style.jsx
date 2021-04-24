@@ -4,6 +4,10 @@ const useStyle = makeStyles((theme) => ({
   close: {
     position: 'fixed',
     color: '#3bb78f',
+    marginTop: '1px',
+    height: '40px',
+    minWidth: '40px !important',
+    borderRadius: '50%',
     '&:hover': {
       color: 'red',
     },

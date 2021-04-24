@@ -29,7 +29,11 @@ export default function Filters({ handlePosts, handleClearFilter }) {
   }
 
   useEffect(() => {
-    handlePosts(state)
+    const fetch = () => {
+      handlePosts(state)
+    }
+    fetch()
+    return fetch()
   }, [state])
 
   const clearFilter = () => {

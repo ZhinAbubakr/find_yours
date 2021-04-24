@@ -4,9 +4,9 @@ import useStyles from './Style'
 import Button from '@material-ui/core/Button'
 import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router-dom'
-import Loader from 'react-loader-spinner'
 import DoneAllIcon from '@material-ui/icons/DoneAll'
 import CloseIcon from '@material-ui/icons/Close'
+import HashLoader from 'react-spinners/HashLoader'
 
 function FormSubmitted({ openDialog, loading, setOpenDialog }) {
   const { t } = useTranslation()
@@ -27,16 +27,18 @@ function FormSubmitted({ openDialog, loading, setOpenDialog }) {
             root: classes.backDrop,
           },
         }}>
+        {!loading && (
+          <Button className={classes.close} onClick={() => setOpenDialog(false)}>
+            <CloseIcon />
+          </Button>
+        )}
         <Box py={1}>
-          {!loading && (
-            <Button className={classes.close} onClick={() => setOpenDialog(false)}>
-              <CloseIcon />
-            </Button>
-          )}
           <Grid container direction='column' justify='center' alignItems='center'>
             {loading ? (
               <Box align='center' pt={2}>
-                <Loader type='Circles' color='#3AAFA9' height={80} width={80} />
+                <Box pb={7} pt={5}>
+                  <HashLoader loading={loading} color='#3bb78f' size={70} />
+                </Box>
                 <Typography variant='h5' className={classes.loading}>
                   {t('formPopup.submitting')}
                 </Typography>
