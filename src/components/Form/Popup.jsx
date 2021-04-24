@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router-dom'
 import DoneAllIcon from '@material-ui/icons/DoneAll'
 import CloseIcon from '@material-ui/icons/Close'
+import HashLoader from 'react-spinners/HashLoader'
 
 function FormSubmitted({ openDialog, loading, setOpenDialog }) {
   const { t } = useTranslation()
@@ -35,6 +36,9 @@ function FormSubmitted({ openDialog, loading, setOpenDialog }) {
           <Grid container direction='column' justify='center' alignItems='center'>
             {loading ? (
               <Box align='center' pt={2}>
+                <Box pb={7} pt={5}>
+                  <HashLoader loading={loading} color='#3bb78f' size={70} />
+                </Box>
                 <Typography variant='h5' className={classes.loading}>
                   {t('formPopup.submitting')}
                 </Typography>
