@@ -27,12 +27,12 @@ function FormSubmitted({ openDialog, loading, setOpenDialog }) {
             root: classes.backDrop,
           },
         }}>
+        {!loading && (
+          <Button className={classes.close} onClick={() => setOpenDialog(false)}>
+            <CloseIcon />
+          </Button>
+        )}
         <Box py={1}>
-          {!loading && (
-            <Button className={classes.close} onClick={() => setOpenDialog(false)}>
-              <CloseIcon />
-            </Button>
-          )}
           <Grid container direction='column' justify='center' alignItems='center'>
             {loading ? (
               <Box align='center' pt={2}>

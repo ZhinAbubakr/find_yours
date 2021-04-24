@@ -359,7 +359,7 @@ const Form = () => {
           </ThemeProvider>
         </Box>
       </Paper>
-      <FormSubmitted openDialog={!openDialog} loading={!loading} setOpenDialog={setOpenDialog} />
+      <FormSubmitted openDialog={openDialog} loading={loading} setOpenDialog={setOpenDialog} />
     </Container>
   )
 }
