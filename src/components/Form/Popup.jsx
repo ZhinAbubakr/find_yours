@@ -4,7 +4,6 @@ import useStyles from './Style'
 import Button from '@material-ui/core/Button'
 import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router-dom'
-import Loader from 'react-loader-spinner'
 import DoneAllIcon from '@material-ui/icons/DoneAll'
 import CloseIcon from '@material-ui/icons/Close'
 
@@ -36,7 +35,6 @@ function FormSubmitted({ openDialog, loading, setOpenDialog }) {
           <Grid container direction='column' justify='center' alignItems='center'>
             {loading ? (
               <Box align='center' pt={2}>
-                <Loader type='Circles' color='#3AAFA9' height={80} width={80} />
                 <Typography variant='h5' className={classes.loading}>
                   {t('formPopup.submitting')}
                 </Typography>
