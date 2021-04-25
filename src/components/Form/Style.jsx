@@ -72,6 +72,12 @@ const useStyle = makeStyles((theme) => ({
     },
     marginLeft: '5rem !important',
   },
+  signin: {
+    display: 'grid',
+    placeContent: 'center',
+    margin: '40vh',
+    textAlign: 'center',
+  },
 }))
 
 export default useStyle
