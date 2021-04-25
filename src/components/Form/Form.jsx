@@ -42,7 +42,7 @@ const Form = () => {
   const classes = useStyles()
   const [loading, setLoading] = useState(true)
   const [openDialog, setOpenDialog] = useState(false)
-  console.log(profile)
+
   const handleChange = (event) => {
     const name = event.target.name
     setState({
