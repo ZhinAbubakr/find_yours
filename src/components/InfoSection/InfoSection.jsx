@@ -27,7 +27,7 @@ const InfoSection = () => {
                <Grid item xs={12} lg={4}>
                <img src={image3} className={classes.image}/>
 
-               <h3 className={classes.title}>{t('infoSection.OutReachHead')}.</h3>
+               <h3 className={classes.title}>{t('infoSection.OutReachHead')}</h3>
                        <p className={classes.description}>{t('infoSection.OutReachDesc')}</p>                
                </Grid>
         </Grid>
