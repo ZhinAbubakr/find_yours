@@ -5,6 +5,7 @@ const useStyles = makeStyles({
   },
   fontTitleSize: {
     fontSize: '1.5rem !important',
+    marginLeft: 50,
   },
   giveP: {
     padding: '2rem !important',
