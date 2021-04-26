@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '@material-ui/core/Card'
+import CardMedia from '@material-ui/core/CardMedia'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
 import CardActions from '@material-ui/core/CardActions'
@@ -59,7 +60,7 @@ export default function RecipeReviewCard({ post }) {
         </CardContent>
       </div>
       <div>
-        <img src={post.image} height='240' width='350' alt='Post image' />
+        <CardMedia className={classes.media} image={post.image} title='Post image' />
         <CardActions disableSpacing>
           <Link to={`/post/${post.id}`} className={classes.links}>
             <Button className={classes.button}>{t('post.view')}</Button>

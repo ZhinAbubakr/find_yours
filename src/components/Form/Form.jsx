@@ -1,29 +1,55 @@
-import { Paper, Grid, Select, MenuItem } from '@material-ui/core'
+import {
+  Grid,
+  Select,
+  MenuItem,
+  Box,
+  Container,
+  FormControl,
+  FormHelperText,
+  Typography,
+  Paper,
+  Divider,
+} from '@material-ui/core'
 import React, { useContext, useState } from 'react'
 import useStyles from './Style'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { db } from '../../firebase'
 import { storage } from '../../firebase'
-import 'date-fns'
 import { ProfileContext } from '../../profileContext'
 import { useTranslation } from 'react-i18next'
+import { theme } from '../ViewPost/style'
+import { ThemeProvider } from '@material-ui/styles'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload'
+import FormSubmitted from './Popup'
 
 const Form = () => {
   const { t } = useTranslation()
-  const [selectedDate, setSelectedDate] = React.useState('')
+  const [state, setState] = useState({
+    date: '',
+    item: '',
+    email: '',
+    more: '',
+    facebook: '',
+    phone: '',
+    whereLost: '',
+    color: '',
+    category: '',
+    isLost: '',
+    image: '',
+  })
   const [profile] = useContext(ProfileContext)
-  const [item, setItem] = useState('')
-  const [isLost, setIsLost] = useState('')
-  const [color, setColor] = useState('')
-  const [whereLost, setWhereLost] = useState('')
-  const [phone, setPhone] = useState('')
-  const [image, setImage] = useState(null)
-  const [more, setMore] = useState('')
-  const [email, setEmail] = useState('')
-  const [category, setCategory] = React.useState('')
-  const [facebook, setFacebook] = React.useState('')
   const classes = useStyles()
+  const [loading, setLoading] = useState(true)
+  const [openDialog, setOpenDialog] = useState(false)
+
+  const handleChange = (event) => {
+    const name = event.target.name
+    setState({
+      ...state,
+      [name]: event.target.value,
+    })
+  }
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0]
@@ -35,265 +61,316 @@ const Form = () => {
         .ref('images')
         .child(file.name)
         .getDownloadURL()
-        .then((url) => setImage(url))
+        .then((url) => setState({ ...state, image: url }))
     )
-  }
-
-  const handleChangeCat = (event) => {
-    setCategory(event.target.value)
-  }
-
-  const handleChangeLoc = (event) => {
-    setWhereLost(event.target.value)
-  }
-
-  const handleChangeCol = (event) => {
-    setColor(event.target.value)
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-
+    setOpenDialog(true)
+    setLoading(true)
     db.collection('posts')
       .add({
+        // space for improvement with avatar and username.
         avatar: profile.imageUrl,
-        title: item,
-        isLost: isLost,
-        category: category,
-        color: color,
-        province: whereLost,
+        title: state.item,
+        isLost: state.isLost,
+        category: state.category,
+        color: state.color,
+        province: state.whereLost,
         name: profile.name,
-        phone: phone,
-        date: selectedDate,
+        phone: state.phone,
+        date: state.date,
         country: 'Iraq',
-        body: more.split(' '),
-        email: email,
-        facebook: facebook,
+        body: state.more.split(' '),
+        email: state.email,
+        facebook: state.facebook,
         userId: profile.googleId,
-        image: image,
+        image: state.image,
         createdAt: new Date(),
       })
 
       .then(() => {
-        alert('Submited')
+        setLoading(false)
       })
 
       .catch((error) => {
         alert(error.message)
       })
 
-    setIsLost('')
-    setItem('')
-    setImage('')
-    setFacebook('')
-    setColor('')
-    setWhereLost('')
-    setPhone('')
-    setSelectedDate('')
-    setImage('')
-    setMore('')
-    setEmail('')
-    setCategory('')
+    setState({
+      date: '',
+      item: '',
+      email: '',
+      more: '',
+      facebook: '',
+      phone: '',
+      whereLost: '',
+      color: '',
+      category: '',
+      isLost: '',
+      image: '',
+    })
   }
+  if (profile.name) {
+    return (
+      <Container>
+        <Paper elevation={8}>
+          <Box mt={12} mb={4} pb={1} px={2}>
+            <Typography variant='h4' align='center'>
+              {t('form.submitPost')}
+            </Typography>
+            <Box className={classes.divider}>
+              <Divider />
+            </Box>
+            <ThemeProvider theme={theme}>
+              <form onSubmit={handleSubmit}>
+                <Grid container direction='row' justify='center'>
+                  <Grid item xs={12}>
+                    <h4 className={classes.title}>{t('form.title')}</h4>
+                    <TextField
+                      inputProps={{ maxLength: 20 }}
+                      type='text'
+                      className={classes.titleTextW}
+                      label={t('form.title')}
+                      variant='outlined'
+                      value={state.item}
+                      name='item'
+                      helperText={t('form.titleEx')}
+                      onChange={handleChange}
+                      required
+                    />
+                  </Grid>
+                  <h2>{t('form.select')}</h2>
+                  <Grid item xs={12} container>
+                    <Grid item xs={12} sm={6} md={3}>
+                      <h4 className={classes.title}>{t('filter.catagory')}</h4>
+                      <FormControl className={classes.selectW}>
+                        <Select
+                          labelId='demo-simple-select-label'
+                          value={state.category}
+                          onChange={handleChange}
+                          name='category'
+                          required>
+                          <MenuItem value='documents'>{t('filter.Documents')}</MenuItem>
+                          <MenuItem value='animals/pets'>{t('filter.AnimalsPets')}</MenuItem>
+                          <MenuItem value='clothing'>{t('filter.Clothing')}</MenuItem>
+                          <MenuItem value='electronics'>{t('filter.Electronics')}</MenuItem>
+                          <MenuItem value='personal accessories'>
+                            {t('filter.personalAccessories')}
+                          </MenuItem>
+                          <MenuItem value='other'>{t('filter.Other')}</MenuItem>
+                        </Select>
+                        <FormHelperText>{t('form.categoryEx')}</FormHelperText>
+                      </FormControl>
+                    </Grid>
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div className={classes.root}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} lg={6}>
-            <Paper className={classes.paper}>
-              <h4 className={classes.title}>{t('form.title')}</h4>
-              <p className={classes.desc}>{t('form.titleEx')}</p>
-              <TextField
-                id='outlined-basic'
-                label={t('form.title')}
-                variant='outlined'
-                className={classes.input}
-                value={item}
-                onChange={(e) => setItem(e.target.value)}
-                required
-              />
-              <h4 className={classes.title}>{t('filter.catagory')}</h4>
-              <p className={classes.desc}>{t('form.categoryEx')}</p>
+                    <Grid item xs={12} sm={6} md={3}>
+                      <FormControl className={classes.selectW}>
+                        <h4 className={classes.title}>{t('filter.color')}</h4>
+                        <Select
+                          labelId='color'
+                          value={state.color}
+                          onChange={handleChange}
+                          name='color'
+                          required>
+                          <MenuItem value='blue'>{t('filter.blue')}</MenuItem>
+                          <MenuItem value='white'>{t('filter.white')}</MenuItem>
+                          <MenuItem value='red'>{t('filter.red')}</MenuItem>
+                          <MenuItem value='other'>{t('filter.Other')}</MenuItem>
+                        </Select>
+                        <FormHelperText>{t('form.colorEx')}</FormHelperText>
+                      </FormControl>
+                    </Grid>
 
-              <Select
-                className={classes.input}
-                labelId='demo-simple-select-label'
-                id='demo-simple-select'
-                value={category}
-                onChange={handleChangeCat}
-                required>
-                <MenuItem value='documents'>{t('filter.Documents')}</MenuItem>
-                <MenuItem value='animals/pets'>{t('filter.AnimalsPets')}</MenuItem>
-                <MenuItem value='clothing'>{t('filter.Clothing')}</MenuItem>
-                <MenuItem value='electronics'>{t('filter.Electronics')}</MenuItem>
-                <MenuItem value='personal accessories'>{t('filter.personalAccessories')}</MenuItem>
-                <MenuItem value='other'>{t('filter.Other')}</MenuItem>
-              </Select>
-              <h4 className={classes.title}>{t('filter.color')}</h4>
-              <p className={classes.desc}>{t('form.colorEx')} </p>
-              <Select
-                className={classes.input}
-                labelId='color'
-                id='demo-simple-select'
-                value={color}
-                onChange={handleChangeCol}
-                required>
-                <MenuItem value='blue'>{t('filter.blue')}</MenuItem>
-                <MenuItem value='white'>{t('filter.white')}</MenuItem>
-                <MenuItem value='red'>{t('filter.red')}</MenuItem>
-                <MenuItem value='other'>{t('filter.Other')}</MenuItem>
-              </Select>
-              <h4 className={classes.title}>{t('form.where')}</h4>
-              <p className={classes.desc}>{t('form.whereEx')}</p>
-              <Select
-                className={classes.input}
-                labelId='Provinces'
-                id='demo-simple-select'
-                value={whereLost}
-                onChange={handleChangeLoc}
-                required>
-                <MenuItem value='baghdad'>{t('city.baghdad')}</MenuItem>
-                <MenuItem value='erbil'>{t('city.erbil')}</MenuItem>
-                <MenuItem value='basrah'>{t('city.basrah')}</MenuItem>
-                <MenuItem value='wasit'>{t('city.wasit')}</MenuItem>
-                <MenuItem value='sulaymaniyah'>{t('city.sulaymaniyah')}</MenuItem>
-                <MenuItem value='nineveh'>{t('city.nineveh')}</MenuItem>
-                <MenuItem value='maysan'>{t('city.maysan')}</MenuItem>
-                <MenuItem value='karbala'>{t('city.karbala')}</MenuItem>
-                <MenuItem value='kirkuk'>{t('city.kirkuk')}</MenuItem>
-                <MenuItem value='diyala'>{t('city.diyala')}</MenuItem>
-                <MenuItem value='dhi Qar'>{t('city.dhiqar')}</MenuItem>
-                <MenuItem value='babil'>{t('city.babil')}</MenuItem>
-                <MenuItem value='duhok'>{t('city.duhok')}</MenuItem>
-                <MenuItem value='anbar'>{t('city.anbar')}</MenuItem>
-                <MenuItem value='diwaniya'>{t('city.diwaniya')}</MenuItem>
-                <MenuItem value='muthana'>{t('city.muthana')}</MenuItem>
-                <MenuItem value='wasit'>{t('city.wasit')}</MenuItem>
-                <MenuItem value='saladdin'>{t('city.saladdin')}</MenuItem>
-              </Select>
+                    <Grid item xs={12} sm={6} md={3}>
+                      <FormControl className={classes.selectW}>
+                        <h4 className={classes.title}>{t('form.where')}</h4>
+                        <Select
+                          labelId='Provinces'
+                          id='demo-simple-select'
+                          value={state.whereLost}
+                          name='whereLost'
+                          onChange={handleChange}
+                          required>
+                          <MenuItem value='baghdad'>{t('city.baghdad')}</MenuItem>
+                          <MenuItem value='erbil'>{t('city.erbil')}</MenuItem>
+                          <MenuItem value='basrah'>{t('city.basrah')}</MenuItem>
+                          <MenuItem value='wasit'>{t('city.wasit')}</MenuItem>
+                          <MenuItem value='sulaymaniyah'>{t('city.sulaymaniyah')}</MenuItem>
+                          <MenuItem value='nineveh'>{t('city.nineveh')}</MenuItem>
+                          <MenuItem value='maysan'>{t('city.maysan')}</MenuItem>
+                          <MenuItem value='karbala'>{t('city.karbala')}</MenuItem>
+                          <MenuItem value='kirkuk'>{t('city.kirkuk')}</MenuItem>
+                          <MenuItem value='diyala'>{t('city.diyala')}</MenuItem>
+                          <MenuItem value='dhi Qar'>{t('city.dhiqar')}</MenuItem>
+                          <MenuItem value='babil'>{t('city.babil')}</MenuItem>
+                          <MenuItem value='duhok'>{t('city.duhok')}</MenuItem>
+                          <MenuItem value='anbar'>{t('city.anbar')}</MenuItem>
+                          <MenuItem value='diwaniya'>{t('city.diwaniya')}</MenuItem>
+                          <MenuItem value='muthana'>{t('city.muthana')}</MenuItem>
+                          <MenuItem value='wasit'>{t('city.wasit')}</MenuItem>
+                          <MenuItem value='saladdin'>{t('city.saladdin')}</MenuItem>
+                        </Select>
+                        <FormHelperText>{t('form.whereEx')}</FormHelperText>
+                      </FormControl>
+                    </Grid>
 
-              <h2 className={classes.contact}>{t('form.contact')}</h2>
-              <h4 className={classes.title}>{t('form.phone')}</h4>
-              <p className={classes.desc}>{t('form.contactEx')}</p>
-              <TextField
-                id='outlined-basic'
-                label={t('form.phone')}
-                variant='outlined'
-                className={classes.input}
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                required
-                type='number'
-              />
+                    <Grid item xs={12} sm={6} md={3}>
+                      <FormControl className={classes.selectW}>
+                        <h4 className={classes.title}>{t('form.lostor')}</h4>
+                        <Select
+                          labelId='demo-simple-select-label'
+                          value={state.isLost}
+                          onChange={handleChange}
+                          name='isLost'
+                          required>
+                          <MenuItem value={true}>{t('filter.Lost')}</MenuItem>
+                          <MenuItem value={false}>{t('filter.Found')}</MenuItem>
+                        </Select>
+                        <FormHelperText>{t('form.type')}</FormHelperText>
+                      </FormControl>
+                    </Grid>
+                  </Grid>
 
-              <h4 className={classes.title}>{t('form.facebook')}</h4>
-              <p className={classes.desc}>{t('form.facebookEx')}</p>
-              <TextField
-                id='outlined-basic'
-                label={t('form.facebook')}
-                variant='outlined'
-                className={classes.input}
-                value={facebook}
-                onChange={(e) => setFacebook(e.target.value)}
-                required
-                type='text'
-              />
-            </Paper>
-          </Grid>
-          <Grid item xs={12} lg={6}>
-            <Paper className={classes.paper}>
-              <h4 className={classes.title}>{t('form.lostor')}</h4>
-              <p className={classes.desc}>{t('form.type')}</p>
-              <Select
-                className={classes.input}
-                labelId='demo-simple-select-label'
-                id='demo-simple-select'
-                value={isLost}
-                onChange={(e) => setIsLost(e.target.value)}
-                required>
-                <MenuItem value={true}>{t('filter.Lost')}</MenuItem>
-                <MenuItem value={false}>{t('filter.Found')}</MenuItem>
-              </Select>
-              <h4 className={classes.title}>{t('form.date')} </h4>
-              <p className={classes.desc}>{t('form.dateEx')} </p>
+                  <h2 className={classes.contact}>{t('form.contact')}</h2>
+                  <Grid item xs={12} container justify='space-between'>
+                    <Grid item xs={12} sm={6} md={3}>
+                      <h4 className={classes.title}>{t('form.phone')}</h4>
+                      <TextField
+                        inputProps={{ maxLength: 30 }}
+                        label={t('form.phone')}
+                        variant='outlined'
+                        className={classes.contactW}
+                        value={state.phone}
+                        onChange={handleChange}
+                        helperText={t('form.contactEx')}
+                        name='phone'
+                        required
+                        type='number'
+                      />
+                    </Grid>
 
-              <TextField
-                id='date'
-                label={t('form.date')}
-                type='date'
-                value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
-                className={classes.input}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                required
-              />
+                    <Grid item xs={12} sm={6} md={3}>
+                      <h4 className={classes.title}>{t('form.facebook')}</h4>
+                      <TextField
+                        label={t('form.facebook')}
+                        inputProps={{ maxLength: 100 }}
+                        variant='outlined'
+                        value={state.facebook}
+                        className={classes.contactW}
+                        name='facebook'
+                        helperText={t('form.facebookEx')}
+                        onChange={handleChange}
+                        required
+                        type='text'
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={3}>
+                      <h4 className={classes.title}>{t('form.email')}</h4>
+                      <TextField
+                        inputProps={{ maxLength: 50 }}
+                        label={t('form.email')}
+                        className={classes.contactW}
+                        name='email'
+                        helperText={t('form.emailEx')}
+                        variant='outlined'
+                        type='email'
+                        value={state.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <h4 className={classes.title}>{t('form.date')} </h4>
+                    <TextField
+                      inputProps={{ maxLength: 20 }}
+                      id='date'
+                      helperText={t('form.dateEx')}
+                      name='date'
+                      type='date'
+                      value={state.selectedDate}
+                      onChange={handleChange}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      required
+                    />
+                  </Grid>
 
-              <h4 className={classes.title}>{t('form.image')}</h4>
-              <p className={classes.desc}>{t('form.imageEx')}</p>
-              <input
-                type='file'
-                onChange={(e) => handleImageUpload(e)}
-                id='contained-button-file'
-                className={classes.fileInput}
-              />
-              <label htmlFor='contained-button-file'>
-                <Button
-                  className={classes.input}
-                  variant='contained'
-                  style={{ background: '#3AAFA9' }}
-                  color='primary'
-                  component='span'>
-                  {t('form.upload')}
-                </Button>
-              </label>
-              <h4 className={classes.title}>{t('form.addInfo')}</h4>
-              <p className={classes.desc}>{t('form.addInfoEx')}</p>
-              <TextField
-                id='outlined-basic'
-                label={t('form.addInfo')}
-                variant='outlined'
-                className={classes.input}
-                value={more}
-                onChange={(e) => setMore(e.target.value)}
-              />
-              <h4 className={classes.title}>{t('form.email')}</h4>
-              <p className={classes.desc}>{t('form.emailEx')}</p>
-              <TextField
-                id='outlined-basic'
-                label={t('form.email')}
-                variant='outlined'
-                className={classes.input}
-                type='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </Paper>
-          </Grid>
-          <Grid
-            container
-            spacing={0}
-            direction='column'
-            alignItems='center'
-            justify='center'
-            style={{ minHeight: '1vh' }}>
-            <Grid item xs={3}>
-              <Button
-                variant='contained'
-                style={{ background: '#3AAFA9' }}
-                className={classes.button}
-                color='primary'
-                type='submit'>
-                {t('dash.submit')}
-              </Button>
-            </Grid>
-          </Grid>
-        </Grid>
-      </div>
-    </form>
-  )
+                  <Grid container justify='space-around'>
+                    <Grid item xs={12}>
+                      <Box pb={3}>
+                        <h4 className={classes.title}>{t('form.image')}</h4>
+                      </Box>
+                    </Grid>
+                    <Grid item sm={4}>
+                      <input
+                        type='file'
+                        onChange={(e) => handleImageUpload(e)}
+                        id='contained-button-file'
+                        className={classes.fileInput}
+                      />
+                      <label htmlFor='contained-button-file'>
+                        <Grid container justify='center' className={classes.uploadFile}>
+                          <Grid item xs={12} align='center'>
+                            <Typography variant='h6'>{t('form.imageEx')}</Typography>
+                          </Grid>
+
+                          <Grid item xs={12} align='center'>
+                            <CloudUploadIcon className={classes.cloudIcon} />
+                          </Grid>
+                        </Grid>
+                      </label>
+                    </Grid>
+                    <Grid item sm={6} xs={10}>
+                      <Box py={1} align='center'>
+                        {state.image && (
+                          <img src={state.image} alt='dd' width='70%' height='200px' />
+                        )}
+                      </Box>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <h4 className={classes.title}>{t('form.addInfo')}</h4>
+                    <TextField
+                      id='filled-multiline-flexible'
+                      multiline
+                      maxrows={4}
+                      inputProps={{ maxLength: 250 }}
+                      name='more'
+                      label={t('form.addInfo')}
+                      variant='outlined'
+                      helperText={t('form.addInfoEx')}
+                      value={state.more}
+                      className={classes.moreW}
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                  <Button
+                    align='center'
+                    variant='contained'
+                    style={{ background: '#3AAFA9' }}
+                    className={classes.button}
+                    color='primary'
+                    type='submit'>
+                    {t('dash.submit')}
+                  </Button>
+                </Grid>
+              </form>
+            </ThemeProvider>
+          </Box>
+        </Paper>
+        <FormSubmitted openDialog={openDialog} loading={loading} setOpenDialog={setOpenDialog} />
+      </Container>
+    )
+  } else {
+    return (
+      <Typography className={classes.signin} variant='h3'>
+        it looks like you are not signed in, please sign in before submitting an item
+      </Typography>
+    )
+  }
 }
 
 export default Form

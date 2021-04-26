@@ -24,7 +24,7 @@
   "filter": {
     "filters": "Filters",
     "status": "Status",
-    "catagory": "category",
+    "catagory": "Category",
     "color": "Color",
     "AnimalsPets": "Animals/Pets",
     "Documents": "Documents",
@@ -80,28 +80,35 @@
     "jalal": "Jalal Arif"
   },
   "form": {
+    "submitPost": "Submit New Post",
+    "select":"Select",
     "title": "Title",
-    "titleEx": "(Dog, Jacket, Smartphone, Wallet, etc.)",
-    "categoryEx": "(Animals/Pets, Clothing, Electronics, Personal Accessories etc.) This field is required.",
-    "colorEx": "Please add the color that best represents the property (Blue, Red, White, etc.)",
+    "titleEx": "(Dog, Jacket etc.)",
+    "categoryEx": "(Clothing, Electronics etc.)",
+    "colorEx": "Select your item color (e.g. Blue, white etc.)",
     "where": "Where Lost or found",
-    "whereEx": "Please provide an approximate location of city",
+    "whereEx": "Provide an approximate location of city",
     "contact": "Contact Information.",
     "phone": "Phone Number",
-    "contactEx": " Please enter the phone number to display on your submission",
-    "facebook": "Facebook Acount",
-    "facebookEx": "Please enter the facebook link to display on your post.",
+    "contactEx": "Enter your phone number ",
+    "facebook": "Facebook Account",
+    "facebookEx": "Enter the facebook link.",
     "lostor": "Lost Or Found",
     "type": "Select type",
     "date": "Date",
-    "dateEx": "Please add the approximate date of when the item was lost/found.",
+    "dateEx": "Add the approximate date of when the item was lost/found.",
     "image": "Image",
-    "imageEx": "(This image will display on the website.)",
+    "imageEx": "Click to upload an image",
     "upload": "upload",
     "addInfo": "Additional Information",
-    "addInfoEx": "Please provide any additional details/description of your lost property.",
+    "addInfoEx": "Provide any additional details/description of your lost property.",
     "email": "Email",
-    "emailEx": "Please enter the email to display on your submission"
+    "emailEx": "Enter your email address."
+  },
+  "formPopup": {
+    "submitting": "Submitting...",
+    "submitted": "Submitted",
+    "go": "go to dashboard"
   },
   "profile": {
     "name": "Full Name",
@@ -149,6 +156,10 @@
   "intelligenceDesc": "we intelligently help find and locate the misplaced goods and who has them",
   "OutReachHead": "OutReach",
   "OutReachDesc": "With our multi-level platform, your lost or found submission will automatically be sent to local businesses and individuals."
-
+},
+"editForm": {
+  "where":"Where",
+  "editItem": "Edit your post",
+  "editImage": "Click to change the image"
 }
 }
