@@ -13,7 +13,7 @@ In Navbar you can see:
 
 - earth icon to change the language from in `English` to `Arabic` or to `Kurdish`,
 - a `Google Sign in` button to sign in with your google account
-- four tabs (`Home`, `Dashboard`, `About Us`, `Contact Us`, `Privacy Policy`) each of them will navigate to the desiered page
+- four tabs (`Home`, `Dashboard`, `About Us`, `Contact Us`, `Privacy Policy`) each of them will navigate to the desired page
 
 ![first page](<./screenshots/Screenshot(1).png>) <br><br>
 
@@ -35,9 +35,9 @@ In Dashboard page you can see:
 
 In Profile page you can see your information and all your posts
 
-![About Us](./screenshots/Animation5.gif) <br><br>
+![About Us](./screenshots/Animation5.gif)<br><br>
 
-In View Post page you can see item information and contact information
+On the View Post page, you can see item information and contact information
 
 ![Dashboard page](<./screenshots/Screenshot(6).png>) <br><br>
 
@@ -45,7 +45,7 @@ In Privacy Policy we will inform you about how our web application handles your 
 
 ![Privacy Policy](<./screenshots/Screenshot(3).png>) <br><br>
 
-In Contact Us you can reach out to us and send us your feedback with your email address also in footer you can see social icons where you can visit our social media pages
+In Contact Us you can reach out to us and send us your feedback with your email address also in Footer you can see social icons where you can visit our social media pages
 
 ![Contact Us](<./screenshots/Screenshot(4).png>) <br><br>
 
