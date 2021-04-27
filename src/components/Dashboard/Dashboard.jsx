@@ -182,12 +182,16 @@ export default function Dashboard() {
       <div style={{ margin: '0 20px' }}>
         <div className={classes.messageSender}>
           <div className={classes.messageSender_top}>
-            {profile.length != 0 ? (
-              <Link to={PROFILE_ROUTE} className={classes.links}>
-                <Avatar src={profile.imageUrl} />
-              </Link>
-            ) : (
-              <Avatar src={profile.imageUrl} />
+            {!mobileView && (
+              <span>
+                {profile.length != 0 ? (
+                  <Link to={PROFILE_ROUTE} className={classes.links}>
+                    <Avatar src={profile.imageUrl} />
+                  </Link>
+                ) : (
+                  <Avatar src={profile.imageUrl} />
+                )}
+              </span>
             )}
             <div className={classes.searchbar}>
               <SearchBar
