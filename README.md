@@ -4,7 +4,7 @@
 
 ## Live Demo
 
-View the [live demo](https://findyours.netlify.app/about)!
+View the [live demo](https://findyours.netlify.app/)!
 
 ## Site Map
 
